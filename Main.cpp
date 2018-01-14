@@ -2,17 +2,19 @@
 #include "Logger/LogHandler.h"
 #include <thread>
 #include <iostream>
+#include <string>
 #include "Processor.h"
 
 Logging::LogHandler logHandler;
 
 int main(int argc, char** argv)
 {
+    std::cout << "Hello!" << std::endl;
     logHandler.OpenLog(L"Jerry");
 
     std::thread logThread(&Logging::LogHandler::flushLogs, &logHandler);
 
-    // Create"processors"
+    // Create "processors"
     TestProc::Processor p1(L"P1", std::chrono::milliseconds(25));
     TestProc::Processor p12(L"P1", std::chrono::milliseconds(50));
 
@@ -51,7 +53,8 @@ int main(int argc, char** argv)
     std::thread proc6(&TestProc::Processor::GenerateLogMessages, p6, L"P5");
     proc6.detach();
     
-    while (1);
-
+    while (1)
+    {}
+    
 	return 0;
 }

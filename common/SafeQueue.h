@@ -69,16 +69,17 @@ namespace Utility {
 
             return element;
         }
-
+        
+        // TODO: work out why it won't build
         //-------------------------------------------------------------------------
         // Creaets a class in place and places at the of the queue
-        template<class... Args>
-        bool emplace(Args&&... args)
-        {
-            // Construct an element in place and then push
-            std::unique_lock<std::mutex> lock(mut);
-            basic_q.emplace(args);
-        }
+        //template<class ...Args>
+        //bool emplace(Args&&... args)
+        //{
+        //    // Construct an element in place and then push
+        //    std::unique_lock<std::mutex> lock(mut);
+        //    basic_q.emplace(args);
+        //}
 
         //-------------------------------------------------------------------------
         // Returns a copy of the front element of the queue

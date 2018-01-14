@@ -1,5 +1,5 @@
 #include "Log.h"
-#include "../common/UtilityFunctions.h"
+#include "../utility/timeGeneration.h"
 
 #include <iostream>
 #include <sstream>
@@ -9,8 +9,8 @@
 namespace Logging
 {
     Log::Log(std::wstring in_key)
-        : numberOfEntries(0),
-        key(in_key)
+        : key(in_key),
+          numberOfEntries(0)
     {
         logPath = in_key;
 
