@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ILog.h"
-#include "../common/SafeQueue.h"
+#include "SafeQueue.h"
 
 namespace Logging
 {

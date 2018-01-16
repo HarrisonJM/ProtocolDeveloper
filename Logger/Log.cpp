@@ -1,5 +1,5 @@
 #include "Log.h"
-#include "../utility/timeGeneration.h"
+#include "timeGeneration.h"
 
 #include <iostream>
 #include <sstream>
