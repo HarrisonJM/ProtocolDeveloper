@@ -1,11 +1,13 @@
-#pragma once
+#ifndef __LOGHANDLER_H__
+#define __LOGHANDLER_H__
 
 #include <string>
 #include <map>
 #include "ILog.h"
 #include "LoggerDefinitions.h"
 
-namespace Logging {
+namespace Logging
+{
 
 	class LogHandler
 	{
@@ -30,11 +32,12 @@ namespace Logging {
         // Runs in a separate thread and loops over all logs flushing all their contents to file
         void flushLogs();
 
-	private:
+	protected:
 		// Members
         // Contains all open logs mapped by their key/log name
 		std::map<std::wstring, ILog*> openLogs;
 	};
 
-
 }
+
+#endif /* __LOGHANDLER_H__ */
