@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __SAFEQUEUE_H__
+#define __SAFEQUEUE_H__
 #include <queue>
 #include <mutex>
 
@@ -32,7 +33,7 @@ namespace Utility {
 
         //-------------------------------------------------------------------------
 
-        ~SafeQueue()
+        virtual ~SafeQueue()
         {
             // Destructor
             if (!basic_q.empty())
@@ -43,7 +44,7 @@ namespace Utility {
 
         //-------------------------------------------------------------------------
         // Pushes a new element to the back of the queue
-        bool push(T& newElement)
+        virtual bool push(T& newElement)
         {
             if (IsQueueFull() == true)
                 return false;
@@ -55,8 +56,8 @@ namespace Utility {
         }
 
         //-------------------------------------------------------------------------
-        // Returns the element from the front of the queue and remvoes it
-        T pop_front()
+        // Returns the element from the front of the queue and removes it
+        virtual T pop_front()
         {
             // Return an element and remove from queue
             T element;
@@ -69,10 +70,10 @@ namespace Utility {
 
             return element;
         }
-        
+
         // TODO: work out why it won't build
         //-------------------------------------------------------------------------
-        // Creaets a class in place and places at the of the queue
+        // Creaets a class in place and places at the back of the queue
         //template<class ...Args>
         //bool emplace(Args&&... args)
         //{
@@ -83,7 +84,7 @@ namespace Utility {
 
         //-------------------------------------------------------------------------
         // Returns a copy of the front element of the queue
-        T front()
+        virtual T front()
         {
             // Return the element at the front of the queue
             std::unique_lock<std::mutex> lock(mut);
@@ -92,7 +93,7 @@ namespace Utility {
 
         //-------------------------------------------------------------------------
         // returns a copy of the last element of the queue
-        T back()
+        virtual T back()
         {
             // Return the element at the back of the queue
             std::unique_lock<std::mutex> lock(mut);
@@ -101,7 +102,7 @@ namespace Utility {
 
         //-------------------------------------------------------------------------
         // returns whether or not the queue is empty. True if it is empty
-        bool empty()
+        virtual bool empty()
         {
             // Returns true if empty
             std::unique_lock<std::mutex> lock(mut);
@@ -110,7 +111,7 @@ namespace Utility {
 
         //-------------------------------------------------------------------------
         // Returns the number of elements of the queue
-        size_t size()
+        virtual size_t size()
         {
             std::unique_lock<std::mutex> lock(mut);
             return basic_q.size();
@@ -123,7 +124,7 @@ namespace Utility {
 
     protected:
         // Checks to see if the queues maximum size has been reached
-        bool IsQueueFull()
+        virtual bool IsQueueFull()
         {
             //! \TODO: Check size of buffer
             return false;
@@ -132,3 +133,5 @@ namespace Utility {
         //-------------------------------------------------------------------------
     };
 }
+
+#endif /* __SAFEQUEUE_H__ */

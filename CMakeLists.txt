@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.9.6)
 # Project must go here
-project(ProtocolDeveloper)
+project(ProtocolDeveloper CXX)
 
 include(CTest)
 
@@ -44,19 +44,10 @@ link_directories(lib)
 
 add_subdirectory(Logger)
 add_subdirectory(utility)
-# contains libraries: timeGeneration
+# contains libraries: TimeGeneration
 
 add_executable(ProtocolDeveloper Main.cpp)
-target_link_libraries(ProtocolDeveloper Logger timeGeneration)
+target_link_libraries(ProtocolDeveloper Logger TimeGeneration)
 
-##tests
-# Now simply link against gtest or gtest_main as needed. Eg
-add_executable(LogTests Logger/tests/LogTests.cpp )
-target_link_libraries(LogTests
-        Logger
-        timeGeneration
-        gtest
-        gtest_main
-        gmock gmock_main)
 
 add_test(NAME logtesting COMMAND LogTests)

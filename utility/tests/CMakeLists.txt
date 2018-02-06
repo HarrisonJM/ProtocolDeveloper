@@ -1,1 +1,0 @@
-configure_file(SafeQueueMocks.h ${CMAKE_SOURCE_DIR}/include/mocks/SafeQueueMocks.h)

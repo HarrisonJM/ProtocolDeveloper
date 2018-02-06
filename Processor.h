@@ -11,7 +11,7 @@ namespace TestProc
     class Processor
     {
     public:
-        Processor(std::wstring in_ln,
+        Processor(std::string in_ln,
                   std::chrono::milliseconds in_mil) :
             testName(in_ln),
             sleepTime(in_mil)
@@ -24,7 +24,7 @@ namespace TestProc
             // More blegh
         }
 
-        void GenerateLogMessages(std::wstring message)
+        void GenerateLogMessages(std::string message)
         {
             int i = 0;
             while (i < 10000)
@@ -33,13 +33,13 @@ namespace TestProc
                 logHandler.AddLog(testName, 
                                   Logging::INFO, 
                                   message, 
-                                  L"Test");
+                                  "Test");
                 ++i;
             }
         }
 
     private:
-        std::wstring testName;
+        std::string testName;
         std::chrono::milliseconds sleepTime;
     };
 }

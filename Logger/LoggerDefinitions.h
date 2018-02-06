@@ -5,7 +5,7 @@ namespace Logging
 
 // This will be used to tack our severities
 // Changes here must be tracked appropriately in Logging::Log::GetLogSeverity()
-  typedef enum LOGSEVERITY
+  enum LOGSEVERITY
   {
       INFO,
       TRIVIAL,
@@ -13,6 +13,8 @@ namespace Logging
       MAJOR,
       CRITICAL,
       DEBUG
-  } LOGSEVERITY_T;
+  };
+
+  typedef  LOGSEVERITY LOGSEVERITY_T;
 
 }

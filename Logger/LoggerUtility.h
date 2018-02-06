@@ -4,5 +4,5 @@
 
 namespace Logging
 {
-  std::wstring GetLogSeverity(LOGSEVERITY_T logSev);
+  std::string GetLogSeverity(LOGSEVERITY_T logSev);
 }

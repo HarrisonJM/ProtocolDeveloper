@@ -2,24 +2,24 @@
 
 namespace Logging
 {
-  std::wstring GetLogSeverity(LOGSEVERITY_T logSev)
+  std::string GetLogSeverity(LOGSEVERITY_T logSev)
   {
       switch (logSev)
       {
           case INFO:
-              return L"INFO";
+              return "INFO";
           case TRIVIAL:
-              return L"TRIVIAL";
+              return "TRIVIAL";
           case ISSUE:
-              return L"ISSUE";
+              return "ISSUE";
           case MAJOR:
-              return L"MAJOR";
+              return "MAJOR";
           case CRITICAL:
-              return L"CRITICAL";
+              return "CRITICAL";
           case DEBUG:
-              return L"DEBUG";
+              return "DEBUG";
           default:
-              return L"UNKNOWN SEVERITY GIVEN";
+              return "UNKNOWN SEVERITY GIVEN";
       }
   }
 }

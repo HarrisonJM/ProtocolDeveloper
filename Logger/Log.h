@@ -1,56 +1,61 @@
 #pragma once
 
 #include "ILog.h"
-#include "SafeQueue.h"
+#include "SafeQueue/SafeQueue.h"
 
 namespace Logging
 {
 	class Log : public ILog
 	{
 	public:
-        // Constructor 
-		explicit Log(std::wstring key);
+        friend class LogTests;
+        // Constructor
+		Log();
+		Log(std::string in_key);
+        Log(std::string in_key, std::string in_path);
 		~Log();
 
         // Generate a log message and commit to the queue
         void AddLog(LOGSEVERITY_T logSeverity,
-                            std::wstring logMessage, 
-                            std::wstring testType) override;
+                            std::string logMessage,
+                            std::string testType) override;
         // Returns the number of entries in the log
         unsigned int getNumberOfEntries() override;
         // Writes the entire queue to file. Loop wrapper for Logging:Log::WriteEntry()
         void FlushQueueToFile() override;
+        // Returns the name of the log/test
+		std::string getLogKey() override;
+        // Will terminate a log and "end" it so. All future openings of the file will be in readonly mode
+        void EndLog();
 
-		std::wstring getLogKey() override;
-
-	protected:
+	private:
+        // Number of lines the header uses, used in CountNumberOfEntries()
+        const int numberOfLinesUsedInHeader = 6;
 		// The key will also serve as the filename
-		std::wstring key; // This will serve as the TESTID, filename, and main logger identifier
+		const std::string key; // This will serve as the TESTID, filename, and main logger identifier
         // Currently unused
-		std::wstring logPath;
+		std::string logPath;
         // Tracks the number of entries in a file
 		unsigned int numberOfEntries;
         // The file itself
-        std::wfstream logFile;
+        std::fstream logFile;
         // tracks whether the log has ended. Will allow us to open the log in readonly mode.
-        bool ended; 
+        bool ended;
+        // when the queue is getting full will trigger this flag to be picked up as a priority
+        bool queueNeedsEmptying;
 		// The thread safe queue that entries that have yet to be written will be stored
-		Utility::SafeQueue<std::wstring> logEntryQueue;
-        // Number of lines the header uses, used in CountNumberOfEntries()
-        const int numberOfLinesUsedInHeader = 6;
+		Utility::SafeQueue<std::string> logEntryQueue;
 
         // Methods
         // Generates a header to place at the top of the log file
-		void GenerateAndPrintLogHeader() override;
+		void GenerateAndPrintLogHeader();
         // Will check if the log already exists. True if exists, false otherwise
-        bool CheckLogAlreadyOpened() override;
+        bool CheckLogAlreadyOpened();
         // Will check if a log has been previously ended. True if ended, false otherwise
-        bool CheckLogAlreadyEnded() override;
+        bool CheckLogAlreadyEnded();
         // Writes a single from the front of the queue to the file pointer to by logFile
-        void WriteEntry(std::wstring entry) override;
-        // Will terminate a log and "end" it so. All future openings of the file will be in readonly mode
-        void EndLog() override;
+        void WriteEntry(std::string entry);
         // Counts all the entries in the log file (excludes the header)
-        void CountNumberOfEntries(std::wfstream &fileToCount) override;
-	};
+        void CountNumberOfEntries();
+    };
 }

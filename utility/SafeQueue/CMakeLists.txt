@@ -1,0 +1,1 @@
+configure_file(SafeQueue.h ${CMAKE_SOURCE_DIR}/include/SafeQueue/SafeQueue.h)
