@@ -69,7 +69,7 @@ namespace Logging
                      std::string logMessage,
                      std::string testName)
     {
-        //TODO: Generate log message
+        //! \TODO: Generate log message
         //TODO: Tag for log is a bit unwiedly. Is the date required everytime?
         std::string newEntry;
         if (ended == false)
