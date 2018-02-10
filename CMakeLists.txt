@@ -43,11 +43,12 @@ include_directories(include/)
 link_directories(lib)
 
 add_subdirectory(Logger)
-add_subdirectory(utility)
-# contains libraries: TimeGeneration
+add_subdirectory(utility) # contains libraries: TimeGeneration
+add_subdirectory(CommunicationHandler)
+add_subdirectory(Protocol)
 
 add_executable(ProtocolDeveloper Main.cpp)
-target_link_libraries(ProtocolDeveloper Logger TimeGeneration)
+target_link_libraries(ProtocolDeveloper Logger TimeGeneration CommunicationHandler)
 
 
 add_test(NAME logtesting COMMAND LogTests)

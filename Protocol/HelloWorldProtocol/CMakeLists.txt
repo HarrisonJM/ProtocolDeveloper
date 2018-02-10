@@ -1,0 +1,2 @@
+
+ADD_LIBRARY(HelloWorldProtocol HelloWorldProtocol.cpp)

@@ -1,0 +1,14 @@
+//
+// Created by hmarcks on 10/02/18.
+//
+
+#ifndef PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
+#define PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
+
+class HelloWorldProtocol
+{
+
+};
+
+
+#endif //PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
