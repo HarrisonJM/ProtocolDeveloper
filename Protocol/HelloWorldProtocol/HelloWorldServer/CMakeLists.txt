@@ -1,2 +1,6 @@
 
-add_executable(HelloWorldServer HelloWorldServerMain.cpp)
+add_executable(HelloWorldServer
+        HelloWorldServerMain.cpp
+        ServerSetup.cpp
+        BasicHello.cpp
+        ConnectionHandler.cpp)
