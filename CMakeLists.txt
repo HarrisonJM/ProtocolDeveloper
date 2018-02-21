@@ -36,7 +36,6 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-
 set(CMAKE_CXX_FLAGS "-std=gnu++14 -lpthread -Wall")
 
 include_directories(include/)
@@ -48,7 +47,11 @@ add_subdirectory(CommunicationHandler)
 add_subdirectory(Protocol)
 
 add_executable(ProtocolDeveloper Main.cpp)
-target_link_libraries(ProtocolDeveloper Logger TimeGeneration CommunicationHandler)
-
+target_link_libraries(ProtocolDeveloper
+        Logger
+        TimeGeneration
+        CommunicationHandler
+        ProtocolHandler)
 
 add_test(NAME logtesting COMMAND LogTests)
+add_test(NAME logHandlerTesting COMMAND LogHandlerTests)
