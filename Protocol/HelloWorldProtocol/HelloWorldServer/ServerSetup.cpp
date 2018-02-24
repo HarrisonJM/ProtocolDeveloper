@@ -13,12 +13,11 @@ ServerSetup::ServerSetup(std::string portToUse)
 {
     servinfo = (addrinfo*)malloc(sizeof(addrinfo));
     memset(&servinfo, 0, sizeof servinfo);
-
     // constructor for our server class
     // Get information for the bind
     setupAddrInfo();
-    doListen();
     doSocketAndBind();
+    doListen();
 };
 
 //-----------------------------------------------------------------------------
@@ -72,7 +71,8 @@ void ServerSetup::doSocketAndBind()
             exit(1);
         }
 
-        if (-1 == bind(sockfd, p->ai_addr, p->ai_addrlen))
+        const int ret = bind(sockfd, p->ai_addr, p->ai_addrlen);
+        if (-1 == ret)
         {
             close(sockfd);
             perror("server: bind");
@@ -89,6 +89,7 @@ void ServerSetup::doSocketAndBind()
 void ServerSetup::doListen()
 {
     std::cout << sockfd << std::endl;
+
     if (-1 == listen(sockfd, MAX_CONNECTIONS))
     {
         perror("listen");
