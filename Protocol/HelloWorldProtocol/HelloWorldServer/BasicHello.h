@@ -24,5 +24,4 @@ private:
     std::string response;
 };
 
-
 #endif //PROTOCOLDEVELOPER_BASICHELLO_H

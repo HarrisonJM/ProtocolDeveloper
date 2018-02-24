@@ -26,7 +26,6 @@ void intHandler(int dummy)
 {
     killServer = true;
     delete(CH);
-    exit(0);
 }
 
 //-----------------------------------------------------------------------------
@@ -40,6 +39,9 @@ int main(int argv, char** argc)
     ServerSetup *server = new ServerSetup("9687");
     CH = new ConnectionHandler(*server);
 
-    CH->AcceptNewConnections();
+    while(killServer == false)
+    {
+        CH->AcceptNewConnections();
+    }
 }
 

@@ -35,6 +35,7 @@ void ConnectionHandler::HandleRequest(int fd)
     cfg->receiveData(payLoad);
 
     send(fd, cfg->sendData(), 7, 0);
+    free(payLoad);
 }
 
 //-----------------------------------------------------------------------------
