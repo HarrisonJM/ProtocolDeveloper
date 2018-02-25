@@ -36,7 +36,7 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-set(CMAKE_CXX_FLAGS "-std=gnu++14 -lpthread -Wall")
+set(CMAKE_CXX_FLAGS "-std=gnu++14 -lpthread -ldl -Wall")
 
 include_directories(include/)
 link_directories(lib)
@@ -45,6 +45,7 @@ add_subdirectory(Logger)
 add_subdirectory(utility) # contains libraries: TimeGeneration
 add_subdirectory(CommunicationHandler)
 add_subdirectory(Protocol)
+add_subdirectory(PluginLoader)
 
 add_executable(ProtocolDeveloper Main.cpp)
 

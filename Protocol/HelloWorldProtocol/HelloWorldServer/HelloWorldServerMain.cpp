@@ -38,7 +38,7 @@ int main(int argv, char** argc)
     // We now have a server listening on port 3940 for a connection
     ServerSetup *server = new ServerSetup("9687");
     CH = new ConnectionHandler(*server);
-
+    //TODO: Allow multiple connections with std::thread
     while(killServer == false)
     {
         CH->AcceptNewConnections();

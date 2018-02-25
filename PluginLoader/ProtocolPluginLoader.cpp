@@ -19,9 +19,9 @@ namespace PluginLoader
             exit(1);
         }
 
-        create = (ProtocolInterface *(*)()) dlsym(lib_handle, "create_obj");
+        create = (ProtocolInterface<std::string, std::string> *(*)()) dlsym(lib_handle, "create_obj");
 
-        destroy = (void (*)(ProtocolInterface *)) dlsym(lib_handle, "destroy_obj");
+        destroy = (void (*)(ProtocolInterface<std::string, std::string> *)) dlsym(lib_handle, "destroy_obj");
 
         if ((errorMess = dlerror()) != NULL)
         {
@@ -38,9 +38,9 @@ namespace PluginLoader
 
     // Our main factory. Returns a pointer to an interface that we can use
     // To access anything generated in our protocol library
-    ProtocolInterface *ProtocolPluginHandler::getIF()
+    ProtocolInterface<std::string, std::string> *ProtocolPluginHandler::getIF()
     {
-        this->if_f = (ProtocolInterface *) create();
+        this->if_f = (ProtocolInterface<std::string, std::string> *) create();
 
         return if_f;
     }

@@ -1,3 +1,3 @@
-ADD_LIBRARY(HelloWorldProtocol HelloWorldProtocol.cpp)
+ADD_LIBRARY(HelloWorldProtocol SHARED HelloWorldProtocol.cpp)
 
 add_subdirectory(HelloWorldServer)

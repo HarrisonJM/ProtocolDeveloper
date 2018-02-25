@@ -5,6 +5,8 @@
 #include "ProtocolInterface.h"
 #include "PluginLoaderInterface.h"
 
+#include <string>
+
 #ifndef PROTOCOLDEVELOPER_PLUGINHANDLER_H
 #define PROTOCOLDEVELOPER_PLUGINHANDLER_H
 
@@ -14,25 +16,23 @@
 namespace PluginLoader
 {
 //Loads our DLL
-    class ProtocolPluginHandler : //public ProtocolInterface,
-                                  public PluginLoaderInterface
+    class ProtocolPluginHandler : public PluginLoaderInterface
     {
     public:
         ProtocolPluginHandler();
         ~ProtocolPluginHandler();
 
-        ProtocolInterface *getIF();
+        ProtocolInterface<std::string, std::string> *getIF();
 
     private:
         void *lib_handle;
-        ProtocolInterface *(*create)();
-        void (*destroy)(ProtocolInterface *);
+        ProtocolInterface<std::string, std::string> *(*create)();
+        void (*destroy)(ProtocolInterface<std::string, std::string> *);
 
         int x;
         char *errorMess;
 
-        ProtocolInterface *if_f;
-
+        ProtocolInterface<std::string, std::string> *if_f;
     };
 }
 

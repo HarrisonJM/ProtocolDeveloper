@@ -7,11 +7,11 @@
 
 namespace PluginLoader
 {
-    template<class T>
     class PluginLoaderInterface
     {
     public:
         //! \TODO: MAKE GENERIC, SOMEHOW
+        virtual ~PluginLoaderInterface();
     private:
 
     };
