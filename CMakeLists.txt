@@ -47,11 +47,13 @@ add_subdirectory(CommunicationHandler)
 add_subdirectory(Protocol)
 
 add_executable(ProtocolDeveloper Main.cpp)
+
 target_link_libraries(ProtocolDeveloper
         Logger
         TimeGeneration
         CommunicationHandler
-        ProtocolHandler)
+        ProtocolHandler
+        PluginLoader)
 
 add_test(NAME logtesting COMMAND LogTests)
 add_test(NAME logHandlerTesting COMMAND LogHandlerTests)
