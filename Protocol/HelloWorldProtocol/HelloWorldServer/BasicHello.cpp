@@ -12,9 +12,9 @@ void BasicHello::setResponse(const char *data)
 {
     std::string properData(data);
 
-    if (properData == "hello\r\n")
+    if (properData == "hello")
         response = "Goodbye\r\n";
-    else if (properData == "goodbye\r\n")
+    else if (properData == "goodbye")
         response = "Hello\r\n";
     else
         response = "ERROR\r\n";

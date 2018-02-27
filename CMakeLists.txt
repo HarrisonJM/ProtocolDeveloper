@@ -53,8 +53,7 @@ target_link_libraries(ProtocolDeveloper
         Logger
         TimeGeneration
         CommunicationHandler
-        ProtocolHandler
-        PluginLoader)
+        ProtocolHandler)
 
 add_test(NAME logtesting COMMAND LogTests)
 add_test(NAME logHandlerTesting COMMAND LogHandlerTests)

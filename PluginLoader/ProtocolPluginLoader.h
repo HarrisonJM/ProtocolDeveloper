@@ -22,17 +22,17 @@ namespace PluginLoader
         ProtocolPluginHandler();
         ~ProtocolPluginHandler();
 
-        ProtocolInterface<std::string, std::string> *getIF();
+        ProtocolInterface *getIF();
 
     private:
         void *lib_handle;
-        ProtocolInterface<std::string, std::string> *(*create)();
-        void (*destroy)(ProtocolInterface<std::string, std::string> *);
+        ProtocolInterface *(*create)();
+        void (*destroy)(ProtocolInterface*);
 
         int x;
         char *errorMess;
 
-        ProtocolInterface<std::string, std::string> *if_f;
+        ProtocolInterface*if_f;
     };
 }
 

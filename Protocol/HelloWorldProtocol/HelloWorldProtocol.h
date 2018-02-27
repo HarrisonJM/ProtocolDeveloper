@@ -1,30 +1,38 @@
 #include <string>
 #include <ProtocolInterface.h>
+#include <vector>
 
 #ifndef PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
 #define PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
 
 namespace hwProt
 {
-    class HelloWorldProtocol : public ProtocolInterface<std::string, std::string>
+    class HelloWorldProtocol : public ProtocolInterface
     {
     public:
         HelloWorldProtocol();
         virtual ~HelloWorldProtocol();
 
-        void *ResultReceived(void *payLoad) override;
-        bool DataToSend(void *payLoad) override;
-
         // This method will be used to decode any received results
-        std::string DecodeResult(void *payLoad);
-        // This method will be used to encode any data that needs to be sent out
-        std::string EncodeData(void *payLoad);
+        void DecodeResult(void *payLoad) override;
+        // This method will return a pointer to data we want to send
+        dataToSend* GetDataToSend(void *payLoad, int size) override;
         // Will return a pointer to the raw stored data
-        void* getResult();
+        void* getResult() override;
+        // Will Return the last error code received
+        int getResultCode() override;
 
     private:
+        const char* returnHelloOrGoodbye();
         //! Will store the received result as "raw"
         void* result;
+        //! Stores the error code
+        int resultCode;
+        //! vector that stores all our information
+        std::vector<const char*> things;
+        //! Bool that we can toggle to give us different things
+        bool helloOrGoodbye;
+
     };
 }
 
