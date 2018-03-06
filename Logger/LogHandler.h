@@ -1,5 +1,17 @@
-#ifndef __LOGHANDLER_H__
-#define __LOGHANDLER_H__
+/*!
+ * @brief LogHandler
+ *
+ * The main Log handler for all logs. Is designed to be run as its own thread,
+ * and spawn variosu threads for different tasks
+ *
+ * @ingroup Logger
+ *
+ * @date March 2018
+ *
+ */
+
+#ifndef PROTOCOLDEVELOPER_LOGHANDLER_H
+#define PROTOCOLDEVELOPER_LOGHANDLER_H
 
 #include <string>
 #include <map>
@@ -15,10 +27,10 @@ namespace Logging
         friend class LogHandlerTests;
 
 		LogHandler();
-        LogHandler(const std::string logDirectory_in);
+        explicit LogHandler(const std::string logDirectory_in);
 		~LogHandler();
 
-        //! \TODO: This
+        //! @todo This
         // Needs a setup/init method or a more complicated constructor
         // Either way there will need to be a lot of configuration options for this bad boy
         // (Might/should hide everything behind macros and ifdefs)
@@ -30,7 +42,7 @@ namespace Logging
 		int AddLog(std::string logKey,
                    LOGSEVERITY_T logSeverity, 
                    std::string logMessage,
-                   std::string testType);
+                   std::string loggedBy);
 
         // Runs in a separate thread and loops over all logs flushing all their contents to file
         void flushLogs();

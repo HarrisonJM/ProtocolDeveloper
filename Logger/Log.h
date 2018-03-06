@@ -9,8 +9,8 @@
  * @date March 2018
  *
  */
-#ifndef __LOG_H__
-#define __LOG_H__
+#ifndef PROTOCOLDEVELOPER_LOG_H
+#define PROTOCOLDEVELOPER_LOG_H
 
 #include "ILog.h"
 #include "SafeQueue/SafeQueue.h"
@@ -76,4 +76,4 @@ namespace Logging
     };
 }
 
-#endif /* __LOG_H__ */
+#endif /* PROTOCOLDEVELOPER_LOG_H */

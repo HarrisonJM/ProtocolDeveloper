@@ -1,4 +1,15 @@
-#pragma once
+/*!
+ * @brief Log Interface
+ *
+ * Defines the interface that the log class derives from
+ *
+ * @ingroup Logger
+ *
+ * @date March 2018
+ *
+ */
+#ifndef PROTOCOLDEVELOPER_ILOG_H
+#define PROTOCOLDEVELOPER_ILOG_H
 
 #include "LoggerDefinitions.h"
 #include <fstream>
@@ -23,3 +34,5 @@ namespace Logging {
         virtual std::string getLogKey() = 0;
 	};
 }
+
+#endif /*PROTOCOLDEVELOPER_ILOG_H*/

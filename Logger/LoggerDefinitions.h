@@ -1,11 +1,14 @@
-#pragma once
+#ifndef __LOGGERDEFINITIONS_H__
+#define __LOGGERDEFINITIONS_H__
 
 namespace Logging
 {
-
-// This will be used to tack our severities
-// Changes here must be tracked appropriately in Logging::Log::GetLogSeverity()
-  enum LOGSEVERITY
+  /*!
+   * @brief LOGSEVERITY
+   *
+   * enumerator list that tracks the severity of a log with a greater amount of ease
+   */
+  typedef enum
   {
       INFO,
       TRIVIAL,
@@ -13,8 +16,8 @@ namespace Logging
       MAJOR,
       CRITICAL,
       DEBUG
-  };
-
-  typedef  LOGSEVERITY LOGSEVERITY_T;
+  } LOGSEVERITY_T;
 
 }
+
+#endif /*__LOGGERDEFINITIONS_H__*/

@@ -32,8 +32,6 @@ namespace Logging
         GenerateAndPrintLogHeader();
     }
 
-    //-------------------------------------------------------------------------
-
     /*!
      * @brief constructor
      *
@@ -52,8 +50,6 @@ namespace Logging
     {
         GenerateAndPrintLogHeader();
     }
-
-    //-------------------------------------------------------------------------
 
     /*!
      * @brief constructor
@@ -75,8 +71,6 @@ namespace Logging
         GenerateAndPrintLogHeader();
     }
 
-    //-------------------------------------------------------------------------
-
     /*!
      * @brief destructor
      */
@@ -84,8 +78,6 @@ namespace Logging
     {
         logFile.close();
     }
-
-    //-------------------------------------------------------------------------
 
     /*!
      * @brief GenerateAndPrintLogHeader
@@ -103,8 +95,6 @@ namespace Logging
         logFile << "** Date Finished: " << std::endl;
         logFile << "********************************************************************************" << std::endl;
     }
-
-    //-------------------------------------------------------------------------
 
     /*!
      * @brief AddLog
@@ -137,8 +127,6 @@ namespace Logging
         ++numberOfEntries;
     }
 
-    //-------------------------------------------------------------------------
-
     /*!
      * @brief getLogKey
      *
@@ -149,8 +137,6 @@ namespace Logging
         return this->key;
     }
 
-    //-------------------------------------------------------------------------
-
     /*!
      * @brief getNumberOfEntries
      * @return the number of entries in the log
@@ -159,8 +145,6 @@ namespace Logging
     {
         return numberOfEntries;
     }
-
-    //-------------------------------------------------------------------------
 
     /*!
      * @brief FlushQueueToFile
@@ -178,21 +162,17 @@ namespace Logging
         queueNeedsEmptying = false;
     }
 
-    //-------------------------------------------------------------------------
-
     /*!
      * @brief WriteEntry
      *
      * Writes a single entry to file.
      *
-     * @param[in] entry
+     * @param[in] entry the entry we wish to write to file
      */
     void Log::WriteEntry(std::string entry)
     {
         logFile << entry << std::endl;
     }
-
-    //-------------------------------------------------------------------------
 
     /*!
      * @brief EndLog
@@ -208,8 +188,6 @@ namespace Logging
         // see when a test ended/finished. Or the program closed or soemthing
         // Create folders/directories for each run will be the best method
     }
-
-    //-------------------------------------------------------------------------
 
     /*!
      * @brief CountNumberOfEntries
@@ -230,8 +208,6 @@ namespace Logging
         numberOfEntries = numberOfRealLines - numberOfLinesUsedInHeader;
     }
 
-    //-------------------------------------------------------------------------
-
     /*!
      * @brief CheckLogAlreadyOpened
      *
@@ -243,8 +219,6 @@ namespace Logging
     {
         return logFile.is_open();
     }
-
-    //-------------------------------------------------------------------------
 
     /*!
      * @brief CheckLogAlreadyEnded
