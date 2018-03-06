@@ -1,10 +1,26 @@
-#pragma once
+/*!
+ * @brief The basic Log object
+ *
+ * @ingroup Logger
+ *
+ * This class declares a single log file and any infomration that's associated with it.
+ * It can be called directly, however it should be perferred to use the loghandler in most situations.
+ *
+ * @date March 2018
+ *
+ */
+#ifndef __LOG_H__
+#define __LOG_H__
 
 #include "ILog.h"
 #include "SafeQueue/SafeQueue.h"
 
 namespace Logging
 {
+    /*!
+     * A single log. Controls the input of a single file. Handles message queues,
+     * and is thread safe. So multiple threads can write to the same log file, if need be.
+     */
 	class Log : public ILog
 	{
 	public:
@@ -18,7 +34,7 @@ namespace Logging
         // Generate a log message and commit to the queue
         void AddLog(LOGSEVERITY_T logSeverity,
                             std::string logMessage,
-                            std::string testType) override;
+                            std::string loggedBy) override;
         // Returns the number of entries in the log
         unsigned int getNumberOfEntries() override;
         // Writes the entire queue to file. Loop wrapper for Logging:Log::WriteEntry()
@@ -59,3 +75,5 @@ namespace Logging
         void CountNumberOfEntries();
     };
 }
+
+#endif /* __LOG_H__ */

@@ -1,3 +1,12 @@
+/*!
+ * @brief Log
+ *
+ * @ingroup Logger
+ *
+ * Definitions for the Log class
+ *
+ * @date March 2018
+ */
 #include "Log.h"
 #include "LoggerUtility.h"
 #include "TimeGeneration.h"
@@ -7,6 +16,12 @@
 
 namespace Logging
 {
+    /*!
+     * @brief default_constructor
+     *
+     * Sets up the log without a key name (defaults to just log.log)
+     * and then generates the header
+     */
     Log::Log()
     : key("log.log"),
       logPath("logs/"),
@@ -19,6 +34,15 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief constructor
+     *
+     * Sets up the log with a key, which is used as the file name,
+     * and then generates the header
+     *
+     * @param[in] in_key the key that will be used to reference the log
+     *
+     */
     Log::Log(std::string in_key)
         : key(in_key),
           logPath("logs/"),
@@ -31,6 +55,15 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief constructor
+     *
+     * Sets up the log with a key AND a path,
+     * and then generates the header
+     *
+     * @param[in] in_key the key that will be used to reference the log
+     * @param[in] in_path The path to where the log will be stored
+     */
     Log::Log(std::string in_key,
     std::string in_path)
         : key(in_key),
@@ -44,6 +77,9 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief destructor
+     */
     Log::~Log()
     {
         logFile.close();
@@ -51,6 +87,11 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief GenerateAndPrintLogHeader
+     *
+     * Generates the log header and fills it out with any required information
+     */
     void Log::GenerateAndPrintLogHeader()
     {
         logFile << "********************************************************************************" << std::endl;
@@ -65,9 +106,18 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief AddLog
+     *
+     * Generates a log entry and adds it to the logEntryQueue to be later written to file.
+     *
+     * @param[in] logSeverity The severity of what is being logged
+     * @param[in] logMessage The actual message we want to log
+     * @param[in] loggedBy The Module/test/Whatever that is logging the message
+     */
     void Log::AddLog(LOGSEVERITY_T logSeverity,
                      std::string logMessage,
-                     std::string testName)
+                     std::string loggedBy)
     {
         //! \TODO: Generate log message
         //TODO: Tag for log is a bit unwiedly. Is the date required everytime?
@@ -76,7 +126,7 @@ namespace Logging
         {
             newEntry = newEntry + Utility::GenerateTimeStamp();
             newEntry = newEntry + '[' + GetLogSeverity(logSeverity) + ']';
-            newEntry = newEntry + '[' + testName + ']';
+            newEntry = newEntry + '[' + loggedBy + ']';
             newEntry = newEntry + ": " + logMessage;
         }
 
@@ -89,6 +139,11 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief getLogKey
+     *
+     * @return The key/nme of this log
+     */
     std::string Log::getLogKey()
     {
         return this->key;
@@ -96,6 +151,10 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief getNumberOfEntries
+     * @return the number of entries in the log
+     */
     unsigned int Log::getNumberOfEntries()
     {
         return numberOfEntries;
@@ -103,6 +162,11 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief FlushQueueToFile
+     *
+     * Flushes the entries in the queue to file
+     */
     void Log::FlushQueueToFile()
     {
         // Flushes the queue to the file
@@ -116,6 +180,13 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief WriteEntry
+     *
+     * Writes a single entry to file.
+     *
+     * @param[in] entry
+     */
     void Log::WriteEntry(std::string entry)
     {
         logFile << entry << std::endl;
@@ -123,6 +194,11 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief EndLog
+     *
+     * Signs the log off as ended
+     */
     void Log::EndLog()
     {
         //! \TODO:
@@ -135,6 +211,11 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief CountNumberOfEntries
+     *
+     * Counts the number of entries in the log file (excluding the header)
+     */
     void Log::CountNumberOfEntries()
     {
         unsigned int numberOfRealLines = 0;
@@ -151,6 +232,13 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief CheckLogAlreadyOpened
+     *
+     * Returns whether the log file is open or not.
+     *
+     * @return true if open, otherwise false.
+     */
     bool Log::CheckLogAlreadyOpened()
     {
         return logFile.is_open();
@@ -158,6 +246,13 @@ namespace Logging
 
     //-------------------------------------------------------------------------
 
+    /*!
+     * @brief CheckLogAlreadyEnded
+     *
+     * Checks to see if the log has been ended
+     *
+     * @return true if ended, otherwise false
+     */
     bool Log::CheckLogAlreadyEnded()
     {
         return false;

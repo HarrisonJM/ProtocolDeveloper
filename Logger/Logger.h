@@ -1,5 +1,9 @@
-// This file exists to move some declarations forward... ya know. Forward Declare. Kind of
-
+/*!
+ * @defgroup Logger
+ * @date March 2018
+ *
+ * @brief Forward declares Logging related headers
+ */
 
 #include "../Logger/LoggerDefinitions.h"
 
