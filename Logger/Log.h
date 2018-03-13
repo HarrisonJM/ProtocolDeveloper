@@ -3,8 +3,9 @@
  *
  * @ingroup Logger
  *
- * This class declares a single log file and any infomration that's associated with it.
- * It can be called directly, however it should be perferred to use the loghandler in most situations.
+ * This class declares a single log file and any infomration
+ * that's associated with it. It can be called directly, however
+ * it should be perferred to use the loghandler in most situations.
  *
  * @date March 2018
  *
@@ -12,14 +13,18 @@
 #ifndef PROTOCOLDEVELOPER_LOG_H
 #define PROTOCOLDEVELOPER_LOG_H
 
+#include <string>
+#include "LoggerDefinitions.h"
 #include "ILog.h"
-#include "SafeQueue/SafeQueue.h"
+
+class SafeQueue;
 
 namespace Logging
 {
     /*!
-     * A single log. Controls the input of a single file. Handles message queues,
-     * and is thread safe. So multiple threads can write to the same log file, if need be.
+     * A single log. Controls the input of a single file.
+     * Handles message queues, and is thread safe. So multiple
+     * threads can write to the same log file, if need be.
      */
 	class Log : public ILog
 	{
@@ -45,22 +50,25 @@ namespace Logging
         void EndLog();
 
 	private:
-        // Number of lines the header uses, used in CountNumberOfEntries()
+		// Members
+        //! Number of lines the header uses, used in CountNumberOfEntries()
         const int numberOfLinesUsedInHeader = 6;
-		// The key will also serve as the filename
+		//! The key will also serve as the filename
 		const std::string key; // This will serve as the TESTID, filename, and main logger identifier
-        // Currently unused
+        //! Currently unused
 		std::string logPath;
-        // Tracks the number of entries in a file
+        //! Tracks the number of entries in a file
 		unsigned int numberOfEntries;
-        // The file itself
+        //! The file itself
         std::fstream logFile;
-        // tracks whether the log has ended. Will allow us to open the log in readonly mode.
+        //! tracks whether the log has ended. Will allow us to open the log in readonly mode.
         bool ended;
-        // when the queue is getting full will trigger this flag to be picked up as a priority
+        //! when the queue is getting full will trigger this flag to be picked up as a priority
         bool queueNeedsEmptying;
-		// The thread safe queue that entries that have yet to be written will be stored
+		//! The thread safe queue that entries that have yet to be written will be stored
 		Utility::SafeQueue<std::string> logEntryQueue;
+		//! The time function
+        const Utility::TimeGeneration &timeKeeper;
 
         // Methods
         // Generates a header to place at the top of the log file

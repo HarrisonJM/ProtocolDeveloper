@@ -1,3 +1,10 @@
+/*!
+ * @brief Handles incoming and outgoing connections
+ *
+ * @addtogroup HelloGoodByeServer
+ *
+ * @date March 2018
+ */
 #ifndef PROTOCOLDEVELOPER_CONNECTIONHANDLER_H
 #define PROTOCOLDEVELOPER_CONNECTIONHANDLER_H
 
@@ -19,23 +26,32 @@ typedef enum configuration_t
     BASIC
 } configuration;
 
-class ConnectionHandler
+namespace BasicHelloServer
 {
-public:
-    explicit ConnectionHandler(ServerSetup &server);
-    ~ConnectionHandler();
+    class ConnectionHandler
+    {
+    public:
+        //! Constructor
+        explicit ConnectionHandler(ServerSetup &server);
+        //! Destructor
+        ~ConnectionHandler();
 
-    void AcceptNewConnections();
+        //! Accepts new connections
+        void AcceptNewConnections();
 
-private:
-    /* METHODS */
-    void HandleRequest(int fd);
+    private:
+        /* METHODS */
+        //! Handles incoming requests and sends the data to wherever it needs to go
+        void HandleRequest(int fd);
 
-    /* Not Methods */
-    ServerSetup &server;
-    ConfigurationInterface *cfg;
-    std::vector<int> sessions;
-};
-
+        /* Not Methods */
+        //! Reference to the server
+        ServerSetup &server;
+        //! An interface to the configuration we're using
+        ConfigurationInterface *cfg;
+        //! A list of all currently active sessions on this handler
+        std::vector<int> sessions;
+    };
+}
 
 #endif //PROTOCOLDEVELOPER_CONNECTIONHANDLER_H

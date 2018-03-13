@@ -50,10 +50,7 @@ add_subdirectory(PluginLoader)
 add_executable(ProtocolDeveloper Main.cpp)
 
 target_link_libraries(ProtocolDeveloper
-        Logger
         TimeGeneration
         CommunicationHandler
-        ProtocolHandler)
-
-add_test(NAME logtesting COMMAND LogTests)
-add_test(NAME logHandlerTesting COMMAND LogHandlerTests)
+        PluginLoader
+        HelloWorldProtocol)

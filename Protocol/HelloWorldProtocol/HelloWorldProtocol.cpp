@@ -1,3 +1,12 @@
+/*!
+ * @brief HelloWorldProtocol
+ *
+ * The HelloWorldProtocol data generation and decoder, defintion
+ *
+ * @ingroup Protocol
+ *
+ * @date March 2018
+ */
 #include <string>
 
 #include "HelloWorldProtocol.h"
@@ -10,30 +19,44 @@
  */
 namespace hwProt
 {
+    /*!
+     * @brief default_constructor
+     *
+     * Emplaces possible results into a vector
+     */
     HelloWorldProtocol::HelloWorldProtocol()
     : result(NULL),
       resultCode(0),
       helloOrGoodbye(0)
     {
-        things.emplace_back("hello");
-        things.emplace_back("goodbye");
-        things.emplace_back("AAAAAAAAAAAAA");
-
+        possibleResults.emplace_back("hello\r\n");
+        possibleResults.emplace_back("goodbye\r\n");
+        possibleResults.emplace_back("AAAAAAAAAAAAA");
     }
-    //-----------------------------------------------------------------------------
+
+    /*!
+     * @brief destructor
+     */
     HelloWorldProtocol::~HelloWorldProtocol()
     {
 
     }
-    //-----------------------------------------------------------------------------
+
+    /*!
+     * @brief DecodeResult
+     *
+     * Decodes a payload and sets the return code accordingly
+     *
+     * @param payLoad The received Payload
+     */
     void HelloWorldProtocol::DecodeResult(void *payLoad)
     {
         auto* decodedData = static_cast<const char*>(payLoad);
 
-        for (auto& thing : things)
+        for (auto& storedResults : possibleResults)
         {
-            if(std::string(thing) == std::string(decodedData))
-                if (std::string(thing) != "ERROR\r\n")
+            if(std::string(storedResults) == std::string(decodedData))
+                if (std::string(storedResults) != "ERROR\r\n")
                 {
                     // Success
                     resultCode = 0;
@@ -43,8 +66,18 @@ namespace hwProt
             break;
         }
     }
-    //-----------------------------------------------------------------------------
-    dataToSend* HelloWorldProtocol::GetDataToSend(void *payLoad, int size)
+
+    /*!
+     * @brief GetDataToSend
+     *
+     * Fetches the message and sets up the
+     * struct we're going to send
+     *
+     * @todo needs work
+     *
+     * @return A pointer to the struct containg our information
+     */
+    dataToSend * HelloWorldProtocol::GetDataToSend()
     {
         dataToSend *D2s;
         D2s = static_cast<dataToSend*>(malloc(sizeof(dataToSend)));
@@ -55,20 +88,37 @@ namespace hwProt
 
         return D2s;
     }
-    //-----------------------------------------------------------------------------
+
+    /*!
+     * @brief getResult
+     *
+     * @return The last raw result data
+     */
     void *HelloWorldProtocol::getResult()
     {
         return result;
     }
-    //-----------------------------------------------------------------------------
+
+    /*!
+     * @brief getResultCode
+     *
+     * @return The Last Result Code
+     */
     int HelloWorldProtocol::getResultCode()
     {
         return resultCode;
     }
-    //-----------------------------------------------------------------------------
+
+    /*!
+     * @brief returnHelloOrGoodbye
+     *
+     * Toggles between sending hello or goodbye
+     *
+     * @return A string containing our message
+     */
     const char *HelloWorldProtocol::returnHelloOrGoodbye()
     {
         helloOrGoodbye = helloOrGoodbye ^ true;
-        return things[helloOrGoodbye];
+        return possibleResults[helloOrGoodbye];
     }
 }

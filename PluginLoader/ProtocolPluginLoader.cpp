@@ -1,3 +1,12 @@
+/*!
+ * @brief ProtocolPluginLoader
+ *
+ * See header description
+ *
+ * MUST ADD INGROUP
+ *
+ * @date March 2018
+ */
 #include "ProtocolPluginLoader.h"
 
 #include <stdio.h>
@@ -6,12 +15,17 @@
 
 namespace PluginLoader
 {
-    //TODO: expand
-    //TODO: Needs to loop over an entire directory
+    //! @todo: expand
+    //! @todo: Needs to loop over an entire directory
+    /*!
+     * @brief default_constructor
+     *
+     * loads a plugin
+     */
     ProtocolPluginHandler::ProtocolPluginHandler()
     {
         // Loads a given plugin
-        // TODO: pass in the path
+        //! @todo: pass in the path
         lib_handle = dlopen("plugin/plug.so", RTLD_LAZY);
         if (!lib_handle)
         {
@@ -30,14 +44,23 @@ namespace PluginLoader
         }
     }
 
+    /*
+     * @brief destructor
+     */
     ProtocolPluginHandler::~ProtocolPluginHandler()
     {
         delete (if_f);
         dlclose(lib_handle);
     }
 
-    // Our main factory. Returns a pointer to an interface that we can use
-    // To access anything generated in our protocol library
+    /*!
+     * @brief getIF
+     *
+     * Our main factory. Returns a pointer to an interface that we can use
+     * To access anything generated in our protocol library
+     *
+     * @return A pointer to the interface we'll be using
+     */
     ProtocolInterface *ProtocolPluginHandler::getIF()
     {
         this->if_f = (ProtocolInterface*) create();

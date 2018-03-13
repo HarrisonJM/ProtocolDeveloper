@@ -1,5 +1,3 @@
-add_library(ProtocolHandler HelloWorldProtocol/HelloWorldProtocol.cpp)
-
 add_subdirectory(test)
 add_subdirectory(HelloWorldProtocol)
 

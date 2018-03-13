@@ -1,53 +1,90 @@
+/*!
+ * @brief Handles incoming and outgoing connections
+ *
+ * @addtogroup HelloGoodByeServer
+ *
+ * @date March 2018
+ */
 #include <unistd.h>
 #include <iostream>
+#include <sys/socket.h>
 
 #include "BasicHello.h"
 #include "ConnectionHandler.h"
 
-ConnectionHandler::ConnectionHandler(ServerSetup &server)
-: server(server)
+namespace BasicHelloServer
 {
-    auto *BH = new BasicHello();
-    cfg = (ConfigurationInterface*)BH;
-}
-
-//-----------------------------------------------------------------------------
-
-void ConnectionHandler::AcceptNewConnections()
-{
-    struct sockaddr_storage addr = {0};
-    socklen_t addrlen = sizeof(addr);
-    //sessions.push_back(accept(server.getSockFD(), &addr, &addrlen));
-    std::cout << server.getSockFD() << std::endl;
-    int clientSockFD = accept(server.getSockFD(), (struct sockaddr *)&addr, &addrlen);
-    std::cout << clientSockFD << std::endl;
-    HandleRequest(clientSockFD);
-}
-
-//-----------------------------------------------------------------------------
-
-void ConnectionHandler::HandleRequest(int fd)
-{
-    void* payLoad = nullptr;
-    payLoad = malloc(7);
-    recv(fd, payLoad, 7, 0);
-
-    cfg->receiveData(payLoad);
-
-    send(fd, cfg->sendData(), 7, 0);
-    free(payLoad);
-}
-
-//-----------------------------------------------------------------------------
-
-ConnectionHandler::~ConnectionHandler()
-{
-    auto iter = sessions.rbegin();
-    for(; iter != sessions.rend(); ++iter)
+    /*!
+     * @brief Basic constructor
+     *
+     * @param server A reference to the server information
+     */
+    ConnectionHandler::ConnectionHandler(ServerSetup &server)
+        : server(server)
     {
-        close(*iter);
-        sessions.pop_back();
+        auto *BH = new BasicHello();
+        cfg = BH;
     }
 
-    delete(&server);
+//-----------------------------------------------------------------------------
+
+    /*!
+     * @brief Accepts incoming client connections
+     *
+     * Forks off extra client connections
+     *
+     * @return None
+     */
+    void ConnectionHandler::AcceptNewConnections()
+    {
+        struct sockaddr_storage addr = {0};
+        socklen_t addrlen = sizeof(addr);
+        int clientSockFD = accept(server.getSockFD(), (struct sockaddr *) &addr, &addrlen);
+        if (-1 == clientSockFD)
+            perror("accept");
+        else if (!fork())
+            HandleRequest(clientSockFD);
+
+        if (-1 != clientSockFD)
+            close(clientSockFD);
+    }
+
+//-----------------------------------------------------------------------------
+
+    /*!
+     * @brief Deals with requests
+     *
+     * @param fd The Socket File Descriptor
+     *
+     * @return None
+     */
+    void ConnectionHandler::HandleRequest(int fd)
+    {
+        void *payLoad = nullptr;
+        payLoad = malloc(7);
+        recv(fd, payLoad, 7, 0);
+
+        cfg->receiveData(payLoad);
+
+        send(fd, cfg->sendData(), 7, 0);
+        free(payLoad);
+    }
+
+//-----------------------------------------------------------------------------
+
+    /*!
+     * @brief Destructor
+     */
+    ConnectionHandler::~ConnectionHandler()
+    {
+        auto iter = sessions.rbegin();
+        for (; iter != sessions.rend(); ++iter)
+        {
+            close(*iter);
+            sessions.pop_back();
+        }
+
+        delete (&server);
+        delete(cfg);
+    }
 }

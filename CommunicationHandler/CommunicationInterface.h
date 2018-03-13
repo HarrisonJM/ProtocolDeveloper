@@ -1,19 +1,35 @@
-//
-// Created by hmarcks on 07/02/18.
-//
+/*!
+ * @brief Communication Interface
+ *
+ * Interface for providing Communication over different interfaces
+ *
+ * Options will be defined by the user as some sort struct that can be easily cast
+ * to and from the required data form. Payload will contain all required information.
+ *
+ * @addtogroup CommunicationHandler
+ *
+ * @date March 2018
+ */
 
 #ifndef PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
 #define PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
 
 namespace CommunicationHandler
 {
+    /*!
+     * @brief Defines the interface for listening
+     */
     class CommunicationInterface
     {
     public:
-        // Options will be defined by the user as some sort struct that can be easily cast
-        // to and from the required data form. Payload will contain all required information.
-        virtual void SendData(void *payLoad_p) = 0;
-        virtual void ReceiveData(void *payLoad_p) = 0;
+        //! Sends Data to the remote
+        virtual bool SendData(void *payLoad_p, int size) = 0;
+        //! Recevies Data from the Remote
+        virtual void ReceiveData(void *payLoad_p, int size) = 0;
+        //! Establishes a Connection with the remote
+        virtual bool EstablishConnection() = 0;
+        //! Disconnects fromt he remote
+        virtual void Disconnect() = 0;
     };
 }
 

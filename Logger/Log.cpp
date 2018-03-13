@@ -7,6 +7,7 @@
  *
  * @date March 2018
  */
+#include "ILog.h"
 #include "Log.h"
 #include "LoggerUtility.h"
 #include "TimeGeneration.h"
@@ -22,12 +23,13 @@ namespace Logging
      * Sets up the log without a key name (defaults to just log.log)
      * and then generates the header
      */
-    Log::Log()
+    Log::Log(const Utility::TimeGeneration &in_timeKeeper)
     : key("log.log"),
       logPath("logs/"),
       numberOfEntries(0),
       logFile((logPath+key), std::ios::in | std::ios::out),
-      queueNeedsEmptying(false)
+      queueNeedsEmptying(false),
+      timeKeeper(in_timeKeeper)
     {
         GenerateAndPrintLogHeader();
     }
