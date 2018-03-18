@@ -20,9 +20,9 @@ namespace BasicHelloServer
     class ConfigurationInterface
     {
         public:
-        // Receives data from the OUTSIDE
+        //! Receives data from the OUTSIDE
         virtual void receiveData(void *dataIn) = 0;
-        // Sends data to the client
+        //! Sends data to the client
         virtual void *sendData() = 0;
         //! Destructor
         virtual ~ConfigurationInterface() = 0;

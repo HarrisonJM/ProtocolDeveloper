@@ -13,6 +13,9 @@
 
 namespace PluginLoader
 {
+    /*!
+     * I don't know if this is still relevant
+     */
     class PluginLoaderInterface
     {
     public:
