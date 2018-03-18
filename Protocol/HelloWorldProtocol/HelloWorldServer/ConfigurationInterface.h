@@ -24,7 +24,7 @@ namespace BasicHelloServer
         virtual void receiveData(void *dataIn) = 0;
         // Sends data to the client
         virtual void *sendData() = 0;
-
+        //! Destructor
         virtual ~ConfigurationInterface() = 0;
     };
 }

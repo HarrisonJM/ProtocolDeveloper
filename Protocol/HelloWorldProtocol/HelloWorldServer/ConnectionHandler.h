@@ -28,6 +28,11 @@ typedef enum configuration_t
 
 namespace BasicHelloServer
 {
+    /*!
+     * @brief Handles incoming connections
+     *
+     *  Passes information to where it might be required
+     */
     class ConnectionHandler
     {
     public:

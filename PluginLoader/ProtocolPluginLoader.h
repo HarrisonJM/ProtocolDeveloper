@@ -21,21 +21,32 @@
 //! @todo: loaded using only a single class
 namespace PluginLoader
 {
-    //Loads our DLL
+    /*!
+     * @brief Loads our DLL
+     *
+     * Will be rethought and replaced with BOOST::dll
+     */
     class ProtocolPluginHandler : public PluginLoaderInterface
     {
     public:
+        //! Constructor
         ProtocolPluginHandler();
+        //! Destructor
         ~ProtocolPluginHandler();
-
+        //! Returns an interface
         ProtocolInterface *getIF();
 
     private:
+        //! the libaray handle
         void *lib_handle;
+        //! creates and returns a new interface
         ProtocolInterface *(*create)();
+        //! destroy interface
         void (*destroy)(ProtocolInterface*);
 
+        //! x
         int x;
+        //! errorMessage from dll loading
         char *errorMess;
 
         ProtocolInterface*if_f;

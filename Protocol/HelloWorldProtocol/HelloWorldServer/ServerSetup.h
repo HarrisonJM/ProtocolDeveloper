@@ -16,6 +16,11 @@ typedef struct addrinfo addrinfo;
 // This class will exist as "the server" and listen on the provided port
 namespace BasicHelloServer
 {
+    /*!
+     * @brief server setup class
+     *
+     * Using a port number, sets up a server and begins listening
+     */
     class ServerSetup
     {
     public:

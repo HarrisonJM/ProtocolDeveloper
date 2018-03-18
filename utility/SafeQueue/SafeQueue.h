@@ -17,9 +17,14 @@
 
 namespace Utility {
     /*!
-     * @brief SafeQueue
+     * @brief typedef'ing to unsigned int size_t
      */
     typedef long unsigned int size_t;
+    /*!
+     * @brief SafeQueue
+     *
+     * @tparam T The type of object it'll be storing
+     */
     template<class T>
     class SafeQueue
     {

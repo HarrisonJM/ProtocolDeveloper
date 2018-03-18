@@ -17,18 +17,28 @@
 // When it is given a "hello" it sends back a "goodbye"
 namespace BasicHelloServer
 {
+    /*!
+     * @brief A basic hello class
+     *
+     * Receives and sends hello or goodbye
+     */
     class BasicHello: public ConfigurationInterface
     {
     public:
+        //! Constructor
         BasicHello();
-        ~BasicHello();
+        //! Destructor
+        ~BasicHello() override;
 
+        //! receives data
         void receiveData(void *dataIn) override;
-        void *sendData() override;
-
+        //! sends the desired response
+        void* sendData() override;
+        //! Sets the internal response string
         void setResponse(const char *data);
 
     private:
+        //! The response we want to send out
         std::string response;
     };
 }

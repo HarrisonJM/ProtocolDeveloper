@@ -19,12 +19,20 @@
  */
 #ifndef PROTOCOLDEVELOPER_PROTOCOLINTERFACE_H
 #define PROTOCOLDEVELOPER_PROTOCOLINTERFACE_H
+/*!
+ * struct that we may or may not use to pass around information
+ */
 typedef struct dataToSend
 {
+    //! A pointer to the data
     void* data_p;
+    //! The size of the data
     int size;
 } dataToSend;
 
+/*!
+ * @brief Base protocol interface
+ */
 class ProtocolInterface
 {
 public:
