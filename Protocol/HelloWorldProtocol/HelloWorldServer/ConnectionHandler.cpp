@@ -39,7 +39,10 @@ namespace BasicHelloServer
     {
         struct sockaddr_storage addr = {0};
         socklen_t addrlen = sizeof(addr);
+        std::cout << "Awaiting new connection" << std::endl;
         int clientSockFD = accept(server.getSockFD(), (struct sockaddr *) &addr, &addrlen);
+        std::cout << "New connection!" << std::endl;
+
         if (-1 == clientSockFD)
             perror("accept");
         else if (!fork())

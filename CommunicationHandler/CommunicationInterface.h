@@ -14,7 +14,7 @@
 #ifndef PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
 #define PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
 
-namespace CommunicationHandler
+namespace Communication
 {
     /*!
      * @brief Defines the interface for listening
@@ -28,7 +28,7 @@ namespace CommunicationHandler
         virtual void ReceiveData(void *payLoad_p, int size) = 0;
         //! Establishes a Connection with the remote
         virtual bool EstablishConnection() = 0;
-        //! Disconnects fromt he remote
+        //! Disconnects fromt the remote
         virtual void Disconnect() = 0;
     };
 }

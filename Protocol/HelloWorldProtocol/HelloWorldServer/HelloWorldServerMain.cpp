@@ -19,6 +19,7 @@
 #include <csignal>
 #include <cstdlib>
 #include <thread>
+#include <iostream>
 
 #include "ServerSetup.h"
 #include "ConnectionHandler.h"
@@ -68,6 +69,8 @@ int main(int argc, char** argv)
     // We now have a server listening on port 9687 for a connection
     server = new BasicHelloServer::ServerSetup("9687");
     CH = new BasicHelloServer::ConnectionHandler(*server);
+
+    std::cout<< "Entering Loop" << std::endl;
     while(killServer == false)
     {
         CH->AcceptNewConnections();
