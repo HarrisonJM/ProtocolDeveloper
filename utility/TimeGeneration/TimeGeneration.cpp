@@ -1,7 +1,8 @@
 /*!
- * \brief TimeGeneration Class
+ * @brief TimeGeneration Class
  *
- * This class is to do with time generation and formatting with in the program
+ * This class is to do with time generation and time keeping
+ * It'll track uptime and return the current date/time
  *
  * @addtogroup Utility
  *
@@ -10,53 +11,58 @@
 #include "TimeGeneration.h"
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 
 namespace Utility
 {
-    TimeGeneration::TimeGeneration(){}
+    static struct tm getTimeStruct()
+    {
+        time_t timer;
+        struct tm *timeinfo;
+        timeinfo = localtime(&timer);
+
+        return *timeinfo;
+    }
+
+    /*!
+     * @brief constructor
+     */
+    TimeGeneration::TimeGeneration() :
+        startDate([](void) -> struct tm { return getTimeStruct(); }() )
+    {
+
+    }
+
+    //----------------------------------------------------------------------
+
     TimeGeneration::~TimeGeneration(){}
 
-    /*!
-     * @brief GenerateCurrentTimeString
-     *
-     * Returns the current time as a string
-     *
-     * @return The current time as a string
-     */
-    std::string TimeGeneration::GenerateCurrentTimeString()
+    //----------------------------------------------------------------------
+
+    std::string TimeGeneration::getUpTimeStamp()
     {
-        //! @todo This
-        return "16:04:59.999999";
+        return std::string("24:00:1.123456");
     }
 
-    /*!
-     * @brief GenerateCurrentDate
-     *
-     * Returns the current date as a string
-     *
-     * @return The current date as a string
-     */
-    std::string TimeGeneration::GenerateCurrentDate()
+    //----------------------------------------------------------------------
+
+    long long TimeGeneration::getUpTimeMicS()
     {
-        //! @todo This
-        return "07/12/2017";
+        return 356401123456;
     }
 
-    /*!
-     * @brief GenerateTimeStamp
-     *
-     * Generates a time and date stampa dn returns ti as a string
-     *
-     *  @return A string that contains the current date and time
-     */
-    std::string TimeGeneration::GenerateTimeStamp()
-    {
-        std::stringstream timeStamp;
-        timeStamp << '[' << GenerateCurrentTimeString()
-            << "]["
-            << GenerateCurrentDate()
-            << ']';
+    //----------------------------------------------------------------------
 
-        return timeStamp.str();
+    std::string TimeGeneration::getCurrentTimeStamp()
+    {
+        return std::string("30/04/18 20:30:50.123456");
     }
-}
+
+    //----------------------------------------------------------------------
+
+    long long TimeGeneration::getCurrentTimeMicS()
+    {
+        return 1525120244000;
+    }
+
+} /* Namespace */

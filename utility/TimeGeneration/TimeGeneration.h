@@ -9,32 +9,42 @@
 #define PROTOCOLDEVELOPER_TIMEGENERATION_H
 
 #include <string>
+#include <ctime>
+#include <sys/time.h>
 
 namespace Utility
 {
+    //! High resolution typedef
+    //typedef std::chrono::time_point<std::chrono::high_resolution_clock> hrClock_t;
+
     /*!
      * @brief Keeps time across the system
      *
-     * Will act as a singleton across the system that
-     * will be used to keep and track time
+     * Will be a singleton that will be used to keep time
      *
      * @todo needs more work
      */
     class TimeGeneration
     {
+    public:
         //! Constructor
         TimeGeneration();
         //! Denstructor
         ~TimeGeneration();
 
-        //! calculates the current date and returns a string
-        std::string GenerateCurrentDate();
-        //! Generates a time stamp to return
-        std::string GenerateTimeStamp();
-        //! Calculates the current time as a string
-        std::string GenerateCurrentTimeString();
-    };
+        //! Returns the time that the program has been running for as a date/time string
+        std::string getUpTimeStamp();
+        //! Returns the time in milliseconds that the program has been running for
+        long long getUpTimeMicS();
+        //! Returns the time since EPOCH as a date/time string
+        std::string getCurrentTimeStamp();
+        //! Returns the microseconds since EPOCH
+        long long getCurrentTimeMicS();
 
+    private:
+        //! tm struct we'll use
+        const struct tm startDate;
+    };
 }
 
 #endif /* PROTOCOLDEVELOPER_TIMEGENERATION_H */
