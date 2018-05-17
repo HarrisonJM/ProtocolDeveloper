@@ -8,7 +8,7 @@
  *
  * @date March 2018
  */
-#include "CommunicationInterface.h"
+#include "I_communication.h"
 #include <string>
 #include <vector>
 
@@ -17,7 +17,7 @@
 
 namespace Communication
 {
-    class CommunicationInterface;
+    class I_communication;
 
     /*!
      * @brief The CommunicationHandler class

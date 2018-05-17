@@ -14,6 +14,11 @@
  *
  * @addtogroup HelloGoodByeServer
  *
+ * @todo Increase complexity for more tests
+ * @todo Add more configurations
+ * @todo Reap children (The harvest is small)
+ * @todo Tidy up (remove singletons and probably more)
+ *
  * @date March 2018
  */
 #include <csignal>
@@ -27,8 +32,8 @@
 /*
  * INFORMATION: PORT: 9687
  */
-BasicHelloServer::ConnectionHandler *CH;
-BasicHelloServer::ServerSetup *server;
+BasicHelloServer::ServerSetup server("9687");
+BasicHelloServer::ConnectionHandler CH(server);
 bool killServer = false;
 
 //-----------------------------------------------------------------------------
@@ -45,8 +50,7 @@ bool killServer = false;
 void intHandler(int dummy)
 {
     killServer = true;
-    delete(CH);
-    delete(server);
+    //delete(&CH);
     exit(0);
 }
 
@@ -64,16 +68,14 @@ void intHandler(int dummy)
 int main(int argc, char** argv)
 {
     // Get our intHandler out of the way right now. This way we can free up the ports immediately
-    signal(SIGINT, intHandler);
+    // Everything totals itself when its called. I clearly do not understand these things
+    //signal(SIGINT, intHandler);
 
-    // We now have a server listening on port 9687 for a connection
-    server = new BasicHelloServer::ServerSetup("9687");
-    CH = new BasicHelloServer::ConnectionHandler(*server);
-
+    // We now have a _server listening on _port 9687 for a connection
     std::cout<< "Entering Loop" << std::endl;
     while(killServer == false)
     {
-        CH->AcceptNewConnections();
+        CH.AcceptNewConnections();
     }
 }
 

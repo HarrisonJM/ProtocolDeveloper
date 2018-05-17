@@ -14,22 +14,28 @@
 #ifndef PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
 #define PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
 
+#include <unistd.h>
+#include <interfaces/I_cNetComm.h>
+#include <memory>
+
 namespace Communication
 {
     /*!
      * @brief Defines the interface for listening
      */
-    class CommunicationInterface
+    class I_communication
     {
     public:
         //! Sends Data to the remote
-        virtual bool SendData(void *payLoad_p, int size) = 0;
+        virtual ssize_t SendData(void *payLoad_p, size_t size) = 0;
         //! Recevies Data from the Remote
-        virtual void ReceiveData(void *payLoad_p, int size) = 0;
+        virtual ssize_t ReceiveData(void *payLoad_p, size_t size) = 0;
         //! Establishes a Connection with the remote
         virtual bool EstablishConnection() = 0;
         //! Disconnects fromt the remote
         virtual void Disconnect() = 0;
+        //! The Interface we want to connect over
+        virtual void setInterface(cFunctions::I_cNetComm* iOInterface) = 0;
     };
 }
 

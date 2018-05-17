@@ -8,10 +8,12 @@
  *
  * @date March 2018
  */
-#include "CommunicationInterface.h"
-
 #include <string>
 #include <vector>
+#include <memory>
+
+#include "interfaces/I_communication.h"
+#include "cNetComm.h"
 
 #ifndef PROTOCOLDEVELOPER_NETWORKCOMMUNICATION_H
 #define PROTOCOLDEVELOPER_NETWORKCOMMUNICATION_H
@@ -26,46 +28,45 @@ namespace Communication
     /*!
      * @brief The NetworkCommunication class
      */
-    class NetworkCommunication : public CommunicationInterface
+    class NetworkCommunication : public I_communication
     {
     public:
         //! Constructor
         NetworkCommunication();
         //! Destructor
-        ~NetworkCommunication();
-        // Options will be defined by the user as some sort struct that can be easily cast
-        // to and from the required data form. Payload will contain all required information.
+        virtual ~NetworkCommunication();
         //! Sends Data
-        bool SendData(void *payLoad_p, int size) override;
+        ssize_t SendData(void *payLoad_p, size_t size) override;
         //! Receives Data
-        void ReceiveData(void *payLoad_p, int size) override;
+        ssize_t ReceiveData(void *payLoad_p, size_t size) override;
         //! establishes a connection with the remote
         bool EstablishConnection() override;
         //! Disconnects from the Remote
         void Disconnect() override;
-
-        std::string getMsg();
+        //! The Interface we want to connect over
+        void setInterface(cFunctions::I_cNetComm* iOInterface) override;
     private:
         //! The port we're conducting business on
-        std::string portToBind;
-        //! Port we're sending to
-        std::string portToSend;
+        int _portToSendOn;
         //! The Address we're sending to
-        std::string address;
+        std::string _destinationAddress;
         //! The socket used to bind and send on
-        int outSocket;
-        //! The socket used to receive on
-        int inSocket;
+        int _outSocket;
         //! Do we want to connect on TCP, UDP, or both?
-        int tcpOrUDP:2;
+        int _tcpOrUDP:2;
+        //! The info of the server we're connecting  to
+        addrinfo *_servInfo;
 
-        char *msg;
+        //! Wrapper class for using C socket functions
+        cFunctions::I_cNetComm* _netCommFunctions;
+
 
         /* METHODS */
         //! Setups up the addrinfo struct
-        void SetupAddrInfo(addrinfo *servinfo);
+        bool SetupAddrInfo();
         //! Creates the socket and connects
-        void DoSocketAndConnect(addrinfo *servinfo);
+        bool DoSocketAndConnect();
+        //! Takes aaddrinfo
 
     };
 }

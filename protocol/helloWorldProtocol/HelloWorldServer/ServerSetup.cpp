@@ -23,11 +23,11 @@ namespace BasicHelloServer
      * @param portToUse The number of the port to use for communication
      */
     ServerSetup::ServerSetup(std::string portToUse)
-        : port(portToUse)
+        : _port(std::move(portToUse))
     {
-        servinfo = (addrinfo *) malloc(sizeof(addrinfo));
-        memset(&servinfo, 0, sizeof servinfo);
-        // constructor for our server class
+        _servInfo = (addrinfo *) malloc(sizeof(addrinfo));
+        memset(&_servInfo, 0, sizeof _servInfo);
+        // constructor for our _server class
         // Get information for the bind
         setupAddrInfo();
         doSocketAndBind();
@@ -41,9 +41,9 @@ namespace BasicHelloServer
      */
     ServerSetup::~ServerSetup()
     {
-        // clean up. Unbind from socket, etc
-        if (sockfd != -1)
-            close(sockfd);
+        // clean up. Unbind from createSocket, etc
+        if (_sockfd != -1)
+            close(_sockfd);
     }
 
 //-----------------------------------------------------------------------------
@@ -61,10 +61,9 @@ namespace BasicHelloServer
         memset(&hints, 0, sizeof hints);
         hints.ai_family = AF_UNSPEC; // Either ipv4 or 6
         hints.ai_socktype = SOCK_STREAM; //tcp
-        // p
         hints.ai_flags = AI_PASSIVE; // Do my IP for me
 
-        if (0 != (status = getaddrinfo("localhost", port.c_str(), &hints, &servinfo)))
+        if (0 != (status = getaddrinfo("localhost", _port.c_str(), &hints, &_servInfo)))
         {
             fprintf(stderr, "getaddr failure in SetupAddrInfo(): %s", gai_strerror(status));
             exit(1);
@@ -83,30 +82,33 @@ namespace BasicHelloServer
         int yes = 1;
         addrinfo *p;
         // loop through all the results and bind to the first we can
-        for (p = servinfo; p != nullptr; p = p->ai_next)
+        for (p = _servInfo; p != nullptr; p = p->ai_next)
         {
-            if (-1 == (sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol)))
+            _sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol);
+            if (-1 == _sockfd)
             {
-                perror("server: socket");
+                perror("_server: socket");
                 continue;
             }
 
-            if (-1 == setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)))
+            if (-1 == setsockopt(_sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)))
             {
                 perror("setsockopt");
                 exit(1);
             }
 
-            const int ret = bind(sockfd, p->ai_addr, p->ai_addrlen);
+            const int ret = bind(_sockfd, p->ai_addr, p->ai_addrlen);
             if (-1 == ret)
             {
-                close(sockfd);
-                perror("server: bind");
+                close(_sockfd);
+                perror("_server: bind");
                 continue;
             }
 
             break;
         }
+
+        freeaddrinfo(_servInfo); // all done with this structure
     }
 
 //-----------------------------------------------------------------------------
@@ -118,9 +120,9 @@ namespace BasicHelloServer
      */
     void ServerSetup::doListen()
     {
-        std::cout << sockfd << std::endl;
+        std::cout << _sockfd << std::endl;
 
-        if (-1 == listen(sockfd, MAX_CONNECTIONS))
+        if (-1 == listen(_sockfd, MAX_CONNECTIONS))
         {
             perror("listen");
             exit(1);
@@ -136,6 +138,6 @@ namespace BasicHelloServer
      */
     int ServerSetup::getSockFD()
     {
-        return sockfd;
+        return _sockfd;
     }
 }

@@ -1,2 +1,2 @@
-add_subdirectory(mocks)
+add_subdirectory(mockLibrary)
 add_subdirectory(SafeQueue)

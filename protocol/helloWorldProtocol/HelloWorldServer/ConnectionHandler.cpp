@@ -20,10 +20,10 @@ namespace BasicHelloServer
      * @param server A reference to the server information
      */
     ConnectionHandler::ConnectionHandler(ServerSetup &server)
-        : server(server)
+        : _server(server)
     {
         auto *BH = new BasicHello();
-        cfg = BH;
+        _cfg = BH;
     }
 
 //-----------------------------------------------------------------------------
@@ -40,13 +40,13 @@ namespace BasicHelloServer
         struct sockaddr_storage addr = {0};
         socklen_t addrlen = sizeof(addr);
         std::cout << "Awaiting new connection" << std::endl;
-        int clientSockFD = accept(server.getSockFD(), (struct sockaddr *) &addr, &addrlen);
+        int clientSockFD = accept(_server.getSockFD(), (struct sockaddr *) &addr, &addrlen);
         std::cout << "New connection!" << std::endl;
 
         if (-1 == clientSockFD)
             perror("accept");
         else if (!fork())
-            HandleRequest(clientSockFD);
+            _HandleRequest(clientSockFD);
 
         if (-1 != clientSockFD)
             close(clientSockFD);
@@ -61,15 +61,15 @@ namespace BasicHelloServer
      *
      * @return None
      */
-    void ConnectionHandler::HandleRequest(int fd)
+    void ConnectionHandler::_HandleRequest(int fd)
     {
         void *payLoad = nullptr;
         payLoad = malloc(7);
         recv(fd, payLoad, 7, 0);
 
-        cfg->receiveData(payLoad);
+        _cfg->receiveData(payLoad);
 
-        send(fd, cfg->sendData(), 7, 0);
+        send(fd, _cfg->sendData(), 7, 0);
         free(payLoad);
     }
 
@@ -80,14 +80,14 @@ namespace BasicHelloServer
      */
     ConnectionHandler::~ConnectionHandler()
     {
-        auto iter = sessions.rbegin();
-        for (; iter != sessions.rend(); ++iter)
+        auto iter = _sessions.rbegin();
+        for (; iter != _sessions.rend(); ++iter)
         {
             close(*iter);
-            sessions.pop_back();
+            _sessions.pop_back();
         }
 
-        delete (&server);
-        delete(cfg);
+        delete (&_server);
+        delete(_cfg);
     }
 }

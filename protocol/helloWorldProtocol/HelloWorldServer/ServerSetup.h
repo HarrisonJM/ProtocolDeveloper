@@ -13,7 +13,7 @@
 #define MAX_CONNECTIONS 5
 typedef struct addrinfo addrinfo;
 
-// This class will exist as "the server" and listen on the provided port
+// This class will exist as "the _server" and listen on the provided _port
 namespace BasicHelloServer
 {
     /*!
@@ -42,11 +42,11 @@ namespace BasicHelloServer
 
         /* Not Methods */
         //! Stores the servers personal information
-        addrinfo *servinfo;
+        addrinfo *_servInfo;
         //! The FD for the server
-        int sockfd;
+        int _sockfd;
         //! The port we're listening on
-        std::string port;
+        std::string _port;
     };
 }
 #endif //PROTOCOLDEVELOPER_SERVERSETUP_H

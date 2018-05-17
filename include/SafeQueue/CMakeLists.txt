@@ -1,2 +1,2 @@
 
-add_library(SafeQueue SafeQueue.h)
+#add_library(SafeQueue SafeQueue.h)

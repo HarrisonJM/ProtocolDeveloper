@@ -13,7 +13,7 @@
 
 #include "ServerSetup.h"
 
-/* This will handle connections coming in and going out from the server.
+/* This will handle connections coming in and going out from the _server.
  * This can be extended to receive an extra parameter that can then produce the required
  * data handler
 */
@@ -47,15 +47,15 @@ namespace BasicHelloServer
     private:
         /* METHODS */
         //! Handles incoming requests and sends the data to wherever it needs to go
-        void HandleRequest(int fd);
+        void _HandleRequest(int fd);
 
         /* Not Methods */
         //! Reference to the server
-        ServerSetup &server;
+        ServerSetup &_server;
         //! An interface to the configuration we're using
-        ConfigurationInterface *cfg;
+        ConfigurationInterface *_cfg;
         //! A list of all currently active sessions on this handler
-        std::vector<int> sessions;
+        std::vector<int> _sessions;
     };
 }
 
