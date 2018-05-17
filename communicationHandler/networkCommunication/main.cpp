@@ -1,6 +1,9 @@
-//
-// Created by hmarcks on 30/04/18.
-//
+/*!
+ * @brief Is used to build netcommmanualtest
+ *
+ * Sends "hello" to the networkcommunicatiosn default port & address
+ *
+ */
 
 #include "NetworkCommunication.h"
 
