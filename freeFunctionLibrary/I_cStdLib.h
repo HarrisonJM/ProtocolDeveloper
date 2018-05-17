@@ -14,9 +14,11 @@
 namespace cFunctions
 {
 
+//! cstdlib interface for mocking
 class I_cStdLib
 {
 public:
+    //! man 3 malloc()
     virtual void* cMalloc(size_t size) = 0;
 
 };

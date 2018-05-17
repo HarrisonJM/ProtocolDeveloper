@@ -1,9 +1,9 @@
 /*!
- * @brief
+ * @brief class wrapper for the C stdlib functions
  *
- * @addtogroup
+ * @addtogroup cMocking
  *
- * @date
+ * @date 17/05/2018
  */
 #include "interfaces/I_cStdLib.h"
 
@@ -14,9 +14,11 @@
 namespace cFunctions
 {
 
+//! Class header for stdlib wrapper
 class cStdLib: public I_cStdLib
 {
 public:
+    //! man 3 malloc
     void *cMalloc(size_t __size) override;
 };
 

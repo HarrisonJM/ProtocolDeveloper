@@ -1,7 +1,11 @@
-//
-// Created by hmarcks on 13/05/18.
-//
-
+/*!
+ * @brief Wrapper class to allow mocking the network communication libraries
+ * provided from C
+ *
+ * @addtogroup cMocking
+ *
+ * @date 09/05/2018
+ */
 #include "cStdLib.h"
 
 
