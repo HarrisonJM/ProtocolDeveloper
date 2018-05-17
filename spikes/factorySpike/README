@@ -1,0 +1,6 @@
+make sure the plugin folder is already made ($make) 
+
+then make this folder using g++ *.cpp -ldl
+
+https://stackoverflow.com/questions/496664/c-dynamic-shared-library-on-linux
+https://stackoverflow.com/questions/333400/how-to-design-a-simple-c-object-factory
