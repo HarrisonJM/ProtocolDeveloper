@@ -1,7 +1,7 @@
 /*!
  * @brief wrapper class for funtions in the stdlib C library
  *
- * @addtgroup cMocking
+ * @addtogroup cMocking
  *
  * @date May 2018
  */
