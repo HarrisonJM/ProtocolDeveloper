@@ -1,3 +1,3 @@
 
-add_subdirectory(SafeQueue)
+add_subdirectory(SafeQueues)
 add_subdirectory(TimeGeneration)

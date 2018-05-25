@@ -37,13 +37,14 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/googlemock/include")
 endif()
 
-set(CMAKE_CXX_FLAGS "-std=gnu++14 -lpthread -ldl -Wall")
+## Add Mongo
+find_package(libmongocxx REQUIRED)
+find_package(libbsoncxx REQUIRED)
 
+set(CMAKE_CXX_FLAGS "-std=gnu++17 -lpthread -ldl -Wall")
 include_directories(include/)
 add_subdirectory(include)
 
-#message(${gtest_SOURCE_DIR})
-#message(${gmock_SOURCE_DIR})
 link_directories(lib)
 
 add_subdirectory(logger)
@@ -52,6 +53,8 @@ add_subdirectory(communicationHandler)
 add_subdirectory(protocol)
 add_subdirectory(pluginLoader)
 add_subdirectory(freeFunctionLibrary)
+add_subdirectory(database)
+add_subdirectory(threadHandler)
 
 add_executable(ProtocolDeveloper Main.cpp)
 
