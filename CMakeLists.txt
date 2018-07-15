@@ -55,6 +55,9 @@ add_subdirectory(pluginLoader)
 add_subdirectory(freeFunctionLibrary)
 add_subdirectory(database)
 add_subdirectory(threadHandler)
+add_subdirectory(testCaseHandler)
+
+add_subdirectory(spikes)
 
 add_executable(ProtocolDeveloper Main.cpp)
 
