@@ -17,14 +17,12 @@
 
 namespace Communication
 {
-    class I_communication;
-
-    /*!
-     * @brief The CommunicationHandler class
-     */
-    class CommunicationHandler
+    class CommunicationHandler : public I_communication
     {
     public:
+        CommunicationHandler();
+        ~CommunicationHandler();
+        void RegisterComms();
 
     private:
 

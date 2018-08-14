@@ -38,17 +38,17 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 ## Add Mongo
-find_package(libmongocxx REQUIRED)
-find_package(libbsoncxx REQUIRED)
+#find_package(libmongocxx REQUIRED)
+#   find_package(libbsoncxx REQUIRED)
 
-set(CMAKE_CXX_FLAGS "-std=gnu++17 -lpthread -ldl -Wall")
+set(CMAKE_CXX_FLAGS "-std=gnu++17 -std=c++17 -lpthread -ldl -Wall")
 include_directories(include/)
 add_subdirectory(include)
 
 link_directories(lib)
 
 add_subdirectory(logger)
-add_subdirectory(utility) # contains libraries: TimeGeneration
+add_subdirectory(utility) # contains random utility libraries
 add_subdirectory(communicationHandler)
 add_subdirectory(protocol)
 add_subdirectory(pluginLoader)
@@ -62,6 +62,7 @@ add_subdirectory(spikes)
 add_executable(ProtocolDeveloper Main.cpp)
 
 target_link_libraries(ProtocolDeveloper
+        logger
         TimeGeneration
         CommunicationHandler
         PluginLoader

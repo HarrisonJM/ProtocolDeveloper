@@ -54,7 +54,7 @@ public:
     /*!
      * @brief Adds a task (parameter bound function) to the queue
      * @tparam T A function type
-     * @tparam ...Args Variadic tempalte that holds the function parameters
+     * @tparam ...Args Variadic template that holds the function parameters
      * @param t A Universal reference to a function (Scott Meyers)
      * @param args The arguments to bind/pack into the function
      */
