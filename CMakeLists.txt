@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.9.6)
-# Project must go here
-project(ProtocolDeveloper CXX)
+## Project must go here #
+project(ProtocolDeveloper LANGUAGES CXX VERSION 0.1 )
+set(CMAKE_CXX_FLAGS "-std=gnu++17 -std=c++17 -lpthread -ldl -Wall")
 
-include(CTest)
-enable_testing()
-
+# The following is to acquire a new version of gmock/gtest
+# at confgiure time. Will also build
+##########################################################
+## FOLLOWING WRITTEN BY GOOGLE ##
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
@@ -29,41 +31,37 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
         ${CMAKE_BINARY_DIR}/googletest-build
         EXCLUDE_FROM_ALL)
+## END GTEST PART ##
+##########################################################
 
-# The gtest/gtest_main targets carry header search path
-# dependencies automatically when using CMake 2.8.11 or
-# later. Otherwise we have to add them here ourselves.
-if (CMAKE_VERSION VERSION_LESS 2.8.11)
-    include_directories("${gtest_SOURCE_DIR}/googlemock/include")
-endif()
+## Example of including a seperate package for the project
+# Include Boost as an imported target
 
+#find_package(Boost REQUIRED)
+#add_library(boost INTERFACE IMPORTED)
+#set_property(TARGET boost PROPERTY
+#        INTERFACE_INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR})
+
+## Adding the Mongo driver libraries
 ## Add Mongo
 #find_package(libmongocxx REQUIRED)
 #   find_package(libbsoncxx REQUIRED)
 
-set(CMAKE_CXX_FLAGS "-std=gnu++17 -std=c++17 -lpthread -ldl -Wall")
-include_directories(include/)
-add_subdirectory(include)
+## List all newly created, personal, projects/libraries here
+#find_package(freeFunctionsAndWrappers REQUIRED)
 
-link_directories(lib)
+## Manually adding the gtest/gmock include directories
+include_directories("${gtest_SOURCE_DIR}/include")
+include_directories("${gmock_SOURCE_DIR}/include")
 
-add_subdirectory(logger)
-add_subdirectory(utility) # contains random utility libraries
-add_subdirectory(communicationHandler)
-add_subdirectory(protocol)
-add_subdirectory(pluginLoader)
-add_subdirectory(freeFunctionLibrary)
-add_subdirectory(database)
-add_subdirectory(threadHandler)
-add_subdirectory(testCaseHandler)
+include(GNUInstallDirs)
 
-add_subdirectory(spikes)
+## Targets
+enable_testing()
 
-add_executable(ProtocolDeveloper Main.cpp)
+add_subdirectory(myLibraries)
+add_subdirectory(myApps)
 
-target_link_libraries(ProtocolDeveloper
-        logger
-        TimeGeneration
-        CommunicationHandler
-        PluginLoader
-        HelloWorldProtocol)
+# Project organisation based on https://rix0r.nl/blog/2015/08/13/cmake-guide/ ->
+# -> this was used as a way to better codify and neaten up many of
+# my directories and CMakeLists files.
