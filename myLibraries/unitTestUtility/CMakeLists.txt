@@ -1,0 +1,2 @@
+add_subdirectory(freeFunctionsAndWrappers)
+add_subdirectory(mockLibrary)

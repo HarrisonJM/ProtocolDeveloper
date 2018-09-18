@@ -1,5 +1,0 @@
-
-add_subdirectory(SafeQueues)
-add_subdirectory(TimeGeneration)
-add_subdirectory(enumHandler)
-add_subdirectory(UtilityFunctions)

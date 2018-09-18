@@ -1,0 +1,5 @@
+
+add_subdirectory(helloWorldServer)
+add_subdirectory(ProtDev)
+add_subdirectory(spikes)
+add_subdirectory(loggerFstreamTest)

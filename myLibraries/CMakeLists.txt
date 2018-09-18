@@ -1,0 +1,12 @@
+
+add_subdirectory(enumHandler)
+add_subdirectory(communicationHandler)
+add_subdirectory(utilityFunctions)
+add_subdirectory(unitTestUtility)
+add_subdirectory(safeQueues)
+add_subdirectory(database)
+add_subdirectory(logger)
+add_subdirectory(pluginLoader)
+add_subdirectory(testCaseAnalyser)
+add_subdirectory(threadPool)
+add_subdirectory(networkCommunication)
