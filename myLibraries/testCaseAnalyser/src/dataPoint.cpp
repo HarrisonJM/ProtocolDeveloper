@@ -16,30 +16,53 @@
 
 namespace testCaseHandler
 {
-
+/*!
+ * @brief Constructor
+ */
 DataPoint::DataPoint()
+: _patternSet(false)
 {
 
 }
-
+/*!
+ * @brief Destructor
+ */
 DataPoint::~DataPoint()
 {
 
 }
-
-void DataPoint::RegisterVariable(variable newTI)
+/*!
+ * @brief Registers a new Variable for use in the dataPoint
+ * @param newTI A shared_ptr containing the new variable
+ */
+void DataPoint::RegisterVariable(std::unique_ptr<variable> newTI)
 {
-
+    _variables[newTI->getName()] = std::move(newTI);
 }
-
-std::string DataPoint::GetNextDataItem()
+/*!
+ * @brief Registers a new operation for use in the datapoint
+ * @param newTI A shared_ptr containing the operation
+ */
+void DataPoint::RegisterOperation(std::unique_ptr<operation> newTI)
 {
-    return "Hello";
+    _operations[newTI->getName()] = std::move(newTI);
 }
-
-std::string DataPoint::GetNextDataItem(int position)
+/*!
+ * @brief Returns the the pattern
+ * @return A string containing the pattern
+ */
+std::string DataPoint::GetPattern()
 {
-    return "World";
+    return _pattern;
+}
+/*!
+ * @brief Sets the datapoints pattern that we'll be editing
+ * @param pattern_in The pattern we want to set for this dataPoint
+ */
+void DataPoint::setPattern(std::string pattern_in)
+{
+    if(!_patternSet)
+        _pattern=pattern_in;
 }
 
 } /* CHANGEME */

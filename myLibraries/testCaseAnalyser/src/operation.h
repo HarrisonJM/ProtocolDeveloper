@@ -13,16 +13,23 @@
 #ifndef PROTOCOLDEVELOPER_OPERATIONS_H
 #define PROTOCOLDEVELOPER_OPERATIONS_H
 
+#include <string>
+
+#include "opVarBase.h"
+
 namespace testCaseHandler
 {
 
-class operations
+class operation : public OpVarBase
 {
 public:
-    operations();
-    ~operations();
-private:
+    operation(std::string operationName,
+        std::string dataToActOn,
+        std::string _valueToReach);
+    ~operation();
+    std::string getOperationName();
 
+private:
 };
 
 }

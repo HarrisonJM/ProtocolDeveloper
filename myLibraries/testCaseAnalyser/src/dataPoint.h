@@ -13,8 +13,10 @@
 #define PROTOCOLDEVELOPER_DATAPOINT_H
 
 #include <map>
+#include <memory>
 
 #include "variable.h"
+#include "operation.h"
 
 namespace testCaseHandler
 {
@@ -25,19 +27,20 @@ public:
     DataPoint();
     ~DataPoint();
 
-    void RegisterVariable(variable newTI);
-    std::string GetNextDataItem(int position);
-    std::string GetNextDataItem();
+    void RegisterVariable(std::unique_ptr<variable> newTI);
+    void RegisterOperation(std::unique_ptr<operation> newTI);
+    std::string GetPattern();
+
     void setPattern(std::string pattern_in);
 private:
+    bool _patternSet;
     //! @brief Defines how the data will be built
     //! i.e. [foo][bar][baz] where each [] is a different variable
     std::string _pattern;
     //! @brief Stores all of the interpreters mapped by their variable names
-    std::map<std::string, variable> _variables;
+    std::map<std::string, std::unique_ptr<variable>> _variables;
     //! @breif Stores any operations that need to be taken on this dataPoint
-    std::map<std::string, variable> _operations;
-
+    std::map<std::string, operation> _operations;
 };
 
 }

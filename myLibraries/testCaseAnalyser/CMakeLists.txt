@@ -6,10 +6,11 @@ add_library(testCaseAnalyser
         src/dataPoint.cpp
         src/mathsModule.cpp
         src/dataPoint.cpp
-        src/operations.cpp
+        src/operation.cpp
         src/testCaseCompiler.cpp
         src/testCaseParser.cpp
-        src/variable.cpp)
+        src/variable.cpp
+        src/opVarBase.cpp )
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build

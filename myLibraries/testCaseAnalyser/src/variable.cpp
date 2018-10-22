@@ -15,21 +15,38 @@
 
 namespace testCaseHandler
 {
-
+/*!
+ * @brief Constructor, 3 arguments, completely fills the object
+ * @param name The name of the variable that corresponds to the Datapoints variable
+ * @param startingValue The starting value of the Variable
+ * @param actionToTake The action to take with the variable
+ */
 variable::variable(std::string name,
+                   std::string actionToTake,
                    std::string startingValue)
+    : OpVarBase(std::move(name),
+        std::move(actionToTake),
+        std::move(startingValue))
 {
 
 }
 
-variable::variable(std::string name)
-{
-
-}
-
+/*!
+ * @brief Destructor
+ */
 variable::~variable()
 {
 
 }
 
-} /* CHANGEME */
+/*!
+ * @brief Getter, _action
+ * @return The action we wish to perform on the variable
+ */
+std::string variable::getAction()
+{
+    return _getSpecialization();
+}
+
+
+} /* namespace testCaseHandler */

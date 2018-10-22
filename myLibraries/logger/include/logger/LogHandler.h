@@ -16,6 +16,7 @@
 #include <string>
 #include <map>
 #include <condition_variable>
+#include <cstdint>
 
 #include "I_LogHandler.h"
 #include "I_LogFile.h"
@@ -82,7 +83,7 @@ private:
     //! Holds the log prefix
     const std::string _pathPrefix;
     //! Current log index
-    u_int64_t _logIDIndex;
+    uint64_t _logIDIndex;
     //! Conditional variable controlling message flushes
     std::condition_variable _condVar;
     //! Mutex to control conditional variable

@@ -15,7 +15,7 @@
 #include "dataEmitter.h"
 #include "dataPoint.h"
 #include "testCaseParser.h"
-#include "S_testCaseConfiguration.h"
+#include "testCaseConfiguration_s.h"
 
 namespace testCaseHandler
 {
@@ -26,12 +26,12 @@ public:
     TestCaseCompiler(std::string testCaseName_in);
     ~TestCaseCompiler();
 
-    void doCompilation();
+    void CompileXML();
 
 private:
     bool _successful;
     TestCaseParser _parser;
-    S_testCaseConfiguration _config;
+    testCaseConfiguration_s _config;
     DataEmitter _emitter;
 
     void _HandleNodeSwitch(std::string &nodeName);
@@ -42,13 +42,18 @@ private:
 
     void _HandleConfig();
 
-    void _handleSiblings(DataPoint &dataPoint);
-    void _handleSiblings(S_testCaseConfiguration &config);
+    void _handleSiblings(std::shared_ptr<DataPoint> dataPoint);
+    void _handleSiblings(testCaseConfiguration_s &config);
 
-    void _handleDataPointPatternData(DataPoint &dataPoint);
-    void _handleDataPointSibling();
+    void _handleDataPointPatternData();
+
+    void _HandleRate();
+    void _HandleChaos();
+    void _HandleDuration();
+    void _HandleThreads();
 
 };
 
-}
-#endif /*PROTOCOLDEVELOPER_TESTCASECOMPILER_H*/
+} /* namespace testCaseHandler */
+
+#endif /* PROTOCOLDEVELOPER_TESTCASECOMPILER_H */

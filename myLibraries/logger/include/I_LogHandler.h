@@ -10,6 +10,7 @@
 #define PROTOCOLDEVELOPER_I_LOGHANDLER_H
 
 #include <string>
+#include <cstdint>
 #include "I_LogFile.h"
 #include "logger/loggerUtility.h"
 

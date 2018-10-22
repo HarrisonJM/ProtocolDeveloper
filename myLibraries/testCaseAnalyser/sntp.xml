@@ -15,6 +15,7 @@
 </dataPoint>
 
 <config>
+	<protocol protocol="sntp"/>
 	<rate tps="10"/>
 	<chaos multiplier="20"/>
 	<duration seconds="259200"/>

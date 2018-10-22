@@ -17,21 +17,22 @@
 
 #include <string>
 #include <functional>
+#include "opVarBase.h"
 
 namespace testCaseHandler
 {
 
-class variable
+class variable : public OpVarBase
 {
 public:
     variable(std::string name,
-             std::string startingValue);
-    variable(std::string name);
+             std::string startingValue,
+             std::string actionToTake);
     ~variable();
 
+    std::string getAction();
+
 private:
-    std::string _name();
-    std::string _value();
 
 };
 

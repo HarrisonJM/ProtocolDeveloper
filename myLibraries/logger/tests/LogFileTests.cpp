@@ -38,7 +38,7 @@ Extra Information: \n\
     }
 
     void addMessageToLog(std::string messageToAdd,
-                         I_LogFile::logLevel lvl)
+                         logLevel lvl)
     {
         _testLogBasic->AddLogMessage(messageToAdd,
                                     lvl);
@@ -72,7 +72,7 @@ TEST_F(LogFileTests,
        addMessages)
 {
     addMessageToLog("TESTMESSAGE",
-                    I_LogFile::logLevel::INFO);
+                    logLevel::INFO);
     _testLogBasic->WriteAllMessagesToStream();
     EXPECT_EQ(_runningLogFile,
               _logFileOut->str());
@@ -87,24 +87,24 @@ TEST_F(LogFileTests,
               _runningLogFile);
 
     _testLogBasic->AddLogMessage("CHECKINGHEAD",
-                                I_LogFile::logLevel::INFO);
-    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGHEAD"),
+                                logLevel::INFO);
+    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGHEAD\n"),
               _testLogBasic->ReturnOldestMessage());
 
     _testLogBasic->AddLogMessage("CHECKINGTAIL",
-                                I_LogFile::logLevel::INFO);
-    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGTAIL"),
+                                logLevel::INFO);
+    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGTAIL\n"),
               _testLogBasic->ReturnLatestMessage());
     //double check head
-    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGHEAD"),
+    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGHEAD\n"),
               _testLogBasic->ReturnOldestMessage());
 
     _testLogBasic->AddLogMessage("CHECKINGTAIL2",
-                                I_LogFile::logLevel::INFO);
-    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGTAIL2"),
+                                logLevel::INFO);
+    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGTAIL2\n"),
               _testLogBasic->ReturnLatestMessage());
     //triple check head
-    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGHEAD"),
+    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGHEAD\n"),
               _testLogBasic->ReturnOldestMessage());
 }
 
@@ -117,23 +117,23 @@ TEST_F(LogFileTests,
               _runningLogFile);
 
     _testLogBasic->AddLogMessage("CHECKINGINFO",
-                                I_LogFile::logLevel::INFO);
-    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGINFO"),
+                                logLevel::INFO);
+    ASSERT_EQ(std::string("[INFO][Date]: CHECKINGINFO\n"),
               _testLogBasic->ReturnOldestMessage());
 
     _testLogBasic->AddLogMessage("CHECKINGWARNING",
-                                I_LogFile::logLevel::WARNING);
-    ASSERT_EQ(std::string("[WARNING][Date]: CHECKINGWARNING"),
+                                logLevel::WARNING);
+    ASSERT_EQ(std::string("[WARNING][Date]: CHECKINGWARNING\n"),
               _testLogBasic->ReturnLatestMessage());
 
     _testLogBasic->AddLogMessage("CHECKINGERROR",
-                                I_LogFile::logLevel::ERROR);
-    ASSERT_EQ(std::string("[ERROR][Date]: CHECKINGERROR"),
+                                logLevel::ERROR);
+    ASSERT_EQ(std::string("[ERROR][Date]: CHECKINGERROR\n"),
               _testLogBasic->ReturnLatestMessage());
 
     _testLogBasic->AddLogMessage("CHECKINGDEBUG",
-                                I_LogFile::logLevel::DEBUG);
-    ASSERT_EQ(std::string("[DEBUG][Date]: CHECKINGDEBUG"),
+                                logLevel::DEBUG);
+    ASSERT_EQ(std::string("[DEBUG][Date]: CHECKINGDEBUG\n"),
               _testLogBasic->ReturnLatestMessage());
 }
 
@@ -141,11 +141,11 @@ TEST_F(LogFileTests,
        multiplemessagesonQueue)
 {
     addMessageToLog("message 1",
-                    I_LogFile::logLevel::DEBUG);
+                    logLevel::DEBUG);
     addMessageToLog("message 2",
-                    I_LogFile::logLevel::DEBUG);
+                    logLevel::DEBUG);
     addMessageToLog("message 3",
-                    I_LogFile::logLevel::DEBUG);
+                    logLevel::DEBUG);
     _testLogBasic->WriteAllMessagesToStream();
 
     ASSERT_EQ(_runningLogFile,

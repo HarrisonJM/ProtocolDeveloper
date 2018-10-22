@@ -10,6 +10,8 @@
 #ifndef PROTOCOLDEVELOPER_TESTCASEEXCEPTION_H
 #define PROTOCOLDEVELOPER_TESTCASEEXCEPTION_H
 
+#include <exception>
+
 namespace testCaseHandler
 {
 
@@ -37,6 +39,42 @@ public:
     const char* what()
     {
         return "Syntax wrong";
+    }
+};
+
+class parser_badType : public testCaseException
+{
+public:
+    const char* what()
+    {
+        return "Bad/unrecognised XML type in model";
+    }
+};
+
+class parser_badNodeName : public testCaseException
+{
+public:
+    const char* what()
+    {
+        return "Bad node name given";
+    }
+};
+
+class parser_NullNode : public testCaseException
+{
+public:
+    const char* what()
+    {
+        return "Null Node returned";
+    }
+};
+
+class parser_NullAttribute : public testCaseException
+{
+public:
+    const char* what()
+    {
+        return "Null attribute returned";
     }
 };
 

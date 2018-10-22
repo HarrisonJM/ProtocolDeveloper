@@ -10,6 +10,10 @@
 #ifndef PROTOCOLDEVELOPER_DATAEMITTER_H
 #define PROTOCOLDEVELOPER_DATAEMITTER_H
 
+#include <memory>
+
+#include "dataPoint.h"
+
 namespace testCaseHandler
 {
 
@@ -19,8 +23,14 @@ public:
     DataEmitter();
     ~DataEmitter();
 
-private:
+    void RegisterDataPoint(std::shared_ptr<DataPoint> newDataPoint);
 
+    std::shared_ptr<DataPoint> AccessDataPoint(int position);
+    int getNumberOfDataPoints();
+
+private:
+    int _numberOfDataPoints;
+    std::map<int, std::shared_ptr<DataPoint>> _dataPoints;
 };
 
 }
