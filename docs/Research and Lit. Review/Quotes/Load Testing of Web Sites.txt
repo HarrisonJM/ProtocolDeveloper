@@ -1,0 +1,52 @@
+﻿Load Testing of Web Sites
+Daniel A. Menascé
+
+QoS Measures
+QoS is key to assessing how well Web-based applications
+meet customer expectations on two primary
+measures: availability and response time.
+
+Availability
+Availability measures the percentage of time customers
+can access a Web-based application. Availability
+goals typically vary according to the application
+type. Critical applications, such as online
+brokerage, often have more stringent requirements
+than other applications, such as online travel sites.
+However, even in industries where availability is
+less critical, it is always crucial to a company’s
+bottom line.
+
+Response Time
+Another key QoS factor for Web and e-commerce
+sites is response time With Web-based environments,
+you must measure end-to-end response
+time to determine how customers perceive such
+things as page download and keyword search
+times. Also, when defining end-to-end response
+time, you must distinguish between the download
+time for the base HTML page and that for other
+page components, such as images and ad banners.
+
+Clearly, measuring response time from a single geo-
+graphical location and specific time window will
+not give you a complete picture. End-to-end
+response time is time- and space-dependent, and
+you must know how users from different locations,
+with different connectivity, perceive your site’s performance
+at different times of day.
+
+A load test is
+valid only if virtual users’ behavior has characteristics
+similar to those of actual users. You must
+therefore ensure that your virtual users
+ follow patterns similar to real users,
+ use realistic think times, and
+ react like frustrated users, abandoning a Web
+session if response time is excessive.
+
+
+
+
+
+

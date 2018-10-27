@@ -1,0 +1,16 @@
+Automatic Stress and Load Testing for Embedded Systems
+Mohamad S. Bayan Jo˜ao W. Cangussu
+
+Load Testing [4, 5] assesses how a system performs under
+a given ”load.” The rate at which transactions are submitted
+to the system is called the Load
+
+It reveals programming
+errors that would not appear if the system executes with a
+small/limited workload. Such errors are called Load sensitive
+faults and emerge when the system is executed under a
+heavy load.
+
+Stress Testing [3, 4, 5] refers to subject a system
+to an unreasonable load with the intention of breaking it.
+

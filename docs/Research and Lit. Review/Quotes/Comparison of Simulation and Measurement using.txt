@@ -1,0 +1,8 @@
+Comparison of Simulation and Measurement using
+State of the Art Web Traffic Models
+
+SURGE derives probability distributions for webtraffic
+properties like number of objects per page, object size
+and user think time based on real Internet traffic traces. For
+details on these statistics we refer to [8].
+

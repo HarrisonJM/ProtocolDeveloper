@@ -1,0 +1,66 @@
+A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
+
+
+Given the limitations of direct replay of captured traffic traces,
+artificial generation would seem to be the only practical way
+to generate the required traffic, both attack and benign. Unfortunately
+both hardware and software traffic generators are
+far from being ideal tools for simulating such attacks.
+The hardware traffic generators can do much the same as
+their software counterparts, but at higher speed and at greater
+cost. Hardware traffic generators like the SmartBits 600
+(SmartBits, 2001) can artificially generate configurable flooding
+attacks, but they fail to interact with the application at the
+target machine.
+
+On the other hand, most of the softwarebased
+traffic generators available in the public domain are
+based on simple clienteserver models and are limited by the
+number of different scenarios they are capable of simulating.
+
+The following open-source software traffic generators were investigated: DITG
+(Botta et al., 2012), Harpoon (Sommers et al., 2004), fudp,2
+Hping (Sanfilippo, 2008) and curl-loader (Iakobashvili and
+Moser, 2009). Curl-loader, discussed below, was extensively
+tested and used to conduct preliminary experiments for
+generating datasets with the desired characteristics.
+
+The following design-level requirements were identified for
+developing the framework.
+ Reconfigurability. The framework is required to simulate a
+variety of DDoS attack, at the network and application
+level, as well as a variety of FEs, and as a result, it must
+allow for reconfigurability of the network topology.
+ Modest hardware. Given the financial constraints of the
+project,4 it was necessary to develop a testbed facility using
+only modest hardware. While the scale of emulated attacks
+can be increased by using high-end networking device,
+many meaningful experiments can still be conducted using
+modest equipment and customised software, for example,
+by comparing the results of different configurations.
+ Maximum resource utilisation. A single attacking host
+should beable to generate sufficient traffic to impedea server
+of similar power from servicing its clients. Thus, orchestrating
+a number of such host machines should have a substantial
+impact on a large server used as the target host.
+ Traffic load coordination. Each attacking host should send
+a relatively small portion of the overall traffic. Thus, an
+attacker would combine the strength of all participating
+hosts. This feature would cater for coordinated attacks, but
+at the same time would require a so-called ‘control machine’
+for remotely issuing commands to the attacking
+machines and synchronising their activity.
+ Traffic aggregation. Since each of the participating hosts
+would be a standard PC with limited capabilities, in order
+to emulate a variety of volumetric DDoS attacks and FEs,
+the outgoing traffic from all of the participating hosts (attackers
+or legitimate clients depending on the scenario)
+would need to be aggregated to a single network interface
+before arriving at the target server.
+ Monitoring capabilities. The framework should make it
+possible to monitor various intermediate nodes such as
+switches, firewalls, and end nodes such as applications
+running on the target hosts in real time.
+
+

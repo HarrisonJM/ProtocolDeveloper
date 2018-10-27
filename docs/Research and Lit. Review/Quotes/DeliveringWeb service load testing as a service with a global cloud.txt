@@ -1,0 +1,94 @@
+﻿DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+Literally just most of this paper!!!
+
+Several testing tools can be found to meet this requirement, such as LoadUI 
+[4], Apache JMeter [5], and IBM Rational Performance Tester [6].
+
+good testing tool should provide geographically
+distributed test nodes for a test task.
+
+There is another cloud-basedWeb service load testing
+tool TestMaker [7] that supports running massive concurrency load test on Amazon EC2.
+
+many IT resources and system functions are provided
+as services, like the cloud computing stack: software as a service (SaaS), platform as a service
+(PaaS), and infrastructure as a service (IaaS). Similarly, testing as a service (TaaS) [8–10] is proposed
+to provide software testers with cost-effective testing services.
+
+One of the services provided
+by TaaS is the hosting of hardware and software tools for software testing, which means that TaaS
+is usually built on the top of IaaS and PaaS
+
+To design a cloud-based Web service load testing environment, we need to analyze its requirements
+and take advantage of the strong points of cloud testing. Taking earlier aspects into account, we
+conclude that the following features should be guaranteed when building WS-TaaS: transparency,
+elasticity, geographical distribution, massive concurrency, and sufficient bandwidth.
+ Transparency. The transparency in WS-TaaS is divided into two aspects: (1) hardware transparency,
+testers have no need to know exactly where the test nodes are deployed and (2)
+middleware transparency, when the hardware environment is ready, the testing middlewares
+should be prepared automatically without tester involvement.
+ Elasticity. All the test capabilities should scale up and down automatically commensurate with
+the test demand [17]. InWS-TaaS, the required resources of every test task should be estimated
+in advance to provision more or withdraw the extra ones.
+ Geographical distribution. To simulate the real runtime scenario of a Web service, WS-TaaS
+is required to provide geographically distributed test nodes to simulate multiple users from
+different locations all over the world.
+ Massive concurrency and sufficient bandwidth. As in Web service load testing process the
+load span can be very wide, so WS-TaaS have to support massive concurrent load testing.
+Meanwhile, the bandwidth need to be sufficient accordingly.
+
+In a cloud-based load testing environment forWeb service, we argue that these four components are
+needed: Test Task Receiver & Monitor (TTRM), Test Task Manager (TTM), Middleware Manager,
+and TestRunner. Figure 2 shows the conceptual architecture of a cloud-based Web service load
+testing system, including the four main components earlier, which we explain as follows:
+
+Test Task Receiver & Monitor. TTRM is in charge of supplying testers with friendly guide to
+input test configuration information and submitting test tasks. The testing process can also be
+monitored here.
+ Test Task Manager. TTM manages the queue of test tasks and dispatchs them to test nodes in
+the light of testers’ intention and then gathers and merges the test results.
+ TestRunner. TestRunners are deployed on all test nodes and play the role of Web service
+invoker. They can also analyze the validity of Web service invocation results.
+ Middleware Manager. Middleware Manager manages all the TestRunners and provide available
+TestRunners for TTM with elasticity.
+
+FIG2 & FIG1
+
+
+3.3. Testing workflow
+The workflow of WS-TaaS is divided into five steps, as shown in Figure 3.
+(1) TTRM receives configuration of a test task submitted by the tester and transmit it to TTM.
+(2) TTM selects test nodes from available nodes in terms of their performance and asks Middleware
+Manager to provision TestRunners on the test nodes selected (please see Section 4.1 for details). (3)
+TTM decides the numbers of concurrent request of each node selected and divides the test task into
+subtasks with specific scheduling and dispatching strategies (the details of the strategies are shown
+in Section 4.2) and then dispatches them to the test nodes selected. (4) After dispatching the test task,
+TTM notifies all the participating TestRunners to start invoking the target service simultaneously.
+During test task execution, TTRM periodically sends query requests to TTM at a fixed time interval
+to obtain the execution state. (5) In the meantime, TTM also periodically queries the test results
+from all the involved TestRunners. On receiving a query response, the intermediate test results will
+be displayed to users. The query and gathering process will be continued until the test task finishes.
+
+3.4. Test mode
+For different kinds of test needs, WS-TaaS provides three test modes as follows.
+ Static test. Static test is provided to test the performance of a Web service under user-specified
+load. In such a test, the test task is just deployed and executed once.
+ Step test. In a step test, the tester needs to input the start number, step size, and the end number
+of concurrent requests. Then, the test task is deployed and executes step by step with different
+numbers of concurrent requests, which increase by the step size from the start number till it
+meets the end one. Step test can tell the tester how the Web service would offer usability in a
+specific load span.
+ Maximal test. Maximal test is used to determine the load limit of a Web service. Like a step
+test, the start number and step size are needed, but the end number is not needed. So the strategy
+for judging whether the current load is the load limit is required. At present, we briefly define
+judgement principle as follows: If more than 10% of the concurrent requests are failed (the
+invoking result is inconsistent with the expected result or the invoking process timed out) under
+a load, then we define this failure and take this load amount as the load limit of the target Web
+service. This determination is made by TTM with the calculation of failure percentage. Once
+the load limit
+
+FORMULA 1 for ACTTN Available concurrent test thread number
+
+
