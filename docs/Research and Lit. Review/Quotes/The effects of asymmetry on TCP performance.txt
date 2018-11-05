@@ -26,6 +26,8 @@ the fairness and scaling properties when several connections
 contend for scarce resources in the network. We
 demonstrate this via simulations of bulk and Web-like
 transfers.
+The effects of asymmetry on TCP performance
+Hari Balakrishnan 1, Venkata N. Padmanabhan 2 and Randy H. Katz
 
 The basic objective of ACC is for the receiver to decrease
 the frequency of acks in order to alleviate congestion
@@ -59,6 +61,8 @@ overhead make the total length of the option 4 bytes. Since
 this option is added only to packets traversing the highbandwidth
 forward path, we do not believe that this 4-byte
 overhead is significant.
+The effects of asymmetry on TCP performance
+Hari Balakrishnan 1, Venkata N. Padmanabhan 2 and Randy H. Katz
 
 
 

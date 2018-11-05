@@ -1,0 +1,183 @@
+Use Cases
+	-- Artificial traffic generation is often the only practical way to
+	really verify the running of a service.
+	-- Hardware traffic generation often leads to greater packet drop at the target
+	-- Hardware is faster but also comes at a greater cost
+	-- Generating precise traffic allows greater control
+	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
+
+	
+Other programs
+	- Mercury Interactive Continues to Dominate as Worldwide Load Testing Market Leader;
+	Company Captures 63% of Web Load Testing Market; Leads Market for Hosted Load Testing Services
+
+	-- Current tools support simple test cases with a fixed sequence fo actions
+	Realistic Load Testing of Web Applications
+	John Grundy, John Hosking, Dirk Draheim
+
+	-- Mercury Interactive's LoadRunner current load testing leader
+	Realistic Load Testing of Web Applications
+	John Grundy, John Hosking, Dirk Draheim	
+
+	-- Current software are only client-server models
+	-- Limited number of scenarios
+	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
+	
+	-- DITG, Harpoon, fudp, 2Hping and, curlLoader are currently available open source traffic generators
+	-- Curlloader is relatively flexible in its use
+	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
+
+	-- LoadUI, ApacheJmeter IBM Rational Performance Tester
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+	-- Testmaker is another WS load tester that allows concurrency testing on Amazon EC2.
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+	-- SURGE calculates how a user might interact with a website based on what's on each page
+	State of the Art Web Traffic Models
+	Eduard Hasenleithner Thomas Ziegler
+
+
+What is the thing
+	-- The rate at which transactions are conducted constitutes load. Sending this to a target for test purposes, constitutes a Load Test.
+	Automatic Stress and Load Testing for Embedded Systems
+	Mohamad S. Bayan Jo˜ao W. Cangussu
+
+	-- Stress Testing is similair to workload, however the express intention is to break the system, and to verify how it recovers.
+	Automatic Stress and Load Testing for Embedded Systems
+	Mohamad S. Bayan Jo˜ao W. Cangussu
+
+	-- Load testing is vital to proving that web services meet the demands of its users, both in traffic and bheaviour
+	Realistic Load Testing ofWeb Applications
+	John Grundy, John Hosking, Dirk Draheim
+
+	-- Helps to locate issues in the code that might not appear under smaller load. These are errors are called "Load sensitive".
+	Automatic Stress and Load Testing for Embedded Systems
+	Mohamad S. Bayan Jo˜ao W. Cangussu
+
+	-- Workload (characteristics and intensity), environment and , high-level metrics define a load test and its results.
+	-- Intensity referes to arrival rate and throuput of data.
+	-- All of these come together in a test report.
+	A Methodology to Support Load Test Analysis
+	Haroon Malik
+
+	-- Simluating the internet proper is near impossible, due to its shear scale, impracticality and the number of nodes needed.
+	SIMULATING DDOS ATTACKS ON THE US FIBER-OPTICS INTERNET INFRASTRUCTURE
+	Sumeet Kumar
+	Kathleen M. Carley
+
+	-- It is certainly possible to create software that facilitates the entire load testing process. And to make the results it obtains far more accurate
+	Delivering Web service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+Problem Identification
+	-- Load test analysis methodology has been performed before.
+	A Methodology to Support Load Test Analysis
+	Haroon Malik
+
+	-- Models can even be machine generated based on behaviour observation.
+	Automatic Feedback, ControlBased, Stress and Load Testing
+	Mohamad Bayan, Jo˜ao W. Cangussu
+
+	-- As software shifts towards being offered "as a service" (-aas). Offering some sort of load tester as a service would be wise, and allow for future proofing.
+	DeliveringWeb service load testing as a service with a global cloud
+	-- A Load tester will likely contain four major components: Test Receiver, Test Manager, Middleware Manager and a Test Runner.
+	-- Test Receiver: Receives tests to run from the tester, can also monitor tests
+	-- Test Manager: Manages queues fo tests and dispatches them, gathering and merging test results
+	-- Test Runner: Invokes the tests. Also analyses validity of results.
+	-- Middleware Manager: provides and amanges testrunners for use within the system
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+	- FIG2
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+	-- Tests often need to be parameterised and modified
+	-- Often hard to do
+	-- More advanced tools are needed
+	Realistic Load Testing of Web Applications
+	John Grundy, John Hosking, Dirk Draheim
+
+How should it be done
+	-- Load testing should be performed regularly to make sure that resources are correctly provisioned.
+	Realistic Load Testing of Web Applications
+	John Grundy, John Hosking, Dirk Draheim
+
+	-- Different Modes need to be offered for proper testing. Static, step and maximal testing are three such methods. Static runs for a specific load. 
+	Step runs for measuring usability under a load span. Maximal load to determine upper limits.
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+Requirements and Design
+	-- Real user data can (and should) be used to model traffic. However such models are less versatile than stochastic ones.
+	Realistic Load Testing of Web Applications
+	-- Script driven approches are common, but visual editors massively increase usability.
+	Realistic Load Testing of Web Applications
+	John Grundy, John Hosking, Dirk Draheim
+
+	-- Reconfigurability for a variety of connections. Low cost, low resource would be a signifcant boon, however using the resources as efficiently as possible is key.
+	Traffic load co-ordination would also help to improve results and efficency. Traffic aggregation would also be beneficial to make sure all traffic acts on a single interface at the target.
+	Monitoring the traffic is also a good feature to have.
+	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
+
+	-- Another structure would involve: Input identification, controller tuning and a controller. 
+	Input Identification involves finding inputs that affect the resource of interest.
+	Controller tuning involves figuroing out the internal parameters of the chosen controller
+	The controller itself drives the testcases to what load level is wanted.
+	Automatic Feedback, ControlBased, Stress and Load Testing
+	Mohamad Bayan, Jo˜ao W. Cangussu
+
+	- [Fig 1] looks good. Lift it.
+	Modelling form-based interfaces with bipartite state machines
+	D. Draheima,*, G. Weberb
+
+	-- Pseudo random generators are very good for the purposes of this program.
+	Pseudo random number generator based on quantum chaotic map
+	A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
+
+	-- The algorithm for constructing a random number generator based on quantum chaotic maps can also be used to create a good chaos model from which to work. 
+	Only using user activity graphs instead, to better try to model peak times.
+	Pseudo random number generator based on quantum chaotic map
+	A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
+
+	-- User interaction can be modelled as a bipartite state transition diagram
+	Realistic Load Testing of Web Applications
+	John Grundy, John Hosking, Dirk Draheim
+	
+	-- Geographically distributed instances would improve the results per test task
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+	-- Large amounts of concurrency within each instance would be very as the loads can be very large, and the taffic could be very high.
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+	-------------(This needs working on a bit later)------------------
+	- FORMULA 1 (SEE FORMULA1.PNG) for ACTTN Available concurrent test thread number
+	  Oi refers to the upper bound of the original concurrent test threads number of node i. Let t1
+	be the average response time (ART) which is calculated by non-concurrently (with just 1 test
+	thread) invoking the 20 most used Web services in ServiceXchange from node i . And let t2
+	be the ART while concurrently invoking each of those 20 Web services with R requests. R is
+	initially set as 2 and increased step by step while t2 < 2t1, in which process t2 would increase
+	as R increases and finally reach 2t1. We set the value of Oi as R when t2 D 2t1 according to the
+	value of delay variance factor in computing retransmission timeout in RFC 793 [18] because
+	when retransmission is detected, we can decide that a network congestion is happening;
+	 S are the number of types of other SA hosted in each node;
+	 Cij stands for the number of the jth type of SA on node i . In Service4All, every node may host
+	several types of SAs at the same time and each type of SA will consume a certain amount of
+	node resources. Thus, we need to take this factor into account when calculating the ACTTN;
+	 j is the impact factor of the jth type of SA to the ACTTN which is defined as the average
+	reduction of Oi when one of the jth SA is added on all the test nodes. For instance, if we
+	add a BPMNEngine (with a composite service executing on it) to each node and the average
+	reduction of Oi is d, then BPMNEngine is set as d.
+	DeliveringWeb service load testing as a service with a global cloud
+	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+
+	- 

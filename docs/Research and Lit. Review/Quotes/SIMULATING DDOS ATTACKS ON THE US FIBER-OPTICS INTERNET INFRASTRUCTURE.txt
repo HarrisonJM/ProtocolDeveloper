@@ -5,4 +5,7 @@ Kathleen M. Carley
 Because of the complexity of the Internet, simulating an Internet-scale network based attack is nearly
 infeasible. Most existing simulation environments are designed for small-scale tests and are usually
 conducted in a lab setting using a few systems.
+SIMULATING DDOS ATTACKS ON THE US FIBER-OPTICS INTERNET INFRASTRUCTURE
+Sumeet Kumar
+Kathleen M. Carley
 

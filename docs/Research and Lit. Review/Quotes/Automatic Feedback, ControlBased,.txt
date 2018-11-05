@@ -4,6 +4,8 @@ Mohamad Bayan, Jo˜ao W. Cangussu
 However, based on the observations of a system’s
 behavior when executing in a specific environment, a model can
 be dynamically customized for this scenario.
+Automatic Feedback, ControlBased, Stress and Load Testing
+Mohamad Bayan, Jo˜ao W. Cangussu
 
 Figure 1 presents our proposed approach’s general structure. The
 approach has three major components:“Input Identification,” “Controller
@@ -14,4 +16,6 @@ parameters of the chosen controller. Given an initial test case,
 the “Controller” computes the sequence of test cases to drive the
 resource of interested to the desired load/stress level. Description
 of the two blocks addressed here are given next.
+Automatic Feedback, ControlBased, Stress and Load Testing
+Mohamad Bayan, Jo˜ao W. Cangussu
 

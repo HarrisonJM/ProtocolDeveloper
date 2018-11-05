@@ -5,21 +5,31 @@ Literally just most of this paper!!!
 
 Several testing tools can be found to meet this requirement, such as LoadUI 
 [4], Apache JMeter [5], and IBM Rational Performance Tester [6].
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 good testing tool should provide geographically
 distributed test nodes for a test task.
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 There is another cloud-basedWeb service load testing
 tool TestMaker [7] that supports running massive concurrency load test on Amazon EC2.
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 many IT resources and system functions are provided
 as services, like the cloud computing stack: software as a service (SaaS), platform as a service
 (PaaS), and infrastructure as a service (IaaS). Similarly, testing as a service (TaaS) [8–10] is proposed
 to provide software testers with cost-effective testing services.
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 One of the services provided
 by TaaS is the hosting of hardware and software tools for software testing, which means that TaaS
 is usually built on the top of IaaS and PaaS
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 To design a cloud-based Web service load testing environment, we need to analyze its requirements
 and take advantage of the strong points of cloud testing. Taking earlier aspects into account, we
@@ -38,11 +48,15 @@ different locations all over the world.
  Massive concurrency and sufficient bandwidth. As in Web service load testing process the
 load span can be very wide, so WS-TaaS have to support massive concurrent load testing.
 Meanwhile, the bandwidth need to be sufficient accordingly.
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 In a cloud-based load testing environment forWeb service, we argue that these four components are
 needed: Test Task Receiver & Monitor (TTRM), Test Task Manager (TTM), Middleware Manager,
 and TestRunner. Figure 2 shows the conceptual architecture of a cloud-based Web service load
 testing system, including the four main components earlier, which we explain as follows:
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 Test Task Receiver & Monitor. TTRM is in charge of supplying testers with friendly guide to
 input test configuration information and submitting test tasks. The testing process can also be
@@ -53,9 +67,12 @@ the light of testers’ intention and then gathers and merges the test results.
 invoker. They can also analyze the validity of Web service invocation results.
  Middleware Manager. Middleware Manager manages all the TestRunners and provide available
 TestRunners for TTM with elasticity.
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 FIG2 & FIG1
-
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 3.3. Testing workflow
 The workflow of WS-TaaS is divided into five steps, as shown in Figure 3.
@@ -70,6 +87,8 @@ During test task execution, TTRM periodically sends query requests to TTM at a f
 to obtain the execution state. (5) In the meantime, TTM also periodically queries the test results
 from all the involved TestRunners. On receiving a query response, the intermediate test results will
 be displayed to users. The query and gathering process will be continued until the test task finishes.
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 3.4. Test mode
 For different kinds of test needs, WS-TaaS provides three test modes as follows.
@@ -88,7 +107,10 @@ invoking result is inconsistent with the expected result or the invoking process
 a load, then we define this failure and take this load amount as the load limit of the target Web
 service. This determination is made by TTM with the calculation of failure percentage. Once
 the load limit
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
 FORMULA 1 for ACTTN Available concurrent test thread number
-
+DeliveringWeb service load testing as a service with a global cloud
+Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 

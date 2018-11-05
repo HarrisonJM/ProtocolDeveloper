@@ -1,7 +1,6 @@
 A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
 Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
 
-
 Given the limitations of direct replay of captured traffic traces,
 artificial generation would seem to be the only practical way
 to generate the required traffic, both attack and benign. Unfortunately
@@ -13,11 +12,15 @@ cost. Hardware traffic generators like the SmartBits 600
 (SmartBits, 2001) can artificially generate configurable flooding
 attacks, but they fail to interact with the application at the
 target machine.
+A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
 
 On the other hand, most of the softwarebased
 traffic generators available in the public domain are
 based on simple clienteserver models and are limited by the
 number of different scenarios they are capable of simulating.
+A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
 
 The following open-source software traffic generators were investigated: DITG
 (Botta et al., 2012), Harpoon (Sommers et al., 2004), fudp,2
@@ -25,6 +28,8 @@ Hping (Sanfilippo, 2008) and curl-loader (Iakobashvili and
 Moser, 2009). Curl-loader, discussed below, was extensively
 tested and used to conduct preliminary experiments for
 generating datasets with the desired characteristics.
+A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
 
 The following design-level requirements were identified for
 developing the framework.
@@ -62,5 +67,7 @@ before arriving at the target server.
 possible to monitor various intermediate nodes such as
 switches, firewalls, and end nodes such as applications
 running on the target hosts in real time.
+A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
+Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
 
 

@@ -5,9 +5,10 @@ For the worm simulation, our starting point is the SSFNet
 simulator [2][9], a packet-level network simulator written in
 Java that supports parallel and distributed execution for in-
 creased scalability. It includes standard TCP/IP protocols
-25
 (IP, ICMP, TCP, UDP, HTTP, ...) and detailed implemen-
 tations of routing protocols such as BGP and OSPFv2.
+Simulating Realistic Network Worm Traffic for Worm Warning System Design and Testing
+Michael Liljenstam David M. Nicol Vincent H. Berk Robert S. Gray
 
 We evaluated the performance of DIBS/TRAFEN by run-
 ning simulations with varying degrees of router participa-
@@ -15,4 +16,5 @@ tion, feeding the simulated ICMP-T3 Unreachable trac
 into the working DIBS/TRAFEN prototype, and measuring
 how many simulated machines were infected at the time that
 DIBS/TRAFEN detected the propagating worm.
-
+Simulating Realistic Network Worm Traffic for Worm Warning System Design and Testing
+Michael Liljenstam David M. Nicol Vincent H. Berk Robert S. Gray

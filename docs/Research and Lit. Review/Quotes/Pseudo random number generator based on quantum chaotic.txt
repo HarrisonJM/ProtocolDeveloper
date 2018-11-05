@@ -1,9 +1,10 @@
-Pseudo random number generator based on quantum chaotic
-map
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
 
 the first one [pseudo random] is particularly desirable feature for some applications, such as simulations of stochastic processes, statistical sampling
 and performance evaluation of computer algorithms and Monte Carlo simulation.
-
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
 
 In this section, we discuss how to construct the pseudo-random number generator based on quantum chaotic map and
 analyze its properties. A good random number generator must have some properties such as good distribution, long period,
@@ -25,7 +26,8 @@ Final Random Integer = floor ðxnþ1  ð232  1ÞÞ.
 In this step, the goal is to convert the values of the xnþ1 from floating values into decimal values and normalize it in the
 range of 32 bit integer numbers.
  Step 6: If the length of sequence is not satisfied, return to Step (3) otherwise stop.
-
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
 
 this section, in order to investigate the sensitivity of the chaotic map to very small changes in initial conditions and also
 the correlation between sequences produced with nearby keys [30,31], we have performed the correlation coefficients test as
@@ -56,4 +58,5 @@ yiN are the mean values of x and y respectively. A strong correlation occurs bet
 for Cxy ’ 1 and no correlation corresponds to Cxy ¼ 0. The corresponding data are listed in Table 1. Based on
 the analysis of the data in Table 1, we can draw the conclusion: there is no correlation between the generated sequences
 and also the chaotic map is very sensitive to very small changes in all initial conditions.
-
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
