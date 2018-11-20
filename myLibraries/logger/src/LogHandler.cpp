@@ -194,40 +194,41 @@ void LogHandler::AddMessageToLog(const std::string logName,
  * @param logID The ID of the log to return
  * @return A pointer to a log or an empty reference
  */
-I_LogFile *LogHandler::GetLogFileID(int64_t logID) const
+std::shared_ptr<I_LogFile> LogHandler::GetLogFileID(int64_t logID) const
 {
-    I_LogFile *lf = nullptr;
+    std::shared_ptr<I_LogFile> logFile_shr = nullptr;
 
     try
     {
-        lf = _openLogs.at(logID);
+        logFile_shr = _openLogs.at(logID);
     }
     catch(std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
 
-    return lf;
+    return logFile_shr;
 }
 /*!
  * @brief Returns a pointer to an opened log based on its ID
  * @param logName
  * @return A pointer to a log or an empty reference
  */
-I_LogFile *LogHandler::GetLogFileName(std::string logName) const
+std::shared_ptr<I_LogFile> LogHandler::GetLogFileName(std::string logName) const
 {
-    I_LogFile *lf = nullptr;
+    std::shared_ptr<I_LogFile> logFile_shr = nullptr;
 
     try
     {
-        lf = _openLogs.at(_nameToID.at(logName));
+        logFile_shr = _openLogs.at(_nameToID.at(logName));
     }
     catch(std::exception &e)
     {
+        //! @todo personalised exceptions
         std::cout << e.what() << std::endl;
     }
 
-    return lf;
+    return logFile_shr;
 }
 /*!
  * @brief Flushes all all messages for logs to their respective streams
@@ -243,6 +244,7 @@ void LogHandler::FlushMessagesToStreams()
 
         for(auto lf : _openLogs)
             lf.second->WriteAllMessagesToStream();
+
     } while(!_killHandler);
 
 

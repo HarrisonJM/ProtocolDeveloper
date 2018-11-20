@@ -135,6 +135,7 @@ std::string LogFile::_GenerateLogMessage(std::string message,
     fullMessage += _logLevels.getValue(lvl);
     fullMessage += "]";
     fullMessage += "[";
+    //! @todo dating/timing mechanisms
     fullMessage += "Date";
     fullMessage += "]: ";
     fullMessage += message;

@@ -171,9 +171,9 @@ void TestCaseCompiler::_handleSiblings(std::shared_ptr<DataPoint> dataPoint)
     do
     {
         std::string entryName;
-        auto nt = _parser.GetEntryType();
+        auto entryType = _parser.GetEntryType();
 
-        switch(nt)
+        switch(entryType)
         {
             // The raw pattern [foo][bar][baz]
             case rapidxml::node_data :
@@ -218,6 +218,7 @@ void TestCaseCompiler::_handleDataPointPatternData()
     _parser.GetEntryData(data);
     _emitter.AccessDataPoint(_emitter.getNumberOfDataPoints()-1).setPattern(data);
 }
+
 void TestCaseCompiler::_HandleRate()
 {
     std::string name, value;
@@ -232,6 +233,7 @@ void TestCaseCompiler::_HandleRate()
     _parser.GetCurrentEntryAttribute(name,
                                      value);
 }
+
 void TestCaseCompiler::_HandleChaos()
 {
     std::string name, value;
@@ -246,6 +248,7 @@ void TestCaseCompiler::_HandleChaos()
     _parser.GetCurrentEntryAttribute(name,
                                      value);
 }
+
 void TestCaseCompiler::_HandleDuration()
 {
     std::string name, value;
@@ -260,6 +263,7 @@ void TestCaseCompiler::_HandleDuration()
     _parser.GetCurrentEntryAttribute(name,
                                      value);
 }
+
 void TestCaseCompiler::_HandleThreads()
 {
     std::string name, value;

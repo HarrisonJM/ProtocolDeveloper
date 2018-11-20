@@ -45,9 +45,9 @@ public:
                                  const std::string message,
                                  const logLevel lvl) const = 0;
     //! Returns an entire, specific, log based on its ID
-    virtual I_LogFile *GetLogFileID(int64_t logID) const = 0;
+    virtual std::shared_ptr<I_LogFile> GetLogFileID(int64_t logID) const = 0;
     //! Returns an entire, specific, log based on its name
-    virtual I_LogFile *GetLogFileName(std::string logName) const= 0;
+    virtual std::shared_ptr<I_LogFile> GetLogFileName(std::string logName) const= 0;
     //! Flush messages to stream
     virtual void FlushMessagesToStreams() = 0;
     //! Sets the internal killHandler to false

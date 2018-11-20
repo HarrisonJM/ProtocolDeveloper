@@ -61,9 +61,9 @@ public:
                          const std::string message,
                          const logLevel lvl) const override;
     //! Returns an entire, specific, log based on its ID
-    I_LogFile* GetLogFileID(int64_t logID) const override;
+    std::shared_ptr<I_LogFile> GetLogFileID(int64_t logID) const override;
     //! Returns an entire, specific, log based on its name
-    I_LogFile* GetLogFileName(std::string logName) const override;
+    std::shared_ptr<I_LogFile> GetLogFileName(std::string logName) const override;
     //! Flush messages to stream
     void FlushMessagesToStreams() override;
     //! Sets the internal killHandler to false
@@ -73,7 +73,7 @@ private:
     //! The strategy Handler
     I_LogStrategy* ilo_p;
     //! Will hold all open logs, referenced by an ID
-    std::map<int64_t, I_LogFile *> _openLogs;
+    std::map<int64_t, std::shared_ptr<I_LogFile>> _openLogs;
     //! Maps the log name to a specific ID
     std::map<std::string, int64_t> _nameToID;
     //! The maximum number of logs this handler can have open

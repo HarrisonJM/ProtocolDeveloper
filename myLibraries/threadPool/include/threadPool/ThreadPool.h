@@ -21,12 +21,13 @@
 #include "safeQueues/SafeQueue.h"
 #include "I_ThreadPool.h"
 
-namespace ThreadHandler {
+namespace ThreadHandler
+{
 
 /*!
  * @brief A Thread Pool Queue that handles information that needs to be passed back and forth
  */
-class ThreadPool : public I_ThreadPool
+class ThreadPool: public I_ThreadPool
 {
 public:
     friend class WorkerThread;
@@ -61,18 +62,27 @@ public:
                         Args &&... args) -> std::future<decltype(t(args...))>
     {
         //! Create a function that can be run
-        std::function<decltype(t(args...))()> work = std::bind(std::forward<T>(t),
-                                                               std::forward<void *>(args)...);
+        try
+        {
+            std::function<decltype(t(args...))()>
+                work = std::bind(std::forward<T>(t),
+                                 std::forward<void *>(args)...);
+        }
+        catch (std::exception e)
+        {
+
+        }
 
         //! Store the function first in a packaged_task to allow asynchronous execution
         //! Store it in a shared pointer for copying
-        auto work_p = std::make_shared<std::packaged_task<decltype(t(args...))()>>(work);
+        auto work_p =
+            std::make_shared<std::packaged_task<decltype(t(args...))()>>(work);
 
-        //! Wrap as a function so it can be returned
+        //! Wrap as a function so it can be returned from
         std::function<void()> workWrapper = [work_p]()
-            {
+        {
             (*work_p)();
-            };
+        };
 
         //! Add task to task queue
         _taskQueue.push(workWrapper);
