@@ -1,0 +1,120 @@
+﻿Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+Load testing
+is thus an important practice for making sure a web site
+meets those demands and for optimizing its different components
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+a convincing performance
+test must include a test of the full application under
+realistic loading conditions
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+In [16] it is recommended that
+load testing of a web site should be performed on a regular
+basis in order to make sure that IT infrastructure is provisioned
+adequately, particularly with regard to changing user
+behaviour and web site evolution.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+Most current tools for load
+testing support the creation of simple test cases consisting
+of a fixed sequence of operations. However, in order to give
+the generated load some variety it is usually necessary to
+modify and parametrize these test cases manually. This is
+usually both time-consuming and difficult. A more elaborate
+approach is needed in order to generate a realistic load,
+and such an approach requires more advanced tool support.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+Our approach applies the methodology of form-oriented
+analysis [9], in which user interaction with a submit/
+response style system is modelled as a bipartite state
+transition diagram.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+Form didn't exist = 0, Only one form = one
+Pform:Histories × Forms → [0, 1]
+Once a form is chosen, we estimate a delay. This is done
+with pdelay. Time is a continuous variable, therefore pdelay
+is not a discrete probability distribution but a probability
+density function.
+pdelay:Histories × Forms × (0,∞) → R+
+Data is the universe
+of possible data, and if some particular data in it cannot be
+entered into a form, the value of Pinput is 0.
+Pinput:Histories × Forms × Data → [0, 1]
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+But we can also exploit real user
+data in order to find suitable parameters for a stochastic
+model. A stochastic model is a more general approach and
+therefore more versatile. It is much easier to create new
+load testing scenarios by adjusting model parameters.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+Furthermore, replaying recorded data might not cause a system
+load that is representative.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+We need this recurrence to states in order to handle cycles in
+the original formchart, which could not be represented with
+a finite decision tree otherwise.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+The parameters that can
+be used to describe a workload are explained in Sect. 5
+It is important that the load test environment the system is
+running in is very close to the production environment
+the one the system is eventually intended to work in.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+In many cases, load-testing is still done by hand-written
+scripts that describe the user model as a subprogram
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+For each virtual user, the subprogram is called, possibly
+with a set of parameters that describe certain aspects of
+the virtual user’s behaviour
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+Data is either taken from a set of predefined
+values or generated randomly. With regard to input data
+this approach has a certain degree of randomization. However,
+user behaviour itself mainly remains a matter of repetition.
+This approach is purely script driven and suffers,
+like any hand-written program, from being prone to programming
+errors.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+The leading product for industry-strength load testing
+[19] is Mercury Interactive’s LoadRunner [17].
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+It takes a similar script-driven approach. However, it significantly
+increases usability by offering a visual editor for end-user scripts.
+Realistic Load Testing of Web Applications
+John Grundy, John Hosking, Dirk Draheim
+
+16 D. A. Menasc´e. Load Testing of Web Sites. IEEE Internet Computing, 6(4):70–74, July 2002.
+9 D. Draheim and G.Weber. Form-Oriented Analysis - A New Methodology to Model Form-Based Applications. Springer, October 2004.
+19 Newport Group Inc. Annual Load Test Market Summary and Analysis, 2001.
+17 Mercury Interactive Corporation. Load Testing to Predict Web Performance. Technical Report WP-1079-0604, Mercury Interactive Corporation, 2004.
+
+
+

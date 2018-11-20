@@ -1,0 +1,69 @@
+The effects of asymmetry on TCP performance
+Hari Balakrishnan 1, Venkata N. Padmanabhan 2 and Randy H. Katz
+
+ SLIP header compression [13] alleviates some of the
+performance problems due to bandwidth asymmetry, but
+does not completely eliminate all problems, especially
+those that arise in the presence of bidirectional traffic.
+ Connections traversing packet radio networks suffer
+from large variations in round-trip time caused by the
+half-duplex nature of the radios and asymmetries in the
+media-access protocol. This adversely affects TCP’s
+loss recovery mechanism and results in degraded performance.
+ The various end-to-end and router-based techniques that
+we propose help improve performance significantly in
+many asymmetric situations, both in simulations and in
+experiments on the real testbed. These include decreasing
+the frequency of acknowledgments (acks) on the
+constrained reverse channel (ack congestion control and
+ack filtering), reducing source burstiness when acknowledgments
+are infrequent (TCP sender adaptation), and
+scheduling data and acks intelligently at the reverse bottleneck
+router.
+ In addition to improving throughput for individual connections,
+our proposed modifications also help improve
+the fairness and scaling properties when several connections
+contend for scarce resources in the network. We
+demonstrate this via simulations of bulk and Web-like
+transfers.
+The effects of asymmetry on TCP performance
+Hari Balakrishnan 1, Venkata N. Padmanabhan 2 and Randy H. Katz
+
+The basic objective of ACC is for the receiver to decrease
+the frequency of acks in order to alleviate congestion
+on the bandwidth-constrained reverse channel. In general,
+there are two modes which the receiver could operate in:
+1. It could decrease the frequency of acks to the minimum
+possible based on preset limits and information from the
+sender (as explained below).
+2. It could do so in response to explicit congestion notifications
+from the reverse channel router.
+In addition to changing the TCP algorithm at the receiving
+and sending sides, supporting both these modes of operation
+requires two changes to the on-the-wire protocol:
+ECN bit. The TCP and IPv4 headers have no designated
+field for explicit congestion notification from the routers to
+the end hosts. However, there are a few unused bits in the
+TCP header, and one of these could be used as the ECN
+bit. Note that this bit is needed only if the receiver operates
+in the second mode mentioned above.
+Sender window option. The ACC algorithm requires the
+TCP receiver to have knowledge of the sender’s window
+size to make sure that the receiver does not decrease the
+frequency of acks to such an extent that the sender stalls.
+To convey this information from the sender to the receiver,
+we added a peerwin TCP option. The sender computes
+a 2-byte quantity which is the minimum of its congestion
+window size and the amount of data it has in its socket
+buffer as a multiple of the maximum segment size (MSS),
+and inserts it into the peerwin option. Another 2 bytes of
+overhead make the total length of the option 4 bytes. Since
+this option is added only to packets traversing the highbandwidth
+forward path, we do not believe that this 4-byte
+overhead is significant.
+The effects of asymmetry on TCP performance
+Hari Balakrishnan 1, Venkata N. Padmanabhan 2 and Randy H. Katz
+
+
+
+

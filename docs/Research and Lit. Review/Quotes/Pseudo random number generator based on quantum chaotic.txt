@@ -1,0 +1,62 @@
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
+
+the first one [pseudo random] is particularly desirable feature for some applications, such as simulations of stochastic processes, statistical sampling
+and performance evaluation of computer algorithms and Monte Carlo simulation.
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
+
+In this section, we discuss how to construct the pseudo-random number generator based on quantum chaotic map and
+analyze its properties. A good random number generator must have some properties such as good distribution, long period,
+portability and etc. In order to achieve a fast throughput and facilitate hardware realization, 32-bit precision representation
+with fixed point arithmetic is assumed. The steps of algorithm for generating N pseudo-random 32-bit numbers are as
+follows:
+ Step 1: Import the keys, which are the control parameters and initial conditions.
+ Step 2: Specify the required length of sequence.
+ Step 3: In order to avoid transient effect the map, iterate the quantum chaotic map 1000 times, Eq. (1), using control
+parameters and initial conditions provided in step (1) and the first 1000 initial conditions are disposed.
+ Step 4: Normalize the new value (initial condition) of the x in Eq. (1.a) using the following equation.
+xnþ1 ¼ xnþ1  1000  floorðxnþ1  1000Þ:
+The concept of normalization of initial condition x in Eq. (1.a) is because of nature of distribution of the initial condition values,
+in order to take the maximum advantage of the complexity of the map, we try to eliminate three most significant digits
+from the initial conditions, making it more complex and uniform. (in the above equation, the constant value 1000 is considered
+as the normalization factor, which can vary for more optimization.).
+ Step 5: Generate and output the random number using following equation from the normalized xnþ1.
+Final Random Integer = floor ðxnþ1  ð232  1ÞÞ.
+In this step, the goal is to convert the values of the xnþ1 from floating values into decimal values and normalize it in the
+range of 32 bit integer numbers.
+ Step 6: If the length of sequence is not satisfied, return to Step (3) otherwise stop.
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
+
+this section, in order to investigate the sensitivity of the chaotic map to very small changes in initial conditions and also
+the correlation between sequences produced with nearby keys [30,31], we have performed the correlation coefficients test as
+follows:
+(1) x ¼ 0:62352345; a sequence with 1,000,000 numbers is generated, then a new sequence by a very small changing of
+the initial condition x0 ¼ 0:6235234500000001 is generated.
+(2) y ¼ 0:0152345; a sequence with 1,000,000 numbers is generated, then a new sequence by a very small changing of the
+initial condition y0 ¼ 0:015234500000001 is generated.
+(3) z ¼ 0:0352345; a sequence with 1,000,000 numbers is generated, then a new sequence by a very small changing of the
+initial condition z0 ¼ 0:035234500000001 is generated.
+The correlation coefficients Cxy for each pair of sequences are computed according to the method described in [32–34]. Let
+the two sequences x ¼ ½x1; ;xN and y ¼ ½y1; ;yN we have:
+Cxy ¼
+PNi¼1ðxi  xÞ:ðyi  yÞ
+PN
+i¼1ðxi  xÞ2
+h i1=2 PN
+i¼1ðyi  yÞ2
+h i1=2
+ ;
+where x ¼
+PNi
+¼1
+xiN and y ¼
+PNi
+¼1
+yiN are the mean values of x and y respectively. A strong correlation occurs between two sequences
+for Cxy ’ 1 and no correlation corresponds to Cxy ¼ 0. The corresponding data are listed in Table 1. Based on
+the analysis of the data in Table 1, we can draw the conclusion: there is no correlation between the generated sequences
+and also the chaotic map is very sensitive to very small changes in all initial conditions.
+Pseudo random number generator based on quantum chaotic map
+A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
