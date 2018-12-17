@@ -62,16 +62,9 @@ public:
                         Args &&... args) -> std::future<decltype(t(args...))>
     {
         //! Create a function that can be run
-        try
-        {
-            std::function<decltype(t(args...))()>
-                work = std::bind(std::forward<T>(t),
-                                 std::forward<void *>(args)...);
-        }
-        catch (std::exception e)
-        {
-
-        }
+        std::function<decltype(t(args...))()>
+            work = std::bind(std::forward<T>(t),
+                             std::forward<void *>(args)...);
 
         //! Store the function first in a packaged_task to allow asynchronous execution
         //! Store it in a shared pointer for copying
