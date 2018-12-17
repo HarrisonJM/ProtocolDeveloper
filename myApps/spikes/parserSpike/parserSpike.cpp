@@ -7,8 +7,8 @@
  * http://www.bayfronttechnologies.com/mc_tutorial.html
  */
 
-#include <rapidxml-1.13/rapidxml.hpp>
-#include <rapidxml-1.13/rapidxml_utils.hpp>
+#include <rapidxml/rapidxml.hpp>
+#include <rapidxml/rapidxml_utils.hpp>
 
 #include <iostream>
 #include <fstream>

@@ -40,7 +40,7 @@ private:
     //! @brief Stores all of the interpreters mapped by their variable names
     std::map<std::string, std::unique_ptr<variable>> _variables;
     //! @breif Stores any operations that need to be taken on this dataPoint
-    std::map<std::string, operation> _operations;
+    std::map<std::string, std::unique_ptr<operation>> _operations;
 };
 
 }

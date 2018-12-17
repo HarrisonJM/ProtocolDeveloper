@@ -79,13 +79,8 @@ void TestCaseCompiler::_HandleDataPoint()
 
     _handleDataPointPatternData();
 
-    try
-    {
-        _handleSiblings(dataPoint);
-    } catch ( testCaseException e ) {
-        //! @todo Handle me
-        // Bad type! No Type!
-    }
+    _handleSiblings(dataPoint);
+
 }
 
 /*!
@@ -109,7 +104,7 @@ void TestCaseCompiler::_HandleVariable()
     }
 
     auto newVar = std::make_unique<variable>(variable(name, value, action));
-    _emitter.AccessDataPoint(_emitter.getNumberOfDataPoints()-1).RegisterVariable(std::move(newVar));
+    _emitter.AccessDataPoint(_emitter.getNumberOfDataPoints()-1)->RegisterVariable(std::move(newVar));
 }
 
 void TestCaseCompiler::_HandleOperation()
@@ -142,7 +137,7 @@ void TestCaseCompiler::_HandleOperation()
                                          value);
 
     auto newOp = std::make_unique<operation>(operation(name, value, storedIn));
-    _emitter.AccessDataPoint(_emitter.getNumberOfDataPoints()-1).RegisterOperation(std::move(newOp));
+    _emitter.AccessDataPoint(_emitter.getNumberOfDataPoints()-1)->RegisterOperation(std::move(newOp));
 }
 
 void TestCaseCompiler::_HandleConfig()
@@ -216,7 +211,7 @@ void TestCaseCompiler::_handleDataPointPatternData()
 {
     std::string data;
     _parser.GetEntryData(data);
-    _emitter.AccessDataPoint(_emitter.getNumberOfDataPoints()-1).setPattern(data);
+    _emitter.AccessDataPoint(_emitter.getNumberOfDataPoints()-1)->setPattern(data);
 }
 
 void TestCaseCompiler::_HandleRate()

@@ -8,9 +8,9 @@
 
 #include <string>
 #include <stack>
-#include <rapidxml-1.13/rapidxml.hpp>
+#include <rapidxml/rapidxml.hpp>
+
 #include "variable.h"
-#include "rapidxml-1.13/rapidxml.hpp"
 #include "string"
 
 #ifndef PROTOCOLDEVELOPER_TESTCASEPARSER_H

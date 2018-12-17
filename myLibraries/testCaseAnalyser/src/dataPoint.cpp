@@ -20,16 +20,14 @@ namespace testCaseHandler
  * @brief Constructor
  */
 DataPoint::DataPoint()
-: _patternSet(false)
+    : _patternSet(false)
 {
-
 }
 /*!
  * @brief Destructor
  */
 DataPoint::~DataPoint()
 {
-
 }
 /*!
  * @brief Registers a new Variable for use in the dataPoint
@@ -61,8 +59,7 @@ std::string DataPoint::GetPattern()
  */
 void DataPoint::setPattern(std::string pattern_in)
 {
-    if(!_patternSet)
-        _pattern=pattern_in;
+    if (!_patternSet)
+        _pattern = pattern_in;
 }
-
 } /* CHANGEME */
