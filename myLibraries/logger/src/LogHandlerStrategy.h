@@ -62,7 +62,6 @@ private:
     class stdoutStream : public std::ostream
     {
     public:
-
         template<class T>
         stdoutStream& operator<<(const T& obj)
         {

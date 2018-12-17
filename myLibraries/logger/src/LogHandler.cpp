@@ -19,34 +19,36 @@
 #include "LogHandlerStrategy.h"
 #include "loggerExceptions.h"
 
-namespace LoggerClasses {
+namespace LoggerClasses
+{
 /*!
  * @brief Constructor
  * @param maxLogs The maxmimum number of logs we can have open at once
  * @param path The Directory to store logs in (will be prepended to log file names
  * @param threadHandler A pointer to a pre-setup threadpool
  */
-LogHandler::LogHandler(int maxLogs,
-                       std::string path)
-    : _openLogs()
-      , _nameToID()
-      , _maxLogs(maxLogs)
-      , _numberOfOpenLogs(0)
-      , _pathPrefix(std::move(path))
-      , _logIDIndex(0)
-      , _condVar()
-      , _condMut()
-      , _killHandler(false)
-      , _flushComplete(false)
+LogHandler::LogHandler(int maxLogs
+                       , std::string path)
+    :
+    _ilo_p(std::make_unique<LogHandlerStrategy>(LogHandlerStrategy()))
+    , _openLogs()
+    , _nameToID()
+    , _maxLogs(maxLogs)
+    , _numberOfOpenLogs(0)
+    , _pathPrefix(std::move(path))
+    , _logIDIndex(0)
+    , _condVar()
+    , _condMut()
+    , _killHandler(false)
+    , _flushComplete(false)
 {
-    ilo_p = new LogHandlerStrategy;
 }
 
-LogHandler::LogHandler(int maxLogs,
-                       std::string path,
-                       I_LogStrategy *ilo)
+LogHandler::LogHandler(int maxLogs
+                       , std::string path
+                       , I_LogStrategy* ilo)
     :
-    ilo_p(ilo)
+    _ilo_p(std::move(ilo))
     , _openLogs()
     , _nameToID()
     , _maxLogs(maxLogs)
@@ -65,7 +67,7 @@ LogHandler::LogHandler(int maxLogs,
 LogHandler::~LogHandler()
 {
     _killHandler = true;
-    while(!_flushComplete);
+    while (!_flushComplete);
 
     CloseAllLogs();
 }
@@ -74,8 +76,8 @@ LogHandler::~LogHandler()
  * @param logName The name of the new log
  * @return The ID of the newly created log
  */
-int64_t LogHandler::OpenNewLog(std::string logName,
-                               StrategyEnums strategy = StrategyEnums::STDOUT)
+int64_t LogHandler::OpenNewLog(std::string logName
+                               , StrategyEnums strategy = StrategyEnums::STDOUT)
 {
     return OpenNewLog(logName,
                       "",
@@ -87,21 +89,21 @@ int64_t LogHandler::OpenNewLog(std::string logName,
  * @param EIS Extra information to be written to the log
  * @return The ID of the newly created log, -1 on error
  */
-int64_t LogHandler::OpenNewLog(std::string logName,
-                               std::string EIS,
-                               StrategyEnums strategy = StrategyEnums::FSTREAM)
+int64_t LogHandler::OpenNewLog(std::string logName
+                               , std::string EIS
+                               , StrategyEnums strategy = StrategyEnums::FSTREAM)
 {
-    if(_numberOfOpenLogs > _maxLogs)
+    if (_numberOfOpenLogs > _maxLogs)
         return -1;
 
     LogHandlerStrategy strategySelector;
     auto newOSTream_p = strategySelector.returnOstream(strategy,
                                                        (_pathPrefix + "/" + logName));
 
-    LogFile *newLog = new LogFile(logName,
-                                  EIS,
-                                  std::move(newOSTream_p),
-                                  _condVar);
+    auto newLog = std::make_shared<LogFile>(logName,
+                                            EIS,
+                                            std::move(newOSTream_p),
+                                            _condVar);
 
     _openLogs[_logIDIndex] = newLog;
     _nameToID[logName] = _logIDIndex;
@@ -119,14 +121,11 @@ void LogHandler::CloseLog(int64_t logID)
 {
     // Search for ID/logname pair
     auto it = _nameToID.begin();
-    for(; it != _nameToID.end(); ++it)
-        if(it->second == logID)
+    for (; it != _nameToID.end(); ++it)
+        if (it->second == logID)
             break;
     // Erase that entry
     _nameToID.erase(it);
-
-    // Delete the log itself
-    delete _openLogs[logID];
 }
 /*!
  * @brief Close a log based on its name
@@ -141,7 +140,7 @@ void LogHandler::CloseLog(std::string logName)
  */
 void LogHandler::CloseAllLogs()
 {
-    for(auto logID : _nameToID)
+    for (auto logID : _nameToID)
         CloseLog(logID.second);
 }
 /*!
@@ -150,24 +149,22 @@ void LogHandler::CloseAllLogs()
  * @param message The message
  * @param lvl The level of the log as an enum
  */
-void LogHandler::AddMessageToLog(const int64_t logID,
-                                 const std::string message,
-                                 const logLevel lvl) const
+void LogHandler::AddMessageToLog(const int64_t logID
+                                 , const std::string message
+                                 , const logLevel lvl) const
 {
     try
     {
         GetLogFileID(logID)->AddLogMessage(message,
                                            lvl);
     }
-    catch(log_logIDMinusOne)
+    catch (log_logIDMinusOne &e)
     {
-
     }
-    catch(std::exception &e)
+    catch (std::exception &e)
     {
         throw log_mapOutOfBounds();
     }
-
 }
 /*!
  * @brief Adds a log message to an open log based on its name
@@ -175,16 +172,16 @@ void LogHandler::AddMessageToLog(const int64_t logID,
  * @param message The message
  * @param lvl The level of the lgo as an enum
  */
-void LogHandler::AddMessageToLog(const std::string logName,
-                                 const std::string message,
-                                 const logLevel lvl) const
+void LogHandler::AddMessageToLog(const std::string logName
+                                 , const std::string message
+                                 , const logLevel lvl) const
 {
     try
     {
         GetLogFileName(logName)->AddLogMessage(message,
                                                lvl);
     }
-    catch(loggerException &e)
+    catch (loggerException &e)
     {
         std::cerr << "Logger exception: " << e.what() << std::endl;
     }
@@ -202,7 +199,7 @@ std::shared_ptr<I_LogFile> LogHandler::GetLogFileID(int64_t logID) const
     {
         logFile_shr = _openLogs.at(logID);
     }
-    catch(std::exception &e)
+    catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
@@ -222,7 +219,7 @@ std::shared_ptr<I_LogFile> LogHandler::GetLogFileName(std::string logName) const
     {
         logFile_shr = _openLogs.at(_nameToID.at(logName));
     }
-    catch(std::exception &e)
+    catch (std::exception &e)
     {
         //! @todo personalised exceptions
         std::cout << e.what() << std::endl;
@@ -242,13 +239,11 @@ void LogHandler::FlushMessagesToStreams()
         std::unique_lock<std::mutex> locker(_condMut);
         _condVar.wait(locker);
 
-        for(auto lf : _openLogs)
+        for (auto lf : _openLogs)
             lf.second->WriteAllMessagesToStream();
+    } while (!_killHandler);
 
-    } while(!_killHandler);
-
-
-    for(auto lf : _openLogs)
+    for (auto lf : _openLogs)
         lf.second->WriteAllMessagesToStream();
 
     _flushComplete = true;
@@ -260,5 +255,4 @@ void LogHandler::KillHandler()
 {
     _killHandler = true;
 }
-
 } /* namespace LoggerClasses */

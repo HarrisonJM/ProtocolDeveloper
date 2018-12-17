@@ -15,16 +15,17 @@
 #include "utilityFunctions.h"
 #include "LogFile.h"
 
-namespace LoggerClasses {
+namespace LoggerClasses
+{
 /*!
  * @brief constructor
  * @param logName The full name of the log file
  * @param EIS  The extra information string
  */
-LogFile::LogFile(std::string logName,
-                 std::string EIS,
-                 std::unique_ptr<std::ostream> outFile,
-                 std::condition_variable &CV)
+LogFile::LogFile(std::string logName
+                 , std::string EIS
+                 , std::unique_ptr<std::ostream> outFile
+                 , std::condition_variable &CV)
     : _logOutStream(std::move(outFile))
       , _logName(std::move(logName))
       , _extraInformationString(std::move(EIS))
@@ -47,7 +48,7 @@ LogFile::LogFile(std::string logName,
  */
 LogFile::~LogFile()
 {
-    while(!_messagesToWrite.empty());
+    while (!_messagesToWrite.empty());
 }
 /*!
  * @brief Adds a log message to the message queue
@@ -55,11 +56,11 @@ LogFile::~LogFile()
  * @param lvl The log level
  * @return Whether the message was successfully added to the queue
  */
-void LogFile::AddLogMessage(std::string message,
-                            logLevel lvl)
+void LogFile::AddLogMessage(std::string message
+                            , logLevel lvl)
 {
     std::string fullMessage = (_GenerateLogMessage(message,
-                                                  lvl));
+                                                   lvl));
     // Notify the handler that there are now pending messages
     _condVar.notify_all();
     _messagesToWrite.push(fullMessage);
@@ -78,7 +79,7 @@ std::string LogFile::ReturnOldestMessage()
  */
 void LogFile::WriteAllMessagesToStream()
 {
-    while(!_messagesToWrite.empty())
+    while (!_messagesToWrite.empty())
     {
         std::string message;
         _messagesToWrite.pop_front(message);
@@ -99,14 +100,15 @@ std::string LogFile::ReturnLatestMessage()
 void LogFile::_GenerateHeader()
 {
     std::string header;
-    header += (addXLetter(60, '*') + '\n');
+    header += (addXLetter(60,
+                          '*') + '\n');
     header += ("Log file:          " + _logName + '\n');
     header += (std::string("Date:              ") + "DATE REPLACE" + '\n');
     header += ("Extra Information: ");
 
     std::string EIStemp = _extraInformationString;
     std::string EIS = extractEIS(EIStemp);
-    while(!EIS.empty())
+    while (!EIS.empty())
     {
         header += (EIS + '\n');
         header += (addXLetter(15,
@@ -115,9 +117,13 @@ void LogFile::_GenerateHeader()
     }
 
     header += '\n';
-    header += (addXLetter(60, '*') + '\n');
-    header += (addXLetter(21, '*') + " LOG STARTS BELOW " + addXLetter(21, '*') + '\n');
-    header += (addXLetter(60, '*') + '\n');
+    header += (addXLetter(60,
+                          '*') + '\n');
+    header += (addXLetter(21,
+                          '*') + " LOG STARTS BELOW " + addXLetter(21,
+                                                                   '*') + '\n');
+    header += (addXLetter(60,
+                          '*') + '\n');
     header += ('\n');
 
     _messagesToWrite.push(header);
@@ -127,8 +133,8 @@ void LogFile::_GenerateHeader()
  * @param message The message we want to add
  * @todo date/time class
  */
-std::string LogFile::_GenerateLogMessage(std::string message,
-                                         logLevel lvl)
+std::string LogFile::_GenerateLogMessage(std::string message
+                                         , logLevel lvl)
 {
     std::string fullMessage;
     fullMessage += "[";
@@ -154,12 +160,13 @@ std::string LogFile::extractEIS(std::string &EISref)
     std::string token;
     std::string returnVal;
 
-    if(getline(sscheck,
-               token,
-               ','))
+    if (getline(sscheck,
+                token,
+                ','))
         returnVal = token;
 
-    EISref.erase(EISref.find(returnVal), returnVal.size()+1);
+    EISref.erase(EISref.find(returnVal),
+                 returnVal.size() + 1);
 
     return returnVal;
 }

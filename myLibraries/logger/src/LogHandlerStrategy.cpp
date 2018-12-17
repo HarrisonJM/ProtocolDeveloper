@@ -11,7 +11,8 @@
 
 #include "LogHandlerStrategy.h"
 
-namespace LoggerClasses {
+namespace LoggerClasses
+{
 
 /*!
  * @brief selects the strategy by which a ostream will be made concrete
@@ -19,11 +20,11 @@ namespace LoggerClasses {
  * @param fileName The name of the file we wish to open
  * @return A pointer to a concrete ostream
  */
-std::unique_ptr<std::ostream> LogHandlerStrategy::returnOstream(StrategyEnums strat,
-                                                                std::string fileName) const
+std::unique_ptr<std::ostream> LogHandlerStrategy::returnOstream(StrategyEnums strat
+                                                                , std::string fileName) const
 {
     std::unique_ptr<std::ostream> newOSTream;
-    switch(strat)
+    switch (strat)
     {
         case StrategyEnums::FSTREAM:
             newOSTream = setupFstream(fileName);

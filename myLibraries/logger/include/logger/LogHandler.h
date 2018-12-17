@@ -23,28 +23,30 @@
 #include "I_LogStrategy.h"
 #include "threadPool/ThreadPool.h"
 
-namespace LoggerClasses {
+namespace LoggerClasses
+{
 
-class LogHandler : public I_LogHandler
+class LogHandler
+    : public I_LogHandler
 {
 public:
     //! Constructor
-    LogHandler(int maxLogs,
-               std::string path);
+    LogHandler(int maxLogs
+               , std::string path);
     //! Constructor, testing
-    LogHandler(int maxLogs,
-               std::string path,
-               I_LogStrategy* ilo);
+    LogHandler(int maxLogs
+               , std::string path
+               , I_LogStrategy* ilo);
     //! Destructor
     ~LogHandler() override;
 
     //! Opens a new log file, returns the ID of the newly opened log, no EIS
-    int64_t OpenNewLog(std::string logName,
-                       StrategyEnums strategy) override;
+    int64_t OpenNewLog(std::string logName
+                       , StrategyEnums strategy) override;
     //! Opens a new log file, returns the ID of the newly opened log
-    int64_t OpenNewLog(std::string logName,
-                       std::string EIS,
-                       StrategyEnums strategy) override;
+    int64_t OpenNewLog(std::string logName
+                       , std::string EIS
+                       , StrategyEnums strategy) override;
     //! Closes a log file, based on the logs ID
     void CloseLog(int64_t logID) override;
     //! Closes a log file
@@ -53,13 +55,13 @@ public:
     void CloseAllLogs() override;
 
     //! Adds a message to a log using the log ID
-    void AddMessageToLog(const int64_t logID,
-                         const std::string message,
-                         const logLevel lvl) const override;
+    void AddMessageToLog(const int64_t logID
+                         , const std::string message
+                         , const logLevel lvl) const override;
     //! Adds a message to a log using the logs file name
-    void AddMessageToLog(const std::string logName,
-                         const std::string message,
-                         const logLevel lvl) const override;
+    void AddMessageToLog(const std::string logName
+                         , const std::string message
+                         , const logLevel lvl) const override;
     //! Returns an entire, specific, log based on its ID
     std::shared_ptr<I_LogFile> GetLogFileID(int64_t logID) const override;
     //! Returns an entire, specific, log based on its name
@@ -71,7 +73,7 @@ public:
 
 private:
     //! The strategy Handler
-    I_LogStrategy* ilo_p;
+    const std::shared_ptr<I_LogStrategy> _ilo_p;
     //! Will hold all open logs, referenced by an ID
     std::map<int64_t, std::shared_ptr<I_LogFile>> _openLogs;
     //! Maps the log name to a specific ID

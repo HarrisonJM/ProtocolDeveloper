@@ -22,18 +22,20 @@
 #include "safeQueues/SafeQueue.h"
 #include "enumHandler/enumHandler.h"
 
-namespace LoggerClasses {
-class LogFile : public I_LogFile
+namespace LoggerClasses
+{
+class LogFile
+    : public I_LogFile
 {
 public:
-    LogFile(std::string logName,
-            std::string EIS,
-            std::unique_ptr<std::ostream> outFile,
-            std::condition_variable &CV);
+    LogFile(std::string logName
+            , std::string EIS
+            , std::unique_ptr<std::ostream> outFile
+            , std::condition_variable &CV);
     ~LogFile() override;
     //! Add a log message
-    void AddLogMessage(std::string message,
-                       logLevel lvl) override;
+    void AddLogMessage(std::string message
+                       , logLevel lvl) override;
     //! Returns the oldest message to be written
     std::string ReturnOldestMessage() override;
     //! Writes The oldest message from the queue to the provided stream
@@ -59,10 +61,9 @@ private:
     //! Extracts data from the EIS String
     std::string extractEIS(std::string &EISref);
     //! Generates a log message (adds timestamp, level, etc)
-    std::string _GenerateLogMessage(std::string message,
-                                    logLevel lvl);
+    std::string _GenerateLogMessage(std::string message
+                                    , logLevel lvl);
 };
-
 } /* namespace LoggerClass */
 
 #endif //PROTOCOLDEVELOPER_LOGGER_H

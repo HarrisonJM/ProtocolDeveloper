@@ -47,9 +47,7 @@ TEST_F(LogHandlerTests,
     EXPECT_NE(logID,
               -1);
 
-    I_LogFile *log = lh->GetLogFileID(logID);
-
-//    std::thread t(&LogHandler::FlushMessagesToStreams, lh);
+    auto log = lh->GetLogFileID(logID);
 
     lh->AddMessageToLog(logID,
                         "TEST MESSAGE",
@@ -64,7 +62,6 @@ TEST_F(LogHandlerTests,
     std::cout << "BLAH: " << out << std::endl;
 
     lh->KillHandler();
-//    t.join();
 }
 
 } /* namespace LoggerClasses */
