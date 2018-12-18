@@ -1,0 +1,3 @@
+[submodule "otherLibraries/grpc"]
+	path = otherLibraries/grpc
+	url = https://github.com/grpc/grpc.git

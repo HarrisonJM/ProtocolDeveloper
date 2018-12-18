@@ -1,8 +1,9 @@
 # Define library. Only source files here!
-project(timeKeeping VERSION 0.1 LANGUAGES CXX)
-set(LIB_NAME "timeKeeping")
+project(timeTicker VERSION 0.1 LANGUAGES CXX)
+set(LIB_NAME "timeTicker")
+
 add_library(${LIB_NAME}
-        src/TimeGeneration.cpp
+        src/timeTicker.cpp
         )
 
 # Define headers for this library. PUBLIC headers are used for
@@ -42,11 +43,11 @@ install(EXPORT      ${LIB_NAME}Config
 export( TARGETS      ${LIB_NAME}
         FILE         ${LIB_NAME}Config.cmake)
 
-add_executable(testTimeKeeping
-        tests/timeKeeping_Tests.cpp)
-target_link_libraries(testTimeKeeping
-        timeKeeping
+add_executable(testTimeTicker
+        tests/${LIB_NAME}Tests.cpp)
+target_link_libraries(testTimeTicker
+        ${LIB_NAME}
         gtest_main
         gtest)
 
-add_test(testTimeKeeping testTimeKeeping)
+add_test(testTimeTicker testTimeTicker)

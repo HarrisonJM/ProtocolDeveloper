@@ -12,8 +12,8 @@
 #include <regex.h>
 #include <errno.h>
 
-#include <genTime.h>
-#include <genTimePrivate.h>
+#include "genTime.h"
+#include "genTimePrivate.h"
 
 #include "testsuite/TestSuite.h"
 
@@ -112,7 +112,7 @@ int genPrintGMTOffset(const struct tm *theTimeTM_p,
   return numPrinted;
 }
 
-/*
+/*!
  * \brief Returns a String containing a timestamp for the current time.
  *
  * The timestamp is in the format YYYY-MM-DD HH:MM:SS.FFFFFF[(+|-HHMM)|Z], where:
@@ -145,7 +145,7 @@ const char *genTimestamp()
                              lastTime, lastHour);
 }
 
-/*
+/*!
  * \brief Returns a String containing a timestamp for the current time.
  *
  * The timestamp is in the format YYYY-MM-DD HH:MM:SS.FFF[(+|-HHMM)|Z], where:
