@@ -3,8 +3,7 @@ project(timeTicker VERSION 0.1 LANGUAGES CXX)
 set(LIB_NAME "timeTicker")
 
 add_library(${LIB_NAME}
-        src/timeTicker.cpp
-        )
+        src/gMTHandler.cpp src/gMTHandler.h include/timeTicker/timeTickerCommon.h src/timeSpec.cpp src/timeSpec.h src/timeVal.cpp src/timeVal.h src/xMLTime.cpp src/xMLTime.h src/wallClock.cpp src/wallClock.h src/timeTrackerFactory.cpp include/timeTicker/timeTrackerFactory.h src/timeTicker.cpp)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -44,7 +43,7 @@ export( TARGETS      ${LIB_NAME}
         FILE         ${LIB_NAME}Config.cmake)
 
 add_executable(testTimeTicker
-        tests/${LIB_NAME}Tests.cpp)
+        tests/${LIB_NAME}Tests.cpp include/I_TimeTickerFactory.h include/I_gMTHandler.h)
 target_link_libraries(testTimeTicker
         ${LIB_NAME}
         gtest_main

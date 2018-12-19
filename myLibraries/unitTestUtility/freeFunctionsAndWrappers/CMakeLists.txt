@@ -5,7 +5,7 @@ set(LIB_NAME "freeFunctionsAndWrappers")
 add_library(${LIB_NAME}
         src/cNetComm.cpp
         src/cStdLib.cpp
-        )
+        src/cStdio.cpp)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -26,23 +26,23 @@ target_link_libraries(${LIB_NAME}
         ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
-install(TARGETS     ${LIB_NAME}
-        EXPORT      ${LIB_NAME}Config
-        ARCHIVE     DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        LIBRARY     DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS ${LIB_NAME}
+        EXPORT ${LIB_NAME}Config
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-install(DIRECTORY   include/
+install(DIRECTORY include/
         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 # This makes the project importable from the install directory
 # Put config file in per-project dir (name MUST match), can also
 # just go into 'cmake'.
-install(EXPORT      ${LIB_NAME}Config
+install(EXPORT ${LIB_NAME}Config
         DESTINATION share/MyLibraries/cmake)
 
 # This makes the project importable from the build directory
-export( TARGETS      ${LIB_NAME}
-        FILE         ${LIB_NAME}Config.cmake)
+export(TARGETS ${LIB_NAME}
+        FILE ${LIB_NAME}Config.cmake)
 
 add_executable(testFreeFunctionsAndWrappers
         tests/freeFunctionsAndWrappers_Tests.cpp)

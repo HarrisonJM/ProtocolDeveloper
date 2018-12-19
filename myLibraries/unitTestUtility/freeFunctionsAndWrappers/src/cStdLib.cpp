@@ -17,4 +17,14 @@ void *cStdLib::cMalloc(size_t __size)
     return malloc(__size);
 }
 
+int abs(int j)
+{
+    return std::abs(j);
+}
+
+ldiv_t ldiv(long numerator, long denominator)
+{
+    return std::ldiv(numerator, denominator);
+}
+
 }
