@@ -12,6 +12,8 @@
 #ifndef PROTOCOLDEVELOPER_WALLCLOCK_H
 #define PROTOCOLDEVELOPER_WALLCLOCK_H
 
+#include <ctime>
+
 namespace TimeTicker
 {
 
@@ -20,9 +22,9 @@ class WallClock
 public:
     WallClock();
     ~WallClock();
+    const char* getTimeToString(time_t theTime);
 private:
 };
-
 } /* TimeTicker */
 
 #endif /*PROTOCOLDEVELOPER_WALLCLOCK_H*/

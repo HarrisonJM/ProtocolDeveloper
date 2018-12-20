@@ -38,7 +38,6 @@ private:
     /* Wrappers for C functions */
     std::unique_ptr<cFunctions::I_cStdLib> _stdlibModule;
     std::unique_ptr<cFunctions::I_cStdio> _stdioModule;
-    // cstdio wrapper
 };
 
 } /* TimeTicker */

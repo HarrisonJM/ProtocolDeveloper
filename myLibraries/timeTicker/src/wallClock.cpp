@@ -14,7 +14,7 @@
 namespace TimeTicker
 {
 
-wallClock::WallClock()
+WallClock::WallClock()
 {
 }
 

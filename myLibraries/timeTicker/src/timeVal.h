@@ -38,7 +38,7 @@ private:
     timeval_t _lastTime;
     int _lastHour;
 
-    I_gMTHandler gmtHandler();
+//    cFunctions::I_gMTHandler gmtHandler();
 
     const char* _genTimevalToString(const timeval_t* tv
                                         , size_t numDecimalDigits);
