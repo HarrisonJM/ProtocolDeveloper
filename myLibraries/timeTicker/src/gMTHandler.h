@@ -13,11 +13,13 @@
 #define PROTOCOLDEVELOPER_GMTHANDLER_H
 
 #include <ctime>
-#include <I_gMTHandler.h>
-#include "timeTicker/timeTickerCommon.h"
-#include "../../unitTestUtility/freeFunctionsAndWrappers/include/I_cStdLib.h"
-#include "../../unitTestUtility/freeFunctionsAndWrappers/include/I_cStdio.h"
 #include <memory>
+
+#include <freeFunctionsAndWrappers/cStdLib.h>
+#include <freeFunctionsAndWrappers/cStdio.h>
+#include <timeTicker/timeTickerCommon.h>
+
+#include <I_gMTHandler.h>
 
 namespace TimeTicker
 {
@@ -25,14 +27,15 @@ namespace TimeTicker
 class GMTHandler : public I_gMTHandler
 {
 public:
-    GMTHandler(std::unique_ptr<cFunctions::I_cStdLib> stdlibModule
-                   , std::unique_ptr<cFunctions::I_cStdio> stdioModule);
+    GMTHandler();
+    GMTHandler(std::unique_ptr<cFunctions::cStdLib> stdlibModule
+                   , std::unique_ptr<cFunctions::cStdio> stdioModule);
     ~GMTHandler() = default;
     int PrintGMTOffset(const struct tm* theTimeTM_p
                        , char* buffer_p
-                       , size_t length) override;
-    int GetGMTOffset(const struct tm* tm_p
-                     , TTGMTOffset_t* offset_p) override;
+                       , size_t length) const override;
+    TTRetCode_E GetGMTOffset(const struct tm* tm_p
+                             , TTGMTOffset_t* offset_p) const override ;
 private:
 
     /* Wrappers for C functions */

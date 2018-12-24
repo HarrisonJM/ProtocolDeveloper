@@ -12,10 +12,10 @@
 
 #include "timeTicker/timeTrackerFactory.h"
 
-namespace CHANGEME
+namespace TimeTicker
 {
 
-TimeTrackerFactory::TimeTrackerFactory()
+TimeTickerFactory::TimeTickerFactory()
 {
 }
 } /* namespace CHANGEME */

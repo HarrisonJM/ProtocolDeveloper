@@ -21,9 +21,9 @@ public:
     ~I_gMTHandler() = default;
     virtual int PrintGMTOffset(const struct tm* theTimeTM_p
                                , char* buffer_p
-                               , size_t length) = 0;
-    virtual int GetGMTOffset(const struct tm* tm_p
-                             , TTGMTOffset_t* offset_p) = 0;
+                               , size_t length) const = 0;
+    virtual TTRetCode_E GetGMTOffset(const struct tm* tm_p
+                                     , TTGMTOffset_t* offset_p) const = 0;
 private:
 };
 } /* namespace TimeTicker */

@@ -24,6 +24,7 @@ public:
     virtual const char* getTimeStampMicro() = 0;
     virtual const char* getTimestampMilli() = 0;
     virtual const char* getStringMicro(const struct timeval* tv) = 0;
+
 private:
 };
 

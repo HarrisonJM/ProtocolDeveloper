@@ -11,6 +11,8 @@
 #ifndef PROTOCOLDEVELOPER_TIMETICKERDEFINITIONS_H
 #define PROTOCOLDEVELOPER_TIMETICKERDEFINITIONS_H
 
+#include <cstdint>
+
 //! Number of seconds in one minute
 #define TT_SECS_PER_MIN     60
 

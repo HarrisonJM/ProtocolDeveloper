@@ -31,18 +31,9 @@ public:
     ~TimeTicker() = default;
     const char* getTimeStampMicro() override;
     const char* getTimestampMilli() override;
-
     const char* getStringMicro(const struct timeval* tv) override;
 
 private:
-    /* Used for caching between uses */
-    char _timeStampBuffer[TT_TIMEVAL_STR_SIZE];
-    timeval_t _lastTime;
-    int _lastHour;
-
-    /* Interfaces for mocking */
-//    cFunctions::I_ctime *cTimeImplementation;
-//    I_gMTHandler* gMTHandler;
 
 };
 

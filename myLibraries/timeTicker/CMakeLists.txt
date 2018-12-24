@@ -3,7 +3,7 @@ project(timeTicker VERSION 0.1 LANGUAGES CXX)
 set(LIB_NAME "timeTicker")
 
 add_library(${LIB_NAME}
-        src/gMTHandler.cpp src/gMTHandler.h include/timeTicker/timeTickerCommon.h src/timeSpec.cpp src/timeSpec.h src/timeVal.cpp src/timeVal.h src/xMLTime.cpp src/xMLTime.h src/wallClock.cpp src/wallClock.h src/timeTrackerFactory.cpp include/timeTicker/timeTrackerFactory.h src/timeTicker.cpp)
+        src/gMTHandler.cpp src/gMTHandler.h include/timeTicker/timeTickerCommon.h src/timeSpec.cpp src/timeSpec.h src/timeVal.cpp include/timeTicker/timeVal.h src/xMLTime.cpp src/xMLTime.h src/wallClock.cpp src/wallClock.h src/timeTrackerFactory.cpp include/timeTicker/timeTrackerFactory.h src/timeTicker.cpp)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -21,6 +21,7 @@ target_include_directories(${LIB_NAME} PUBLIC
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(${LIB_NAME}
+        freeFunctionsAndWrappers
         ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).

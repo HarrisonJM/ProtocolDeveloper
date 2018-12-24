@@ -15,10 +15,13 @@
 #include <climits>
 
 //! typedef for the each struct in time/h or sys/time.h
-typedef struct timeval timeval_t;
-typedef struct timespec timespec_t;
-typedef struct tm timeM_t;
+typedef struct timeval TT_timeval_t;
+typedef struct timespec TT_timespec_t;
+typedef struct tm TT_tm_t;
 
+/*!
+ * @brief Selects what type of clock we'd like to use (recasts clockid_t from time.h)
+ */
 typedef enum TTTimeClockId
     : short
 {
@@ -35,48 +38,17 @@ typedef enum TTTimeClockId
         TT_CLOCK_MONOTONIC = CLOCK_MONOTONIC,
 } TTTimeClockId_E;
 
-typedef enum TTRetCode
-    : short
-{
-    TT_RC_FAILURE,
-    TT_RC_SUCCESS
-} TTRetCode_E;
-
-typedef enum TTCronVars
-{
-    //! Indicates that this time component is the variable part
-        GENTIME_CRON_WILDCARD = (INT_MAX),
-
-    //! Indicates that this time component is not specified
-        GENTIME_CRON_NOT_SET = (INT_MAX - 1)
-} TTCronVars_E;
-
-typedef struct TTCron
-{
-    //! The number of seconds after the minute, 0 to 59.
-    int second;
-
-    //! The number of minutes after the hour, in the range 0 to 59.
-    int minute;
-
-    //! The number of hours past midnight, in the range 0 to 23.
-    int hour;
-
-    //! The number of days since Sunday, in the range 0 to 6.
-    int dayOfWeek;
-
-    //! The day of the month, in the range 1 to 31.
-    int dayOfMonth;
-
-    //! The number of months since January, in the range 0 to 11.
-    int month;
-
-    //! The number of years since 1900.
-    int year;
-} TTCron_t;
-
 /*!
- * \brief Structure to represent an offset from GMT.
+ * @brief Handles human readable return codes
+ */
+typedef enum TTRetCode
+    : bool
+{
+    TT_RC_FAILURE = false,
+    TT_RC_SUCCESS = true
+} TTRetCode_E;
+/*!
+ * @brief Structure to represent an offset from GMT.
  */
 typedef struct TTGMTOffset
 {
@@ -90,4 +62,4 @@ typedef struct TTGMTOffset
     int totalSeconds;
 } TTGMTOffset_t;
 
-#endif //PROTOCOLDEVELOPER_TIMETICKERCOMMON_H
+#endif /* PROTOCOLDEVELOPER_TIMETICKERCOMMON_H */

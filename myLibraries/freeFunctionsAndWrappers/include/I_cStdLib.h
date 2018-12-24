@@ -9,7 +9,7 @@
 #ifndef PROTOCOLDEVELOPER_I_CSTDLIB_H
 #define PROTOCOLDEVELOPER_I_CSTDLIB_H
 
-#include <stdlib.h>
+#include <cstdlib>
 
 namespace cFunctions
 {

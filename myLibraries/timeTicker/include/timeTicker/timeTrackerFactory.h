@@ -17,6 +17,18 @@
 
 namespace TimeTicker
 {
+/*!
+ * @brief Selects the type of timer one would like
+ * @{
+ */
+typedef enum TimePrec
+    : short
+{
+    SECONDS, //! < Uses
+    MICRO,
+    NANO
+} TimePrec_E;
+/*!@}*/
 
 class TimeTickerFactory
 {
@@ -28,7 +40,7 @@ public:
     auto GetTimeTicker(T &&t
                        , Args &&... args) -> decltype(t(args...))
     {
-
+        return '1';
     }
 
 private:

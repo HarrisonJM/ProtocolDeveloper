@@ -28,7 +28,7 @@ char* XMLTime::getXMLTimestamp(time_t t
     static char dateStamp[TT_XML_TS_DATE_LEN + 1] = {0};
     static char timeStamp[TT_XML_TS_TIME_LEN + 1] = {0};
 
-    timeM_t* timeInfo;
+    TT_tm_t* timeInfo;
     size_t len;
     char* ret = nullptr;
 

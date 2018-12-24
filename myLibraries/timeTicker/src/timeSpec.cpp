@@ -8,6 +8,7 @@
  * @date 18/12/18
  */
 
+#include "wallClock.h"
 #include <timeTicker/timeTickerCommon.h>
 #include <cstdint>
 #include "timeSpec.h"
@@ -20,12 +21,12 @@ TimeSpec::TimeSpec()
 {
 }
 
-int TimeSpec::getTimeSpecSubtract(const timespec_t* first_p
-                                   , const timespec_t* second_p
-                                   , timespec_t* result_p)
+int TimeSpec::TimeSubtract(const TT_timespec_t* first_p
+                           , const TT_timespec_t* second_p
+                           , TT_timespec_t* result_p)
 {
-    timespec_t localFirst = {0};
-    timespec_t localSecond = {0};
+    TT_timespec_t localFirst = {0};
+    TT_timespec_t localSecond = {0};
     const long int NUM_NANO_SECS = 1000000000;
 
     // Copy first_p and second_p
@@ -54,9 +55,9 @@ int TimeSpec::getTimeSpecSubtract(const timespec_t* first_p
     /* Return 1 if result is negative. */
     return localFirst.tv_sec < localSecond.tv_sec;
 }
-void TimeSpec::getTimeSpecAdd(const timespec_t* first_p
-                              , const timespec_t* second_p
-                              , timespec_t* result_p)
+void TimeSpec::TimeAdd(const TT_timespec_t* first_p
+                       , const TT_timespec_t* second_p
+                       , TT_timespec_t* result_p)
 {
     result_p->tv_sec = first_p->tv_sec + second_p->tv_sec;
 
@@ -72,39 +73,39 @@ void TimeSpec::getTimeSpecAdd(const timespec_t* first_p
         result_p->tv_nsec = nanos;
     }
 }
-int64_t TimeSpec::getTimeSpecDiff(const timespec_t* timeA_p
-                                  , const timespec_t* timeB_p)
+int64_t TimeSpec::TimeDiff(const TT_timespec_t* timeA_p
+                           , const TT_timespec_t* timeB_p)
 {
     return ((timeA_p->tv_sec*1000000000) + timeA_p->tv_nsec) -
         ((timeB_p->tv_sec*1000000000) + timeB_p->tv_nsec);
 }
-int64_t TimeSpec::getTimeSpecDiffNS(const timespec_t* timeA_p
-                                    , const timespec_t* timeB_p)
+int64_t TimeSpec::TimeDiffNS(const TT_timespec_t* timeA_p
+                             , const TT_timespec_t* timeB_p)
 {
-    return  (TT_SECS_IN_NANOS(timeA_p->tv_sec) + timeA_p->tv_nsec) -
+    return (TT_SECS_IN_NANOS(timeA_p->tv_sec) + timeA_p->tv_nsec) -
         (TT_SECS_IN_NANOS(timeB_p->tv_sec) + timeB_p->tv_nsec);
 }
-int64_t TimeSpec::getTimeSpecDiffUS(const timespec_t* timeA_p
-                                    , const timespec_t* timeB_p)
+int64_t TimeSpec::TimeDiffUS(const TT_timespec_t* timeA_p
+                             , const TT_timespec_t* timeB_p)
 {
     return ((TT_SECS_IN_NANOS(timeA_p->tv_sec) + timeA_p->tv_nsec) -
         (TT_SECS_IN_NANOS(timeB_p->tv_sec) + timeB_p->tv_nsec))/
         TT_NANOS_PER_MICRO;
 }
-int64_t TimeSpec::getTimeSpecDiffMS(const timespec_t* timeA_p
-                                    , const timespec_t* timeB_p)
+int64_t TimeSpec::TimeDiffMS(const TT_timespec_t* timeA_p
+                             , const TT_timespec_t* timeB_p)
 {
     return (((timeA_p->tv_sec*TT_NANOS_PER_SEC) + timeA_p->tv_nsec) -
         ((timeB_p->tv_sec*TT_NANOS_PER_SEC) + timeB_p->tv_nsec))/
         TT_NANOS_PER_MILLI;
 }
-int64_t TimeSpec::getTimeSpecDiffS(const timespec_t* timeA_p
-                                   , const timespec_t* timeB_p)
+int64_t TimeSpec::TimeDiffS(const TT_timespec_t* timeA_p
+                            , const TT_timespec_t* timeB_p)
 {
-    int64_t timeA_NS =  TT_SECS_IN_NANOS(timeA_p->tv_sec) +
+    int64_t timeA_NS = TT_SECS_IN_NANOS(timeA_p->tv_sec) +
         ((int64_t) timeA_p->tv_nsec);
 
-    int64_t timeB_NS =  TT_SECS_IN_NANOS(timeB_p->tv_sec) +
+    int64_t timeB_NS = TT_SECS_IN_NANOS(timeB_p->tv_sec) +
         (static_cast<int64_t>(timeB_p->tv_nsec));
 
     int64_t diff_NS = (timeA_NS - timeB_NS);
@@ -112,5 +113,16 @@ int64_t TimeSpec::getTimeSpecDiffS(const timespec_t* timeA_p
 
     return diff_S;
 }
-
-} /* TimeSpec */
+/*!
+ * @brief Returns either the real time (0) Or monotonic time (1)
+ * @param clockId The I of the clock we'd like (As defined by TTTimeClockId)
+ * @param time_p The timespec struct we'd like to get the time for
+ * @return 0 for success,  otherwise -1
+ */
+int TimeSpec::getClockGetTime(TTTimeClockId clockId
+                              , TT_timespec_t* time_p)
+{
+    return clock_gettime(clockId
+                         , time_p);
+}
+} /* TimeTicker */
