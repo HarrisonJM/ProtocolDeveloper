@@ -41,7 +41,7 @@ namespace BasicHelloServer
      */
     ServerSetup::~ServerSetup()
     {
-        // clean up. Unbind from createSocket, etc
+        // clean up. Unbind from socket, etc
         if (_sockfd != -1)
             close(_sockfd);
     }

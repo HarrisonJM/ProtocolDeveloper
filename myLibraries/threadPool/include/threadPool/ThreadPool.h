@@ -27,7 +27,8 @@ namespace ThreadHandler
 /*!
  * @brief A Thread Pool Queue that handles information that needs to be passed back and forth
  */
-class ThreadPool: public I_ThreadPool
+class ThreadPool
+    : public I_ThreadPool
 {
 public:
     friend class WorkerThread;
@@ -58,13 +59,13 @@ public:
      * @param args The arguments to bind/pack into the function
      */
     template<typename T, typename ...Args>
-    auto AddTaskToQueue(T &&t,
-                        Args &&... args) -> std::future<decltype(t(args...))>
+    auto AddTaskToQueue(T &&t
+                        , Args &&... args) -> std::future<decltype(t(args...))>
     {
         //! Create a function that can be run
         std::function<decltype(t(args...))()>
-            work = std::bind(std::forward<T>(t),
-                             std::forward<void *>(args)...);
+            work = std::bind(std::forward<T>(t)
+                             , std::forward<void*>(args)...);
 
         //! Store the function first in a packaged_task to allow asynchronous execution
         //! Store it in a shared pointer for copying
@@ -104,7 +105,6 @@ private:
     //! @brief Lets us control what threads do directly
     std::condition_variable _cond_var;
 };
-
 } /* namespace ThreadHandler */
 
 #endif /* PROTOCOLDEVELOPER_TESTTHREADHANDLER_H */

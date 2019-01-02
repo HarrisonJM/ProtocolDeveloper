@@ -19,7 +19,7 @@ class cStdLib: public I_cStdLib
 {
 public:
     //! man 3 malloc
-    void *cMalloc(size_t __size) override;
+    void* malloc(size_t __size) override;
     //! man 3 abs
     int abs(int j) override;
     //! man 3 ldiv

@@ -1,10 +1,9 @@
 /*!
  * @brief Communication Interface
  *
- * Interface for providing Communication over different interfaces
+ * Interface for providing Communication between different targets
  *
- * Options will be defined by the user as some sort struct that can be easily cast
- * to and from the required data form. Payload will contain all required information.
+ * Payload will contain all required information.
  *
  * @addtogroup CommunicationHandler
  *
@@ -15,28 +14,63 @@
 #define PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
 
 #include <unistd.h>
-#include "I_cNetComm.h"
 #include <memory>
+
+#include "I_cNetComm.h"
+#include "I_plugin.h"
 
 namespace Communication
 {
+/*!
+ * @brief Defines the interface for listening
+ */
+class I_communication
+    : public PluginLoader::I_Plugin<Communication::I_communication>
+{
+public:
+    /*! Default Destructor */
+    ~I_communication() = default;
     /*!
-     * @brief Defines the interface for listening
+     * @brief Sends Data to the remote
+     * @param payLoad_p The payload we're sending
+     * @param size The size of the payload
+     * @return The number of bytes sent
      */
-    class I_communication
-    {
-    public:
-        //! Sends Data to the remote
-        virtual ssize_t SendData(void *payLoad_p, size_t size) = 0;
-        //! Recevies Data from the Remote
-        virtual ssize_t ReceiveData(void *payLoad_p, size_t size) = 0;
-        //! Establishes a Connection with the remote
-        virtual bool EstablishConnection() = 0;
-        //! Disconnects fromt the remote
-        virtual void Disconnect() = 0;
-        //! The Interface we want to connect over
-        virtual void setInterface(cFunctions::I_cNetComm* iOInterface) = 0;
-    };
+    virtual ssize_t SendData(void* payLoad_p
+                             , size_t size) = 0;
+    /*!
+     * @brief Recevies Data from the Remote
+     * @param payLoad_p Where to store the payload we're receiving
+     * @param size The size of the buffer
+     * @return The number of bytes sent written
+     */
+    virtual ssize_t ReceiveData(void* payLoad_p
+                                , size_t size) = 0;
+    /*!
+     * @brief Establishes a Connection with the remote
+     * @return True on success
+     */
+    virtual bool EstablishConnection() = 0;
+    /*!
+     * @brief Disconnects from the target
+     */
+    virtual void Disconnect() = 0;
+    /*!
+     * @brief Returns the plugins name
+     * @return The name of the plugin (as a const char*)
+     */
+    virtual const char* getPluginName() = 0;
+    /*!
+     * @brief Returns the version of the plugin
+     * @return The plugin version
+     */
+    virtual const char* getPluginVersion() = 0;
+    /*!
+     * @brief Returns the plugin _type_
+     * @return The the plugin is (as an enum)
+     */
+    virtual PluginLoader::PLUGINTYPE_t getPluginType() = 0;
+};
 }
 
-#endif //PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H
+#endif /* PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H */

@@ -21,10 +21,10 @@ namespace cFunctions
  * @param flags Additional information
  * @return The number of bytes sent, -1 on error
  */
-ssize_t cNetComm::sendPacket(int sockfd,
-                             const void *buf,
-                             size_t len,
-                             int flags)
+ssize_t cNetComm::send(int sockfd
+                       , const void* buf
+                       , size_t len
+                       , int flags)
 {
     return send(sockfd,
                 buf,
@@ -40,10 +40,10 @@ ssize_t cNetComm::sendPacket(int sockfd,
  * @param flags Additional information
  * @return The number of bytes sent, -1 on error
  */
-ssize_t cNetComm::recvPacket(int sockfd,
-                             void *buf,
-                             size_t len,
-                             int flags)
+ssize_t cNetComm::recv(int sockfd
+                       , void* buf
+                       , size_t len
+                       , int flags)
 {
     return recv(sockfd,
                 buf,
@@ -56,7 +56,7 @@ ssize_t cNetComm::recvPacket(int sockfd,
  * @param fd The File descriptor for the socket we wish to close
  * @return 0 on success, else -1
  */
-int cNetComm::closeConnection(int fd)
+int cNetComm::close(int fd)
 {
     return close(fd);
 }
@@ -69,10 +69,10 @@ int cNetComm::closeConnection(int fd)
  * @param res The resultant struct of addresses as a linked list
  * @return 0 on success, or a non-zero error code: getaddrinfo(3)
  */
-int cNetComm::getAddrInfo(const char *node,
-                          const char *service,
-                          const struct addrinfo *hints,
-                          struct addrinfo **res)
+int cNetComm::getaddrinfo(const char* node
+                          , const char* service
+                          , const struct addrinfo* hints
+                          , struct addrinfo** res)
 {
     return getaddrinfo(node,
                        service,
@@ -84,7 +84,7 @@ int cNetComm::getAddrInfo(const char *node,
  * @brief Wrapper for C function freeaddrinfo
  * @param res The linked list result we wish to free
  */
-void cNetComm::freeAddrInfo(struct addrinfo *res)
+void cNetComm::freeaddrinfo(struct addrinfo* res)
 {
     freeaddrinfo(res);
 }
@@ -96,9 +96,9 @@ void cNetComm::freeAddrInfo(struct addrinfo *res)
  * @param protocol ai_protocol
  * @return A new socket file descriptor for us to use to communicate
  */
-int cNetComm::createSocket(int domain,
-                           int type,
-                           int protocol)
+int cNetComm::socket(int domain
+                     , int type
+                     , int protocol)
 {
     return socket(domain,
                   type,
@@ -112,9 +112,9 @@ int cNetComm::createSocket(int domain,
  * @param addrlen
  * @return
  */
-int cNetComm::connectToRemote(int sockfd,
-                              const struct sockaddr *addr,
-                              socklen_t addrlen)
+int cNetComm::connect(int sockfd
+                      , const struct sockaddr* addr
+                      , socklen_t addrlen)
 {
     return connect(sockfd,
                    addr,

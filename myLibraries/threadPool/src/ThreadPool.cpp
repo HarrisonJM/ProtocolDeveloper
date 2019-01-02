@@ -1,8 +1,8 @@
 /*!
- * @brief testThreadPool class handles all the systems tasks by adding nay jobs
+ * @brief testThreadPool class handles all the systems tasks by adding any jobs
  * to the task queue and threads will pick  up tasks to complete as necessary
  *
- * @addtogroup
+ * @addtogroup thread handler
  *
  */
 #include "threadPool/ThreadPool.h"

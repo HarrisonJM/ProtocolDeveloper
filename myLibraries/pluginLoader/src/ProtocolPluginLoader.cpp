@@ -7,10 +7,10 @@
  *
  * @date March 2018
  */
-#include "ProtocolPluginLoader.h"
+#include "pluginLoader/ProtocolPluginLoader.h"
 
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 #include <dlfcn.h>
 
 namespace PluginLoader
@@ -26,7 +26,8 @@ namespace PluginLoader
     {
         // Loads a given plugin
         //! @todo: pass in the path
-        lib_handle = dlopen("plugin/plug.so", RTLD_LAZY);
+        lib_handle = dlopen("plugin/plug.so"
+                            , RTLD_LAZY | RTLD_GLOBAL);
         if (!lib_handle)
         {
             fprintf(stderr, "%s\n", dlerror());
@@ -37,16 +38,16 @@ namespace PluginLoader
 
         destroy = (void (*)(I_ProtocolInterface*)) dlsym(lib_handle, "destroy_obj");
 
-        if ((errorMess = dlerror()) != NULL)
+        if ((errorMess = dlerror()) != nullptr)
         {
             fprintf(stderr, "%s\n", errorMess);
             exit(1);
         }
     }
 
-    /*
-     * @brief destructor
-     */
+/*!
+ * @brief destructor
+ */
     ProtocolPluginHandler::~ProtocolPluginHandler()
     {
         delete (if_f);

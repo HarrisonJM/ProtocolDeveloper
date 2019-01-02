@@ -14,7 +14,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 
-#include "communicationHandler.h"
+#include "communicationHandler/communicationHandler.h"
 
 namespace Communication
 {

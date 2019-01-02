@@ -2,7 +2,11 @@
 project(pluginLoader VERSION 0.1 LANGUAGES CXX)
 
 add_library(pluginLoader
-        src/ProtocolPluginLoader.cpp)
+        src/ProtocolPluginLoader.cpp
+        src/pluginLoader.cpp
+        include/pluginLoader/pluginLoader.h
+        src/pluginLoaderTemplate.h
+        include/pluginLoader/PluginLoaderCommon.h include/pluginLoader/pluginS.h include/I_plugin.h src/pluginLoaderTemplate.cpp)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -14,12 +18,15 @@ target_include_directories(pluginLoader PUBLIC
 
 # If we have compiler requirements for this library, list them
 # here
-#target_compile_features(lib
-#        PUBLIC cxx_auto_type
-#        PRIVATE cxx_variadic_templates)
+#target_compile_features(pluginLoader
+#        PUBLIC cxx_std_17
+#        PRIVATE cxx_std_17)
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(pluginLoader
+        stdc++fs # The C++ filesystem library
+        communicationHandler
+        Boost::system
         ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
@@ -46,6 +53,7 @@ add_executable( testPluginLoader
                 tests/pluginLoaderTests.cpp)
 target_link_libraries(testPluginLoader
         pluginLoader
+        Boost::system
         gtest_main
         gtest)
 

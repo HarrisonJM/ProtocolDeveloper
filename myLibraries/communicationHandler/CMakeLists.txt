@@ -1,5 +1,5 @@
 # Define library. Only source files here!
-project(libcommunicationHandler VERSION 0.1 LANGUAGES CXX)
+project(communicationHandler VERSION 0.1 LANGUAGES CXX)
 
 add_library(communicationHandler
         src/communicationHandler.cpp)
@@ -20,7 +20,8 @@ target_include_directories(communicationHandler PUBLIC
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(communicationHandler
-        freeFunctionsAndWrappers) ## Insert libraries as needed
+        freeFunctionsAndWrappers
+        pluginLoader) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
 install(TARGETS     communicationHandler

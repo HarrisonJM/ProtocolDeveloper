@@ -12,7 +12,7 @@
 namespace cFunctions
 {
 
-void *cStdLib::cMalloc(size_t __size)
+void* cStdLib::malloc(size_t __size)
 {
     return malloc(__size);
 }

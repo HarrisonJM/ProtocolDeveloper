@@ -37,10 +37,14 @@ add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
 ## Example of including a seperate package for the project
 # Include Boost as an imported target
 
-#find_package(Boost REQUIRED)
-#add_library(boost INTERFACE IMPORTED)
-#set_property(TARGET boost PROPERTY
-#        INTERFACE_INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR})
+find_package(Boost REQUIRED system)
+
+if (Boost_FOUND)
+    message(STATUS "Boost version: ${Boost_VERSION}")
+    add_library(boost INTERFACE IMPORTED)
+    set_property(TARGET boost PROPERTY
+            INTERFACE_INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR})
+endif ()
 
 ## Adding the Mongo driver libraries
 ## Add Mongo
@@ -55,6 +59,9 @@ include_directories("${gtest_SOURCE_DIR}/include")
 include_directories("${gmock_SOURCE_DIR}/include")
 
 include(GNUInstallDirs)
+
+#include_directories("otherLibraries/boost/include/")
+#link_directories("otherLibraries/boost/lib/")
 
 ## Targets
 enable_testing()

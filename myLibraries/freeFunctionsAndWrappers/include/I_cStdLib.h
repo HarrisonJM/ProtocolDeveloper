@@ -19,7 +19,7 @@ class I_cStdLib
 {
 public:
     //! man 3 malloc
-    virtual void* cMalloc(size_t size) = 0;
+    virtual void* malloc(size_t size) = 0;
     //! man 3 abs
     virtual int abs(int j) = 0;
     //! man 3 ldiv
