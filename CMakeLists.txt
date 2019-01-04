@@ -39,6 +39,7 @@ add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
 
 find_package(Boost REQUIRED system)
 
+# https://gist.github.com/dennycd/5890475 <-- building boost with c++17 flags
 if (Boost_FOUND)
     message(STATUS "Boost version: ${Boost_VERSION}")
     add_library(boost INTERFACE IMPORTED)

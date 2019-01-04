@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SNTP -->
+<testCase>
+
+    <!-- TODO FIGURE THIS BIT OUT what with the xlds xmlns -->
+    <!-- Needs a field for threads per comms interface-->
+
+    <dataPoint>
+        [LI][VN][Mode][Stratum]
+        <variable name="LI" action="stay"/>
+        <variable name="VN" action="stay" value="4"/>
+        <variable name="Mode" action="stay" value="3"/>
+        <variable name="Stratum" action="stay" value="2"/>
+
+        <operation name="terminate" storedIn="Stratum" value="0"/>
+    </dataPoint>
+
+    <config>
+        <testName name="KoD test/SNTP"/>
+        <protocol protocol="sntp"/> <!-- what is the name of the protocol library (so/dll) -->
+        <rate tps="10"/> <!-- How many transactions per second do we wish to send? -->
+        <chaos multiplier="20"/> <!-- How perfect 10 do we wish to send -->
+        <duration seconds="200"/> <!-- For how long -->
+        <threads max="50"/> <!-- Maximum threads allowed -->
+        <threadsPerInterface tpi="0"/> <!-- How many threads can a comms interface be assigned -->
+    </config>
+
+</testCase>

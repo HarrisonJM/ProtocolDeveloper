@@ -3,6 +3,8 @@
  *
  * Registers a series of enum values and their string equivalents
  *
+ * @addtogroup Utility
+ *
  * @date 10/08/18
  */
 
@@ -11,38 +13,31 @@
 
 #include <map>
 
-namespace Utility {
+namespace Utility
+{
 
 template <class K, class V>
 class EnumHandler
 {
 public:
-    EnumHandler()
-    {
-
-    }
-
-    ~EnumHandler()
-    {
-
-    }
+    EnumHandler() = default;
+    ~EnumHandler() = default;
 
     void RegisterEnum(K key, V value)
     {
-        keyPairs[key] = value;
+        _keyPairs[key] = value;
     }
 
     V getValue(K key)
     {
-        auto it = keyPairs.find(key);
-        return it == keyPairs.end() ? "Out of range" : it->second;
+        auto it = _keyPairs.find(key);
+        return it == _keyPairs.end() ? "Out of range" : it->second;
     }
 
 private:
-    std::map<K, V> keyPairs;
+    std::map<K, V> _keyPairs;
 
 };
-
-} /* namespace utility */
+} /* namespace Utility */
 
 #endif //PROTOCOLDEVELOPER_ENUMHANDLER_H

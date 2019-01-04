@@ -7,7 +7,10 @@ add_subdirectory(safeQueues)
 add_subdirectory(database)
 add_subdirectory(logger)
 add_subdirectory(pluginLoader)
+
 add_subdirectory(testCaseAnalyser)
+add_subdirectory(testAnalyser2)
+
 add_subdirectory(threadPool)
 add_subdirectory(libnetworkCommunication)
 add_subdirectory(gRPCInterface)
