@@ -85,7 +85,7 @@ public:
     }
 };
 /*!
- * @brief The node just found is not at all in the correct place/between the correct tags
+ * @brief The node just found is not at all in the correct place/between the correct tags e.g. config in a datapoint
  */
 class analyserNodeInWrongPlace_Exception
     : public baseAnalyser_Exception
@@ -102,6 +102,63 @@ public:
     {
         return _BuildError("Tag found in a strange place: ");
     }
+};
+/*!
+ * @brief Malformed testcase
+ */
+class analyserMalformedTestCase_Exception
+    : public baseAnalyser_Exception
+{
+public:
+    explicit analyserMalformedTestCase_Exception(const char* info)
+        : baseAnalyser_Exception(info
+                                 , std::strlen(info))
+    {
+    }
+
+    virtual const char* what()
+    {
+        return _BuildError("Testcase is odd: ");
+    }
+};
+/*!
+ * @brief The parser has returned a NULL value
+ */
+class analyserParserNullReturn_Exception
+    : public baseAnalyser_Exception
+{
+public:
+    explicit analyserParserNullReturn_Exception(const char* info)
+        : baseAnalyser_Exception(info
+                                 , std::strlen(info))
+    {
+    }
+
+    virtual const char* what()
+    {
+        return _BuildError("Parser has returned a NULL value Line: ");
+    }
+};
+/*!
+ * @brief An incorrect node/tag pair has been given
+ */
+class analyserWrongTagUsedInNode_Exception
+    : public baseAnalyser_Exception
+{
+public:
+    explicit analyserWrongTagUsedInNode_Exception(const char* info)
+        : baseAnalyser_Exception(info
+                                 , std::strlen(info))
+          , _info(info)
+    {
+    }
+
+    virtual const char* what()
+    {
+        return _BuildError("Wrong tag given in node. ");
+    }
+
+    const char* _info;
 };
 } /* namespace testAnalyser2 */
 

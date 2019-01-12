@@ -9,6 +9,8 @@
  */
 
 #include <testAnalyser2/testAnalyser2.h>
+#include "testObjectBuilder.h"
+#include "analysisException.h"
 
 namespace testAnalyser2
 {
@@ -25,8 +27,17 @@ TestAnalyser2::TestAnalyser2(std::string& testfile)
  */
 void TestAnalyser2::startAnalysis()
 {
-    // Create analysis object. Do things. Don't explode.
-    // start as true, switch to false on exception!
+    TestObjectBuilder objBuil(_testFile
+                              , _testFileLoc);
+    try
+    {
+        objBuil.TopLevelNode();
+        _analysed = true;
+    }
+    catch (baseAnalyser_Exception const& e)
+    {
+        // Log error?
+    }
 }
 /*!
  * @brief Returns the testfile (as long as it's completed)
@@ -46,6 +57,6 @@ TestFile& TestAnalyser2::GetTestFile()
  */
 bool TestAnalyser2::isAnalysed()
 {
-    return false;
+    return _analysed;
 }
 } /* namespace testAnalyser2 */

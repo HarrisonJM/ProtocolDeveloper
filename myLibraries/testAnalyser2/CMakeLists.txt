@@ -9,7 +9,7 @@ add_library(${LIB_NAME}
             src/testfile/dataPoint.h
             src/testfile/testConfiguration.h
             src/analysisException.h
-            src/testObjectBuilder.cpp)
+            src/testObjectBuilder.cpp include/I_RapidAbstract.h include/I_TestAnalyser2.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build

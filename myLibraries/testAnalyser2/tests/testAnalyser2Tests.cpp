@@ -1,5 +1,5 @@
 /*!
- * @brief
+ * @brief unit tests for the testAnalyser2Tests.cpp
  *
  * @author hmarcks
  *
@@ -7,6 +7,4 @@
  *
  * @date 02/01/19
  */
- 
- 
 

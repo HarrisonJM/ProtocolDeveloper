@@ -30,6 +30,7 @@ void BuildString(char* startError // Where the error is, the middle point
     /* Get the index */
     unsigned long errorPosition = startError - buffer.data();
     unsigned long bufferSize = buffer.size();
+
     unsigned long readFrom = errorPosition - 12;
     /* overflow */
     if (readFrom > errorPosition)

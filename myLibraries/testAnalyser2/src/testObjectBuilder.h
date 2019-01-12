@@ -23,6 +23,7 @@ namespace testAnalyser2
 enum nodes_e
     : short
 {
+    NODE_NULL,
     NODE_DATAPOINT,
     NODE_CONFIG,
     NODE_VARIABLE,
@@ -39,6 +40,7 @@ enum nodes_e
 enum attributes_e
     : short
 {
+    ATTR_NULL,
     ATTR_PROTOCOL,
     ATTR_TPS,
     ATTR_MULTIPLIER,
@@ -57,12 +59,17 @@ public:
     TestObjectBuilder(TestFile& testfile_in
                       , std::string filePath);
     TestObjectBuilder(TestFile& testfile_in
-                      , std::unique_ptr<RapidAbstract> parser_in);
+                      , std::unique_ptr<I_RapidAbstract> parser_in);
     ~TestObjectBuilder() = default;
+
+    /*!
+     * @brief Where we enter the testcase
+     */
+    void TopLevelNode();
 
 private:
     TestFile& _testfile;
-    std::unique_ptr<RapidAbstract> _parser;
+    std::unique_ptr<I_RapidAbstract> _parser;
     Utility::EnumHandler<std::string, nodes_e> _nodeEnums;
     Utility::EnumHandler<std::string, attributes_e> _attributeEnums;
 
@@ -70,10 +77,6 @@ private:
      * @brief Setsup all the enums we'll be using and they're string equivalents
      */
     void _SetupEnums();
-    /*!
-     * @brief Where we enter the testcase
-     */
-    void _TopLevelNode();
     /*!
      * @brief The datapoint node
      */
@@ -110,6 +113,14 @@ private:
      * @return The new variable
      */
     testVariable _handleVariable();
+
+    bool _ConfigTestName(testConfiguration& TC);
+    bool _ConfigProtocol(testConfiguration& TC);
+    bool _ConfigRate(testConfiguration& TC);
+    bool _ConfigChaos(testConfiguration& TC);
+    bool _ConfigDuration(testConfiguration& TC);
+    bool _ConfigThreads(testConfiguration& TC);
+    bool _ConfigThreadsPerInterface(testConfiguration& TC);
 };
 } /* namespace testAnalyser2 */
 

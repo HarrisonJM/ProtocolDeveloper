@@ -14,11 +14,13 @@
 
 #include <string>
 #include <testAnalyser2/testFile.h>
+#include <I_TestAnalyser2.h>
 
 namespace testAnalyser2
 {
 
 class TestAnalyser2
+    : public I_TestAnalyser2
 {
 public:
     /*!
@@ -33,17 +35,17 @@ public:
     /*!
      * @brief Starts the testfile analysis
      */
-    void startAnalysis();
+    void startAnalysis() override;
     /*!
      * @brief Returns a reference to the testfile object (That's ready for use)
      * @return A Testfile reference
      */
-    TestFile& GetTestFile();
+    TestFile& GetTestFile() override;
     /*!
      * @brief Returns whether or not the testfile has been analysed yet
      * @return true for analysed, otherwise false
      */
-    bool isAnalysed();
+    bool isAnalysed() override;
 private:
     /*!
      * @brief Whether the analysis has been performed/completed
