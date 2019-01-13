@@ -28,13 +28,13 @@ class LogFile
     : public I_LogFile
 {
 public:
-    LogFile(std::string logName
-            , std::string EIS
+    LogFile(const std::string& logName
+            , const std::string& EIS
             , std::unique_ptr<std::ostream> outFile
-            , std::condition_variable &CV);
+            , std::condition_variable& CV);
     ~LogFile() override;
     //! Add a log message
-    void AddLogMessage(std::string message
+    void AddLogMessage(const std::string& message
                        , logLevel lvl) override;
     //! Returns the oldest message to be written
     std::string ReturnOldestMessage() override;
@@ -61,7 +61,7 @@ private:
     //! Extracts data from the EIS String
     std::string extractEIS(std::string &EISref);
     //! Generates a log message (adds timestamp, level, etc)
-    std::string _GenerateLogMessage(std::string message
+    std::string _GenerateLogMessage(const std::string& message
                                     , logLevel lvl);
 };
 } /* namespace LoggerClass */

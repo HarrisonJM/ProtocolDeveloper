@@ -47,7 +47,7 @@ TEST_F(LogHandlerTests,
     EXPECT_NE(logID,
               -1);
 
-    auto log = lh->GetLogFileID(logID);
+    auto log = lh->GetLogFileByID(logID);
 
     lh->AddMessageToLog(logID,
                         "TEST MESSAGE",

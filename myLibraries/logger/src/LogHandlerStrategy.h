@@ -29,11 +29,11 @@ public:
     //! Constructor
     explicit LogHandlerStrategy() = default;
     //! Switchcase, strategy selector
-    std::unique_ptr<std::ostream> returnOstream(StrategyEnums strat,
-                                                std::string fileName) const override;
+    std::unique_ptr<std::ostream> returnOstream(StrategyEnums strat
+                                                , const std::string& fileName) const override;
 private:
     //! Fstream factory
-    std::unique_ptr<std::ostream> setupFstream(std::string fileName) const;
+    std::unique_ptr<std::ostream> setupFstream(const std::string& fileName) const;
     //! String String factory
     std::unique_ptr<std::ostream> setupSStream() const;
     //! Stream to stderr

@@ -21,7 +21,7 @@ namespace LoggerClasses
  * @return A pointer to a concrete ostream
  */
 std::unique_ptr<std::ostream> LogHandlerStrategy::returnOstream(StrategyEnums strat
-                                                                , std::string fileName) const
+                                                                , const std::string& fileName) const
 {
     std::unique_ptr<std::ostream> newOSTream;
     switch (strat)
@@ -49,7 +49,7 @@ std::unique_ptr<std::ostream> LogHandlerStrategy::returnOstream(StrategyEnums st
  * @param fileName The name of the file we wish to open
  * @return A pointer to an ostream object
  */
-std::unique_ptr<std::ostream> LogHandlerStrategy::setupFstream(std::string fileName) const
+std::unique_ptr<std::ostream> LogHandlerStrategy::setupFstream(const std::string& fileName) const
 {
     auto newStream_up = std::make_unique<std::fstream>();
     newStream_up->open(fileName,

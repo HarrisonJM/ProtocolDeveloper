@@ -22,10 +22,10 @@ namespace LoggerClasses
  * @param logName The full name of the log file
  * @param EIS  The extra information string
  */
-LogFile::LogFile(std::string logName
-                 , std::string EIS
+LogFile::LogFile(const std::string& logName
+                 , const std::string& EIS
                  , std::unique_ptr<std::ostream> outFile
-                 , std::condition_variable &CV)
+                 , std::condition_variable& CV)
     : _logOutStream(std::move(outFile))
       , _logName(std::move(logName))
       , _extraInformationString(std::move(EIS))
@@ -56,7 +56,7 @@ LogFile::~LogFile()
  * @param lvl The log level
  * @return Whether the message was successfully added to the queue
  */
-void LogFile::AddLogMessage(std::string message
+void LogFile::AddLogMessage(const std::string& message
                             , logLevel lvl)
 {
     std::string fullMessage = (_GenerateLogMessage(message,
@@ -133,7 +133,7 @@ void LogFile::_GenerateHeader()
  * @param message The message we want to add
  * @todo date/time class
  */
-std::string LogFile::_GenerateLogMessage(std::string message
+std::string LogFile::_GenerateLogMessage(const std::string& message
                                          , logLevel lvl)
 {
     std::string fullMessage;

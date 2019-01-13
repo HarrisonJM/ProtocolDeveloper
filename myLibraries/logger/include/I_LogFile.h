@@ -22,8 +22,8 @@ class I_LogFile
 public:
     virtual ~I_LogFile() = default;
     //! Adds a message to the log queue
-    virtual void AddLogMessage(std::string message,
-                               logLevel lvl) = 0;
+    virtual void AddLogMessage(const std::string& message
+                               , logLevel lvl) = 0;
     //! Returns the oldest message in the queue
     virtual std::string ReturnOldestMessage() = 0;
     //! Writes The oldest message from the queue to the provided stream

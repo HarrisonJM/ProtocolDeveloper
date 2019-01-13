@@ -23,31 +23,31 @@ public:
     virtual ~I_LogHandler() { };
 
     //! Opens a new log file, returns the ID of the newly opened log, no EIS
-    virtual int64_t OpenNewLog(std::string logName,
-                               StrategyEnums strategy) = 0;
+    virtual int64_t OpenNewLog(const std::string& logName
+                               , StrategyEnums strategy) = 0;
     //! Opens a new log file, returns the ID of the newly opened log
-    virtual int64_t OpenNewLog(std::string logName,
-                               std::string EIS,
-                               StrategyEnums strategy) = 0;
+    virtual int64_t OpenNewLog(const std::string& logName
+                               , const std::string& EIS
+                               , StrategyEnums strategy) = 0;
     //! Closes a log file, based on the logs ID
     virtual void CloseLog(int64_t logID) = 0;
     //! Closes a log file
-    virtual void CloseLog(std::string logName) = 0;
+    virtual void CloseLog(const std::string& logName) = 0;
     //! Closes all Log files
     virtual void CloseAllLogs() = 0;
 
     //! Adds a message to a log using the log ID
-    virtual void AddMessageToLog(const int64_t logID,
-                                 const std::string message,
-                                 const logLevel lvl) const = 0;
+    virtual void AddMessageToLog(int64_t logID
+                                 , const std::string& message
+                                 , logLevel lvl) const = 0;
     //! Adds a message to a log using the logs file name
-    virtual void AddMessageToLog(const std::string logName,
-                                 const std::string message,
-                                 const logLevel lvl) const = 0;
+    virtual void AddMessageToLog(const std::string& logName
+                                 , const std::string& message
+                                 , logLevel lvl) const = 0;
     //! Returns an entire, specific, log based on its ID
-    virtual std::shared_ptr<I_LogFile> GetLogFileID(int64_t logID) const = 0;
+    virtual std::shared_ptr<I_LogFile> GetLogFileByID(int64_t logID) const = 0;
     //! Returns an entire, specific, log based on its name
-    virtual std::shared_ptr<I_LogFile> GetLogFileName(std::string logName) const= 0;
+    virtual std::shared_ptr<I_LogFile> GetLogFileByName(const std::string& logName) const = 0;
     //! Flush messages to stream
     virtual void FlushMessagesToStreams() = 0;
     //! Sets the internal killHandler to false

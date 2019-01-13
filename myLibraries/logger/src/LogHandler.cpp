@@ -28,7 +28,7 @@ namespace LoggerClasses
  * @param threadHandler A pointer to a pre-setup threadpool
  */
 LogHandler::LogHandler(int maxLogs
-                       , std::string path)
+                       , const std::string& path)
     :
     _ilo_p(std::make_unique<LogHandlerStrategy>(LogHandlerStrategy()))
     , _openLogs()
@@ -45,8 +45,8 @@ LogHandler::LogHandler(int maxLogs
 }
 
 LogHandler::LogHandler(int maxLogs
-                       , std::string path
-                       , I_LogStrategy* ilo)
+                       , const std::string& path
+                       , std::unique_ptr<I_LogStrategy> ilo)
     :
     _ilo_p(std::move(ilo))
     , _openLogs()
@@ -76,7 +76,7 @@ LogHandler::~LogHandler()
  * @param logName The name of the new log
  * @return The ID of the newly created log
  */
-int64_t LogHandler::OpenNewLog(std::string logName
+int64_t LogHandler::OpenNewLog(const std::string& logName
                                , StrategyEnums strategy = StrategyEnums::STDOUT)
 {
     return OpenNewLog(logName,
@@ -89,8 +89,8 @@ int64_t LogHandler::OpenNewLog(std::string logName
  * @param EIS Extra information to be written to the log
  * @return The ID of the newly created log, -1 on error
  */
-int64_t LogHandler::OpenNewLog(std::string logName
-                               , std::string EIS
+int64_t LogHandler::OpenNewLog(const std::string& logName
+                               , const std::string& EIS
                                , StrategyEnums strategy = StrategyEnums::FSTREAM)
 {
     if (_numberOfOpenLogs > _maxLogs)
@@ -131,7 +131,7 @@ void LogHandler::CloseLog(int64_t logID)
  * @brief Close a log based on its name
  * @param logName The name of the lgo to close
  */
-void LogHandler::CloseLog(std::string logName)
+void LogHandler::CloseLog(const std::string& logName)
 {
     CloseLog(_nameToID[logName]);
 }
@@ -149,13 +149,14 @@ void LogHandler::CloseAllLogs()
  * @param message The message
  * @param lvl The level of the log as an enum
  */
-void LogHandler::AddMessageToLog(const int64_t logID
-                                 , const std::string message
-                                 , const logLevel lvl) const
+void LogHandler::AddMessageToLog(int64_t logID
+                                 , const std::string& message
+                                 , logLevel lvl) const
 {
     try
     {
-        GetLogFileID(logID)->AddLogMessage(message,
+        GetLogFileByID(logID)->AddLogMessage(message
+                                             ,
                                            lvl);
     }
     catch (log_logIDMinusOne &e)
@@ -172,13 +173,14 @@ void LogHandler::AddMessageToLog(const int64_t logID
  * @param message The message
  * @param lvl The level of the lgo as an enum
  */
-void LogHandler::AddMessageToLog(const std::string logName
-                                 , const std::string message
-                                 , const logLevel lvl) const
+void LogHandler::AddMessageToLog(const std::string& logName
+                                 , const std::string& message
+                                 , logLevel lvl) const
 {
     try
     {
-        GetLogFileName(logName)->AddLogMessage(message,
+        GetLogFileByName(logName)->AddLogMessage(message
+                                                 ,
                                                lvl);
     }
     catch (loggerException &e)
@@ -191,7 +193,7 @@ void LogHandler::AddMessageToLog(const std::string logName
  * @param logID The ID of the log to return
  * @return A pointer to a log or an empty reference
  */
-std::shared_ptr<I_LogFile> LogHandler::GetLogFileID(int64_t logID) const
+std::shared_ptr<I_LogFile> LogHandler::GetLogFileByID(int64_t logID) const
 {
     std::shared_ptr<I_LogFile> logFile_shr = nullptr;
 
@@ -211,7 +213,7 @@ std::shared_ptr<I_LogFile> LogHandler::GetLogFileID(int64_t logID) const
  * @param logName
  * @return A pointer to a log or an empty reference
  */
-std::shared_ptr<I_LogFile> LogHandler::GetLogFileName(std::string logName) const
+std::shared_ptr<I_LogFile> LogHandler::GetLogFileByName(const std::string& logName) const
 {
     std::shared_ptr<I_LogFile> logFile_shr = nullptr;
 
