@@ -4,12 +4,15 @@
  *      Communication plugins (networks, hardware, etc)
  *      Protocol plugins (SNTP, LDAP, etc)
  *      testCase plugins (Changes to how the testcases are read and handled?)
+ *      threadHandler plugins (Changes the branching implementation)
  *
  * @author hmarcks
  *
  * @addtogroup Plugin Loader
  *
  * @date 24/12/18
+ *
+ * @todo Add plugin support fo changing the branching method
  */
 
 #ifndef PROTOCOLDEVELOPER_PLUGINLOADER_H
