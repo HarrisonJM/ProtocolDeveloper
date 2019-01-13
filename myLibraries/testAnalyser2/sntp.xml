@@ -23,6 +23,7 @@
         <duration seconds="200"/> <!-- For how long -->
         <threads max="50"/> <!-- Maximum threads allowed -->
         <threadsPerInterface tpi="0"/> <!-- How many threads can a comms interface be assigned -->
+        <comms handler="BSDSocket"/> <!-- What is the name of the comms library (so/dll) -->
     </config>
 
 </testCase>

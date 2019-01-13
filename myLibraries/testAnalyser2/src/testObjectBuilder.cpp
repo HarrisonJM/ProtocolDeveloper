@@ -253,6 +253,8 @@ void TestObjectBuilder::_SetupNodeEnums()
                             , nodes_e::NODE_TESTNAME);
     _nodeEnums.RegisterEnum("threadsPerInterface"
                             , nodes_e::NODE_THREADSPERINTERFACE);
+    _nodeEnums.RegisterEnum("comms"
+                            , nodes_e::NODE_COMMS);
 }
 /*!
  * @brief Registers the attribute enums
@@ -279,6 +281,8 @@ void TestObjectBuilder::_SetupAttrEnums()
                                  , attributes_e::ATTR_STOREDIN);
     _attributeEnums.RegisterEnum("tpi"
                                  , attributes_e::ATTR_TPI);
+    _attributeEnums.RegisterEnum("handler"
+                                 , attributes_e::ATTR_HANDLER);
 }
 /*!
  * @brief Handles datapoint operation nodes
@@ -531,6 +535,32 @@ bool TestObjectBuilder::_ConfigThreadsPerInterface(testConfiguration& TC)
         {
             case attributes_e::ATTR_TPI:
                 TC._threadsPerInter = _parser->GetAttributeValue();
+                retval = true;
+                break;
+            default:
+                throw analyserWrongTagUsedInNode_Exception(_parser->GetAttributeName());
+        }
+    }
+
+    return retval;
+}
+/*!
+ * @brief Sets the configuration objects comms interface we wish to use
+ * @param TC A reference to the testconfiguration that we are editing
+ * @return true for a successful read, otherwise false
+ */
+bool TestObjectBuilder::_ConfigCommsHandler(testConfiguration& TC)
+{
+    bool retval = false;
+
+    if (_parser->SelectAttribute())
+    {
+        attributes_e attrNAme =
+            _attributeEnums.getValue(_parser->GetAttributeName());
+        switch (attrNAme)
+        {
+            case attributes_e::ATTR_HANDLER:
+                TC._handler = _parser->GetAttributeValue();
                 retval = true;
                 break;
             default:

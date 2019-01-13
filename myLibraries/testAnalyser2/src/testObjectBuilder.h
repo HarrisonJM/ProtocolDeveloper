@@ -34,7 +34,8 @@ enum nodes_e
     NODE_DURATION,
     NODE_THREADS,
     NODE_TESTNAME,
-    NODE_THREADSPERINTERFACE
+    NODE_THREADSPERINTERFACE,
+    NODE_COMMS
 };
 
 enum attributes_e
@@ -50,7 +51,8 @@ enum attributes_e
     ATTR_ACTION,
     ATTR_VALUE,
     ATTR_STOREDIN,
-    ATTR_TPI
+    ATTR_TPI,
+    ATTR_HANDLER
 };
 
 class TestObjectBuilder
@@ -121,6 +123,7 @@ private:
     bool _ConfigDuration(testConfiguration& TC);
     bool _ConfigThreads(testConfiguration& TC);
     bool _ConfigThreadsPerInterface(testConfiguration& TC);
+    bool _ConfigCommsHandler(testConfiguration& TC);
 };
 } /* namespace testAnalyser2 */
 
