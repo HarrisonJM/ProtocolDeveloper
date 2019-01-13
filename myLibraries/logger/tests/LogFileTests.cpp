@@ -176,12 +176,4 @@ TEST_F(LogFileTests,
     ASSERT_EQ(testLogEIS->ReturnLatestMessage(), csvout);
 }
 
-int main(int argc,
-         char **argv)
-{
-    ::testing::InitGoogleTest(&argc,
-                              argv);
-    return RUN_ALL_TESTS();
-}
-
 }

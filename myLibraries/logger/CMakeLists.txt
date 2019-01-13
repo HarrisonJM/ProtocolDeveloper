@@ -49,21 +49,16 @@ export(TARGETS      logger
        FILE         loggerConfig.cmake)
 
 # Every library has unit tests, of course
-add_executable(testLogFile
-        tests/LogFileTests.cpp)
-target_link_libraries(testLogFile
-        logger
-        gtest_main
-        gtest)
+add_executable(testLogger
+               tests/loggerTestsMain.cpp
+               tests/LogFileTests.cpp
+               tests/LogHandlerTests.cpp
+               src/LogHandlerStrategy.cpp)
+target_link_libraries(testLogger
+                      logger
+                      gmock
+                      gmock_main
+                      gtest_main
+                      gtest)
 
-add_executable(testLogHandler
-        tests/LogHandlerTests.cpp src/LogHandlerStrategy.cpp src/LogHandlerStrategy.h)
-target_link_libraries(testLogHandler
-        logger
-        gtest_main
-        gtest
-        gmock
-        gmock_main)
-
-add_test(testLogFile testLogFile)
-add_test(testLogHandler testLogHandler)
+add_test(testLogger testLogger)

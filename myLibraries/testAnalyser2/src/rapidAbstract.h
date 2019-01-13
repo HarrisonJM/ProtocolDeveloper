@@ -20,7 +20,7 @@
 #include <rapidxml/rapidxml.hpp>
 #include <rapidxml/rapidxml_utils.hpp>
 
-#include <queue>
+#include <stack>
 
 #include <I_RapidAbstract.h>
 
@@ -100,7 +100,7 @@ private:
     /*!
      * @brief The node we're currently on
      */
-    std::queue<rapidxml::xml_node<>*> _currentNode;
+    std::stack<rapidxml::xml_node<>*> _currentNode;
     /*!
      * @brief Represents the current attribute we're on
      */

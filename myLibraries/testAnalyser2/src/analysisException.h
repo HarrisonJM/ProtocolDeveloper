@@ -40,12 +40,10 @@ public:
         : _info(info)
           , _length(length)
     {
-        _error = new(std::nothrow) char[16384];
     }
 
     ~baseAnalyser_Exception()
     {
-        delete[] _error;
     }
 
     virtual const char* what() = 0;
@@ -62,7 +60,7 @@ protected:
     }
 private:
     const char* _info;
-    char* _error;
+    char _error[16384];
     const size_t _length;
 };
 /*!
@@ -156,6 +154,27 @@ public:
     virtual const char* what()
     {
         return _BuildError("Wrong tag given in node. ");
+    }
+
+    const char* _info;
+};
+/*!
+ * @brief An incorrect node/tag pair has been given
+ */
+class analyserFileDoesntExist_Exception
+    : public baseAnalyser_Exception
+{
+public:
+    explicit analyserFileDoesntExist_Exception(const char* info)
+        : baseAnalyser_Exception(info
+                                 , std::strlen(info))
+          , _info(info)
+    {
+    }
+
+    virtual const char* what()
+    {
+        return _BuildError("File does not exist! ");
     }
 
     const char* _info;

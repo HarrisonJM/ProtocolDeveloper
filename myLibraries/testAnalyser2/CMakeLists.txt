@@ -28,6 +28,7 @@ target_include_directories(${LIB_NAME} PUBLIC
 # Depend on a library that we defined in the top-level file
 target_link_libraries(${LIB_NAME}
                       enumHandler
+                      stdc++fs
                       ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
@@ -51,7 +52,10 @@ export(TARGETS ${LIB_NAME}
 
 # Every library has unit tests, of course
 add_executable(test${LIB_NAME}
-               tests/${LIB_NAME}Tests.cpp)
+               ../logger/tests/loggerTestsMain.cpp
+               tests/${LIB_NAME}Tests.cpp
+
+               tests/testRapidAbstract.cpp tests/testTestObjectBuilder.cpp)
 target_link_libraries(test${LIB_NAME}
                       ${LIB_NAME}
                       gtest_main

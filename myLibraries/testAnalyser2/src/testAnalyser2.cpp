@@ -8,6 +8,8 @@
  * @date 02/01/19
  */
 
+#include <filesystem>
+
 #include <testAnalyser2/testAnalyser2.h>
 #include "testObjectBuilder.h"
 #include "analysisException.h"
@@ -21,6 +23,10 @@ namespace testAnalyser2
 TestAnalyser2::TestAnalyser2(std::string& testfile)
     : _testFileLoc(testfile)
 {
+    if (!std::filesystem::exists(_testFileLoc))
+    {
+        throw analyserFileDoesntExist_Exception(_testFileLoc.c_str());
+    }
 }
 /*!
  * @brief Begins the analysis of the testcase

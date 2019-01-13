@@ -7,8 +7,7 @@
  *
  * @date 03/01/19
  *
- * @todo There may be an issue in what stage i'm doiung things with the do..while
- * loops investigate tomorrow - left while working on _handleOperation
+ * @todo Refactor variables and operations into their respective classes!
  */
 
 #include "analysisException.h"
@@ -55,6 +54,7 @@ void TestObjectBuilder::_SetupEnums()
 void TestObjectBuilder::TopLevelNode()
 {
     const char* nodeName_str = nullptr;
+    const char* temp = _parser->GetCurrentNodeName();
 
     /* If there's a child to move to */
     if (_parser->MoveToChild())
@@ -125,8 +125,6 @@ void TestObjectBuilder::_DataPointNode()
  */
 void TestObjectBuilder::_DataPointChild(dataPoint& dp)
 {
-    if (_parser->MoveToChild())
-    {
         const char* nodeName_str = nullptr;
         do
         {
@@ -151,7 +149,6 @@ void TestObjectBuilder::_DataPointChild(dataPoint& dp)
                 throw analyserParserNullReturn_Exception("Datapoint Node: ");
             }
         } while (_parser->MoveToNextNode());
-    }
 }
 /*!
  * @brief Top of a configuration node
@@ -329,7 +326,7 @@ testOperation TestObjectBuilder::_handleOperation()
 testVariable TestObjectBuilder::_handleVariable()
 {
     testVariable newVar = {""};
-    if (_parser->MoveToNextAttribute())
+    if (_parser->SelectAttribute())
     {
         do
         {
@@ -341,6 +338,9 @@ testVariable TestObjectBuilder::_handleVariable()
                 {
                     case attributes_e::ATTR_NAME:
                         newVar._name = _parser->GetAttributeValue();
+                        break;
+                    case attributes_e::ATTR_ACTION:
+                        newVar._action = _parser->GetAttributeValue();
                         break;
                     case attributes_e::ATTR_VALUE:
                         newVar._value = _parser->GetAttributeValue();

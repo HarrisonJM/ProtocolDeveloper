@@ -45,7 +45,7 @@ RapidAbstract::~RapidAbstract()
  */
 const char* RapidAbstract::GetCurrentNodeName()
 {
-    return _currentNode.front()->name();
+    return _currentNode.top()->name();
 }
 /*!
  * @brief Moves to the next available node
@@ -55,7 +55,7 @@ bool RapidAbstract::MoveToNextNode()
 {
     bool returnVal = false;
     rapidxml::xml_node<>* newNode;
-    newNode = _currentNode.front()->next_sibling();
+    newNode = _currentNode.top()->next_sibling();
 
     if (newNode)
     {
@@ -74,7 +74,7 @@ bool RapidAbstract::MoveToChild()
 {
     bool retval = false;
     rapidxml::xml_node<>* childNode;
-    childNode = _currentNode.front()->first_node();
+    childNode = _currentNode.top()->first_node();
 
     if (childNode)
     {
@@ -97,7 +97,7 @@ void RapidAbstract::ExitChild()
  */
 const char* RapidAbstract::GetNodeValue()
 {
-    return _currentNode.front()->value();
+    return _currentNode.top()->value();
 }
 /*!
  * @brief Returns the size of the node's value
@@ -105,7 +105,7 @@ const char* RapidAbstract::GetNodeValue()
  */
 std::size_t RapidAbstract::GetNodeValueSize()
 {
-    return _currentNode.front()->value_size();
+    return _currentNode.top()->value_size();
 }
 /*!
  * @brief Selects an attribute to start reading that
@@ -114,7 +114,7 @@ std::size_t RapidAbstract::GetNodeValueSize()
 bool RapidAbstract::SelectAttribute()
 {
     bool returnVal = false;
-    rapidxml::xml_attribute<>* newAttribute = _currentNode.front()->first_attribute();
+    rapidxml::xml_attribute<>* newAttribute = _currentNode.top()->first_attribute();
 
     if (newAttribute)
     {
@@ -178,6 +178,6 @@ const char* RapidAbstract::GetAttributeValue()
  */
 rapidxml::node_type RapidAbstract::GetCurrentNodeType()
 {
-    return _currentNode.front()->type();
+    return _currentNode.top()->type();
 }
 } /* namespace testAnalyser2 */

@@ -24,7 +24,7 @@ namespace testAnalyser2
 class I_RapidAbstract
 {
 public:
-    virtual ~I_RapidAbstract() = 0;
+    virtual ~I_RapidAbstract() = default;
     /*!
      * @brief Gets the current node name
      * @return A char* contianing the node name

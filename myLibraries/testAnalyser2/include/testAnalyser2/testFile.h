@@ -12,12 +12,13 @@
 #define PROTOCOLDEVELOPER_TESTFILE_H
 
 #include <memory>
-#include "testfile/dataPoint.h"
-#include "testfile/testConfiguration.h"
+#include <vector>
+
+#include "../../src/testfile/dataPoint.h"
+#include "../../src/testfile/testConfiguration.h"
 
 namespace testAnalyser2
 {
-
 class TestFile
 {
 public:

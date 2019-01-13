@@ -7,7 +7,7 @@
 
     <dataPoint>
         [LI][VN][Mode][Stratum]
-        <variable name="LI" action="stay"/>
+        <variable name="LI" action="stay" value="0"/>
         <variable name="VN" action="stay" value="4"/>
         <variable name="Mode" action="stay" value="3"/>
         <variable name="Stratum" action="stay" value="2"/>
@@ -17,7 +17,7 @@
 
     <config>
         <testName name="KoD test/SNTP"/>
-        <protocol protocol="sntp"/> <!-- what is the name of the protocol library (so/dll) -->
+        <protocol protocol="sntp"/> <!-- What is the name of the protocol library (so/dll) -->
         <rate tps="10"/> <!-- How many transactions per second do we wish to send? -->
         <chaos multiplier="20"/> <!-- How perfect 10 do we wish to send -->
         <duration seconds="200"/> <!-- For how long -->
