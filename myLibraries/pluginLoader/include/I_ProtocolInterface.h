@@ -22,6 +22,8 @@
 
 #include "I_plugin.h"
 
+namespace Protocol
+{
 /*!
  * struct that we may or may not use to pass around information
  */
@@ -42,13 +44,13 @@ public:
     //! Virtual Destructor
     virtual ~I_ProtocolInterface() = 0;
     //! This method will be used to decode any received results
-    virtual void DecodeResult(void *payLoad) = 0;
+    virtual void DecodeResult(void* payLoad) = 0;
     //! This method will be used to encode any data that needs to be sent out
-    virtual dataToSend *GetDataToSend() = 0;
+    virtual dataToSend* GetDataToSend() = 0;
     //! Will return a pointer to the raw stored data
     virtual void* getResult() = 0;
     //! Returns any error code
     virtual int getResultCode() = 0;
 };
-
+} /* namespace Protocol */
 #endif //PROTOCOLDEVELOPER_PROTOCOLINTERFACE_H
