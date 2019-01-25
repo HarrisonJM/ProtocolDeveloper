@@ -35,7 +35,7 @@ bool PluginLoader::ScanForAllPluginsDefaultLoc()
  * @param pathToPlugins The path to where to search for plugins
  * @return true on success, otherwise false
  */
-bool PluginLoader::ScanForAllPluginsNewLoc(std::string const &pathToPlugins)
+bool PluginLoader::ScanForAllPluginsNewLoc(std::string const& pathToPlugins)
 {
     ScanForComms(pathToPlugins);
     ScanForProtocols(pathToPlugins);
@@ -46,19 +46,18 @@ bool PluginLoader::ScanForAllPluginsNewLoc(std::string const &pathToPlugins)
  * @brief Scans for communication plugins in the provided folder + "comms"
  * @param pathToPlugins The path one above where the comms are located
  */
-void PluginLoader::ScanForComms(std::string const &pathToPlugins)
+void PluginLoader::ScanForComms(std::string const& pathToPlugins)
 {
     PluginLoaderTemplate<Communication::I_communication> plt(pathToPlugins
                                                              , ""
                                                              , _commsPlugins);
 }
 
-void PluginLoader::ScanForProtocols(std::string const &pathToPlugins)
+void PluginLoader::ScanForProtocols(std::string const& pathToPlugins)
 {
-}
-
-void PluginLoader::ScanForTestCase(std::string const &pathToPlugins)
-{
+    PluginLoaderTemplate<Protocol::I_protocolInterface> plt(pathToPlugins
+                                                             , ""
+                                                             , _ProtocolPlugins);
 }
 void PluginLoader::_ScanForPlugins(std::string extraQualification)
 {

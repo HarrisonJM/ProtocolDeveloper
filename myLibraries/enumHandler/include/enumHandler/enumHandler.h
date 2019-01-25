@@ -13,7 +13,7 @@
 
 #include <map>
 
-namespace Utility
+namespace SafeContainers
 {
 /*!
  * @brief Maps enums
@@ -58,6 +58,6 @@ private:
      */
     std::map<K, V> _keyPairs;
 };
-} /* namespace Utility */
+} /* namespace SafeContainers */
 
 #endif //PROTOCOLDEVELOPER_ENUMHANDLER_H

@@ -6,13 +6,16 @@
     <!-- Needs a field for threads per comms interface-->
 
     <dataPoint>
-        [LI][VN][Mode][Stratum]
-        <variable name="LI" action="stay" value="0"/>
+        [LI][VN][Mode][Stratum] <!-- This is to be used to help build the string -->
+        <variable name="LI" action="stay" value="0"/> <!-- The variables help to dictate what will be used, how, and
+                                                           their starting values -->
         <variable name="VN" action="stay" value="4"/>
         <variable name="Mode" action="stay" value="3"/>
         <variable name="Stratum" action="stay" value="2"/>
 
-        <operation name="terminate" storedIn="Stratum" value="0"/>
+        <operation name="terminate" storedIn="Stratum" value="0"/> <!-- Operations are user
+                                                                        defined within the protocol
+                                                                        -->
     </dataPoint>
 
     <config>
@@ -20,9 +23,10 @@
         <protocol protocol="sntp"/> <!-- What is the name of the protocol library (so/dll) -->
         <rate tps="10"/> <!-- How many transactions per second do we wish to send? -->
         <chaos multiplier="20"/> <!-- How perfect 10 do we wish to send -->
-        <duration seconds="200"/> <!-- For how long -->
+        <duration seconds="2"/> <!-- For how long -->
         <threads max="50"/> <!-- Maximum threads allowed -->
-        <threadsPerInterface tpi="0"/> <!-- How many threads can a comms interface be assigned -->
+        <threadsPerInterface tpi="1"/> <!-- How many threads can a comms interface be assigned.
+                                       The comms will need to be thread safe for values higher than 1 -->
         <comms handler="BSDSocket"/> <!-- What is the name of the comms library (so/dll) -->
     </config>
 

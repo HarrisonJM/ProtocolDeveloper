@@ -12,7 +12,7 @@
 #include <map>
 #include <sstream>
 
-#include "utilityFunctions.h"
+#include "utility.h"
 #include "LogFile.h"
 
 namespace LoggerClasses

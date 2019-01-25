@@ -1,0 +1,13 @@
+TODO: expand this?
+
+This is a definition/specification for the helloworld protocol.
+
+Upon receiving a "Hello, World!" will return a "Goodbye, World!". Case is unimportant
+
+First 17 bytes contains the message (and DOS line endings). The 17th and 18th bytes are empty/padding. The last byte is the
+thread/service number.
+
+Bits layout________________________________________________
+0 |1 |2 |3 |4 |5 |6 |7 |8 |9 |10|11|12|13|14|15|16|17|18|19|
+G  O  O  D  B  Y  E  ,     W  O  R  L  D  !  \n \r 00 00 XX|
+H  E  L  L  O  ,     W  O  R  L  D  !  \n \r \0 \0 00 00 XX|

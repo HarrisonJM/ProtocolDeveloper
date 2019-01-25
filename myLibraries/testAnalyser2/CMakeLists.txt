@@ -5,9 +5,7 @@ set(LIB_NAME "testAnalyser2")
 add_library(${LIB_NAME}
             src/rapidAbstract.cpp
             src/testAnalyser2.cpp
-            src/testfile/testFile.cpp
-            src/testfile/dataPoint.h
-            src/testfile/testConfiguration.h
+            src/testFile.cpp
             src/analysisException.h
             src/testObjectBuilder.cpp include/I_RapidAbstract.h include/I_TestAnalyser2.h)
 

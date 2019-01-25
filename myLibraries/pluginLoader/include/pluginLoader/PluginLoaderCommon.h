@@ -1,11 +1,14 @@
 /*!
- * @brief Common definitons used in the plugin loader
+ * @brief Common definitions used in the plugin loader
  *
  * @author hmarcks
  *
  * @addtogroup Plugin Loader
  *
  * @date 24/12/18
+ *
+ * @todo Move the ptr functions to their own file or smth
+ * @todo Move the shareMap_t to its own file
  */
 #ifndef PROTOCOLDEVELOPER_PLUGINLOADERCOMMON_H
 #define PROTOCOLDEVELOPER_PLUGINLOADERCOMMON_H
@@ -14,7 +17,7 @@
 #include <boost/shared_ptr.hpp>
 
 #include <functional>
-#include <set>
+#include <map>
 
 namespace PluginLoader
 {
@@ -30,7 +33,7 @@ namespace PluginLoader
  * @return A copy of the pointer in the form we actually want
  */
 template<typename T>
-boost::shared_ptr<T> make_shared_ptr(std::shared_ptr<T> &ptr)
+boost::shared_ptr<T> make_shared_ptr(std::shared_ptr<T>& ptr)
 {
     return boost::shared_ptr<T>(ptr.get()
                                 , [ptr](T*) mutable
@@ -43,7 +46,7 @@ boost::shared_ptr<T> make_shared_ptr(std::shared_ptr<T> &ptr)
  * @return A copy of the pointer in the form we actually want
  */
 template<typename T>
-std::shared_ptr<T> make_shared_ptr(boost::shared_ptr<T> &ptr)
+std::shared_ptr<T> make_shared_ptr(boost::shared_ptr<T>& ptr)
 {
     return std::shared_ptr<T>(ptr.get()
                               , [ptr](T*) mutable
@@ -63,14 +66,16 @@ enum PLUGINTYPE_t
 {
     COMMUNICATION, /*! < Used for communication plugins */
     PROTOCOL, /*! < Used for protocol plugins */
+    THREAD, /*! < Used for thread handlers */
     TESTCASE /*! < Used for testcase plugins */
+
 };
 /*!}@*/
 /*!
- * @brief A shared ptr to a map of sharedptr's containing plugin interfaces by integer
+ * @brief A shared ptr to a map of strings and sharedptr's containing plugin interfaces
  */
 template<class TypeToUse>
-using sharedMap_t = std::shared_ptr<std::set<int, std::shared_ptr<TypeToUse>>>;
+using sharedMap_t = std::shared_ptr<std::map<std::string, std::function<std::shared_ptr<TypeToUse>()> > >;
 } /* namespace PluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADERCOMMON_H */

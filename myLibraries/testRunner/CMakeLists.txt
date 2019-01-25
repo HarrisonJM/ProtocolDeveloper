@@ -1,18 +1,21 @@
 # Define library. Only source files here!
-project(testHandler VERSION 0.1 LANGUAGES CXX)
-set(LIB_NAME "testHandler")
+project(testRunner VERSION 0.1 LANGUAGES CXX)
+set(LIB_NAME "testRunner")
 
 add_library(${LIB_NAME}
-        src/gRPCInterface.cpp
-        )
+            src/testRunner.cpp
+            src/testRunner.h
+            src/testThread.cpp
+            src/testThread.h
+            )
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
 # paths.
 target_include_directories(${LIB_NAME} PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-        PRIVATE src)
+                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+                           $<INSTALL_INTERFACE:include>
+                           PRIVATE src)
 
 # If we have compiler requirements for this library, list them
 # here
@@ -22,7 +25,12 @@ target_include_directories(${LIB_NAME} PUBLIC
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(${LIB_NAME}
-        ) ## Insert libraries as needed
+                      pluginLoader
+                      testAnalyser2
+                      safeContainers
+                      utility
+                      threadPool
+                      ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
 install(TARGETS ${LIB_NAME}
@@ -41,13 +49,15 @@ install(EXPORT ${LIB_NAME}Config
 
 # This makes the project importable from the build directory
 export(TARGETS ${LIB_NAME}
-        FILE ${LIB_NAME}Config.cmake)
+       FILE ${LIB_NAME}Config.cmake)
 
+### TEST STUFF ###
 add_executable(testTestHandler
-        tests/${LIB_NAME}Tests.cpp)
-target_link_libraries(testTestHandler
-        ${LIB_NAME}
-        gtest_main
-        gtest)
+               tests/${LIB_NAME}Tests.cpp)
 
-add_test(testTestHandler testTestHandler)
+target_link_libraries(testTestHandler
+                      ${LIB_NAME}
+                      gtest_main
+                      gtest)
+
+add_test(test${LIB_NAME} test${LIB_NAME})

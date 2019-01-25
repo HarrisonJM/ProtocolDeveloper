@@ -1,27 +1,27 @@
 /*!
- * @brief SafeQueue
+ * @brief SafeQueue but with a maximum buffer size
  *
- *  A thread safe queue wrapper.
+ * @addtogroup Utility
  *
- *  @addtogroup Utility
- *
- *  @date March 2018
+ * @date 20/05/2018
  *
  */
-#ifndef PROTOCOLDEVELOPER_SAFEQUEUE_H
-#define PROTOCOLDEVELOPER_SAFEQUEUE_H
+
+#ifndef PROTOCOLDEVELOPER_SAEFQUEUEBUFFERSIZE_H
+#define PROTOCOLDEVELOPER_SAEFQUEUEBUFFERSIZE_H
 
 #include <queue>
 #include <mutex>
 
-namespace Utility {
+namespace SafeContainers
+{
 /*!
- * @brief SafeQueue
+ * @brief SafeQueueBufferSize
  *
  * @tparam T The type of object it'll be storing
  */
 template<class T>
-class SafeQueue
+class SafeQueueBufferSize
 {
 public:
     /*!
@@ -29,7 +29,26 @@ public:
      *
      * Default constructor. Assigns a 16k buffer to the queue
      */
-    SafeQueue()
+    SafeQueueBufferSize()
+        : _maximumBufferSize(16384),
+          _currentBufferSize(0),
+          _Tsize(sizeof(T))
+    {
+        // Constructor
+    }
+
+    //-------------------------------------------------------------------------
+    /*!
+     * @brief Buffer Size Constructor
+     *
+     * Assigns the maximum buffer size to whatever is passed
+     *
+     * @param in_MaxBuff The maximum size (in bytes) that the logs buffer can be
+     */
+    SafeQueueBufferSize(size_t in_MaxBuff)
+        : _maximumBufferSize(in_MaxBuff),
+          _currentBufferSize(0),
+          _Tsize(sizeof(T))
     {
         // Constructor
     }
@@ -44,8 +63,8 @@ public:
         // Destructor
         while(!_basic_q.empty())
         {
-            T t;
-            pop_front(t);
+            T t = pop_front();
+            delete[] t;
         }
     }
 
@@ -61,7 +80,11 @@ public:
      */
     virtual bool push(T& newElement)
     {
+        if (IsQueueFull())
+            return false;
+
         std::unique_lock<std::mutex> lock(_mut);
+        _currentBufferSize += _Tsize;
         _basic_q.push(newElement);
 
         return true;
@@ -69,17 +92,27 @@ public:
 
     //-------------------------------------------------------------------------
     /*!
-     * @brief Returns the element from the front of the queue and removes it
+     * @brief pop_front
      *
-     * @return The value from the front of the queue
+     * Returns the element from the front of the queue and removes it
+     *
+     * @return Returns the value from the front of the queue
      */
-    virtual void pop_front(T& t)
+    virtual T pop_front()
     {
-        if(!_basic_q.empty())
+        // Return an element and remove from queue
+        T element;
+        if (!_basic_q.empty())
         {
-            t = std::move(_basic_q.front());
+            std::unique_lock<std::mutex> lock(_mut);
+            element = _basic_q.front();
             _basic_q.pop();
+            _currentBufferSize -= _Tsize;
         }
+        else
+            element = NULL;
+
+        return element;
     }
 
     //-------------------------------------------------------------------------
@@ -95,7 +128,8 @@ public:
     {
         // Construct an element in place and then push
         std::unique_lock<std::mutex> lock(_mut);
-        _basic_q.emplace(args...);
+        _currentBufferSize += sizeof(args);
+        _basic_q.emplace(args);
     }
 
     //-------------------------------------------------------------------------
@@ -116,6 +150,8 @@ public:
     //-------------------------------------------------------------------------
     /*!
      * @brief back
+     *
+     * Returns a copy of the last element of the queue
      *
      * @return a copy of the last element of the queue
      */
@@ -152,6 +188,18 @@ public:
     }
 
     //-------------------------------------------------------------------------
+    // Returns the size of the queue (in bytes)
+    /*!
+     * @brief Returns the size of the queue in bytes
+     *
+     * @return The number of elements in the queue
+     */
+    virtual size_t realSize()
+    {
+        return (_basic_q.size() * sizeof(T));
+    }
+
+    //-------------------------------------------------------------------------
 
     //! @TODO: May need operator overloading for comparison
     //! @TODO: May need extra constructors
@@ -163,8 +211,27 @@ private:
     std::queue<T> _basic_q;
     //! The mutex
     std::mutex _mut;
+    //! The maximum size (in bytes) we want the queue to be
+    const size_t _maximumBufferSize;
+    //! The maximum size (in bytes) we want the queue to be
+    size_t _currentBufferSize;
+    //?! The size of the object we're storing
+    const size_t _Tsize;
+
+    /*!
+     * @brief Checks to see if the max buffer size has been reached
+     *
+     * @return True of full, otherwise false
+     */
+    virtual bool IsQueueFull()
+    {
+        if (_currentBufferSize >= _maximumBufferSize)
+            return true;
+
+        return false;
+    }
 };
 
-} /* namespace Utility */
+}
 
-#endif /* PROTOCOLDEVELOPER_SAFEQUEUE_H */
+#endif //PROTOCOLDEVELOPER_SAEFQUEUEBUFFERSIZE_H

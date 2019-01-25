@@ -1,4 +1,4 @@
-#Library: helloWorldProtocol
+#Library: HelloWorldProtocol
 
 __Description__
 

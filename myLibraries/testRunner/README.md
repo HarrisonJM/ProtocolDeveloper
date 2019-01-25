@@ -1,14 +1,14 @@
 #Library: testHandler
 
-__Description__
+___Description___
 
 Specifically handles and builds tests. Implements each required component and provides the communication, protocol and 
 timing for the testcase that it's running.
 
 _"It implements a testcase"_
 
-__Gotchas__
+___Gotchas___
 
-__How to use__
+___How to use___
 
-__Method__
+___Method___

@@ -12,16 +12,13 @@
  * @todo refactor out setInterface. Do it in the constructor
  */
 
-#include <boost/dll/alias.hpp> // BOOST_SYMBOL_EXPORT
-#include <boost/shared_ptr.hpp>
-
 #include <iostream>
-#include <cstdarg>
 
+#include <cstdarg>
 #include <freeFunctionsAndWrappers/cStdLib.h>
 #include <freeFunctionsAndWrappers/cNetComm.h>
 
-#include <networkCommunication/libNetworkCommunication.h>
+#include "libNetworkCommunication.h"
 
 namespace libNetworkCommunication
 {
@@ -115,7 +112,7 @@ void libNetworkCommunication::Disconnect()
  * @brief Sets the port we wish to send to
  * @param port The port we wish to send to
  */
-void libNetworkCommunication::setPortToSendTo(int port)
+void libNetworkCommunication::SetPortToSendTo(int port)
 {
     _portToSendTo = port;
 }
@@ -123,7 +120,7 @@ void libNetworkCommunication::setPortToSendTo(int port)
  * @brief Sets the destination address we wish to send to
  * @param destinationAddress The destionation address we wisht o send to
  */
-void libNetworkCommunication::setDestinationAddress(char* destinationAddress)
+void libNetworkCommunication::SetDestinationAddress(char* destinationAddress)
 {
     _destinationAddress = destinationAddress;
 }
@@ -131,17 +128,17 @@ void libNetworkCommunication::setDestinationAddress(char* destinationAddress)
  * @brief Sets whether we are a TCP or UDP connection
  * @param tcpOrUDP 1 for TCP 0 for UDP
  */
-void libNetworkCommunication::setTCPOrUDP(int tcpOrUDP)
+void libNetworkCommunication::SetTCPOrUDP(int tcpOrUDP)
 {
     _tcpOrUDP = tcpOrUDP;
 }
 /*!
  * @brief Sets additional server info with the addrinfo struct
- * @param servinfo_p The additional server info
+ * @param _servinfo The additional server info
  */
-void libNetworkCommunication::setServInfo(addrinfo* servinfo_p)
+void libNetworkCommunication::SetServInfo(addrinfo* _servinfo)
 {
-    _servInfo = servinfo_p;
+    _servInfo = _servinfo;
 }
 /*!
  * @brief Sets the interface we'll be using to communicate with
@@ -149,7 +146,7 @@ void libNetworkCommunication::setServInfo(addrinfo* servinfo_p)
  *
  * @return None
  */
-void libNetworkCommunication::setInterface(std::shared_ptr<cFunctions::I_cNetComm> iOInterface)
+void libNetworkCommunication::SetInterface(std::shared_ptr<cFunctions::I_cNetComm> iOInterface)
 {
     _netCommFunctions = iOInterface;
 }
@@ -198,7 +195,7 @@ bool libNetworkCommunication::DoSocketAndConnect()
 {
     addrinfo* p;
 
-    // loop through all the results and bind to each
+    // Loop through all the results and bind to each
 
     for (p = _servInfo; nullptr != p; p = p->ai_next)
     {
@@ -219,7 +216,6 @@ bool libNetworkCommunication::DoSocketAndConnect()
             perror("client connect");
             continue;
         }
-
         break;
     }
 
@@ -236,40 +232,6 @@ bool libNetworkCommunication::DoSocketAndConnect()
     return true;
 }
 
-/*!
- * @brief Returns the plugins name
- * @return The name of the plugin (as a const char*)
- */
-const char* libNetworkCommunication::getPluginName()
-{
-    return "libNetworkCommunication-def";
-}
-/*!
- * @brief Returns the version of the plugin
- * @return The plugin version
- */
-const char* libNetworkCommunication::getPluginVersion()
-{
-    return "1.0";
-}
-/*!
- * @brief Returns the plugin _type_
- * @return The the plugin is (as an enum)
- */
-PluginLoader::PLUGINTYPE_t libNetworkCommunication::getPluginType()
-{
-    return PluginLoader::PLUGINTYPE_t::COMMUNICATION;
-}
-/*!
- * @brief creates a new NetworkCommuncation object and returns its address
- * @return A pointer to the new Communication object with it's default parameters
- */
-boost::shared_ptr<Communication::I_communication> libNetworkCommunication::createObject()
-{
-    auto newNC = std::make_unique<libNetworkCommunication>(libNetworkCommunication());
-    return newNC;
-}
-
 /*! @brief N.B. (OLD)use of two different names for in-plugin class name (libNetworkCommunication)
  * and the exported name (NetworkCommunication)
  * @{
@@ -277,14 +239,5 @@ boost::shared_ptr<Communication::I_communication> libNetworkCommunication::creat
  * libNetworkCommunication NetworkCommunication;
  * @}
  */
-/*!
- * @brief N.B. Uses alias exporting to laod plugins
- * @{
- */
-BOOST_DLL_ALIAS(
-    libNetworkCommunication::libNetworkCommunication::createObject
-    , createCommsObject
-               );
-/*! @} */
 
 } /* namespace libNetworkCommunication */

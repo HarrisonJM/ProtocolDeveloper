@@ -8,47 +8,68 @@
  * @date March 2018
  */
 #include <string>
-#include "interfaces/ProtocolInterface.h"
 #include <vector>
+#include "../../pluginLoader/include/I_protocolInterface.h"
 
 #ifndef PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
 #define PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
 
 namespace hwProt
 {
+/*!
+ * @brief HelloWorldProtocol
+ *
+ * declares the header that will be used to help generate and decode
+ * the helloworldprotocol information
+ */
+class HelloWorldProtocol
+    : public Protocol::I_protocolInterface
+{
+public:
+    HelloWorldProtocol();
+    ~HelloWorldProtocol() override = default;
     /*!
-     * @brief HelloWorldProtocol
-     *
-     * declares the header that will be used to help generate and decode
-     * the helloworldprotocol information
+     * @brief Decodes the data returned from the target
+     * @param payLoad The payload received from the target
      */
-    class HelloWorldProtocol : public I_ProtocolInterface
-    {
-    public:
-        HelloWorldProtocol();
-        virtual ~HelloWorldProtocol();
-        //! This method will be used to decode any received results
-        void DecodeResult(void *payLoad) override;
-        //! This method will return a pointer to data we want to send
-        dataToSend *GetDataToSend() override;
-        //! Will return a pointer to the raw stored data
-        void* getResult() override;
-        //! Will Return the last error code received
-        int getResultCode() override;
+    void DecodeResult(Protocol::DataStruct& payLoad) override;
+    /*!
+     * @brief I don't think this does anything?
+     * @return A pointer to a struct of data and sizes
+     */
+    std::shared_ptr<Protocol::DataStruct> GetDataToSend() override;
+    /*!
+     * @brief The final result of the returned data
+     * @return The returned data
+     */
+    std::shared_ptr<Protocol::DataStruct> GetResult() override;
+    /*!
+     * @brief The result code returned/calculated
+     * @return Result code
+     */
+    int GetResultCode() override;
+    /*!
+     * @brief Sets the protocols datapoints
+     * @param testDP The datapoints we're using
+     */
+    void SetDataPoints(testAnalyser2::dataPoint testDP) override;
+    /*! @brief Counts the number of instances */
+    static int _numberOfInstances;
 
-    private:
-        //! Decides what to return from the server
-        const char* returnHelloOrGoodbye();
-        //! Will store the received result as "raw"
-        void* result;
-        //! Stores the error code
-        int resultCode;
-        //! vector that stores all our information
-        std::vector<const char*> possibleResults;
-        //! Bool that we can toggle to give us different things
-        bool helloOrGoodbye;
-
-    };
+private:
+    /*! @brief The datapoints we got from the test */
+    testAnalyser2::dataPoint _testDP;
+    /*! @brief Will store the received result as "raw" */
+    Protocol::DataStruct _result;
+    /*! @brief Stores the error code */
+    int _resultCode;
+    /*! vector that stores all our information */
+    std::vector<std::string> _possibleResults;
+    /*! @brief Bool that we can toggle to give us different things */
+    bool helloOrGoodbye;
+    /*! @brief Current instance ID */
+    int _curInstance;
+};
 }
 
 #endif //PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H

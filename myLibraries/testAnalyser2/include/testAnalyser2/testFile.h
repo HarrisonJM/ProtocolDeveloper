@@ -13,12 +13,14 @@
 
 #include <memory>
 #include <vector>
-
-#include "../../src/testfile/dataPoint.h"
-#include "../../src/testfile/testConfiguration.h"
+#include <testAnalyser2/testfile/dataPoint.h>
+#include <testAnalyser2/testfile/testConfiguration.h>
 
 namespace testAnalyser2
 {
+/*!
+ * @brief Object representation of a testfile
+ */
 class TestFile
 {
 public:
@@ -40,6 +42,11 @@ public:
      * @return A reference to the vector containing all data points
      */
     std::vector<dataPoint>& GetAllDataPoints();
+    /*!
+     * @brief Returns A const reference to the tests configuration information
+     * @return A const ref to the object's Configuration data
+     */
+    const testConfiguration& GetTestConfiguration();
     /*!
      * @brief Adds a new datapoint to the testcase
      * @param newDP The new datapoint we wish to add

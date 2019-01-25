@@ -33,16 +33,19 @@ TestAnalyser2::TestAnalyser2(std::string& testfile)
  */
 void TestAnalyser2::startAnalysis()
 {
-    TestObjectBuilder objBuil(_testFile
-                              , _testFileLoc);
-    try
+    if(!isAnalysed())
     {
-        objBuil.TopLevelNode();
-        _analysed = true;
-    }
-    catch (baseAnalyser_Exception const& e)
-    {
-        // Log error?
+        TestObjectBuilder objBuil(_testFile
+                                  , _testFileLoc);
+        try
+        {
+            objBuil.TopLevelNode();
+            _analysed = true;
+        }
+        catch (baseAnalyser_Exception const& e)
+        {
+            // Log error?
+        }
     }
 }
 /*!

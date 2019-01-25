@@ -10,7 +10,7 @@
 
 #include "mathsModule.h"
 
-namespace Utility
+namespace SafeContainers
 {
 
 MathsModule::MathsModule()
@@ -59,4 +59,4 @@ void MathsModule::appendToValue(std::string *value_in,
 
 }
 
-} /* namespace Utility */
+} /* namespace SafeContainers */

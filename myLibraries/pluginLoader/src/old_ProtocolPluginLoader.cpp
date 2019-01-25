@@ -7,7 +7,7 @@
  *
  * @date March 2018
  */
-#include "pluginLoader/ProtocolPluginLoader.h"
+#include "pluginLoader/old_ProtocolPluginLoader.h"
 
 #include <cstdio>
 #include <cstdlib>
@@ -34,9 +34,9 @@ namespace PluginLoader
             exit(1);
         }
 
-        create = (I_ProtocolInterface *(*)()) dlsym(lib_handle, "create_obj");
+        create = (Protocol::I_ProtocolInterface *(*)()) dlsym(lib_handle, "create_obj");
 
-        destroy = (void (*)(I_ProtocolInterface*)) dlsym(lib_handle, "destroy_obj");
+        destroy = (void (*)(Protocol::I_ProtocolInterface*)) dlsym(lib_handle, "destroy_obj");
 
         if ((errorMess = dlerror()) != nullptr)
         {
@@ -62,9 +62,9 @@ namespace PluginLoader
      *
      * @return A pointer to the interface we'll be using
      */
-    I_ProtocolInterface *ProtocolPluginHandler::getIF()
+    Protocol::I_ProtocolInterface *ProtocolPluginHandler::getIF()
     {
-        this->if_f = (I_ProtocolInterface*) create();
+        this->if_f = (Protocol::I_ProtocolInterface*) create();
 
         return if_f;
     }

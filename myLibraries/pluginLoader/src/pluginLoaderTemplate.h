@@ -22,6 +22,7 @@
 
 #include <I_communication.h>
 #include <pluginLoader/PluginLoaderCommon.h>
+#include <I_protocolInterface.h>
 #include "pluginLoader/pluginS.h"
 
 namespace PluginLoader
@@ -31,8 +32,8 @@ namespace PluginLoader
  * @tparam TpluginType The plugin we wish to load
  *
  * The template parameter can be one of:
- * Communication::I_Coomunication
- * <>
+ * Communication::I_comunication
+ * Protocol::I_protocolInterface
  * <>
  *
  * @todo the other interfaces
@@ -46,9 +47,9 @@ public:
      * @param _prefix The top level directory where plugins are stored (i.e. "/opt/ProtDev/Plugins")
      * @param _qualifier The folder the plugins are stored in (i.e. "comms" or "")
      */
-    PluginLoaderTemplate(std::string const &prefix
-                         , std::string const &qualifier
-                         , sharedMap_t<TpluginType> &pluginsRef);
+    PluginLoaderTemplate(std::string const& prefix
+                         , std::string const& qualifier
+                         , sharedMap_t<TpluginType> plugins);
     /*!
      * @brief Default Destructor
      */
@@ -71,15 +72,14 @@ private:
     /*! @brief The full default path of the where the comms plugins are*/
     std::string _fullPath;
     /*! @brief Communication Plugins */
-    sharedMap_t<TpluginType> &_plugins;
+    sharedMap_t<TpluginType>& _plugins;
     /*!
      * @brief Compares the passed in type and verifies it against the one we want
      * @param pt1 The plugin type we'd like to compare
-     * @return true on match, otherwise false (Always false if not incorrect tempalte used)
+     * @return true on match, otherwise false (Always false if not incorrect template used)
      */
     bool _CheckCorrectType(PLUGINTYPE_t pt1);
 };
-
 /////////////////////////// Implementations below /////////////////////////////
 
 /*!
@@ -88,11 +88,11 @@ private:
  * @param _qualifier The folder the plugins are stored in (i.e. "comms" or "")
  */
 template<class TpluginType>
-PluginLoaderTemplate<TpluginType>::PluginLoaderTemplate(std::string const &prefix
-                                                        , std::string const &qualifier
-                                                        , sharedMap_t<TpluginType> &pluginsRef)
+PluginLoaderTemplate<TpluginType>::PluginLoaderTemplate(std::string const& prefix
+                                                        , std::string const& qualifier
+                                                        , sharedMap_t<TpluginType> plugins)
     : _fullPath(prefix + "/" + qualifier)
-      , _plugins(pluginsRef)
+      , _plugins(plugins)
 {
 }
 /*!
@@ -112,26 +112,31 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
 {
     if (!boost::filesystem::is_directory(newDir))
     {
-        // Not a directory. Log or throw?
+        //! @todo Not a directory. throw
     }
     else
     {
-        for (const auto &file : boost::filesystem::directory_iterator(newDir))
+        for (const auto& file : boost::filesystem::directory_iterator(newDir))
         {
-            // Currently pointed to file is a directory
-            if (boost::filesystem::is_directory(newDir))
+            // Currently pointed to file is not a directory
+            if (!boost::filesystem::is_directory(file))
             {
-                // Get the alias
-                auto tempPtr = boost::dll::import_alias<TpluginType>(file
-                                                                     , "NetworkCommunication"
-                                                                     , boost::dll::load_mode::append_decorations);
+                //std::function<std::shared_ptr<plugin>()>
+                auto pluginCreator = boost::dll::import_alias<
+                    std::shared_ptr<I_Plugin<TpluginType>>>(file
+                                                            , "createNewPlugin"
+                                                            , boost::dll::load_mode::append_decorations);
                 // Make it a std::shared_ptr
-                std::shared_ptr<TpluginType> commsPluginTemp;
-                commsPluginTemp = make_shared_ptr<TpluginType>(tempPtr);
+                auto newPluginCreator = make_shared_ptr(pluginCreator);
 
-                // Add the plugin to our map
-                if (commsPluginTemp->getPluginType() == PLUGINTYPE_t::COMMUNICATION)
-                    _plugins->operator[](static_cast<int>(_plugins->size())) = commsPluginTemp;
+                // Add the plugin to our map, as long as it's actually
+                // the correct type
+                if (_CheckCorrectType(pluginCreator->getPluginType()))
+                {
+                    _plugins->insert(std::pair<std::string, std::shared_ptr<
+                        std::function<std::shared_ptr<I_Plugin<TpluginType>>()>>>(pluginCreator->getPluginName()
+                                                                                  , pluginCreator));
+                }
             }
         }
     }
@@ -156,13 +161,23 @@ bool PluginLoaderTemplate<TpluginType>::_CheckCorrectType(PLUGINTYPE_t pt1)
 {
     return false;
 }
+
+/* FORWARD DECLARATIONS/PROTOTYPES */
+
 /*!
- * @brief Specialised template method specifically for finding I_Communication plugins
+ * @brief Specialised template method prototype specifically for finding I_Communication plugins
  * @param pt1 The plugin type we'ed like to compare
  * @return true on match, otherwise false
  */
 template<>
 bool PluginLoaderTemplate<Communication::I_communication>::_CheckCorrectType(PLUGINTYPE_t pt1);
+/*!
+ * @brief Specialised template method prototype specifically for finding I_ProtocolInterface plugins
+ * @param pt1 The plugin type we'ed like to compare
+ * @return true on match, otherwise false
+ */
+template<>
+bool PluginLoaderTemplate<Protocol::I_protocolInterface>::_CheckCorrectType(PLUGINTYPE_t pt1);
 
 //! @todo More specializations
 

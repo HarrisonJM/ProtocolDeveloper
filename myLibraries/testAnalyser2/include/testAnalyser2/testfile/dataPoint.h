@@ -42,7 +42,7 @@ struct testOperation
  */
 struct dataPoint
 {
-    std::string _dataPoint; /*! < The data point itself i.e. [LI][VN][Mode][Stratum] */
+    std::string _dataPointString; /*! < The data point itself i.e. [LI][VN][Mode][Stratum] */
     std::vector<testVariable> _variables; /*! < The variables present in the datapoint */
     std::vector<testOperation> _operations; /*! < The operations to take on this datapoint */
 };

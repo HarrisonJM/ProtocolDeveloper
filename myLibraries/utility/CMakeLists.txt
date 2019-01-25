@@ -1,11 +1,10 @@
 # Define library. Only source files here!
-project(libnetworkCommunication VERSION 0.1 LANGUAGES CXX)
-set(LIB_NAME "libnetworkCommunication")
+project(utility VERSION 0.1 LANGUAGES CXX)
+set(LIB_NAME "utility")
 
 add_library(${LIB_NAME}
-            src/libNetworkCommunication.cpp
-            src/libNetworkCommunication.h
-            src/pluginInterface.cpp src/pluginInterface.h)
+            src/stringUtility.cpp
+            include/utility/threadSafeT.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -23,8 +22,6 @@ target_include_directories(${LIB_NAME} PUBLIC
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(${LIB_NAME}
-                      freeFunctionsAndWrappers
-                      pluginLoader
                       ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
@@ -46,15 +43,11 @@ install(EXPORT ${LIB_NAME}Config
 export(TARGETS ${LIB_NAME}
        FILE ${LIB_NAME}Config.cmake)
 
-# Every library has unit tests, of course
-add_executable(testNetworkCommunication
-               tests/networkCommunication_Tests.cpp)
-target_link_libraries(testNetworkCommunication
+add_executable(test${LIB_NAME}
+               tests/${LIB_NAME}_Tests.cpp)
+target_link_libraries(test${LIB_NAME}
                       ${LIB_NAME}
-                      mockLibrary
                       gtest_main
-                      gtest
-                      gmock
-                      gmock_main)
+                      gtest)
 
-add_test(testNetworkCommunication testNetworkCommunication)
+add_test(test${LIB_NAME} test${LIB_NAME})

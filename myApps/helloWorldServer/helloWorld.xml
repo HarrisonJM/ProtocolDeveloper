@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SNTP -->
+<testCase>
+
+    <!-- TODO FIGURE THIS BIT OUT what with the xlds xmlns -->
+
+    <dataPoint>
+        [helloGoodbye]
+        <variable name="helloGoodbye" action="alternate" value="Hello, World!"/>
+
+        <operation name="alternate" storedIn="helloGoodbye" value="Goodbye, World!"/>
+    </dataPoint>
+
+    <config>
+        <testName name="Basic HW Test"/>
+        <protocol protocol="HelloWorldProtocol"/> <!-- What is the name of the protocol library (so/dll) -->
+        <rate tps="10"/> <!-- How many transactions per second do we wish to send? -->
+        <chaos multiplier="20"/> <!-- How perfect 10 do we wish to send -->
+        <duration seconds="2"/> <!-- For how long -->
+        <threads max="3"/> <!-- Maximum threads allowed -->
+        <threadsPerInterface tpi="1"/> <!-- How many threads can a comms interface be assigned.
+                                       The comms will need to be thread safe for values higher than 1 -->
+        <comms handler="libnetworkCommunication"/> <!-- What is the name of the comms library (so/dll) -->
+    </config>
+
+</testCase>

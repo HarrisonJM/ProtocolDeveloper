@@ -8,7 +8,7 @@
  *
  * @date March 2018
  */
-#include "../../../protocolHandler/include/I_ProtocolInterface.h"
+#include "I_protocolInterface.h"
 #include "I_PluginLoader.h"
 
 #include <string>
@@ -26,7 +26,7 @@ namespace PluginLoader
      *
      * Will be rethought and replaced with BOOST::dll
      */
-    class ProtocolPluginHandler : public PluginLoaderInterface
+    class ProtocolPluginHandler : public I_PluginLoader
     {
     public:
         //! Constructor
@@ -34,21 +34,21 @@ namespace PluginLoader
         //! Destructor
         ~ProtocolPluginHandler();
         //! Returns an interface
-        I_ProtocolInterface *getIF();
+        Protocol::I_ProtocolInterface *getIF();
 
     private:
         //! the libaray handle
         void *lib_handle;
         //! creates and returns a new interface
-        I_ProtocolInterface *(*create)();
+        Protocol::I_ProtocolInterface *(*create)();
         //! destroy interface
-        void (*destroy)(I_ProtocolInterface*);
+        void (*destroy)(Protocol::I_ProtocolInterface*);
         //! x
         int x;
         //! errorMessage from dll loading
         char *errorMess;
 
-        I_ProtocolInterface*if_f;
+        Protocol::I_ProtocolInterface* if_f;
     };
 }
 

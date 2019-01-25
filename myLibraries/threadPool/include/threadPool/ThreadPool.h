@@ -18,7 +18,7 @@
 #include <vector>
 #include <condition_variable>
 
-#include "safeQueues/SafeQueue.h"
+#include <safeQueues/SafeQueue.h>
 #include "I_ThreadPool.h"
 
 namespace ThreadHandler
@@ -98,7 +98,7 @@ private:
     bool _killPool;
     std::vector<std::thread> _threads;
 
-    Utility::SafeQueue<std::function<void()>> _taskQueue;
+    SafeContainers::SafeQueue<std::function<void()>> _taskQueue;
 
     //! @brief Stops threads from picking up the same task
     std::mutex _mutex;

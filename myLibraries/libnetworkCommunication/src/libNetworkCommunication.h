@@ -11,9 +11,9 @@
 #include <string>
 #include <vector>
 #include <memory>
-
-#include "I_communication.h"
 #include "freeFunctionsAndWrappers/cNetComm.h"
+
+#include <I_libNetworkCommunication.h>
 
 #ifndef PROTOCOLDEVELOPER_NETWORKCOMMUNICATION_H
 #define PROTOCOLDEVELOPER_NETWORKCOMMUNICATION_H
@@ -28,18 +28,22 @@ typedef struct addrinfo addrinfo;
  * @brief The NetworkCommunication class
  */
 class libNetworkCommunication
-    : public Communication::I_communication
+    : public I_libNetworkCommunication
 {
 public:
-    //! Default Constructor
+    /*!
+     * @brief Default Constructor
+     */
     libNetworkCommunication();
     /*!
      * @brief Contructor, mainly used for testing
      * @param iOInterface Sets the interface we want to use
      */
     explicit libNetworkCommunication(std::shared_ptr<cFunctions::I_cNetComm> iOInterface);
-    //! Destructor
-    ~libNetworkCommunication() = default;
+    /*!
+     * @brief Default destructor
+     */
+    ~libNetworkCommunication() override = default;
     /*!
      * @brief Sends data
      * @param payLoad_p The data we wish to send
@@ -65,66 +69,44 @@ public:
      * @brief Disconnects from the target
      */
     void Disconnect() override;
-
     /*!
      * @brief Sets the port we wish to send on
      * @param port The port we wish to send on
      */
-    void setPortToSendTo(int port);
+    void SetPortToSendTo(int port) override;
     /*!
      * @brief Set the destination's address
      * @param destinationAddress The address we wish to send to
      */
-    void setDestinationAddress(char* destinationAddress);
+    void SetDestinationAddress(char* destinationAddress) override;
     /*!
      * @brief Set whether TCP or UDP
      * @param tcpOrUDP 1 for TCP, 0 for UDP
      */
-    void setTCPOrUDP(int tcpOrUDP);
+    void SetTCPOrUDP(int tcpOrUDP) override;
     /*!
      * @brief Supply extra information for connecting to a server
      * @param _servinfo A pointer to the address info we wish to use
      */
-    void setServInfo(addrinfo* _servinfo);
+    void SetServInfo(addrinfo* _servinfo) override;
     /*!
      * @brief The Interface we want to connect over
      * @param iOInterface A shared_ptr containing the concrete implementation we wish to use
      */
-    void setInterface(std::shared_ptr<cFunctions::I_cNetComm> iOInterface);
-    /*!
-     * @brief Returns the plugins name
-     * @return The name of the plugin (as a const char*)
-     */
-    const char* getPluginName() override;
-    /*!
-     * @brief Returns the version of the plugin
-     * @return The plugin version
-     */
-    const char* getPluginVersion() override;
-    /*!
-     * @brief Returns the plugin _type_
-     * @return The the plugin is (as an enum)
-     */
-    PluginLoader::PLUGINTYPE_t getPluginType() override;
-    /*!
-     * @brief creates a new NetworkCommuncation object and returns its address
-     * @return A pointer to the new Communication object with it's default parameters
-     */
-    static boost::shared_ptr<Communication::I_communication> createObject();
+    void SetInterface(std::shared_ptr<cFunctions::I_cNetComm> iOInterface) override;
 private:
-    /*! The port we're conducting business on */
+    /*! @brief The port we're conducting business on */
     int _portToSendTo;
-    /*! The Address we're sending to */
+    /*! @brief The Address we're sending to */
     char* _destinationAddress;
-    /*! The socket used to bind and send on */
+    /*! @brief The socket used to bind and send on */
     int _outSocket;
-    /*! Do we want to connect on TCP, UDP, or both? */
+    /*! @brief Do we want to connect on TCP, UDP, or both? */
     int _tcpOrUDP;
-    /*! The info of the server we're connecting  to */
+    /*! @brief The info of the server we're connecting  to */
     addrinfo* _servInfo;
-    /*! Wrapper class for using C socket functions */
+    /*! @brief Wrapper class for using C socket functions */
     std::shared_ptr<cFunctions::I_cNetComm> _netCommFunctions;
-
     /*!
      * @brief Setups up the addrinfo struct
      * @return true for success, otherwise false

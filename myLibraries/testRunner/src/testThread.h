@@ -1,0 +1,82 @@
+/*!
+ * @brief Header for a test thread. This is the thread that will actually be
+ * run by the program that will send data to the target
+ *
+ * @author hmarcks
+ *
+ * @addtogroup TestRunner
+ *
+ * @date 16/01/19
+ */
+
+
+#ifndef PROTOCOLDEVELOPER_TESTTHREAD_H
+#define PROTOCOLDEVELOPER_TESTTHREAD_H
+
+#include <condition_variable>
+
+#include <I_communication.h>
+#include <I_protocolInterface.h>
+#include <safeList/safeList.h>
+
+#include <testAnalyser2/testfile/dataPoint.h>
+#include <utility/threadSafeT.h>
+
+namespace TestRunner
+{
+/*!
+ * @brief A single test thread
+ */
+class TestThread
+{
+public:
+    /*!
+     * @brief Contructor
+     * @param killThread_in A reference to the kill thread handler
+     * @param commsInterface_in The comms that we are interfacing over
+     * @param protocolInterface_in The protocol that we are using to generate data
+     * @param resultsList_in Where to store the results
+     * @param ratio_in The rough gap between firings we want
+     */
+    TestThread(const Utility::ThreadSafeT<bool>& killThread_in
+               , std::shared_ptr<Communication::I_communication>& commsInterface_in
+               , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
+               , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
+               , long ratio_in);
+    /*!
+     * @brief Destructor
+     */
+    ~TestThread() = default;
+    /*!
+     * @brief Performs the test
+     */
+    void StartTest();
+    /*!
+     * @brief Returns whether or not the thread is finished (threadsafe)
+     * @return the internal finished boolean
+     */
+    bool GetFinished();
+    /*!
+     * @brief Sets the internal finished boolean (threadsafe)
+     * @param newVal What to set the finished boolean to
+     */
+    void SetFinished(bool newVal);
+private:
+    /*! @brief The amount of time (in micro seconds) between each successive fire */
+    const long _fireRatioMicro;
+    /*! @brief Threadsafe bool kill handler for the thread */
+    const Utility::ThreadSafeT<bool>& _killHandler;
+    /*! @brief The interface that the test thread will communicate through */
+    std::shared_ptr<Communication::I_communication>& _commsInterface;
+    /*! @brief The Protocol that we'll be testing */
+    std::shared_ptr<Protocol::I_protocolInterface>& _ProtocolInterface;
+    /*! @brief Contains results gained from testing */
+    SafeContainers::safeList<Protocol::DataStruct>& _resultsList;
+    /*! @brief tells us if the thread is still running */
+    bool _finished;
+    /*! @brief mutex used for accessing the _finished member */
+    std::mutex _finishedMut;
+};
+} /* namespace TestRunner */
+
+#endif /* PROTOCOLDEVELOPER_TESTTHREAD_H */

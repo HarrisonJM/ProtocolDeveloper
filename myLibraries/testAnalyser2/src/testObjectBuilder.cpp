@@ -105,7 +105,7 @@ void TestObjectBuilder::_DataPointNode()
             {
                 /* The data point string*/
                 case rapidxml::node_data:
-                    newDP._dataPoint = _parser->GetNodeValue();
+                    newDP._dataPointString = _parser->GetNodeValue();
                     break;
                 case rapidxml::node_element:
                     _DataPointChild(newDP);
