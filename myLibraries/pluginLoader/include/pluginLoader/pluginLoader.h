@@ -38,6 +38,8 @@ public:
     bool ScanForAllPluginsNewLoc(std::string const& pathToPlugins) override;
     void ScanForComms(std::string const& pathToPlugins) override;
     void ScanForProtocols(std::string const& pathToPlugins) override;
+    sharedMap_t<Communication::I_communication>& getCommsPlugins();
+    sharedMap_t<Protocol::I_protocolInterface>& getProtocolPlugins();
 //    void ScanForTestCase(std::string const &pathToPlugins) override ;
 
 private:
@@ -49,7 +51,7 @@ private:
      * @{
      */
     sharedMap_t<Communication::I_communication> _commsPlugins; /*! < Communication Plugins */
-    sharedMap_t<Protocol::I_protocolInterface> _ProtocolPlugins; /*! < Protocol Plugins */
+    sharedMap_t<Protocol::I_protocolInterface> _protocolPlugins; /*! < Protocol Plugins */
     /*!@}*/
 
     /*!

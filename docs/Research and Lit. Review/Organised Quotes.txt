@@ -155,7 +155,7 @@ Requirements and Design
 	DeliveringWeb service load testing as a service with a global cloud
 	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 
-	-- Large amounts of concurrency within each instance would be very as the loads can be very large, and the taffic could be very high.
+	-- Large amounts of concurrency within each instance would be good as the loads can be very large, and the taffic could be very high.
 	DeliveringWeb service load testing as a service with a global cloud
 	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
 

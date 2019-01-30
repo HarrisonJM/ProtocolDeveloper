@@ -12,7 +12,7 @@
 #include <map>
 #include <sstream>
 
-#include "utility.h"
+#include "utility/utility.h"
 #include "LogFile.h"
 
 namespace LoggerClasses
@@ -32,14 +32,14 @@ LogFile::LogFile(const std::string& logName
       , _logLevels()
       , _condVar(CV)
 {
-    _logLevels.RegisterEnum(logLevel::ERROR,
-                            "ERROR");
-    _logLevels.RegisterEnum(logLevel::INFO,
-                            "INFO");
-    _logLevels.RegisterEnum(logLevel::DEBUG,
-                            "DEBUG");
-    _logLevels.RegisterEnum(logLevel::WARNING,
-                            "WARNING");
+    _logLevels.RegisterEnum(logLevel::ERROR
+                            , "ERROR");
+    _logLevels.RegisterEnum(logLevel::INFO
+                            , "INFO");
+    _logLevels.RegisterEnum(logLevel::DEBUG
+                            , "DEBUG");
+    _logLevels.RegisterEnum(logLevel::WARNING
+                            , "WARNING");
 
     _GenerateHeader();
 }
@@ -59,8 +59,8 @@ LogFile::~LogFile()
 void LogFile::AddLogMessage(const std::string& message
                             , logLevel lvl)
 {
-    std::string fullMessage = (_GenerateLogMessage(message,
-                                                   lvl));
+    std::string fullMessage = (_GenerateLogMessage(message
+                                                   , lvl));
     // Notify the handler that there are now pending messages
     _condVar.notify_all();
     _messagesToWrite.push(fullMessage);
@@ -100,8 +100,8 @@ std::string LogFile::ReturnLatestMessage()
 void LogFile::_GenerateHeader()
 {
     std::string header;
-    header += (addXLetter(60,
-                          '*') + '\n');
+    header += (Utility::addXLetter(60
+                                   , '*') + '\n');
     header += ("Log file:          " + _logName + '\n');
     header += (std::string("Date:              ") + "DATE REPLACE" + '\n');
     header += ("Extra Information: ");
@@ -111,19 +111,19 @@ void LogFile::_GenerateHeader()
     while (!EIS.empty())
     {
         header += (EIS + '\n');
-        header += (addXLetter(15,
-                              ' '));
+        header += (Utility::addXLetter(15
+                                       , ' '));
         EIS = (extractEIS(EIStemp));
     }
 
     header += '\n';
-    header += (addXLetter(60,
-                          '*') + '\n');
-    header += (addXLetter(21,
-                          '*') + " LOG STARTS BELOW " + addXLetter(21,
-                                                                   '*') + '\n');
-    header += (addXLetter(60,
-                          '*') + '\n');
+    header += (Utility::addXLetter(60
+                                   , '*') + '\n');
+    header += (Utility::addXLetter(21
+                                   , '*') + " LOG STARTS BELOW " + Utility::addXLetter(21
+                                                                                       , '*') + '\n');
+    header += (Utility::addXLetter(60
+                                   , '*') + '\n');
     header += ('\n');
 
     _messagesToWrite.push(header);
@@ -154,19 +154,19 @@ std::string LogFile::_GenerateLogMessage(const std::string& message
  * @brief Extracts the extra string information. Needs to be looped over
  * @return A std::string containing the EIS or an empty string if nothing is present
  */
-std::string LogFile::extractEIS(std::string &EISref)
+std::string LogFile::extractEIS(std::string& EISref)
 {
     std::stringstream sscheck(EISref);
     std::string token;
     std::string returnVal;
 
-    if (getline(sscheck,
-                token,
-                ','))
+    if (getline(sscheck
+                , token
+                , ','))
         returnVal = token;
 
-    EISref.erase(EISref.find(returnVal),
-                 returnVal.size() + 1);
+    EISref.erase(EISref.find(returnVal)
+                 , returnVal.size() + 1);
 
     return returnVal;
 }

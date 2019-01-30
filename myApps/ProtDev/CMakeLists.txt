@@ -1,7 +1,9 @@
 
 add_executable(ProtocolDeveloper
-        Main.cpp)
+               Main.cpp)
 
 target_link_libraries(ProtocolDeveloper
-        logger
-        )
+                      logger
+                      testAnalyser2
+                      testRunner
+                      )

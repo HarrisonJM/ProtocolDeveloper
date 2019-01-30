@@ -11,6 +11,9 @@
 
 #include <string>
 
+namespace Utility
+{
+
 extern std::string addXLetter(int count
                               , char c);
 
@@ -21,4 +24,5 @@ extern std::string addXLetter(int count
  */
 extern long StringToLong(const std::string& numberStr);
 
+}
 #endif //PROTOCOLDEVELOPER_UTILITYFUNCTIONS_H

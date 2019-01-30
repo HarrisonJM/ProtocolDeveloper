@@ -4,7 +4,6 @@ set(LIB_NAME "testRunner")
 
 add_library(${LIB_NAME}
             src/testRunner.cpp
-            src/testRunner.h
             src/testThread.cpp
             src/testThread.h
             )

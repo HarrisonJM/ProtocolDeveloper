@@ -29,7 +29,7 @@ public:
     /*!
      * @brief Destructor
      */
-    virtual ~I_Plugin() = 0;
+    virtual ~I_Plugin() = default;
     /*!
      * @brief Returns the plugins name
      * @return The name of the plugin (as a const char*)

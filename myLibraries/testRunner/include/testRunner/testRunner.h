@@ -28,10 +28,13 @@
 
 #include <pluginLoader/pluginLoader.h>
 #include <boost/system/error_code.hpp>
-#include <testThread.h>
+
+#include <threadPool/ThreadPool.h>
+#include <utility/threadSafeT.h>
 
 namespace TestRunner
 {
+class TestThread;
 /*!
  * @brief These codes define what aspects are missing to be passed in later
  * @{

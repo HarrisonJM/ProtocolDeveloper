@@ -32,7 +32,7 @@ public:
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target
      */
-    void DecodeResult(Protocol::DataStruct& payLoad) override;
+    void DecodeResult(std::shared_ptr<Protocol::DataStruct> payLoad) override;
     /*!
      * @brief I don't think this does anything?
      * @return A pointer to a struct of data and sizes
@@ -53,8 +53,9 @@ public:
      * @param testDP The datapoints we're using
      */
     void SetDataPoints(testAnalyser2::dataPoint testDP) override;
+
     /*! @brief Counts the number of instances */
-    static int _numberOfInstances;
+    static u_int8_t _numberOfInstances;
 
 private:
     /*! @brief The datapoints we got from the test */
@@ -68,8 +69,9 @@ private:
     /*! @brief Bool that we can toggle to give us different things */
     bool helloOrGoodbye;
     /*! @brief Current instance ID */
-    int _curInstance;
+    u_int8_t _curInstance;
 };
+
 }
 
 #endif //PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H

@@ -26,7 +26,7 @@ public:
      * @brief Default destructor
      * N.B. auto-formatter puts '= 0' on next line
      */
-    virtual ~I_libNetworkCommunication() = 0;
+    virtual ~I_libNetworkCommunication() = default;
     /*!
      * @brief Sends data
      * @param payLoad_p The data we wish to send

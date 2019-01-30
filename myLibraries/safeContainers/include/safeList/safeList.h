@@ -63,7 +63,7 @@ public:
     void push_back(T&& val)
     {
         _lock.lock();
-        _list.push_back(val);
+        _list->push_back(val);
     }
     void pop_back()
     {

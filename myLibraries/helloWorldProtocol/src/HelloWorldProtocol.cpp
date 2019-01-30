@@ -14,7 +14,7 @@
 #include "HelloWorldProtocol.h"
 /*
  * This group of files will serve to act as a simple hello/goodby world protocolHandler
- * The protocl willbe used as a test bed for various functions of the protdev program
+ * The protocol will be used as a test bed for various functions of the protdev program
  * It's first function will be simple to receive and send traffic
  * After that it will be extended to have and process error codes
  * It can then be extended to function with/as a sister protocolHandler
@@ -22,7 +22,7 @@
 namespace hwProt
 {
 
-int HelloWorldProtocol::_numberOfInstances = 0;
+u_int8_t HelloWorldProtocol::_numberOfInstances = 0;
 
 /*!
  * @brief Constructor, builds internal possible results vector
@@ -31,44 +31,44 @@ HelloWorldProtocol::HelloWorldProtocol()
     : _result()
       , _resultCode(0)
       , helloOrGoodbye(false)
-      , _curInstance(_numberOfInstances)
+      , _curInstance(_numberOfInstances++)
 {
     _possibleResults.emplace_back("Hello, World!\r\n\0\0");
     _possibleResults.emplace_back("Goodbye, World!\r\n");
-    _possibleResults.emplace_back("AAAAAAAAAAAAA");
+    _possibleResults.emplace_back("ERROR\r\n");
 }
 /*!
  * @brief Decodes a payload and sets the return code accordingly
  * @param payLoad The received Payload
  */
-void HelloWorldProtocol::DecodeResult(Protocol::DataStruct& payLoad)
+void HelloWorldProtocol::DecodeResult(std::shared_ptr<Protocol::DataStruct> payLoad)
 {
-    auto* decodedData = static_cast<const char*>(payLoad._data_p);
+    auto* decodedData = static_cast<const char*>(payLoad->_data_p);
+    _result = *payLoad;
 
-    for (auto& storedResults : _possibleResults)
+    for (auto& storedResult : _possibleResults)
     {
-        if (std::string(storedResults) == std::string(decodedData))
+        if (storedResult == std::string(decodedData))
         {
-            if (std::string(storedResults) != "ERROR\r\n")
+            if (std::string(storedResult) != "ERROR\r\n")
             {
                 // Success
                 _resultCode = 0;
                 break;
             }
         }
-
         _resultCode = 1;
         break;
     }
 }
 /*!
  * @brief Fetches the message and sets up the struct we're going to send
- * @todo needs work
+ * @todo Needs work
  * @return A pointer to the struct containg our information
  */
 std::shared_ptr<Protocol::DataStruct> HelloWorldProtocol::GetDataToSend()
 {
-    Protocol::DataStruct ds;
+    Protocol::DataStruct ds = {0};
     static short switcher = 0;
 
     auto packet = new char[20];
@@ -76,10 +76,15 @@ std::shared_ptr<Protocol::DataStruct> HelloWorldProtocol::GetDataToSend()
 
     packet[17] = 0;
     packet[18] = 0;
-    packet[19] = 0;
+    packet[19] = _curInstance;
+
+    ds._data_p = &packet;
+    ds._size = 20;
+
+    return std::make_shared<Protocol::DataStruct>(ds);
 }
 /*!
- * @brief getResult
+ * @brief Returns the last given result
  * @return The last raw result data
  */
 std::shared_ptr<Protocol::DataStruct> HelloWorldProtocol::GetResult()

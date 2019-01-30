@@ -1,11 +1,11 @@
 # Define library. Only source files here!
-project(libnetworkCommunication VERSION 0.1 LANGUAGES CXX)
-set(LIB_NAME "libnetworkCommunication")
+project(networkCommunication VERSION 0.1 LANGUAGES CXX)
+set(LIB_NAME "networkCommunication")
 
-add_library(${LIB_NAME}
+add_library(${LIB_NAME} SHARED
             src/libNetworkCommunication.cpp
-            src/libNetworkCommunication.h
-            src/pluginInterface.cpp src/pluginInterface.h)
+            src/pluginInterface.cpp
+            src/pluginInterface.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build

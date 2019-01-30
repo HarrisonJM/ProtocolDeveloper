@@ -1,1 +1,2 @@
 add_subdirectory(parserSpike)
+add_subdirectory(staticSpike)

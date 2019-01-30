@@ -54,7 +54,6 @@ void TestObjectBuilder::_SetupEnums()
 void TestObjectBuilder::TopLevelNode()
 {
     const char* nodeName_str = nullptr;
-    const char* temp = _parser->GetCurrentNodeName();
 
     /* If there's a child to move to */
     if (_parser->MoveToChild())
@@ -187,6 +186,7 @@ void TestObjectBuilder::_ConfigurationChild(testConfiguration& conf)
     {
         do
         {
+            /*! @todo Figure out success integer */
             int tagSucc = false;
             try
             {

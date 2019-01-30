@@ -42,6 +42,7 @@ public:
                , std::shared_ptr<Communication::I_communication>& commsInterface_in
                , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
                , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
+               , SafeContainers::safeList<int>& codeList_in
                , long ratio_in);
     /*!
      * @brief Destructor
@@ -72,6 +73,8 @@ private:
     std::shared_ptr<Protocol::I_protocolInterface>& _ProtocolInterface;
     /*! @brief Contains results gained from testing */
     SafeContainers::safeList<Protocol::DataStruct>& _resultsList;
+    /*! @brief Contains a list of all result codes */
+    SafeContainers::safeList<int>& _codeList;
     /*! @brief tells us if the thread is still running */
     bool _finished;
     /*! @brief mutex used for accessing the _finished member */

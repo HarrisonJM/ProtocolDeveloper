@@ -8,7 +8,7 @@
  * @date 17/01/19
  */
 
-#include "libNetworkCommunication.h"
+#include "libnetworkCommunication/libNetworkCommunication.h"
 #include <boost/dll/alias.hpp>
 
 #include "pluginInterface.h"

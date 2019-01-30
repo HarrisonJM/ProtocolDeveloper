@@ -2,7 +2,7 @@
  * @brief
  */
 
-#include "networkCommunication/libNetworkCommunication.h"
+#include <libnetworkCommunication/libNetworkCommunication.h>
 #include "mockLibrary/cNetCommMocks.h"
 
 using ::testing::StrictMock;
@@ -25,9 +25,8 @@ protected:
 
     void SetUp() override
     {
-        nC = std::make_shared<libNetworkCommunication::libNetworkCommunication>();
         cnetmock = std::make_shared<StrictMock<cFunctions::cNetCommMocks>>();
-        nC->setInterface(cnetmock);
+        nC = std::make_shared<libNetworkCommunication::libNetworkCommunication>(cnetmock);
     }
 
     void TearDown() override

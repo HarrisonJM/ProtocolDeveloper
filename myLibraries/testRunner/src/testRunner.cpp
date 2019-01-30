@@ -17,7 +17,9 @@
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
 
-#include "testRunner.h"
+#include <testRunner/testRunner.h>
+#include <safeList/safeList.h>
+#include "testThread.h"
 
 namespace TestRunner
 {
@@ -51,6 +53,7 @@ bool TestRunner::BeginTesting()
      * @todo Set up multiple interfaces for the
      * threads (if wanted) so put me in a loop
      * @todo Move blocks into templated methods
+     * @todo More plugins (thread handler, etc)
      */
     std::vector<std::shared_ptr<Communication::I_communication>> availableCommsInterfaces;
     {
@@ -66,29 +69,28 @@ bool TestRunner::BeginTesting()
         availableProtInterfaces.push_back(interfaceFactory);
         //    availableProtInterfaces[0]->init_Protocol();
     }
-    /*!
-     * @todo more plugins (thread handler, etc)
-     */
-    SafeContainers::safeList<Protocol::DataStruct> results;
 
-    long maxThreads = StringToLong(_testFile.GetTestConfiguration()._maxThreads);
-    long tps = StringToLong(_testFile.GetTestConfiguration()._tps);
+    SafeContainers::safeList<Protocol::DataStruct> results;
+    SafeContainers::safeList<int> resultCodes;
+
+    long maxThreads = Utility::StringToLong(_testFile.GetTestConfiguration()._maxThreads);
+    long tps = Utility::StringToLong(_testFile.GetTestConfiguration()._tps);
     long ratio = _GetRatio(tps
                            , maxThreads);
-    /*! @todo Need to seperate and edit for changing comms interfaces */
+    /*! @todo Need to separate and edit for changing comms interfaces */
     for (long i = 0L; i < maxThreads; ++i)
     {
         auto tfObj = std::make_shared<TestThread>(_killThreadHandler
                                                   , availableCommsInterfaces[0]
                                                   , availableProtInterfaces[0]
                                                   , results
+                                                  , resultCodes
                                                   , ratio);
         std::function<void(void)> testFunc = std::bind(&TestThread::StartTest
                                                        , tfObj);
         _threadPool.AddTaskToQueue(testFunc);
         _threadsVec.push_back(tfObj);
     }
-
     /* Poller */
     _WaitForThreads();
 
@@ -163,7 +165,7 @@ void TestRunner::_TimerHandler(const boost::system::error_code& e)
 void TestRunner::_WaitForThreads()
 {
     /* Setup the asynchronous timer */
-    long runTime = StringToLong(_testFile.GetTestConfiguration()._secondsDuration);
+    long runTime = Utility::StringToLong(_testFile.GetTestConfiguration()._secondsDuration);
     boost::asio::io_context io;
     boost::asio::deadline_timer t(io
                                   , boost::posix_time::seconds(runTime));

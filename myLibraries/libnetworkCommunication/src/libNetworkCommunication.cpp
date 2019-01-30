@@ -18,7 +18,7 @@
 #include <freeFunctionsAndWrappers/cStdLib.h>
 #include <freeFunctionsAndWrappers/cNetComm.h>
 
-#include "libNetworkCommunication.h"
+#include "libnetworkCommunication/libNetworkCommunication.h"
 
 namespace libNetworkCommunication
 {

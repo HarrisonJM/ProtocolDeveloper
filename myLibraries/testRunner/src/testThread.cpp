@@ -20,18 +20,21 @@ namespace TestRunner
  * @param commsInterface_in The comms that we are interfacing over
  * @param protocolInterface_in The protocol that we are using to generate data
  * @param resultsList_in Where to store the results
+ * @param codeList_in Where to store resultant error codes
  * @param ratio_in The rough gap between firings we want
  */
 TestThread::TestThread(const Utility::ThreadSafeT<bool>& killThread_in
                        , std::shared_ptr<Communication::I_communication>& commsInterface_in
                        , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
                        , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
+                       , SafeContainers::safeList<int>& codeList_in
                        , long ratio_in)
     : _fireRatioMicro(ratio_in)
       , _killHandler(killThread_in)
       , _commsInterface(commsInterface_in)
       , _ProtocolInterface(protocolInterface_in)
       , _resultsList(resultsList_in)
+      , _codeList(codeList_in)
       , _finished(false)
 {
 }
@@ -48,22 +51,23 @@ void TestThread::StartTest()
     while (true)
     {
         t.wait();
-
         /* Interract with the protocol */
-        auto protData = _ProtocolInterface->GetDataToSend(); /* Protocol should track state */
-
+//        auto protData = std::make_shared<Protocol::DataStruct>(); /* Protocol should track state */
+        auto protData = _ProtocolInterface->GetDataToSend();
         /* Interact with the target */
         _commsInterface->SendData(protData->_data_p
                                   , protData->_size);
         _commsInterface->ReceiveData(protData->_data_p
                                      , protData->_size);
+        /* Process the result */
+        _ProtocolInterface->DecodeResult(protData);
+        /* Store the result */
         _resultsList.push_back(*protData);
-
+        _codeList.push_back(_ProtocolInterface->GetResultCode());
         /* Check if the thread must die */
         if (_killHandler)
             break;
     }
-
     _finished = true;
 }
 /*!

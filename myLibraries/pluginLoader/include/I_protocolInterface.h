@@ -47,7 +47,7 @@ public:
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target
      */
-    virtual void DecodeResult(DataStruct& payLoad) = 0;
+    virtual void DecodeResult(std::shared_ptr<DataStruct> payLoad) = 0;
     /*!
      * @brief I don't think this does anything?
      * @return A pointer to a struct of data and sizes

@@ -57,9 +57,17 @@ void PluginLoader::ScanForProtocols(std::string const& pathToPlugins)
 {
     PluginLoaderTemplate<Protocol::I_protocolInterface> plt(pathToPlugins
                                                              , ""
-                                                             , _ProtocolPlugins);
+                                                             , _protocolPlugins);
 }
 void PluginLoader::_ScanForPlugins(std::string extraQualification)
 {
+}
+sharedMap_t<Communication::I_communication>& PluginLoader::getCommsPlugins()
+{
+    return _commsPlugins;
+}
+sharedMap_t<Protocol::I_protocolInterface>& PluginLoader::getProtocolPlugins()
+{
+    return _protocolPlugins;
 }
 } /* namespace PluginLoader */

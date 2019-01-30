@@ -28,7 +28,6 @@ target_include_directories(pluginLoader PUBLIC
 # Depend on a library that we defined in the top-level file
 target_link_libraries(pluginLoader
                       stdc++fs # The C++ filesystem library
-                      communicationHandler
                       Boost::system
                       freeFunctionsAndWrappers
                       testAnalyser2

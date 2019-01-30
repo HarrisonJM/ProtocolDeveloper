@@ -38,3 +38,4 @@ docs/Requirements And Acceptance Tests/Requirements.pdf
 docs/Requirements And Acceptance Tests/~$er Stories.xml
 .idea/*
 *~*
+*otherLibraries/boost.src/*

@@ -2,7 +2,7 @@
 project(helloWorldProtocol VERSION 0.1 LANGUAGES CXX)
 set(LIB_NAME helloWorldProtocol)
 
-add_library(${LIB_NAME}
+add_library(${LIB_NAME} SHARED
             src/HelloWorldProtocol.cpp)
 
 # Define headers for this library. PUBLIC headers are used for
