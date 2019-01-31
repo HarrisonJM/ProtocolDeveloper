@@ -51,6 +51,8 @@ void PluginLoader::ScanForComms(std::string const& pathToPlugins)
     PluginLoaderTemplate<Communication::I_communication> plt(pathToPlugins
                                                              , ""
                                                              , _commsPlugins);
+    plt.ScanForPlugins();
+    this->_commsPlugins = plt.getPlugins();
 }
 
 void PluginLoader::ScanForProtocols(std::string const& pathToPlugins)
@@ -58,6 +60,8 @@ void PluginLoader::ScanForProtocols(std::string const& pathToPlugins)
     PluginLoaderTemplate<Protocol::I_protocolInterface> plt(pathToPlugins
                                                              , ""
                                                              , _protocolPlugins);
+    plt.ScanForPlugins();
+    this->_protocolPlugins = plt.getPlugins();
 }
 void PluginLoader::_ScanForPlugins(std::string extraQualification)
 {

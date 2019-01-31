@@ -19,6 +19,7 @@
 
 #include <boost/dll/import.hpp>
 #include <boost/filesystem.hpp>
+#include <boost/function.hpp>
 
 #include <I_communication.h>
 #include <pluginLoader/PluginLoaderCommon.h>
@@ -121,21 +122,19 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
             // Currently pointed to file is not a directory
             if (!boost::filesystem::is_directory(file))
             {
-                //std::function<std::shared_ptr<plugin>()>
-                auto pluginCreator = boost::dll::import_alias<
-                    std::shared_ptr<I_Plugin<TpluginType>>>(file
-                                                            , "createNewPlugin"
-                                                            , boost::dll::load_mode::append_decorations);
-                // Make it a std::shared_ptr
-                auto newPluginCreator = make_shared_ptr(pluginCreator);
-
+                //std::shared_ptr<IFType>
+                auto pluginCreator =
+                    boost::dll::import_alias<boost::function<std::shared_ptr<I_Plugin<TpluginType>>>()>(file
+                                                                                                        , "createNewPlugin"
+                                                                                                        , boost::dll::load_mode::append_decorations);
+//                auto stdPluginCreator = make_shared_ptr(pluginCreator);
                 // Add the plugin to our map, as long as it's actually
-                // the correct type
-                if (_CheckCorrectType(pluginCreator->getPluginType()))
+                // The correct type
+                if (_CheckCorrectType(pluginCreator()->getPluginType()))
                 {
-                    _plugins->insert(std::pair<std::string, std::shared_ptr<
-                        std::function<std::shared_ptr<I_Plugin<TpluginType>>()>>>(pluginCreator->getPluginName()
-                                                                                  , pluginCreator));
+                    _plugins->insert(std::pair<std::string, decltype(pluginCreator)>
+                                         (pluginCreator->getPluginName()
+                                          , pluginCreator));
                 }
             }
         }

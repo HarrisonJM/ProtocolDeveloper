@@ -7,8 +7,6 @@
  *
  * @date 29/12/18
  */
-
-
 #ifndef PROTOCOLDEVELOPER_I_PLUGIN_H
 #define PROTOCOLDEVELOPER_I_PLUGIN_H
 
@@ -58,6 +56,7 @@ public:
  */
 template<class IFType>
 static std::shared_ptr<I_Plugin<IFType>> createNewPlugin();
+
 } /* namespace PluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_I_PLUGIN_H */

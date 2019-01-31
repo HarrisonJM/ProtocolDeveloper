@@ -19,6 +19,8 @@
 #include <functional>
 #include <map>
 
+#include "../I_plugin.h"
+
 namespace PluginLoader
 {
 /*!
@@ -54,9 +56,6 @@ std::shared_ptr<T> make_shared_ptr(boost::shared_ptr<T>& ptr)
                              );
 }
 /*!@}*/
-/*! @brief Forward Declaration for the plugin struct */
-template<class TypeToReturn, typename ...Args>
-struct Plugin_S;
 /*!
  * @brief The different types that the plugin can be
  * @{
@@ -71,11 +70,13 @@ enum PLUGINTYPE_t
 
 };
 /*!}@*/
+
 /*!
  * @brief A shared ptr to a map of strings and sharedptr's containing plugin interfaces
  */
 template<class TypeToUse>
-using sharedMap_t = std::shared_ptr<std::map<std::string, std::function<std::shared_ptr<TypeToUse>()> > >;
+using sharedMap_t = std::shared_ptr<std::map<std::string, std::shared_ptr<PluginLoader::I_Plugin<TypeToUse> > > >; // ptr, pair
+
 } /* namespace PluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADERCOMMON_H */

@@ -15,6 +15,9 @@ int main(int argc, char** argv)
 	//Load plugins
 	PluginLoader::PluginLoader PL;
 	PL.ScanForComms("/home/hmarcks/src/ProtocolDeveloper/cmake-build-debug/myLibraries/libnetworkCommunication/");
+    PL.ScanForProtocols("/home/hmarcks/src/ProtocolDeveloper/cmake-build-debug/myLibraries/helloWorldProtocol/");
+
+
 
 //	TestRunner::TestRunner tr;
 

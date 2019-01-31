@@ -1,163 +1,89 @@
-Use Cases
-	-- Artificial traffic generation is often the only practical way to
-	really verify the running of a service.
-	-- Hardware traffic generation often leads to greater packet drop at the target
-	-- Hardware is faster but also comes at a greater cost
-	-- Generating precise traffic allows greater control
-	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
-	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
+What is the thing
+	-- Load testing is vital to proving that web services meet the demands of its users, both in traffic and bheaviour (Draheim et al 2006)
+	-- Helps to locate issues in the code that might not appear under smaller load. These are errors are called "Load sensitive". (Bayan and Cangussu, 2006)
+		
+	-- The rate at which transactions are conducted constitutes load. Sending this to a target for test purposes, constitutes a Load Test. (Bayan and Cangussu, 2006)
+	-- Stress Testing is similair to workload, however the express intention is to break the system, and to verify how it recovers. (Bayan and Cangussu, 2006)
 
+	-- Workload (characteristics and intensity), environment and , high-level metrics define a load test and its results (Malik, 2010).
+	-- Intensity refers to arrival rate and throuput of data (Malik, 2010).
+	-- All of these come together in a test report (Malik, 2010).
+
+	-- Simluating the internet proper is near impossible, due to its shear scale, impracticality and the number of nodes needed (Sumeet Kumar and Kathleen 2017).	
+
+	-- It is certainly possible to create software that facilitates the entire load testing process. And to make the results it obtains far more accurate (Yan et al, 2014).
 	
 Other programs
-	- Mercury Interactive Continues to Dominate as Worldwide Load Testing Market Leader;
-	Company Captures 63% of Web Load Testing Market; Leads Market for Hosted Load Testing Services
 
-	-- Current tools support simple test cases with a fixed sequence fo actions
-	Realistic Load Testing of Web Applications
-	John Grundy, John Hosking, Dirk Draheim
+	- Mercury Interactive Continues to Dominate as Worldwide Load Testing Market Leader; Company Captures 63% of Web Load Testing Market; Leads Market for Hosted Load Testing Services
+	-- Current tools support simple test cases with a fixed sequence of actions (Draheim et al 2006)
+	-- Mercury Interactive's LoadRunner current load testing leader (Draheim et al 2006)
+	-- Current software are only client-server models (Bhatia et al, 2014)
+	-- Limited number of scenarios (Bhatia et al, 2014)	
+	-- DITG, Harpoon, fudp, 2Hping and, curlLoader are currently available open source traffic generators (Bhatia et al, 2014)
+	-- Curlloader is relatively flexible in its use (Bhatia et al, 2014)
 
-	-- Mercury Interactive's LoadRunner current load testing leader
-	Realistic Load Testing of Web Applications
-	John Grundy, John Hosking, Dirk Draheim	
+	-- LoadUI, ApacheJmeter IBM Rational Performance Tester (Yan et al, 2014)
+	-- Testmaker is another WS load tester that allows concurrency testing on Amazon EC2 (Yan et al, 2014).
 
-	-- Current software are only client-server models
-	-- Limited number of scenarios
-	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
-	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
-	
-	-- DITG, Harpoon, fudp, 2Hping and, curlLoader are currently available open source traffic generators
-	-- Curlloader is relatively flexible in its use
-	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
-	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
-
-	-- LoadUI, ApacheJmeter IBM Rational Performance Tester
-	DeliveringWeb service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
-
-	-- Testmaker is another WS load tester that allows concurrency testing on Amazon EC2.
-	DeliveringWeb service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
-
-	-- SURGE calculates how a user might interact with a website based on what's on each page
-	State of the Art Web Traffic Models
-	Eduard Hasenleithner Thomas Ziegler
-
-
-What is the thing
-	-- The rate at which transactions are conducted constitutes load. Sending this to a target for test purposes, constitutes a Load Test.
-	Automatic Stress and Load Testing for Embedded Systems
-	Mohamad S. Bayan Jo˜ao W. Cangussu
-
-	-- Stress Testing is similair to workload, however the express intention is to break the system, and to verify how it recovers.
-	Automatic Stress and Load Testing for Embedded Systems
-	Mohamad S. Bayan Jo˜ao W. Cangussu
-
-	-- Load testing is vital to proving that web services meet the demands of its users, both in traffic and bheaviour
-	Realistic Load Testing ofWeb Applications
-	John Grundy, John Hosking, Dirk Draheim
-
-	-- Helps to locate issues in the code that might not appear under smaller load. These are errors are called "Load sensitive".
-	Automatic Stress and Load Testing for Embedded Systems
-	Mohamad S. Bayan Jo˜ao W. Cangussu
-
-	-- Workload (characteristics and intensity), environment and , high-level metrics define a load test and its results.
-	-- Intensity referes to arrival rate and throuput of data.
-	-- All of these come together in a test report.
-	A Methodology to Support Load Test Analysis
-	Haroon Malik
-
-	-- Simluating the internet proper is near impossible, due to its shear scale, impracticality and the number of nodes needed.
-	SIMULATING DDOS ATTACKS ON THE US FIBER-OPTICS INTERNET INFRASTRUCTURE
-	Sumeet Kumar
-	Kathleen M. Carley
-
-	-- It is certainly possible to create software that facilitates the entire load testing process. And to make the results it obtains far more accurate
-	Delivering Web service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+	-- SURGE calculates how a user might interact with a website based on what's on each page (Hasenleithner and Ziegler, 2003)
 
 Problem Identification
-	-- Load test analysis methodology has been performed before.
-	A Methodology to Support Load Test Analysis
-	Haroon Malik
+	-- Tests often need to be parameterised and modified (Draheim et al 2006)
+	-- Often hard to do (Draheim et al 2006)
+	-- More advanced tools are needed (Draheim et al 2006)
+	-- Load test analysis methodology has been performed before (Malik, 2010)
+	-- Models can even be machine generated based on behaviour observation (Bayan and Cangussu, 2006).
 
-	-- Models can even be machine generated based on behaviour observation.
-	Automatic Feedback, ControlBased, Stress and Load Testing
-	Mohamad Bayan, Jo˜ao W. Cangussu
+	-- As software shifts towards being offered "as a service" (-aas). Offering some sort of load tester as a service would be wise, and allow for future proofing (Yan et al, 2014).	
+	-- A Load tester will likely contain four major components: Test Receiver, Test Manager, Middleware Manager and a Test Runner (Yan et al, 2014).
+	-- Test Receiver: Receives tests to run from the tester, can also monitor tests (Yan et al, 2014).
+	-- Test Manager: Manages queues fo tests and dispatches them, gathering and merging test results (Yan et al, 2014).
+	
+	-- Test Runner: Invokes the tests. Also analyses validity of results (Yan et al, 2014). 
+	-- Middleware Manager: provides and amanges testrunners for use within the system (Yan et al, 2014)
 
-	-- As software shifts towards being offered "as a service" (-aas). Offering some sort of load tester as a service would be wise, and allow for future proofing.
-	DeliveringWeb service load testing as a service with a global cloud
-	-- A Load tester will likely contain four major components: Test Receiver, Test Manager, Middleware Manager and a Test Runner.
-	-- Test Receiver: Receives tests to run from the tester, can also monitor tests
-	-- Test Manager: Manages queues fo tests and dispatches them, gathering and merging test results
-	-- Test Runner: Invokes the tests. Also analyses validity of results.
-	-- Middleware Manager: provides and amanges testrunners for use within the system
-	DeliveringWeb service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+	- FIG2 (Yan et al, 2014)
+	
+Use Cases
 
-	- FIG2
-	DeliveringWeb service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
-
-	-- Tests often need to be parameterised and modified
-	-- Often hard to do
-	-- More advanced tools are needed
-	Realistic Load Testing of Web Applications
-	John Grundy, John Hosking, Dirk Draheim
-
+	-- Artificial traffic generation is often the only practical way to really verify the running of a service (Bhatia et al, 2014).
+	-- Hardware traffic generation often leads to greater packet drop at the target (Bhatia et al, 2014)
+	-- Hardware is faster but also comes at a greater cost (Bhatia et al, 2014)
+	-- Generating precise traffic allows greater control (Bhatia et al, 2014)
+	
 How should it be done
-	-- Load testing should be performed regularly to make sure that resources are correctly provisioned.
-	Realistic Load Testing of Web Applications
-	John Grundy, John Hosking, Dirk Draheim
+	-- Load testing should be performed regularly to make sure that resources are correctly provisioned. (Draheim et al 2006)
 
 	-- Different Modes need to be offered for proper testing. Static, step and maximal testing are three such methods. Static runs for a specific load. 
-	Step runs for measuring usability under a load span. Maximal load to determine upper limits.
-	DeliveringWeb service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+	Step runs for measuring usability under a load span. Maximal load to determine upper limits. (Yan et al, 2014)
 
 Requirements and Design
-	-- Real user data can (and should) be used to model traffic. However such models are less versatile than stochastic ones.
-	Realistic Load Testing of Web Applications
+	-- Real user data can (and should) be used to model traffic. However such models are less versatile than stochastic ones. (Draheim et al 2006)
 	-- Script driven approches are common, but visual editors massively increase usability.
-	Realistic Load Testing of Web Applications
-	John Grundy, John Hosking, Dirk Draheim
+	Realistic Load Testing of Web Applications (Draheim et al 2006)
 
 	-- Reconfigurability for a variety of connections. Low cost, low resource would be a signifcant boon, however using the resources as efficiently as possible is key.
-	Traffic load co-ordination would also help to improve results and efficency. Traffic aggregation would also be beneficial to make sure all traffic acts on a single interface at the target.
-	Monitoring the traffic is also a good feature to have.
-	A framework for generating realistic traffic for Distributed Denial-of-Service attacks and Flash Events
-	Sajal Bhatia*, Desmond Schmidt, George Mohay, Alan Tickle
+	Traffic load co-ordination would also help to improve results and efficency. Traffic aggregation would also be beneficial to make sure all traffic acts on a single interface at the target.	Monitoring the traffic is also a good feature to have. (Bhatia et al, 2014)
 
 	-- Another structure would involve: Input identification, controller tuning and a controller. 
 	Input Identification involves finding inputs that affect the resource of interest.
 	Controller tuning involves figuroing out the internal parameters of the chosen controller
-	The controller itself drives the testcases to what load level is wanted.
-	Automatic Feedback, ControlBased, Stress and Load Testing
-	Mohamad Bayan, Jo˜ao W. Cangussu
+	The controller itself drives the testcases to what load level is wanted. (Bayan and Cangussu, 2006)
 
 	- [Fig 1] looks good. Lift it.
 	Modelling form-based interfaces with bipartite state machines
-	D. Draheima,*, G. Weberb
+	(Draheima and Weber, 2005)
 
-	-- Pseudo random generators are very good for the purposes of this program.
-	Pseudo random number generator based on quantum chaotic map
-	A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
+	-- Pseudo random generators are very good for the purposes of this program (Akhshani et al 2017).
 
 	-- The algorithm for constructing a random number generator based on quantum chaotic maps can also be used to create a good chaos model from which to work. 
-	Only using user activity graphs instead, to better try to model peak times.
-	Pseudo random number generator based on quantum chaotic map
-	A. Akhshani a,?, A. Akhavan b, A. Mobaraki c, S.-C. Lim a, Z. Hassan a
+	Only using user activity graphs instead, to better try to model peak times. (Akhshani et al 2017)
 
-	-- User interaction can be modelled as a bipartite state transition diagram
-	Realistic Load Testing of Web Applications
-	John Grundy, John Hosking, Dirk Draheim
+	-- User interaction can be modelled as a bipartite state transition diagram (Draheim et al 2006)
 	
-	-- Geographically distributed instances would improve the results per test task
-	DeliveringWeb service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
-
-	-- Large amounts of concurrency within each instance would be good as the loads can be very large, and the taffic could be very high.
-	DeliveringWeb service load testing as a service with a global cloud
-	Minzhi Yan, Hailong Sun*,†, Xudong Liu, Ting Deng and Xu Wang
+	-- Geographically distributed instances would improve the results per test task (Yan et al, 2014).
+	-- Large amounts of concurrency within each instance would be good as the loads can be very large, and the taffic could be very high (Yan et al, 2014).
 
 	-------------(This needs working on a bit later)------------------
 	- FORMULA 1 (SEE FORMULA1.PNG) for ACTTN Available concurrent test thread number

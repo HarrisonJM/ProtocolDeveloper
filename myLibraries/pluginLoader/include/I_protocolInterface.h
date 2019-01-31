@@ -42,7 +42,7 @@ class I_protocolInterface
 {
 public:
     /*! @brief Destructor */
-    virtual ~I_protocolInterface() = 0;
+    virtual ~I_protocolInterface() = default;
     /*!
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target
