@@ -119,22 +119,35 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
     {
         for (const auto& file : boost::filesystem::directory_iterator(newDir))
         {
+            /* Check the file extension is correct */
+            if (boost::filesystem::extension(file) != ".so")
+            {
+                continue;
+            }
+
             // Currently pointed to file is not a directory
             if (!boost::filesystem::is_directory(file))
             {
-                //std::shared_ptr<IFType>
-                auto pluginCreator =
-                    boost::dll::import_alias<boost::function<std::shared_ptr<I_Plugin<TpluginType>>>()>(file
-                                                                                                        , "createNewPlugin"
-                                                                                                        , boost::dll::load_mode::append_decorations);
-//                auto stdPluginCreator = make_shared_ptr(pluginCreator);
-                // Add the plugin to our map, as long as it's actually
-                // The correct type
-                if (_CheckCorrectType(pluginCreator()->getPluginType()))
+                try
                 {
-                    _plugins->insert(std::pair<std::string, decltype(pluginCreator)>
-                                         (pluginCreator->getPluginName()
-                                          , pluginCreator));
+                    //std::shared_ptr<IFType>
+                    auto pluginCreator =
+                        boost::dll::import_alias<std::shared_ptr<I_Plugin<TpluginType>>>(file
+                                                                                         , "createNewPlugin"
+                                                                                         , boost::dll::load_mode::append_decorations)
+                            .get();
+                    // Add the plugin to our map, as long as it's actually
+                    // The correct type
+                    if (_CheckCorrectType(pluginCreator->get()->getPluginType()))
+                    {
+                        _plugins.insert(std::pair<std::string, decltype(pluginCreator)>
+                                            (pluginCreator->get()->getPluginName()
+                                             , pluginCreator));
+                    }
+                }
+                catch (const std::exception& e)
+                {
+                    // Incorrect file type in directory
                 }
             }
         }

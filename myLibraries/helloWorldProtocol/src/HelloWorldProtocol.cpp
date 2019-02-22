@@ -10,6 +10,7 @@
 #include <string>
 #include <HelloWorldProtocol.h>
 #include <cstring>
+#include <iostream>
 
 #include "HelloWorldProtocol.h"
 /*
@@ -33,9 +34,16 @@ HelloWorldProtocol::HelloWorldProtocol()
       , helloOrGoodbye(false)
       , _curInstance(_numberOfInstances++)
 {
-    _possibleResults.emplace_back("Hello, World!\r\n\0\0");
-    _possibleResults.emplace_back("Goodbye, World!\r\n");
-    _possibleResults.emplace_back("ERROR\r\n");
+    _possibleResults.emplace_back("Hello, World!\r\n\0\0\0");
+    _possibleResults.emplace_back("Goodbye, World!\r\n\0\0\0");
+    _possibleResults.emplace_back("ERROR\r\n\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0");
+}
+/*!
+ * @brief Destructor, make threadsafe
+ */
+HelloWorldProtocol::~HelloWorldProtocol()
+{
+    _numberOfInstances--;
 }
 /*!
  * @brief Decodes a payload and sets the return code accordingly
@@ -57,8 +65,8 @@ void HelloWorldProtocol::DecodeResult(std::shared_ptr<Protocol::DataStruct> payL
                 break;
             }
         }
+        // Error
         _resultCode = 1;
-        break;
     }
 }
 /*!
@@ -68,17 +76,28 @@ void HelloWorldProtocol::DecodeResult(std::shared_ptr<Protocol::DataStruct> payL
  */
 std::shared_ptr<Protocol::DataStruct> HelloWorldProtocol::GetDataToSend()
 {
-    Protocol::DataStruct ds = {0};
-    static short switcher = 0;
-
     auto packet = new char[20];
-    std::memcpy(packet, _possibleResults[switcher].c_str(), 17);
+    short selector = 0;
+
+    if (_result._data_p == nullptr)
+        selector = 2;
+    else if (_possibleResults[1] == (char*) _result._data_p)
+        selector = 0;
+    else if (_possibleResults[0] == (char*) _result._data_p)
+        selector = 1;
+    else
+        selector = 2;
+
+    std::memcpy(packet
+                , _possibleResults[selector].c_str()
+                , 17);
 
     packet[17] = 0;
     packet[18] = 0;
     packet[19] = _curInstance;
 
-    ds._data_p = &packet;
+    Protocol::DataStruct ds = {0};
+    ds._data_p = packet;
     ds._size = 20;
 
     return std::make_shared<Protocol::DataStruct>(ds);
@@ -107,5 +126,4 @@ void HelloWorldProtocol::SetDataPoints(testAnalyser2::dataPoint testDP)
 {
     _testDP = testDP;
 }
-
 } /* namespace hwProt */

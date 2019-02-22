@@ -64,10 +64,10 @@ public:
      * @param TAIn A unique pointer to the test case analyser
      */
     TestRunner(std::string const& testfilePath
-               , const PluginLoader::sharedMap_t<
-        PluginLoader::I_Plugin<Communication::I_communication>>& commsInterfaces
-               , const PluginLoader::sharedMap_t<
-        PluginLoader::I_Plugin<Protocol::I_protocolInterface>>& protocolInterfaces
+               , PluginLoader::sharedMap_t<
+        Communication::I_communication> commsInterfaces
+               , PluginLoader::sharedMap_t<
+        Protocol::I_protocolInterface> protocolInterfaces
                , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TAIn
                , ThreadHandler::ThreadPool& threadPool_in);
     /*!
@@ -93,9 +93,9 @@ private:
     /*! @brief A reference to the test analyser, will also store our parsed test file*/
     std::unique_ptr<testAnalyser2::I_TestAnalyser2> _TestAnalyser;
     /*! @brief Shared map containing all the possible communication interface plugins we can use */
-    const PluginLoader::sharedMap_t<PluginLoader::I_Plugin<Communication::I_communication>> _commsInterface;
+    const PluginLoader::sharedMap_t<Communication::I_communication> _commsInterface;
     /*! @brief Shared map containing all the possible protocol interface plugins we can use */
-    const PluginLoader::sharedMap_t<PluginLoader::I_Plugin<Protocol::I_protocolInterface>> _protocolInterface;
+    const PluginLoader::sharedMap_t<Protocol::I_protocolInterface> _protocolInterface;
     // ThreadHandler
     /*! @brief the threadpool we'll be adding our tests to */
     ThreadHandler::ThreadPool& _threadPool;
@@ -114,13 +114,6 @@ private:
      */
     testAnalyser2::TestFile _GetTestFile(std::unique_ptr<testAnalyser2::I_TestAnalyser2> TAIn);
     /*!
-     * @brief Grabs the plugin we want from currently available plugins
-     * @param pluginName The name of the plugin we want
-     * @return The plugin factory function
-     */
-    template<typename IFType>
-    const std::function<std::shared_ptr<IFType>()>& _SearchForPlugin(const std::string& pluginName);
-    /*!
      * @brief Works out the ratio for sending data in milliseconds per thread
      * @param rate Transactions per second
      * @param numOfThreads The number of threads
@@ -138,25 +131,6 @@ private:
      */
     void _WaitForThreads();
 };
-
-/* Specialized template prototypes */
-
-/*!
- * @brief Grabs comms plugins
- * @param pluginName The anme of the plugin (as described in the testcase)
- * @return The plugin factory
- */
-template<>
-const std::function<
-    std::shared_ptr<Communication::I_communication>()>& TestRunner::_SearchForPlugin(const std::string& pluginName);
-/*!
- * @brief Grabs protocol plugins
- * @param pluginName The anme of the plugin (as described in the testcase)
- * @return The plugin factory
- */
-template<>
-const std::function<
-    std::shared_ptr<Protocol::I_protocolInterface>()>& TestRunner::_SearchForPlugin(const std::string& pluginName);
 } /* namespace TestRunner */
 
 #endif /* PROTOCOLDEVELOPER_TESTRUNNER_H */

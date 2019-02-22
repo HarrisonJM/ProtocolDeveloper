@@ -27,15 +27,15 @@ class HelloWorldProtocol
 {
 public:
     HelloWorldProtocol();
-    ~HelloWorldProtocol() override = default;
+    ~HelloWorldProtocol() override;
     /*!
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target
      */
     void DecodeResult(std::shared_ptr<Protocol::DataStruct> payLoad) override;
     /*!
-     * @brief I don't think this does anything?
-     * @return A pointer to a struct of data and sizes
+     * @brief Builds a packet to send BACK to the target based on what was received
+     * @return A pointer to a struct of data and the data's sizes
      */
     std::shared_ptr<Protocol::DataStruct> GetDataToSend() override;
     /*!
@@ -54,10 +54,11 @@ public:
      */
     void SetDataPoints(testAnalyser2::dataPoint testDP) override;
 
+private:
+
     /*! @brief Counts the number of instances */
     static u_int8_t _numberOfInstances;
 
-private:
     /*! @brief The datapoints we got from the test */
     testAnalyser2::dataPoint _testDP;
     /*! @brief Will store the received result as "raw" */

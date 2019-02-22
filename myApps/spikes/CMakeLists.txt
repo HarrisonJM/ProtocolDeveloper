@@ -1,2 +1,3 @@
 add_subdirectory(parserSpike)
 add_subdirectory(staticSpike)
+add_subdirectory(dllSpike2)

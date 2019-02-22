@@ -24,16 +24,16 @@
 namespace TestRunner
 {
 TestRunner::TestRunner(std::string const& testfilePath
-                       , const PluginLoader::sharedMap_t<
-    PluginLoader::I_Plugin<Communication::I_communication>>& commsInterfaces
-                       , const PluginLoader::sharedMap_t<
-    PluginLoader::I_Plugin<Protocol::I_protocolInterface>>& protocolInterfaces
+                       , PluginLoader::sharedMap_t<
+    Communication::I_communication> commsInterfaces
+                       , PluginLoader::sharedMap_t<
+    Protocol::I_protocolInterface> protocolInterfaces
                        , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TAIn
                        , ThreadHandler::ThreadPool& threadPool_in)
     : _testFilePath(testfilePath)
       , _TestAnalyser(std::move(TAIn))
-      , _commsInterface(commsInterfaces)
-      , _protocolInterface(protocolInterfaces)
+      , _commsInterface(std::move(commsInterfaces))
+      , _protocolInterface(std::move(protocolInterfaces))
       , _threadPool(threadPool_in)
       , _killThreadHandler(false)
       , _testFile(_GetTestFile(std::move(_TestAnalyser)))
@@ -58,14 +58,14 @@ bool TestRunner::BeginTesting()
     std::vector<std::shared_ptr<Communication::I_communication>> availableCommsInterfaces;
     {
         auto interfaceFactory =
-            _commsInterface.get()->at(_testFile.GetTestConfiguration()._handler)()->createNewObject();
+            _commsInterface.at(_testFile.GetTestConfiguration()._handler)->get()->createNewObject();
         availableCommsInterfaces.push_back(interfaceFactory);
         //    availableInterfaces[0]->init_Comms();
     }
     std::vector<std::shared_ptr<Protocol::I_protocolInterface>> availableProtInterfaces;
     {
         auto interfaceFactory =
-            _protocolInterface.get()->at(_testFile.GetTestConfiguration()._protocol)()->createNewObject();
+            _protocolInterface.at(_testFile.GetTestConfiguration()._protocol)->get()->createNewObject();
         availableProtInterfaces.push_back(interfaceFactory);
         //    availableProtInterfaces[0]->init_Protocol();
     }
@@ -128,17 +128,6 @@ testAnalyser2::TestFile TestRunner::_GetTestFile(std::unique_ptr<testAnalyser2::
     return newTF;
 }
 /*!
- * @brief Searches for the correct plugin, will fail.
- * @tparam IFType the protocol interface we want
- * @param pluginName The name of the plugin we want to use (gottenf rom the test configuration)
- * @return A const ref to the interface plugin factory
- */
-template<typename IFType>
-const std::function<std::shared_ptr<IFType>()>& TestRunner::_SearchForPlugin(const std::string& pluginName)
-{
-    return nullptr;
-}
-/*!
  * @brief Calculates the sending ratio (transactions per microsecond
  * @param rate Transactions wanted per second
  * @param numOfThreads How many threads there are
@@ -194,29 +183,5 @@ void TestRunner::_WaitForThreads()
             i = 0;
         }
     }
-}
-/*!
- * @brief Searches for the correct comms plugin
- * @param pluginName The name of the plugin we want to use (gotten from the test configuration)
- * @return A const ref to the interface plugin factory
- */
-template<>
-const std::function<std::shared_ptr<PluginLoader::I_Plugin<
-    Communication::I_communication>>()>& TestRunner::_SearchForPlugin(const std::string& pluginName)
-{
-    auto& mapRef = _commsInterface;
-    return (*mapRef).at(pluginName);
-}
-/*!
- * @brief Searches for the correct protocol plugin
- * @param pluginName The name of the plugin we want to use (gotten from the test configuration)
- * @return A const ref to the interface plugin factory
- */
-template<>
-const std::function<std::shared_ptr<PluginLoader::I_Plugin<
-    Protocol::I_protocolInterface>>()>& TestRunner::_SearchForPlugin(const std::string& pluginName)
-{
-    auto& mapRef = _protocolInterface;
-    return (*mapRef).at(pluginName);
 }
 } /* namespace TestRunner */

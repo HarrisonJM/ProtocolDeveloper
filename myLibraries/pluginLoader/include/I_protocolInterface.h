@@ -49,7 +49,7 @@ public:
      */
     virtual void DecodeResult(std::shared_ptr<DataStruct> payLoad) = 0;
     /*!
-     * @brief I don't think this does anything?
+     * @brief Builds a packet to send BACK to the target based on what was received
      * @return A pointer to a struct of data and sizes
      */
     virtual std::shared_ptr<DataStruct> GetDataToSend() = 0;
