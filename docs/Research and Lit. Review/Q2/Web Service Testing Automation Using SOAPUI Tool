@@ -1,0 +1,53 @@
+(Garg and Lavahte, 2017)
+
+Testing the web service manually becomes complicated (Garg and Lavahte, 2017).
+
+No test tool available for testing agile development process (Garg and Lavahte, 2017).
+
+SOAPUI is completely developed using Java platform which makes it cross-platform (Garg and Lavahte, 2017).
+
+SOAP, REST web services, JMS, AMF can be tested by using SOAPUI and it can also be used for making HTTP(S) and JDBC calls (Garg and Lavahte, 2017).
+
+functional testing, load testing, regression testing, performance testing, interopability, testing adn many more things are possible (Garg and Lavahte, 2017).
+
+multiple Windows versions, Mac and multiple Linux dialects. So, the operating system will not be an issue for those who are willing to make use of this tool. The basic requirements are 1.6+ versions of the JRE (Java Runtime Environment), at least 1GB memory and 100MB of disk space which are again not difficult to be available. (Garg and Lavahte, 2017)
+
+XML format is used by SOAP for sending and receiving request and data is platform independent. (Garg and Lavahte, 2017)
+
+Functional Testing 
+Security Testing
+Cross Site Scripting
+Securing database
+Stack overflow
+Lifesaving scans
+Load Testing
+Custom Scripts
+LoadUI Agent
+Drag and Drop
+Environment Switching
+Test Debugging
+Monitoring Performance
+(Garg and Lavahte, 2017)
+
+Maven
+Hudson
+Navigator
+Junit
+ApacheAnt
+(Garg and Lavahte, 2017)
+
+Navigator
+Interface Viewer
+Test Suit
+Logs
+SoapUI log
+Http Log
+Memory Log
+(Garg and Lavahte, 2017)
+
+It provides the data driven testing to save time for checking numerous real-world conditions. SoapUI NG Pro manages the multiple environment related configuration at one central location which makes it easy to witch between environments without much overhead.
+It provides test coverage which can be used for positive and negative tests and non-functional tests. SoapUI NG Pro provides the API refactoring, API discovery and API monitoring. It provides test history, test debugging and result comparison. It gives functionality of Point-and- click testing, Code completion, Global events. (Garg and Lavahte, 2017)
+
+SoapUI gives issues when working with JSON response if it contains special characters. So, it is not easy to add assertion on JSON response. Work flow testing and Load testing are difficult to perform. SoapUI is easy for testing but difficult for documentation.
+It is also observed that the SoapUI customer support response is late. (Garg and Lavahte, 2017)
+

@@ -100,7 +100,7 @@ std::string LogFile::ReturnLatestMessage()
 void LogFile::_GenerateHeader()
 {
     std::string header;
-    header += (Utility::addXLetter(60
+    header += (utility::addXLetter(60
                                    , '*') + '\n');
     header += ("Log file:          " + _logName + '\n');
     header += (std::string("Date:              ") + "DATE REPLACE" + '\n');
@@ -111,18 +111,18 @@ void LogFile::_GenerateHeader()
     while (!EIS.empty())
     {
         header += (EIS + '\n');
-        header += (Utility::addXLetter(15
+        header += (utility::addXLetter(15
                                        , ' '));
         EIS = (extractEIS(EIStemp));
     }
 
     header += '\n';
-    header += (Utility::addXLetter(60
+    header += (utility::addXLetter(60
                                    , '*') + '\n');
-    header += (Utility::addXLetter(21
-                                   , '*') + " LOG STARTS BELOW " + Utility::addXLetter(21
+    header += (utility::addXLetter(21
+                                   , '*') + " LOG STARTS BELOW " + utility::addXLetter(21
                                                                                        , '*') + '\n');
-    header += (Utility::addXLetter(60
+    header += (utility::addXLetter(60
                                    , '*') + '\n');
     header += ('\n');
 

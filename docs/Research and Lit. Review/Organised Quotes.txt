@@ -1,6 +1,10 @@
 =========================================================
 =================== What is the thing ===================
 =========================================================
+-- Simulation has played a vital role in system verification for a long time; however, it requires a great deal of time, and resource. But it's usefuleness and importance in software engineering has been noted in great detail by many authors (Sun & Männistö, 2012).
+
+-- Test tools are an "addendum" to normal development and perform a task realted to but seperate to direct development (Na and Huaichang, 2015).
+
 -- Load testing is vital to proving that web services meet the demands of its users, both in traffic and bheaviour (Draheim et al 2006)
 -- Helps to locate issues in the code that might not appear under smaller load. These are errors are called "Load sensitive". (Bayan and Cangussu, 2006)
 
@@ -15,60 +19,26 @@
 
 -- It is certainly possible to create software that facilitates the entire load testing process. And to make the results it obtains far more accurate (Yan et al, 2014).
 
-- ...to understand their application and typical user workload(PR Newswire Association LLC, 2014).
+-- It helps developers to understand their application in extreme circumstances(PR Newswire Association LLC, 2014).
 
-- Load testing is a required testing procedure in addition to conventional functional testing procedures, like unit testing and integration testing (Jiand & Hassan, 2015).
+-- Load testing is as vital to the testing of an application a unit testing and integration testing(Jiand & Hassan, 2015).
 
-- Load testing is conducted on a system (either a prototype or a fully functional system) rather than on a design or an architectural model (Jiand & Hassan, 2015).
+-- Load testing is performed on a - to some degree - implemented system as opposed to the design or architecture of the system in question (Jiand & Hassan, 2015).
 
-- Stress testing is the process of putting a system under extreme conditions to verify the robustness of the system and/or to detect various load-related problems (e.g., memory leaks and deadlocks) (Jiand & Hassan, 2015).
+-- In a similiar category to load testing is "stress testing"; the process of putting a system under incredibley extreme conditions to verify how it handles guarunteed error states (Jiand & Hassan, 2015).
 
-- Detecting Known Types of Problems:- There are five known load related problems, 	which can be analyzed using patterns: detection of memory leaks, locating error keywords (Section 5.2.2), detecting deadlocks , detecting unhealthy system states, and detecting throughput problems using queuing theory
+-- The purpose of a load test is to help guaruntee if a given system's performance is acceptable under peak conditions. This means checking response times and resource usage and helping develoeprs, testers, managers and potential customers decide whether or not the system's performnce is acceptable ro more work needs to be done to bring it to within acceptable limits. While all this happens there are still any other factors to consider (Zhang et al, 2011).
 
-Load tests aim to validate whether system performance is acceptable under peak conditions (Zhang et al, 2011).
+-- As focus shifts towrads offering software as a service with offsite hosting (a.k.a "The Cloud"), more and more emphasis nmust be put on testing these systems that require incredible high throughputs due to the sheer numebr of people accessing them and the ocmplex actions that they perform. However, this also extends to making sure that a load tester can be provided/offered as-a-service (XaaS) (Shojaee et al, 2015).
 
-Load tests aim to validate whether a system’s performance (e.g., response time, resource utilization) is acceptable under production, projected, or extreme loads (Zhang et al, 2011).
+-- Load testing referes to how a piece of software handles "load". Where load means just the rate of requests being received by the system (Jiang, 2015).
 
-Finally, while most load testing focuses on response time or system throughput, there are many other resource consumption measures that are of interest to developers (Zhang et al, 2011).
-
-Cloud computing offers a new architecture of resource multi-layer sharing, such as infrastructures as a Service, Platform as a Service, Software as a service and in fact it moves toward supporting everything as Service (XaaS) delivery model, that services is remotely deployed in a virtualised runtime enviornment and are automatically delivered, on demand, in a pay-per-use approach (Shojaee et al, 2015).
-
-Existing methods for load testing are able to produce a limtied number of virtual users and because load testing on the different servers configuration takes a lot of cost and time, don't experiment with website's performance uinder different servers configuration, therefore will not get the desired results. However, implementation of load test for multiple values with multiple virtual users, is time consuming and expensive, so to obtain faster results, load etsting can be combined with performance models simulation or analysis (Shojaee et al, 2015).
-
-load testing using cloud computing technology (Shojaee et al, 2015). 
-
-System under Test: it is a test product or system (Na and Huaichang, 2015).
-
-First, even small web servers are fairly complex programs, and they take significant effort to verify; streamlining this effort by catching as many bugs as possible before spending much time on veri fication makes good economic sense, especially if the code can be automatically tested against the very same specification that will later be used in the verification effort (Koh et al, 2018).
-
-As storage area network technologies such as Fiber Channel emerge in the futrure, testing the thoroughput of the disk sub system will become critical. The only way to test the progress of these new technologies will be through using Iometer and other performance evaluation programs (Baltazar, 1998)
-
-Large-scale software systems (e.g., Amazon and Dropbox) must be load tested to ensure that they can service thousands or millions of concurrent requests every day (Jiang, 2015).
-
-Load testing, in general, refers to the practice of assessing the system behavior under load. A load is the rate of the incoming requests to the system (Jiang, 2015)
-
-system under test (SUT). During the course of a load test, the SUT is monitored and large
-volumes of system behaviour data (counters and execution logs) are recorded (Jiang, 2015).
-
-load and performance testing of both infrastructures, that will present a good comparison between Server and Cloud platforms when providing the same service to the end users (Cico & Dika, 2014).
-
-Generally speaking, a client/server program is a type of distributed program (or concurrent program) (Hwang et al, 2004).
-
-Multiple executions of P with the same input may produce different results—this is called nondeterministic behavior (Hwang et al, 2004).
-
-Simulation has a long history of usage in the system verification and validation (Sun & Männistö, 2012).
-
-At the same time, simulation requires investments in terms of time, staff and materials, etc (Sun & Männistö, 2012).
-
-Müller et el. wrote on the usefulness and importance of simulation in support of software engineering (Sun & Männistö, 2012).
-
-Testing the web service manually becomes complicated (Garg and Lavahte, 2017).
+-- Classic server arrangements, datacenters and cloud configurations all require load testing to some degree to guaruntee their service is robust and reliable (Cico & Dika, 2014).
 
 ==========================================================
 ===================== Other programs =====================
 ==========================================================
 - Mercury Interactive Continues to Dominate as Worldwide Load Testing Market Leader; Company Captures 63% of Web Load Testing Market; Leads Market for Hosted Load Testing Services
--- Current tools support simple test cases with a fixed sequence of actions (Draheim et al 2006)
 -- Mercury Interactive's LoadRunner current load testing leader (Draheim et al 2006)
 -- Current software are only client-server models (Bhatia et al, 2014)
 -- Limited number of scenarios (Bhatia et al, 2014)	
@@ -77,18 +47,27 @@ Testing the web service manually becomes complicated (Garg and Lavahte, 2017).
 
 -- LoadUI, ApacheJmeter IBM Rational Performance Tester (Yan et al, 2014)
 -- Testmaker is another WS load tester that allows concurrency testing on Amazon EC2 (Yan et al, 2014).
+-- SoapUI is another very helpful tool (Shojaee et al, 2015).
+
+- SOAPtest is noted as growing in popularity surrounding testing of vital server systems. (Grehan, 2005)
 
 -- SURGE calculates how a user might interact with a website based on what's on each page (Hasenleithner and Ziegler, 2003)
 
-- AlertSite's load testing services help determine how well online applications scale under the stress of user demand (PR Newswire Association LLC, 2014).
+-- AlertSite also offers a load testing service that even goes as far as to offer consultancy on how to improve their systems (PR Newswire Association LLC, 2014).
 
-Problem Identification
+ -- Yet another tool Iometer can be be used to gauge hardware usage and test performance of storage systems without complicated testbeds (Baltazar, 1998)
+
+==========================================================
+================= Problem Identification =================
+==========================================================
 -- Tests often need to be parameterised and modified (Draheim et al 2006)
 -- Often hard to do (Draheim et al 2006)
 -- More advanced tools are needed (Draheim et al 2006)
 -- Load test analysis methodology has been performed before (Malik, 2010)
 -- Models can even be machine generated based on behaviour observation (Bayan and Cangussu, 2006).
-
+-- Current tools support simple test cases with a fixed sequence of actions (Draheim et al 2006)
+-- Limited number of scenarios (Bhatia et al, 2014)	
+-- Current software are only client-server models (Bhatia et al, 2014)
 -- As software shifts towards being offered "as a service" (-aas). Offering some sort of load tester as a service would be wise, and allow for future proofing (Yan et al, 2014).	
 -- A Load tester will likely contain four major components: Test Receiver, Test Manager, Middleware Manager and a Test Runner (Yan et al, 2014).
 -- Test Receiver: Receives tests to run from the tester, can also monitor tests (Yan et al, 2014).
@@ -97,33 +76,19 @@ Problem Identification
 -- Test Runner: Invokes the tests. Also analyses validity of results (Yan et al, 2014). 
 -- Middleware Manager: provides and amanges testrunners for use within the system (Yan et al, 2014)
 
-- FIG2 (Yan et al, 2014)
+-- Giving the user the option of adjusting the size and rate of sending is beneficial. Existing approaches consist of increasing the query size, number of queries or, the rat at which queries are made (Zhang et al, 2011).
 
-increasing the size or rate of the input (Zhang et al, 2011).
+-- XML is already used by large amounts of developers and engineers inluding many protocols themselves (Garg and Lavahte, 2017).
 
-Existing approaches to generate load tests induce load by increasing the input size (e.g., a larger query or number of queries) or the rate at which input is provided (e.g., more query requests per unit of time) (Zhang et al, 2011).
+-- JSON is not as widely supported regarding protocols and can fall over when it encounters special characters (however this is purely implementation dependent). Some solutions do not provide workflow testing or even true load testing. They can also make documentation more difficult (Garg and Lavahte, 2017)
+ 
+-- Cross-platform running would be a boon to making sure that the most amount of people possible are reached (Garg and Lavahte, 2017).
 
-Apache JMeter and SoapUI (Shojaee et al, 2015).
+-- Other software already offers a great deal of different testing approaches and services for maximum beneficial interaction (Garg and Lavahte, 2017).
 
-Finally, we have targetd using Apache jmeter software on the systems to simulate trhe variable and heavy load on the server, as well as simulating the web server's environment on instances for load test performing locally, and creating dynamic website based on the PHP scripting language (Shojaee et al, 2015).
+-- Allowing for scripting support of any kind would be very beneficial in making sure that the process can be automated with minimal user interaction and to better fit into an AGILE work flow (Shojaee et al, 2015).
 
-Iometer tool update automatically guages hardware performance, but only on Intel hardware (Baltazar, 1998)
-
-Iometer, which Intel calls a server performance evaluation program, allows IT managers to test the performance of disk storage systems without requiring a large and elaborate testbed (Baltazar, 1998)
-
-Parasoft's SOAPtest is one of a growing number of tools that test these increasingly critical applications. (Grehan, 2005)
-
-SOAPUI is completely developed using Java platform which makes it cross-platform (Garg and Lavahte, 2017).
-
-SOAP, REST web services, JMS, AMF can be tested by using SOAPUI and it can also be used for making HTTP(S) and JDBC calls (Garg and Lavahte, 2017).
-
-XML format is used by SOAP for sending and receiving request and data is platform independent. (Garg and Lavahte, 2017)
-
-It provides the data driven testing to save time for checking numerous real-world conditions. SoapUI NG Pro manages the multiple environment related configuration at one central location which makes it easy to witch between environments without much overhead.
-It provides test coverage which can be used for positive and negative tests and non-functional tests. SoapUI NG Pro provides the API refactoring, API discovery and API monitoring. It provides test history, test debugging and result comparison. It gives functionality of Point-and- click testing, Code completion, Global events. (Garg and Lavahte, 2017)
-
-SoapUI gives issues when working with JSON response if it contains special characters. So, it is not easy to add assertion on JSON response. Work flow testing and Load testing are difficult to perform. SoapUI is easy for testing but difficult for documentation.
-It is also observed that the SoapUI customer support response is late. (Garg and Lavahte, 2017)
+-- The are several limitaions to load testing currently: Cost-effectiveness, increasing input size may be very costly and increasing input size may just force the system to continually perform the same computation (Zhang et al, 2011).
 
 =========================================================
 ======================= Use Cases =======================
@@ -133,51 +98,36 @@ It is also observed that the SoapUI customer support response is late. (Garg and
 -- Hardware is faster but also comes at a greater cost (Bhatia et al, 2014)
 -- Generating precise traffic allows greater control (Bhatia et al, 2014)
 
-5.2.1 Detecting Memory Leaks
-5.2.2 Locating Error Keywords
-5.2.3 Detecting Deadlocks
-5.2.4 Detecting Unhealthy System States
-5.2.5 Detecting Throughput Problems
+-- Load testing can turn up a variety of problems including: memory leaks, error keywords, deadlocks, unhealthy system states and throughput problems (Jiand & Hassan, 2015).
 
-- In this research question, we survey the techniques used in the Load Test Analysis phase (Jiand & Hassan, 2015).
+-- Testing must be performed even on the smallest servers and services. Without testing significant amounts of resources coudl be lost to minor bugs cropping up and taking out the entire system when they could have been found during a simple load testing phase during development/setup (Koh et al, 2018).
 
-In this section, we discuss the techniques used to design loads, which resemble the realistic usage once the system is operational in the field (Jiand & Hassan, 2015).
+-- Large scale systems, especially so, nmust be tested to make sure that they can still service the millions of simultaneous requests every second (Jiang, 2015).
 
-This paper presents a method that automates regression testing of Web applications on the server side (Shimomura, 2012).
-
-However, there is little research on testing the different models and protocols of Web services transactions. This paper presents an abstract transaction model that patterns different Web services transactions standards. (Casado et al, 2015)
-
-So it can test multiple types of clients or interfaces and can be used to execute the distributed testing (Na and Huaichang, 2015).
-
-So developers can easily develop the corresponding test module according to their own products (Na and Huaichang, 2015).
-
-Results of this work have demonstrated some major differences between cloud and server platforms in terms of scalability and performance, respectively represented in blue columns for the cloud and red columns for the server (Cico & Dika, 2014).
-
-The rise of the Internet of things (IoT) poses massive scalability issues for location-based services (Chapuis & Garbinato, 2017).
-
-The study found that simulation was used on almost every interface to external systems, and two factors that affected the usefulness of simulators over long term were the functionality supported and the applicable usage scenarios (Sun & Männistö, 2012).
-
-functional testing, load testing, regression testing, performance testing, interopability, testing adn many more things are possible (Garg and Lavahte, 2017).
+-- As the demand on servers increases as more things become cloud based, it will be more and more vital to test these systems to verify they still maintain maximum throughput. Especially as users attempt to store and access files on these services. (Baltazar, 1998)
 
 =========================================================
 ================= How should it be done =================
 =========================================================
 
--- Load testing should be performed regularly to make sure that resources are correctly provisioned. (Draheim et al 2006)
+-- Load testing should be performed regularly to make sure that resources are correctly provisioned (Draheim et al 2006).
 
 -- Different Modes need to be offered for proper testing. Static, step and maximal testing are three such methods. Static runs for a specific load. 
-Step runs for measuring usability under a load span. Maximal load to determine upper limits. (Yan et al, 2014)
+Step runs for measuring usability under a load span. Maximal load to determine upper limits (Yan et al, 2014).
 
-To load test our middleware, we must be able to simulate many concurrent moving entities. The Scala 8 programming language and the actor model implemented in the Akka 9 suit this requirement perfectly (Chapuis & Garbinato, 2017).
+ -- Load testing works best with lots of different entities fully flexing a system (Chapuis & Garbinato, 2017).
 
-The execution of a client/server application involving database access requires a sequence of database transaction events (or, T-events), called a transaction sequence (or, T-sequence). A client/server database application may have nondeterministic behavior in that multiple executions thereof with the same input may produce different T-sequences (Hwang et al, 2004).
+ -- AGILE development works best with higher amounts of automation and as dterministic results as possible (Garg and Lavahte, 2017).
+ -- However different runs of the same test may produce different results anyway (non-dterministic) so it would be good to limit these situations as much as possible (Hwang et al, 2004).
+ 
+ -- No matter the system being tested a "client/server" model will be used for all interactions (Hwang et al, 2004).
 
-No test tool available for testing agile development process (Garg and Lavahte, 2017).
+ -- Manually testing web services would be incredibly labourious, slow and expesnive (Garg and Lavahte, 2017).
 
 =========================================================
 ================ Requirements and Design ================
 =========================================================
-- Support concurrent access from thousands or millions of users. Studies show that failures in these systems tend to be caused by their inability to scale to meet user demands, as opposed to feature bugs [1], [2].
+-- It is impreative that running data is recorded throughout the running the of the load test. Both by the traffic generator and the system under test (Jiang, 2015).
 
 -- Real user data can (and should) be used to model traffic. However such models are less versatile than stochastic ones. (Draheim et al 2006)
 -- Script driven approches are common, but visual editors massively increase usability.
@@ -186,14 +136,9 @@ Realistic Load Testing of Web Applications (Draheim et al 2006)
 -- Reconfigurability for a variety of connections. Low cost, low resource would be a signifcant boon, however using the resources as efficiently as possible is key.
 Traffic load co-ordination would also help to improve results and efficency. Traffic aggregation would also be beneficial to make sure all traffic acts on a single interface at the target.	Monitoring the traffic is also a good feature to have. (Bhatia et al, 2014)
 
--- Another structure would involve: Input identification, controller tuning and a controller. 
-Input Identification involves finding inputs that affect the resource of interest.
-Controller tuning involves figuroing out the internal parameters of the chosen controller
-The controller itself drives the testcases to what load level is wanted. (Bayan and Cangussu, 2006)
+-- Another structure would involve: Input identification, controller tuning and a controller. Input Identification involves finding inputs that affect the resource of interest. Controller tuning involves figuroing out the internal parameters of the chosen controller. The controller itself drives the testcases to what load level is wanted. (Bayan and Cangussu, 2006)
 
-- [Fig 1] looks good. Lift it.
-Modelling form-based interfaces with bipartite state machines
-(Draheima and Weber, 2005)
+-- [Fig 1] looks good. Lift it. (Draheima and Weber, 2005)
 
 -- Pseudo random generators are very good for the purposes of this program (Akhshani et al 2017).
 
@@ -203,101 +148,36 @@ Only using user activity graphs instead, to better try to model peak times. (Akh
 -- User interaction can be modelled as a bipartite state transition diagram (Draheim et al 2006)
 
 -- Geographically distributed instances would improve the results per test task (Yan et al, 2014).
+
+
+-- Even though the systems themselves would need testing; load testing from a cloud-based platform would be entirely possible (and preferable in some situations where location of requests is important) (Shojaee et al, 2015).
 -- Large amounts of concurrency within each instance would be good as the loads can be very large, and the taffic could be very high (Yan et al, 2014).
 
-5.3.1 Anomaly Detection Using Performance Metrics
-5.3.2 Anomaly Detection Using Execution Logs
-5.3.3 Anomaly Detection Using Execution Logs and Performance Metrics
+-- It is important that the user designs loads well, but mor eimportantly that the software interprets them accurately, this is also a practice left up to the user in creating the plugin (Jiand & Hassan, 2015).
 
-Current approaches to load testing suffer from four limitations. First, their cost-effectiveness is highly dependent on the particular values that are used yet there is no support for choosing those values (Zhang et al, 2011).
-Second, increasing the input size may be a costly means to load a system. For example, in the context of a compression application we studied, we found that to increase the response (Zhang et al, 2011).
-Third, increasing the input size may just force the system to perform more of the same computation (Zhang et al, 2011).
+-- Being able to scale to simulate potentially millions of requests would be incredibly beneficial to the testing of the software (Jiand & Hassan, 2015).
 
-Cloud testing is a new form of software testing where applications looking for real-world user traffic simulation and take advantage from cloud computing's dynamically scalable and vritualised resources as a service over the internet, so that with the increase or decrease in load (scale) more resrouces are automatically allocated or unused resources are released (Shojaee et al, 2015).
+-- Current load testers have a very limited number of virutal users and testing many different confgiurations is difficult and time consuming. Having the ability to scale the software up and up depending ont he users' needs would be an incredible feat and highly desireable (Shojaee et al, 2015).
 
-The test applicant user management layer, tasks management layer, services management layer, load testing layer (Shojaee et al, 2015).
+-- Anomolies should be able to be detected by Performance metrics and execution logs (Jiand & Hassan, 2015)
 
-Test Tools: it is a software or auxiliary equipment required for testing. Such as: network packet analysis software “Wireshark” (Na and Huaichang, 2015).
+-- Making sure messages are routed to the correct threads while the system is running is very important as messages can be interleaved by the underlying asynchronous operations (Koh et al, 2018).
 
-Healthy Monitor Manager, UI, HTTP, SSH and Serial, Utility Manager, Configuration Manager (Na and Huaichang, 2015)
+-- Making suer that the software can run on a variety of system's will help to maximise its customer base. This can best be acheived by making sure that only the stnadard libraries are adghered to mostly (Baltazar, 1998).
 
-Provides API, CLI and UI basic interface libraries.
-x Web UI wrapper for selenium to enable more robust UI
-automation.
-x Health monitoring framework for the test environment.
-x Configuration Manager to setup the test environment.
-x Performance Manager to measure and bound SUT
-interface interactions. (Na and Huaichang, 2015)
+-- There will be three steps to laod testing for the user when it comes to using the software after the plugins ahve been created: designing it, executing it and, analyzing the results (Jiang, 2015).
 
-Since Robot Framework has a rich library, it is easier for us to extend on its frame (Na and Huaichang, 2015).
+-- Being able to build the perfect laod testing system from scratch would help developers to get exactly what they want out of a laod tester to make suer that they're software is tested exactly as they need it to be (Grehan, 2005).
 
-The variability introduced by low-level buffering of messages and interleaving of multiple TCP connections is captured using network refinement, a variant of observational refinement (Koh et al, 2018).
+ -- However it is important that the software adheres to some basic hardware requirements to make sure it doesn't completely excede anything that might be able to run it, though assuming the software will mostly be run on servers, resource usage shouldnt' be too bad. However if we exceed the tester's limits we may invalidate the test results (Garg and Lavahte, 2017)
 
-Another important limitation is Iometer's weak interopibility - it runs on only on Intel based hardware. (Baltazar, 1998)
+ -- Having a variety of ways to check on and use the software would be very useful, including a full UI, A task monitor, and a configuration manager (Na and Huaichang, 2015)
 
-Operating ystsem support is also a weakness that must be addressed. This release only runs on Windows NT 4.0 or Solaris for Intel (Baltazar, 1998)
+-- An API for interaction would also be very useful as it would allow many different ways of interacting with the system for different purposes (Na and Huaichang, 2015)
 
-designing a load test, (2) executing a load test, and (3) analyzing the results of a load test (Jiang, 2015).
+ -- Being able to extend the program beyond its basic function would be an incredibley useful feature and is already in place in many modern systems such as Robot (Na and Huaichang, 2015).
+ 
+-- Other great fatures to have that are present in other systems are custom load testing "Scripts", specific agents, environment switching, test debugging and performance monnitoring (Garg and Lavahte, 2017).
 
-SOAPtest delivers comprehensive regression, unit, and security testing for Web services and Web service client applications (Grehan, 2005).
-
-This is SOAPtest's real power. Beginning with a small, simple set of static and dynamic tests automatically generated by a wizard (one of the new features of SOAPtest 4.0), you can extend, duplicate, and modify those tests to build -- Lego-style -- an increasingly powerful suite (Grehan, 2005).
-
-multiple Windows versions, Mac and multiple Linux dialects. So, the operating system will not be an issue for those who are willing to make use of this tool. The basic requirements are 1.6+ versions of the JRE (Java Runtime Environment), at least 1GB memory and 100MB of disk space which are again not difficult to be available. (Garg and Lavahte, 2017)
-
-Functional Testing 
-Security Testing
-Cross Site Scripting
-Securing database
-Stack overflow
-Lifesaving scans
-Load Testing
-Custom Scripts
-LoadUI Agent
-Drag and Drop
-Environment Switching
-Test Debugging
-Monitoring Performance
-(Garg and Lavahte, 2017)
-
-Maven
-Hudson
-Navigator
-Junit
-ApacheAnt
-(Garg and Lavahte, 2017)
-
-Navigator
-Interface Viewer
-Test Suit
-Logs
-SoapUI log
-Http Log
-Memory Log
-(Garg and Lavahte, 2017)
-
-=========================================================================================
-
-
--------------(This needs working on a bit later)------------------
-- FORMULA 1 (SEE FORMULA1.PNG) for ACTTN Available concurrent test thread number
-Oi refers to the upper bound of the original concurrent test threads number of node i. Let t1
-be the average response time (ART) which is calculated by non-concurrently (with just 1 test
-thread) invoking the 20 most used Web services in ServiceXchange from node i . And let t2
-be the ART while concurrently invoking each of those 20 Web services with R requests. R is
-initially set as 2 and increased step by step while t2 < 2t1, in which process t2 would increase
-as R increases and finally reach 2t1. We set the value of Oi as R when t2 D 2t1 according to the
-value of delay variance factor in computing retransmission timeout in RFC 793 [18] because
-when retransmission is detected, we can decide that a network congestion is happening;
- S are the number of types of other SA hosted in each node;
- Cij stands for the number of the jth type of SA on node i . In Service4All, every node may host
-several types of SAs at the same time and each type of SA will consume a certain amount of
-node resources. Thus, we need to take this factor into account when calculating the ACTTN;
- j is the impact factor of the jth type of SA to the ACTTN which is defined as the average
-reduction of Oi when one of the jth SA is added on all the test nodes. For instance, if we
-add a BPMNEngine (with a composite service executing on it) to each node and the average
-reduction of Oi is d, then BPMNEngine is set as d.
-DeliveringWeb service load testing as a service with a global cloud
-Minzhi Yan, Hailong Sun*,, Xudong Liu, Ting Deng and Xu Wang
-
+-- Maximising what tools it can integrate would be a great help to supporting the AGILE workflow too, with integration with systems such as Maven, Hudson, Navigator, Junit, ApacheAnt (Garg and Lavahte, 2017).
 - 

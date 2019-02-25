@@ -43,12 +43,3 @@ install(EXPORT ${LIB_NAME}Config
 # This makes the project importable from the build directory
 export(TARGETS ${LIB_NAME}
         FILE ${LIB_NAME}Config.cmake)
-
-add_executable(testFreeFunctionsAndWrappers
-        tests/freeFunctionsAndWrappers_Tests.cpp)
-target_link_libraries(testFreeFunctionsAndWrappers
-        freeFunctionsAndWrappers
-        gtest_main
-        gtest)
-
-add_test(testFreeFunctionsAndWrappers testFreeFunctionsAndWrappers)

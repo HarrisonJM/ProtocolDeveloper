@@ -1,0 +1,23 @@
+(Na and Huaichang, 2015)
+
+So it can test multiple types of clients or interfaces and can be used to execute the distributed testing (Na and Huaichang, 2015).
+
+So developers can easily develop the corresponding test module according to their own products (Na and Huaichang, 2015).
+
+Test Tools: it is a software or auxiliary equipment required for testing. Such as: network packet analysis software “Wireshark” (Na and Huaichang, 2015).
+
+System under Test: it is a test product or system (Na and Huaichang, 2015).
+
+Healthy Monitor Manager, UI, HTTP, SSH and Serial, Utility Manager, Configuration Manager (Na and Huaichang, 2015)
+
+Provides API, CLI and UI basic interface libraries.
+x Web UI wrapper for selenium to enable more robust UI
+automation.
+x Health monitoring framework for the test environment.
+x Configuration Manager to setup the test environment.
+x Performance Manager to measure and bound SUT
+interface interactions. (Na and Huaichang, 2015)
+
+Since Robot Framework has a rich library, it is easier for us to extend on its frame (Na and Huaichang, 2015).
+
+

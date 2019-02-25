@@ -1,5 +1,4 @@
 ## Small and Header Only SafeContainers Libraries ##
-add_subdirectory(enumHandler)
 add_subdirectory(safeContainers)
 add_subdirectory(utility)
 add_subdirectory(mockLibrary)

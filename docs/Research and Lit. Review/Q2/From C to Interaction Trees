@@ -1,0 +1,7 @@
+(Koh et al, 2018)
+
+The variability introduced by low-level buffering of messages and interleaving of multiple TCP connections is captured using network refinement, a variant of observational refinement (Koh et al, 2018).
+
+First, even small web servers are fairly complex programs, and they take significant effort to verify; streamlining this effort by catching as many bugs as possible before spending much time on veri fication makes good economic sense, especially if the code can be automatically tested against the very same specification that will later be used in the verification effort (Koh et al, 2018).
+
+

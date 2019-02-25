@@ -73,8 +73,8 @@ bool TestRunner::BeginTesting()
     SafeContainers::safeList<Protocol::DataStruct> results;
     SafeContainers::safeList<int> resultCodes;
 
-    long maxThreads = Utility::StringToLong(_testFile.GetTestConfiguration()._maxThreads);
-    long tps = Utility::StringToLong(_testFile.GetTestConfiguration()._tps);
+    long maxThreads = utility::StringToLong(_testFile.GetTestConfiguration()._maxThreads);
+    long tps = utility::StringToLong(_testFile.GetTestConfiguration()._tps);
     long ratio = _GetRatio(tps
                            , maxThreads);
     /*! @todo Need to separate and edit for changing comms interfaces */
@@ -154,7 +154,7 @@ void TestRunner::_TimerHandler(const boost::system::error_code& e)
 void TestRunner::_WaitForThreads()
 {
     /* Setup the asynchronous timer */
-    long runTime = Utility::StringToLong(_testFile.GetTestConfiguration()._secondsDuration);
+    long runTime = utility::StringToLong(_testFile.GetTestConfiguration()._secondsDuration);
     boost::asio::io_context io;
     boost::asio::deadline_timer t(io
                                   , boost::posix_time::seconds(runTime));

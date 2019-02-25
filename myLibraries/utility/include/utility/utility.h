@@ -3,7 +3,7 @@
  *
  * @date 10/28/18
  *
- * @addtogroup Utility
+ * @addtogroup utility
  */
 
 #ifndef PROTOCOLDEVELOPER_UTILITYFUNCTIONS_H
@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace Utility
+namespace utility
 {
 
 extern std::string addXLetter(int count

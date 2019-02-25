@@ -23,7 +23,7 @@ namespace TestRunner
  * @param codeList_in Where to store resultant error codes
  * @param ratio_in The rough gap between firings we want
  */
-TestThread::TestThread(const Utility::ThreadSafeT<bool>& killThread_in
+TestThread::TestThread(const utility::ThreadSafeT<bool>& killThread_in
                        , std::shared_ptr<Communication::I_communication>& commsInterface_in
                        , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
                        , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in

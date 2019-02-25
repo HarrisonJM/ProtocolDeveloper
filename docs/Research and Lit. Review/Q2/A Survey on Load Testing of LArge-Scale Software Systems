@@ -1,0 +1,43 @@
+(Jiand & Hassan, 2015)
+
+Support concurrent access from thousands or millions of users. Studies show that failures in these systems tend to be caused by their inability to scale to meet user demands, as opposed to feature bugs (Jiand & Hassan, 2015).
+
+Load testing is a required testing procedure in addition to conventional functional testing procedures, like unit testing and integration testing (Jiand & Hassan, 2015).
+
+In this research question, we survey the techniques used in the Load Test Analysis phase (Jiand & Hassan, 2015).
+
+Load testing is the process of assessing the behavior of a system under load in order to detect load-related problems (Jiand & Hassan, 2015).
+
+Load testing is conducted on a system (either a prototype or a fully functional system) rather than on a design or an architectural model (Jiand & Hassan, 2015).
+
+Stress testing is the process of putting a system under extreme conditions to verify the robustness of the system and/or to detect various load-related problems (e.g., memory leaks and deadlocks) (Jiand & Hassan, 2015).
+
+The goal of the load design phase is to devise a load, which can uncover load-related problems under load. Based on the load test objectives, there are two general schools of
+thought for designing a proper load to achieve such (Jiand & Hassan, 2015).
+
+In this section, we discuss the techniques used to design loads, which resemble the realistic usage once the system is operational in the field (Jiand & Hassan, 2015).
+
+(1) Setup, which includes system deployment and test execution setup; (2) Load Generation
+and Termination, which consists of generating the load according to the configurations and terminating the load when the load test is completed; and (3) Test Monitoring and Data Collection, which includes recording the system behavior (e.g., execution logs and performance metrics) during execution. The recorded data is then used in the Test Analysis phase (Jiand & Hassan, 2015).
+
+Detecting Known Types of Problems
+There are five known load related problems, which can be
+analyzed using patterns: detection of memory leaks
+(Section 5.2.1), locating error keywords (Section 5.2.2),
+detecting deadlocks (Section 5.2.3), detecting unhealthy sys-
+tem states (Section 5.2.4), and detecting throughput prob-
+lems using queuing theory
+
+5.2.1 Detecting Memory Leaks
+5.2.2 Locating Error Keywords
+5.2.3 Detecting Deadlocks
+5.2.4 Detecting Unhealthy System States
+5.2.5 Detecting Throughput Problems
+
+5.3.1 Anomaly Detection Using Performance Metrics
+5.3.2 Anomaly Detection Using Execution Logs
+5.3.3 Anomaly Detection Using Execution Logs and Performance Metrics
+
+
+
+

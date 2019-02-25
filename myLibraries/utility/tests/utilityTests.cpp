@@ -1,11 +1,11 @@
 /*!
- * @brief unit tests for the testAnalyser2. Runs ALL unit tests for the library
+ * @brief Defines the entry point for all tests within the Utility library
  *
  * @author hmarcks
  *
- * @addtogroup
+ * @date 22/02/19
  *
- * @date 02/01/19
+ * @addtogroup utility
  */
 
 #include <gtest/gtest.h>
@@ -17,4 +17,3 @@ int main(int argc
                               , argv);
     return RUN_ALL_TESTS();
 }
-

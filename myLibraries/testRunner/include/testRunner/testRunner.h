@@ -100,7 +100,7 @@ private:
     /*! @brief the threadpool we'll be adding our tests to */
     ThreadHandler::ThreadPool& _threadPool;
     /*! @brief Controls whether the test needs to DIE */
-    Utility::ThreadSafeT<bool> _killThreadHandler;
+    utility::ThreadSafeT<bool> _killThreadHandler;
     /*! @brief Contains all the created threads */
     std::vector<std::shared_ptr<TestThread>> _threadsVec;
     /*! @brief The testfile itself */

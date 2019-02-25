@@ -38,7 +38,7 @@ public:
      * @param resultsList_in Where to store the results
      * @param ratio_in The rough gap between firings we want
      */
-    TestThread(const Utility::ThreadSafeT<bool>& killThread_in
+    TestThread(const utility::ThreadSafeT<bool>& killThread_in
                , std::shared_ptr<Communication::I_communication>& commsInterface_in
                , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
                , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
@@ -66,7 +66,7 @@ private:
     /*! @brief The amount of time (in micro seconds) between each successive fire */
     const long _fireRatioMicro;
     /*! @brief Threadsafe bool kill handler for the thread */
-    const Utility::ThreadSafeT<bool>& _killHandler;
+    const utility::ThreadSafeT<bool>& _killHandler;
     /*! @brief The interface that the test thread will communicate through */
     std::shared_ptr<Communication::I_communication>& _commsInterface;
     /*! @brief The Protocol that we'll be testing */

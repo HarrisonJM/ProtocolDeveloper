@@ -3,7 +3,7 @@
  *
  * @author hmarcks
  *
- * @addtogroup Utility
+ * @addtogroup utility
  *
  * @date 17/01/19
  *
@@ -14,7 +14,7 @@
 
 #include <mutex>
 
-namespace Utility
+namespace utility
 {
 /*!
  * @brief Allows for basic thread safe access to some type
@@ -31,7 +31,7 @@ public:
     ThreadSafeT(T initial)
         : _internal(initial)
         , _mut()
-        , _lock(_mut)
+//        , _lock(_mut)
     {
     }
     /*!
@@ -44,7 +44,7 @@ public:
      */
     T GetT()
     {
-        _lock.lock();
+        std::lock_guard<std::mutex> _lock(_mut);
         return _internal;
     }
     /*!
@@ -54,7 +54,7 @@ public:
      */
     void SetT(T newVal)
     {
-        _lock.lock();
+        std::lock_guard<std::mutex> _lock(_mut);
         _internal = newVal;
     }
     /*!
@@ -78,9 +78,7 @@ private:
     /*! @brief The type variable itself */
     T _internal;
     /*! @brief The mutex used to protect the type */
-    std::mutex _mut;
-    /*! @brief The internal lock */
-    std::unique_lock<std::mutex> _lock;
+    mutable std::mutex _mut;
 };
 
 } /* namespace SafeContainers */

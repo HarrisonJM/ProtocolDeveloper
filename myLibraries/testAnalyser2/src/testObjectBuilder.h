@@ -14,7 +14,7 @@
 #define PROTOCOLDEVELOPER_TESTOBJECTBUILDER_H
 
 #include <testAnalyser2/testFile.h>
-#include <enumHandler/enumHandler.h>
+#include <utility/enumHandler.h>
 #include "rapidAbstract.h"
 
 namespace testAnalyser2

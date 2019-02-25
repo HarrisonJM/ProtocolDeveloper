@@ -5,13 +5,13 @@
  *
  * @author hmarcks
  *
- * @addtogroup Utility
+ * @addtogroup utility
  */
 
 #include <string>
 #include <sstream>
 
-namespace Utility
+namespace utility
 {
 /*!
  * @brief Returns a string containing nothing but count amount of c letters

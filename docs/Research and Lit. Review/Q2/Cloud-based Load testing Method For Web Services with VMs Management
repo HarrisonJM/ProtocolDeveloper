@@ -1,0 +1,17 @@
+(Shojaee et al, 2015)
+
+Cloud computing offers a new architecture of resource multi-layer sharing, such as infrastructures as a Service, Platform as a Service, Software as a service and in fact it moves toward supporting everything as Service (XaaS) delivery model, that services is remotely deployed in a virtualised runtime enviornment and are automatically delivered, on demand, in a pay-per-use approach (Shojaee et al, 2015).
+
+Apache JMeter and SoapUI (Shojaee et al, 2015).
+
+Cloud testing is a new form of software testing where applications looking for real-world user traffic simulation and take advantage from cloud computing's dynamically scalable and vritualised resources as a service over the internet, so that with the increase or decrease in load (scale) more resrouces are automatically allocated or unused resources are released (Shojaee et al, 2015).
+
+Existing methods for load testing are able to produce a limtied number of virtual users and because load testing on the different servers configuration takes a lot of cost and time, don't experiment with website's performance uinder different servers configuration, therefore will not get the desired results. However, implementation of load test for multiple values with multiple virtual users, is time consuming and expensive, so to obtain faster results, load etsting can be combined with performance models simulation or analysis (Shojaee et al, 2015).
+
+load testing using cloud computing technology (Shojaee et al, 2015). 
+
+The test applicant user management layer, tasks management layer, services management layer, load testing layer (Shojaee et al, 2015).
+
+setup optimal number of required virtual machines based on the targeted users (Shojaee et al, 2015).
+
+Finally, we have targetd using Apache jmeter software on the systems to simulate trhe variable and heavy load on the server, as well as simulating the web server's environment on instances for load test performing locally, and creating dynamic website based on the PHP scripting language (Shojaee et al, 2015).

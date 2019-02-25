@@ -1,0 +1,53 @@
+(Jiang, 2015)
+
+Large-scale software systems (e.g., Amazon and Dropbox) must be load tested to ensure that they can service thousands or millions of concurrent requests every day (Jiang, 2015).
+
+designing a load test, (2) executing a load test, and (3) analyzing the results of a load test (Jiang, 2015).
+
+Load testing, in general, refers to the practice of assessing the system behavior under load. A load is the rate of the incoming requests to the system (Jiang, 2015)
+
+system under test (SUT). During the course of a load test, the SUT is monitored and large
+volumes of system behaviour data (counters and execution logs) are recorded (Jiang, 2015).
+
+Part Two: Designing a Load Test
+There are two general approaches to design a load test:
+1) Designing realistic testing loads aims to design a load
+test, which closely resembles the expected usage in the
+field.
+2) Designing fault-inducing testing loads aims to design a
+load test, which is likely to reveal load-related problems.
+In this part, we will explain various load design techniques
+derived from the above two approaches. In addition, we will
+also cover load design optimization and reduction techniques.
+Part Three: Executing a Load Test
+There are three general approaches to execute a load test:
+1) Live-user based test executions hire human testers to
+manually generate testing loads;
+2) Driver based test executions use load drivers to auto-
+matically generate testing loads; and
+3) Emulation based test executions execute the load tests
+on specialized platforms (e.g., CHESS [9]).
+In this part, we will describe the test execution techniques
+derived from the aforementioned three approaches.
+Part Four: Analyzing a Load Test
+During the course of a load test, there are two types of
+system behavior data being recorded: metrics and execution
+logs. Metrics can be functional related (e.g., number of pass
+and failed requests) or performance related (e.g., CPU and
+memory utilizations). Execution logs, which are generated
+by debug statements embedded in the source code, record
+software activities (e.g., item purchased) and runtime errors
+(e.g., database connection timeout). There are three general
+approaches to analyze the generated system behavior data:
+1) Threshold based techniques verify the system behavior
+data against some known threshold values (e.g., SLA or
+the response time values from previous releases).
+2) Pattern based techniques check the system behavior data
+against known problems (e.g., analyzing memory usage
+data for memory leaks).
+3) Anomaly detection based techniques automatically learn
+the “normal/expected” behavior from the past tests and
+flag suspicious system behavior from the current test.
+In this part, we will describe various load test analysis
+techniques derived from the above three approaches. (Jiang, 2015)
+

@@ -6,8 +6,10 @@ add_library(${LIB_NAME}
             src/rapidAbstract.cpp
             src/testAnalyser2.cpp
             src/testFile.cpp
+            src/testObjectBuilder.cpp
             src/analysisException.h
-            src/testObjectBuilder.cpp include/I_RapidAbstract.h include/I_TestAnalyser2.h)
+            include/I_RapidAbstract.h
+            include/I_TestAnalyser2.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -25,7 +27,7 @@ target_include_directories(${LIB_NAME} PUBLIC
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(${LIB_NAME}
-                      enumHandler
+                      utility
                       stdc++fs
                       ) ## Insert libraries as needed
 
@@ -52,11 +54,13 @@ export(TARGETS ${LIB_NAME}
 add_executable(test${LIB_NAME}
                ../logger/tests/loggerTestsMain.cpp
                tests/${LIB_NAME}Tests.cpp
+               tests/RapidAbstractTests.cpp
+               tests/TestObjectBuilderTests.cpp)
 
-               tests/testRapidAbstract.cpp tests/testTestObjectBuilder.cpp)
 target_link_libraries(test${LIB_NAME}
                       ${LIB_NAME}
                       gtest_main
                       gtest)
 
-add_test(test${LIB_NAME} test${LIB_NAME})
+add_test(test${LIB_NAME}
+         test${LIB_NAME})

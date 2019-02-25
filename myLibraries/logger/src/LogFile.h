@@ -20,7 +20,7 @@
 #include "I_LogFile.h"
 
 #include "safeQueues/SafeQueue.h"
-#include "enumHandler/enumHandler.h"
+#include "utility/enumHandler.h"
 
 namespace LoggerClasses
 {

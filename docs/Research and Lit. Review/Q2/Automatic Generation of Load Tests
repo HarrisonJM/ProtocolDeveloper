@@ -1,0 +1,19 @@
+(Zhang et al, 2011)
+
+Load tests aim to validate whether system performance is acceptable under peak conditions (Zhang et al, 2011).
+
+increasing the size or rate of the input (Zhang et al, 2011).
+
+Load tests aim to validate whether a system’s performance (e.g., response time, resource utilization) is acceptable under production, projected, or extreme loads (Zhang et al, 2011).
+
+Existing approaches to generate load tests induce load by increasing the input size (e.g., a larger query or number of queries) or the rate at which input is provided (e.g., more query requests per unit of time) (Zhang et al, 2011).
+
+Current approaches to load testing suffer from four limitations. First, their cost-effectiveness is highly dependent on the particular values that are used yet there is no support for choosing those values (Zhang et al, 2011).
+
+Second, increasing the input size may be a costly means to load a system. For example, in the context of a compression application we studied, we found that to increase the response (Zhang et al, 2011).
+
+Third, increasing the input size may just force the system to perform more of the same computation (Zhang et al, 2011).
+
+Finally, while most load testing focuses on response time or system throughput, there are many other resource consumption measures that are of interest to developers (Zhang et al, 2011).
+
+

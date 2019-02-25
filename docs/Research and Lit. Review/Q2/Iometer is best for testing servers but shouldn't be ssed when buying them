@@ -1,0 +1,13 @@
+(Baltazar, 1998)
+
+Iometer tool update automatically guages hardware performance, but only on Intel hardware (Baltazar, 1998)
+
+Iometer, which Intel calls a server performance evaluation program, allows IT managers to test the performance of disk storage systems without requiring a large and elaborate testbed (Baltazar, 1998)
+
+As storage area network technologies such as Fiber Channel emerge in the futrure, testing the thoroughput of the disk sub system will become critical. The only way to test the progress of these new technologies will be through using Iometer and other performance evaluation programs (Baltazar, 1998)
+
+Another important limitation is Iometer's weak interopibility - it runs on only on Intel based hardware. (Baltazar, 1998)
+
+Operating ystsem support is also a weakness that must be addressed. This release only runs on Windows NT 4.0 or Solaris for Intel (Baltazar, 1998)
+
+

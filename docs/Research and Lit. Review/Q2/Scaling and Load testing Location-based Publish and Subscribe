@@ -1,0 +1,7 @@
+(Chapuis & Garbinato, 2017)
+
+The rise of the Internet of things (IoT) poses massive scalability issues for location-based services (Chapuis & Garbinato, 2017).
+
+To load test our middleware, we must be able to simulate many concurrent moving entities. The Scala 8 programming language and the actor model implemented in the Akka 9 suit this requirement perfectly (Chapuis & Garbinato, 2017).
+
+

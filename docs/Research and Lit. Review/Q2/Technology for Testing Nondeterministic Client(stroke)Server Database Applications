@@ -1,0 +1,9 @@
+(Hwang et al, 2004)
+
+The execution of a client/server application involving database access requires a sequence of database transaction events (or, T-events), called a transaction sequence (or, T-sequence). A client/server database application may have nondeterministic behavior in that multiple executions thereof with the same input may produce different T-sequences (Hwang et al, 2004).
+
+Generally speaking, a client/server program is a type of distributed program (or concurrent program) (Hwang et al, 2004).
+
+Multiple executions of P with the same input may produce different results—this is called nondeterministic behavior (Hwang et al, 2004).
+
+

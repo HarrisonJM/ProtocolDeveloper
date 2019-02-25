@@ -23,7 +23,6 @@ target_include_directories(logger PUBLIC
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(logger
-        enumHandler
         safeContainers
         utility
         threadPool
