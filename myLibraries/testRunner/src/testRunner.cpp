@@ -58,7 +58,7 @@ bool TestRunner::BeginTesting()
     std::vector<std::shared_ptr<Communication::I_communication>> availableCommsInterfaces;
     {
         auto interfaceFactory =
-            _commsInterface.at(_testFile.GetTestConfiguration()._handler)->get()->createNewObject();
+            _commsInterface.at(_testFile.GetTestConfiguration()._commsHandler)->get()->createNewObject();
         availableCommsInterfaces.push_back(interfaceFactory);
         //    availableInterfaces[0]->init_Comms();
     }

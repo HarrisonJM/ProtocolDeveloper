@@ -95,18 +95,18 @@ void TestObjectBuilder::TopLevelNode()
 void TestObjectBuilder::_DataPointNode()
 {
     /* If we've moved to a child node */
+    dataPoint newDP;
+    _parser->SelectAttribute();
+    newDP._dataPointString = _parser->GetAttributeValue();
+
     if (_parser->MoveToChild())
     {
-        dataPoint newDP;
         do
         {
             switch (_parser->GetCurrentNodeType())
             {
-                /* The data point string*/
-                case rapidxml::node_data:
-                    newDP._dataPointString = _parser->GetNodeValue();
-                    break;
                 case rapidxml::node_element:
+
                     _DataPointChild(newDP);
                     break;
                 default:
@@ -214,6 +214,8 @@ void TestObjectBuilder::_ConfigurationChild(testConfiguration& conf)
                     case nodes_e::NODE_THREADSPERINTERFACE:
                         tagSucc = _ConfigThreadsPerInterface(conf) << 7;
                         break;
+                    case nodes_e::NODE_COMMS:
+                        tagSucc = _ConfigCommsHandler(conf) << 8;
                     default:
                         break;
                 }
@@ -560,7 +562,7 @@ bool TestObjectBuilder::_ConfigCommsHandler(testConfiguration& TC)
         switch (attrNAme)
         {
             case attributes_e::ATTR_HANDLER:
-                TC._handler = _parser->GetAttributeValue();
+                TC._commsHandler = _parser->GetAttributeValue();
                 retval = true;
                 break;
             default:

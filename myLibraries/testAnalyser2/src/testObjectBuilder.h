@@ -72,8 +72,8 @@ public:
 private:
     TestFile& _testfile;
     std::unique_ptr<I_RapidAbstract> _parser;
-    SafeContainers::EnumHandler<std::string, nodes_e> _nodeEnums;
-    SafeContainers::EnumHandler<std::string, attributes_e> _attributeEnums;
+    utility::EnumHandler<std::string, nodes_e> _nodeEnums;
+    utility::EnumHandler<std::string, attributes_e> _attributeEnums;
 
     /*!
      * @brief Setsup all the enums we'll be using and they're string equivalents

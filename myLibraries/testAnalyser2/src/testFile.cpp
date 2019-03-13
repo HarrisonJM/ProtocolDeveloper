@@ -16,7 +16,7 @@ namespace testAnalyser2
  * @brief Returns the amount of data points present
  * @return a size_t with the number of datapoints stored
  */
-size_t TestFile::getNumberOfDataPoints()
+size_t TestFile::GetNumberOfDataPoints()
 {
     return _dataPoints.size();
 }

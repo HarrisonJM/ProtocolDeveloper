@@ -13,7 +13,7 @@
 
 #include <map>
 
-namespace SafeContainers
+namespace utility
 {
 /*!
  * @brief Maps enums

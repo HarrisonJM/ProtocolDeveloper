@@ -36,5 +36,6 @@ TYPED_TEST(threadSafeTFixture
     ASSERT_EQ(Type.GetT()
               , 4);
 }
+
 } /* namespace Utility */
 

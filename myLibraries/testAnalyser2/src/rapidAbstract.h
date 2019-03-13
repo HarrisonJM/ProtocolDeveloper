@@ -35,7 +35,7 @@ public:
     ~RapidAbstract() override;
     /*!
      * @brief Gets the current node name
-     * @return A char* contianing the node name
+     * @return A char* containing the node name
      */
     const char* GetCurrentNodeName() override;
     /*!
@@ -45,7 +45,7 @@ public:
     bool MoveToNextNode() override;
     /*!
      * @brief Gets the Node's data (for a node_data type)
-     * @return const char* containg the data
+     * @return const char* containing the data
      */
     const char* GetNodeValue() override;
     /*!
@@ -74,12 +74,12 @@ public:
     bool MoveToNextAttribute() override;
     /*!
      * @brief Gets the attribute's name
-     * @return A char* contianing the node name
+     * @return A char* containing the node name
      */
     const char* GetAttributeName() override;
     /*!
      * @brief Gets the attribute's value
-     * @return A char* contianing the node name
+     * @return A char* containing the node name
      */
     const char* GetAttributeValue() override;
     /*!

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- test -->
+<testCase>
+    <dataPoint name="[TEST]">
+        <variable name="TEST" action="Swap" value="BOOP"/>
+        <operation name="OperationTest" storedIn="TEST" value="BOOP"/>
+    </dataPoint>
+
+    <config>
+        <testName name="testtest"/>
+        <protocol protocol="testProt"/>
+        <rate tps="57"/>
+        <chaos multiplier="0XDEADBEEF"/>
+        <duration seconds="1010101"/>
+        <threads max="99"/>
+        <threadsPerInterface tpi="0"/>
+        <comms handler="testComms"/>
+    </config>
+
+</testCase>

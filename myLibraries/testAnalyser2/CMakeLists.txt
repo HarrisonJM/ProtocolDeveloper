@@ -52,7 +52,6 @@ export(TARGETS ${LIB_NAME}
 
 # Every library has unit tests, of course
 add_executable(test${LIB_NAME}
-               ../logger/tests/loggerTestsMain.cpp
                tests/${LIB_NAME}Tests.cpp
                tests/RapidAbstractTests.cpp
                tests/TestObjectBuilderTests.cpp)

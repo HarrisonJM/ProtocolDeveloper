@@ -30,7 +30,7 @@ public:
      * @brief Returns the total number of datapoints
      * @return The number of datapoints as a size_t
      */
-    size_t getNumberOfDataPoints();
+    size_t GetNumberOfDataPoints();
     /*!
      * @brief Gets a specific datapoint
      * @param index Which datapoint to get

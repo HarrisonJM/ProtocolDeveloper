@@ -28,7 +28,7 @@ struct testConfiguration
     std::string _secondsDuration;
     std::string _maxThreads;
     std::string _threadsPerInter;
-    std::string _handler;
+    std::string _commsHandler;
 };
 } /* namespace testAnalyser2 */
 
