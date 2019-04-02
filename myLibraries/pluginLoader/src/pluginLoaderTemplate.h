@@ -16,15 +16,20 @@
 
 #include <map>
 #include <string>
-
-#include <boost/dll/import.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/function.hpp>
+#include <iostream>
+#include <typeinfo>
+#include <type_traits>
+#include <cstdlib>
+#include <cxxabi.h>
 
 #include <I_communication.h>
-#include <pluginLoader/PluginLoaderCommon.h>
 #include <I_protocolInterface.h>
+
+#include <pluginLoader/PluginLoaderCommon.h>
+#include <filesystem>
 #include "pluginLoader/pluginS.h"
+#include "dllAbstract.h"
+#include "pluginLoader_exception.h"
 
 namespace PluginLoader
 {
@@ -50,7 +55,7 @@ public:
      */
     PluginLoaderTemplate(std::string const& prefix
                          , std::string const& qualifier
-                         , sharedMap_t<TpluginType> plugins);
+                         , sharedMap_t<TpluginType>& plugins);
     /*!
      * @brief Default Destructor
      */
@@ -91,7 +96,7 @@ private:
 template<class TpluginType>
 PluginLoaderTemplate<TpluginType>::PluginLoaderTemplate(std::string const& prefix
                                                         , std::string const& qualifier
-                                                        , sharedMap_t<TpluginType> plugins)
+                                                        , sharedMap_t<TpluginType>& plugins)
     : _fullPath(prefix + "/" + qualifier)
       , _plugins(plugins)
 {
@@ -111,43 +116,34 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins()
 template<class TpluginType>
 void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
 {
-    if (!boost::filesystem::is_directory(newDir))
+    if (!std::filesystem::is_directory(newDir))
     {
         //! @todo Not a directory. throw
     }
     else
     {
-        for (const auto& file : boost::filesystem::directory_iterator(newDir))
+        for (const auto& file : std::filesystem::directory_iterator(newDir))
         {
-            /* Check the file extension is correct */
-            if (boost::filesystem::extension(file) != ".so")
-            {
-                continue;
-            }
-
-            // Currently pointed to file is not a directory
-            if (!boost::filesystem::is_directory(file))
+            /* Currently pointed to file is not a directory */
+            if (!std::filesystem::is_directory(file))
             {
                 try
                 {
-                    //std::shared_ptr<IFType>
-                    auto pluginCreator =
-                        boost::dll::import_alias<std::shared_ptr<I_Plugin<TpluginType>>>(file
-                                                                                         , "createNewPlugin"
-                                                                                         , boost::dll::load_mode::append_decorations)
-                            .get();
-                    // Add the plugin to our map, as long as it's actually
-                    // The correct type
-                    if (_CheckCorrectType(pluginCreator->get()->getPluginType()))
+                    dllAbstract<TpluginType> da(std::filesystem::path(file).string());
+                    auto foo = da.GetPluginFactory();
+
+                    if (_CheckCorrectType(foo->getPluginType()))
                     {
-                        _plugins.insert(std::pair<std::string, decltype(pluginCreator)>
-                                            (pluginCreator->get()->getPluginName()
-                                             , pluginCreator));
+                        _plugins.insert(std::pair<std::string, decltype(foo)>
+                                            (foo->getPluginName()
+                                             , foo));
                     }
                 }
-                catch (const std::exception& e)
+                catch (PluginException& e)
                 {
-                    // Incorrect file type in directory
+                    // Incorrect file type in directory or smth
+                    std::cout << e.what() << std::endl;
+                    continue;
                 }
             }
         }

@@ -3,7 +3,7 @@ project(helloWorldProtocol VERSION 0.1 LANGUAGES CXX)
 set(LIB_NAME helloWorldProtocol)
 
 add_library(${LIB_NAME} SHARED
-            src/HelloWorldProtocol.cpp)
+            src/HelloWorldProtocol.cpp src/protocolInterface.cpp)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -17,6 +17,9 @@ target_include_directories(${LIB_NAME} PUBLIC
 #target_compile_features(lib
 #        PUBLIC cxx_auto_type
 #        PRIVATE cxx_variadic_templates)
+
+## THIS LINE IS NEEDED TO BUILD A SHARED OBJECT! ##
+set_target_properties(${LIB_NAME} PROPERTIES SOVERSION 1)
 
 # Depend on a library that we defined in the top-level file
 target_link_libraries(${LIB_NAME}

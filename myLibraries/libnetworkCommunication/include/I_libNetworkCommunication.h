@@ -28,13 +28,28 @@ public:
      */
     virtual ~I_libNetworkCommunication() = default;
     /*!
+     * @brief Returns the plugins name
+     * @return The name of the plugin (as a const char*)
+     */
+    virtual const char* getPluginName() = 0;
+    /*!
+     * @brief Returns the version of the plugin
+     * @return The plugin version
+     */
+    virtual const char* getPluginVersion() = 0;
+    /*!
+     * @brief Returns the plugin _type_
+     * @return The the plugin is (as an enum)
+     */
+    virtual PluginLoader::PLUGINTYPE_t getPluginType() = 0;
+    /*!
      * @brief Sends data
      * @param payLoad_p The data we wish to send
      * @param size The size of the data
      * @return The size of the data sent
      */
     virtual ssize_t SendData(void* payLoad_p
-                     , size_t size) = 0;
+                             , size_t size) = 0;
     /*!
      * @brief Recevies Data
      * @param payLoad_p Where to store the data we've recevied

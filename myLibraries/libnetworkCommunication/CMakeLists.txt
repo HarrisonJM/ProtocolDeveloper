@@ -5,7 +5,7 @@ set(LIB_NAME "networkCommunication")
 add_library(${LIB_NAME} SHARED
             src/libNetworkCommunication.cpp
             src/pluginInterface.cpp
-            src/pluginInterface.h)
+            )
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -14,6 +14,9 @@ target_include_directories(${LIB_NAME} PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            $<INSTALL_INTERFACE:include>
                            PRIVATE src)
+
+## THIS LINE IS NEEDED TO BUILD A SHARED OBJECT! ##
+set_target_properties(${LIB_NAME} PROPERTIES SOVERSION 1)
 
 # If we have compiler requirements for this library, list them
 # here

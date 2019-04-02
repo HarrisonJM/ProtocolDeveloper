@@ -20,6 +20,7 @@
 #ifndef PROTOCOLDEVELOPER_PROTOCOLINTERFACE_H
 #define PROTOCOLDEVELOPER_PROTOCOLINTERFACE_H
 
+#include <I_plugin.h>
 #include <testAnalyser2/testfile/dataPoint.h>
 #include <boost/shared_ptr.hpp>
 
@@ -39,10 +40,26 @@ struct DataStruct
  * @brief Base Protocol interface
  */
 class I_protocolInterface
+    : public PluginLoader::I_Plugin
 {
 public:
     /*! @brief Destructor */
     virtual ~I_protocolInterface() = default;
+    /*!
+     * @brief Returns the plugins name
+     * @return The name of the plugin (as a const char*)
+     */
+    virtual const char* getPluginName() = 0;
+    /*!
+     * @brief Returns the version of the plugin
+     * @return The plugin version
+     */
+    virtual const char* getPluginVersion() = 0;
+    /*!
+     * @brief Returns the plugin _type_
+     * @return The the plugin is (as an enum)
+     */
+    virtual PluginLoader::PLUGINTYPE_t getPluginType() = 0;
     /*!
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target

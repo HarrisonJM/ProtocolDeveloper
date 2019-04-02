@@ -12,12 +12,13 @@
 
 #include <functional>
 #include <cstdarg>
+#include <dlfcn.h>
 
 #include "PluginLoaderCommon.h"
 
 namespace PluginLoader
 {
-template<class TypeToReturn, typename ...Args>
+template<class TypeToReturn>
 struct Plugin_S
 {
 public:
@@ -30,11 +31,11 @@ public:
     std::function<const char*()> _getPluginName;
     std::function<const char*()> _getPluginVersion;
     std::function<PLUGINTYPE_t()> _getPluginType;
-    std::function<TypeToReturn()> _createObject;
-    std::function<void(Args...)> _initialiseobject;
+    std::shared_ptr<TypeToReturn> _newPlugin;
 
     void* _libHandle;
 };
+
 } /* namespace PluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINS_H */

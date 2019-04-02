@@ -29,6 +29,8 @@ target_link_libraries(${LIB_NAME}
                       safeContainers
                       utility
                       threadPool
+                      helloWorldProtocol
+                      networkCommunication
                       ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).

@@ -9,7 +9,7 @@ add_library(pluginLoader
             include/pluginLoader/pluginS.h
             include/I_plugin.h
             src/pluginLoaderTemplate.cpp
-            src/pluginLoaderTemplate.h)
+            src/pluginLoaderTemplate.h src/dllAbstract.cpp src/dllAbstract.h src/pluginLoader_exception.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build

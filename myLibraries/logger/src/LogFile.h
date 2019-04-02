@@ -50,7 +50,7 @@ private:
     //! This string will hold CSVs and be used to populate th elog file with extra information
     std::string _extraInformationString;
     //! Handles the log level enums
-    SafeContainers::EnumHandler<logLevel, std::string> _logLevels;
+    utility::EnumHandler<logLevel, std::string> _logLevels;
     //! Log message buffer
     SafeContainers::SafeQueue<std::string> _messagesToWrite;
     //! Triggers a flush when there are pending messages

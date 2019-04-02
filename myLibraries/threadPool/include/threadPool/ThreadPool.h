@@ -23,7 +23,6 @@
 
 namespace ThreadHandler
 {
-
 /*!
  * @brief A Thread Pool Queue that handles information that needs to be passed back and forth
  */
@@ -62,30 +61,33 @@ public:
     auto AddTaskToQueue(T &&t
                         , Args &&... args) -> std::future<decltype(t(args...))>
     {
-        //! Create a function that can be run
+        /*! Create a function that can be run */
         std::function<decltype(t(args...))()>
             work = std::bind(std::forward<T>(t)
                              , std::forward<void*>(args)...);
-
-        //! Store the function first in a packaged_task to allow asynchronous execution
-        //! Store it in a shared pointer for copying
+        /*!
+         * Store the function first in a packaged_task to allow asynchronous execution
+         * Store it in a shared pointer for copying
+         */
         auto work_p =
             std::make_shared<std::packaged_task<decltype(t(args...))()>>(work);
 
-        //! Wrap as a function so it can be returned from
+        /*! Wrap as a function so it can be returned from */
         std::function<void()> workWrapper = [work_p]()
         {
             (*work_p)();
         };
 
-        //! Add task to task queue
+        /*! Add task to task queue */
         _taskQueue.push(workWrapper);
 
-        //! Wake up a sleeping thread
+        /*! Wake up a sleeping thread */
         _cond_var.notify_one();
 
-        //! Return the packaged_task future, due to the wrapped nature, function execution
-        //! will update the future
+        /*!
+         * Return the packaged_task future, due to the wrapped nature, function execution
+         *  will update the future
+         */
         return work_p->get_future();
     }
 

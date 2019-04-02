@@ -46,6 +46,30 @@ HelloWorldProtocol::~HelloWorldProtocol()
     _numberOfInstances--;
 }
 /*!
+ * @brief Returns the plugins name
+ * @return The name of the plugin (as a const char*)
+ */
+const char* HelloWorldProtocol::getPluginName()
+{
+    return "Hello World Protocol";
+}
+/*!
+ * @brief Returns the version of the plugin
+ * @return The plugin version
+ */
+const char* HelloWorldProtocol::getPluginVersion()
+{
+    return "1";
+}
+/*!
+ * @brief Returns the plugin _type_
+ * @return The the plugin is (as an enum)
+ */
+PluginLoader::PLUGINTYPE_t HelloWorldProtocol::getPluginType()
+{
+    return PluginLoader::PLUGINTYPE_t::PROTOCOL;
+}
+/*!
  * @brief Decodes a payload and sets the return code accordingly
  * @param payLoad The received Payload
  */
@@ -126,4 +150,5 @@ void HelloWorldProtocol::SetDataPoints(testAnalyser2::dataPoint testDP)
 {
     _testDP = testDP;
 }
+
 } /* namespace hwProt */

@@ -59,16 +59,17 @@ public:
     /*!
      * @brief Constructor Sets up the environment
      * @param testfilePath The path to the testfile we wish to run
-     * @param commsInterfaces A reference to the sharedMap of comms interfaces, for searching through
-     * @param protocolInterfaces A reference to the sharedMap of Protocol Interfaces, for searching through
-     * @param TAIn A unique pointer to the test case analyser
+     * @param commsInterfaces_in A reference to the sharedMap of comms interfaces, for searching through
+     * @param protocolInterfaces_in A reference to the sharedMap of Protocol Interfaces, for searching through
+     * @param TA_in A unique pointer to the test case analyser
+     * @param threadPool_in a reference tot he threadpool we wish to use
      */
     TestRunner(std::string const& testfilePath
                , PluginLoader::sharedMap_t<
-        Communication::I_communication> commsInterfaces
+        Communication::I_communication> commsInterfaces_in
                , PluginLoader::sharedMap_t<
-        Protocol::I_protocolInterface> protocolInterfaces
-               , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TAIn
+        Protocol::I_protocolInterface> protocolInterfaces_in
+               , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
                , ThreadHandler::ThreadPool& threadPool_in);
     /*!
      * @brief Destructor
@@ -103,6 +104,7 @@ private:
     utility::ThreadSafeT<bool> _killThreadHandler;
     /*! @brief Contains all the created threads */
     std::vector<std::shared_ptr<TestThread>> _threadsVec;
+//    std::vector<TestThread*> _threadsVec;
     /*! @brief The testfile itself */
     testAnalyser2::TestFile _testFile;
 

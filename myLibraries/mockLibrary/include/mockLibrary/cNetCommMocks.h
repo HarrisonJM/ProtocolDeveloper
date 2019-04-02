@@ -18,35 +18,35 @@ class cNetCommMocks
 {
 public:
     cNetCommMocks() = default;
-    MOCK_METHOD4(send
+    MOCK_METHOD4(sendTo
                  , ssize_t(int
         sockfd,
         const void* buf, size_t
         len, int
         flags));
-    MOCK_METHOD4(recv
+    MOCK_METHOD4(recvFrom
                  , ssize_t(int
         sockfd, void*buf, size_t
         len, int
         flags));
-    MOCK_METHOD1(close
+    MOCK_METHOD1(closeConnection
                  , int(int
         fd));
-    MOCK_METHOD4(getaddrinfo
+    MOCK_METHOD4(getaddressinfo
                  , int(
         const char* node,
         const char* service,
         const struct addrinfo* hints,
         struct addrinfo** res));
-    MOCK_METHOD1(freeaddrinfo
+    MOCK_METHOD1(freeaddressinfo
                  , void(
         struct addrinfo* res));
-    MOCK_METHOD3(socket
+    MOCK_METHOD3(createSocket
                  , int(int
         domain, int
         type, int
         protocol));
-    MOCK_METHOD3(connect
+    MOCK_METHOD3(connectToRemote
                  , int(int
         sockfd,
         const struct sockaddr* addr, socklen_t

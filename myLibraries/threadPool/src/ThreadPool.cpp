@@ -32,7 +32,6 @@ ThreadPool::ThreadPool()
 {
 
 }
-
 /*!
  * @brief Destructor
  */
@@ -40,7 +39,6 @@ ThreadPool::~ThreadPool()
 {
     shutdown();
 }
-
 /*!
  * @brief Waits for threads to finish work and then shuts down
  */

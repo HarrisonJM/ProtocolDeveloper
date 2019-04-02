@@ -16,7 +16,8 @@ namespace cFunctions
 {
 
 //! cNetComm Header file
-class cNetComm : public I_cNetComm
+class cNetComm
+    : public I_cNetComm
 {
 
 public:
@@ -25,32 +26,32 @@ public:
     //! destructor
     ~cNetComm() = default;
     //! man 2 send
-    ssize_t send(int sockfd
-                 , const void* buf
-                 , size_t len
-                 , int flags) override;
+    ssize_t sendTo(int sockfd
+                   , const void* buf
+                   , size_t len
+                   , int flags) override;
     //! man 2 recv
-    ssize_t recv(int sockfd
-                 , void* buf
-                 , size_t len
-                 , int flags) override;
+    ssize_t recvFrom(int sockfd
+                     , void* buf
+                     , size_t len
+                     , int flags) override;
     //! man 2 close
-    int close(int fd) override;
+    int closeConnection(int fd) override;
     //! man 3 getaddrinfo
-    int getaddrinfo(const char* node
-                    , const char* service
-                    , const struct addrinfo* hints
-                    , struct addrinfo** res) override;
+    int getaddressinfo(const char* node
+                       , const char* service
+                       , const struct addrinfo* hints
+                       , struct addrinfo** res) override;
     //! man 3 freeadrinfo
-    void freeaddrinfo(struct addrinfo* res) override;
+    void freeaddressinfo(struct addrinfo* res) override;
     //! man 2 socket
-    int socket(int domain
-               , int type
-               , int protocol) override;
+    int createSocket(int domain
+                     , int type
+                     , int protocol) override;
     //! man 2 remote
-    int connect(int sockfd
-                , const struct sockaddr* addr
-                , socklen_t addrlen) override;
+    int connectToRemote(int sockfd
+                        , const struct sockaddr* addr
+                        , socklen_t addrlen) override;
 };
 
 } /* Namespace cFunctions */

@@ -42,7 +42,7 @@ void TestAnalyser2::startAnalysis()
             objBuil.TopLevelNode();
             _analysed = true;
         }
-        catch (baseAnalyser_Exception const& e)
+        catch (parserExceptionBase const& e)
         {
             // Log error?
         }

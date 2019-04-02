@@ -72,11 +72,8 @@ enum PLUGINTYPE_t
 /*!
  * @brief A shared ptr to a map of strings and sharedptr's containing plugin interfaces
  */
-template<class IFType>
-class I_Plugin;
-
 template<class TypeToUse>
-using sharedMap_t = std::map<std::string, std::shared_ptr<PluginLoader::I_Plugin<TypeToUse> >*>;
+using sharedMap_t = std::map<std::string, std::shared_ptr<TypeToUse>>;
 
 } /* namespace PluginLoader */
 

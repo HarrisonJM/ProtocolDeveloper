@@ -5,7 +5,7 @@ set(LIB_NAME "utility")
 add_library(${LIB_NAME}
             src/stringUtility.cpp
             include/utility/threadSafeT.h
-            include/utility/enumHandler.h)
+            include/utility/enumHandler.h include/utility/extraExceptionBase.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -48,7 +48,7 @@ add_executable(test${LIB_NAME}
                tests/${LIB_NAME}Tests.cpp
                tests/stringUtilityTests.cpp
                tests/enumHandlerTests.cpp
-               tests/threadSafeTTests.cpp)
+               tests/threadSafeTTests.cpp include/utility/extraExceptionBase.h)
 target_link_libraries(test${LIB_NAME}
                       ${LIB_NAME}
                       gtest_main

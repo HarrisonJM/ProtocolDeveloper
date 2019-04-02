@@ -45,6 +45,21 @@ public:
      */
     ~libNetworkCommunication() override = default;
     /*!
+     * @brief Returns the plugins name
+     * @return The name of the plugin (as a const char*)
+     */
+    virtual const char* getPluginName() override;
+    /*!
+     * @brief Returns the version of the plugin
+     * @return The plugin version
+     */
+    virtual const char* getPluginVersion() override;
+    /*!
+     * @brief Returns the plugin _type_
+     * @return The the plugin is (as an enum)
+     */
+    virtual PluginLoader::PLUGINTYPE_t getPluginType() override;
+    /*!
      * @brief Sends data
      * @param payLoad_p The data we wish to send
      * @param size The size of the data
@@ -98,7 +113,7 @@ private:
     /*! @brief The port we're conducting business on */
     int _portToSendTo;
     /*! @brief The Address we're sending to */
-    char* _destinationAddress;
+    std::string _destinationAddress;
     /*! @brief The socket used to bind and send on */
     int _outSocket;
     /*! @brief Do we want to connect on TCP, UDP, or both? */

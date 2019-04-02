@@ -19,21 +19,22 @@
 
 #include <testRunner/testRunner.h>
 #include <safeList/safeList.h>
+#include <iostream>
 #include "testThread.h"
 
 namespace TestRunner
 {
 TestRunner::TestRunner(std::string const& testfilePath
                        , PluginLoader::sharedMap_t<
-    Communication::I_communication> commsInterfaces
+    Communication::I_communication> commsInterfaces_in
                        , PluginLoader::sharedMap_t<
-    Protocol::I_protocolInterface> protocolInterfaces
-                       , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TAIn
+    Protocol::I_protocolInterface> protocolInterfaces_in
+                       , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
                        , ThreadHandler::ThreadPool& threadPool_in)
     : _testFilePath(testfilePath)
-      , _TestAnalyser(std::move(TAIn))
-      , _commsInterface(std::move(commsInterfaces))
-      , _protocolInterface(std::move(protocolInterfaces))
+      , _TestAnalyser(std::move(TA_in))
+      , _commsInterface(std::move(commsInterfaces_in))
+      , _protocolInterface(std::move(protocolInterfaces_in))
       , _threadPool(threadPool_in)
       , _killThreadHandler(false)
       , _testFile(_GetTestFile(std::move(_TestAnalyser)))
@@ -54,19 +55,22 @@ bool TestRunner::BeginTesting()
      * threads (if wanted) so put me in a loop
      * @todo Move blocks into templated methods
      * @todo More plugins (thread handler, etc)
+     * @todo exception for wrong config name
      */
     std::vector<std::shared_ptr<Communication::I_communication>> availableCommsInterfaces;
     {
         auto interfaceFactory =
-            _commsInterface.at(_testFile.GetTestConfiguration()._commsHandler)->get()->createNewObject();
-        availableCommsInterfaces.push_back(interfaceFactory);
-        //    availableInterfaces[0]->init_Comms();
+            _commsInterface.at(_testFile.GetTestConfiguration()._commsHandler);
+
+//        auto if_shr = std::make_shared<Communication::I_communication>(*interfaceFactory);
+        availableCommsInterfaces.push_back(_commsInterface.at(_testFile.GetTestConfiguration()._commsHandler));
     }
     std::vector<std::shared_ptr<Protocol::I_protocolInterface>> availableProtInterfaces;
     {
         auto interfaceFactory =
-            _protocolInterface.at(_testFile.GetTestConfiguration()._protocol)->get()->createNewObject();
-        availableProtInterfaces.push_back(interfaceFactory);
+            _protocolInterface.at(_testFile.GetTestConfiguration()._protocol);
+//        auto prot_shr = std::make_shared<Protocol::I_protocolInterface>(interfaceFactory);
+        availableProtInterfaces.push_back(_protocolInterface.at(_testFile.GetTestConfiguration()._protocol));
         //    availableProtInterfaces[0]->init_Protocol();
     }
 
@@ -78,7 +82,7 @@ bool TestRunner::BeginTesting()
     long ratio = _GetRatio(tps
                            , maxThreads);
     /*! @todo Need to separate and edit for changing comms interfaces */
-    for (long i = 0L; i < maxThreads; ++i)
+    for (long i = 0L; i < 1; ++i)
     {
         auto tfObj = std::make_shared<TestThread>(_killThreadHandler
                                                   , availableCommsInterfaces[0]
@@ -86,6 +90,12 @@ bool TestRunner::BeginTesting()
                                                   , results
                                                   , resultCodes
                                                   , ratio);
+//        auto tfObj = new TestThread(_killThreadHandler
+//                                    , availableCommsInterfaces[0]
+//                                    , availableProtInterfaces[0]
+//                                    , results
+//                                    , resultCodes
+//                                    , ratio);
         std::function<void(void)> testFunc = std::bind(&TestThread::StartTest
                                                        , tfObj);
         _threadPool.AddTaskToQueue(testFunc);
@@ -94,6 +104,7 @@ bool TestRunner::BeginTesting()
     /* Poller */
     _WaitForThreads();
 
+    std::cout << "Here I be" << std::endl;
     return retval;
 }
 /*!
@@ -139,7 +150,7 @@ int TestRunner::_GetRatio(long rate
     auto rate_dbl = static_cast<double>(rate);
     auto ratesPerThread = rate_dbl/numOfThreads;
 
-    return (static_cast<int>(ratesPerThread)*1000000);
+    return (static_cast<int>(ratesPerThread*1000000));
 }
 /*!
  * @brief The handler for the asynchronous timer. Kills all threads.
@@ -154,13 +165,14 @@ void TestRunner::_TimerHandler(const boost::system::error_code& e)
 void TestRunner::_WaitForThreads()
 {
     /* Setup the asynchronous timer */
-    long runTime = utility::StringToLong(_testFile.GetTestConfiguration()._secondsDuration);
+    auto runTime = utility::StringToLong(_testFile.GetTestConfiguration()._secondsDuration);
     boost::asio::io_context io;
-    boost::asio::deadline_timer t(io
-                                  , boost::posix_time::seconds(runTime));
+    boost::asio::steady_timer t(io
+                                , boost::asio::chrono::seconds(runTime));
     t.async_wait(boost::bind(&TestRunner::_TimerHandler
-                           , this
-                           , boost::asio::placeholders::error));
+                             , this
+                             , boost::asio::placeholders::error));
+    io.run();
     /*
      * Now we must wait until either we're
      * told to die OR we run out of time
@@ -172,16 +184,21 @@ void TestRunner::_WaitForThreads()
     /* Wait until all threads have finished */
     for (unsigned i = 0; i < _threadsVec.size(); ++i)
     {
+        bool notAllDone = 0;
         /* If the thread is finished, remove it */
-        if (_threadsVec[i]->GetFinished())
+        if (!_threadsVec[i]->GetFinished())
         {
-            _threadsVec.erase(_threadsVec.begin() + i);
+            notAllDone = 1;
+//            _threadsVec.erase(_threadsVec.begin() + i);
         }
         /* adjust loop */
         if (i + 1 >= _threadsVec.size())
         {
             i = 0;
         }
+        if (!notAllDone)
+            break;
     }
+    std::cout << "End of wait" << std::endl;
 }
 } /* namespace TestRunner */

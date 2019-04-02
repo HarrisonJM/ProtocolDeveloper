@@ -14,6 +14,7 @@
 
 #include <list>
 #include <mutex>
+#include <memory>
 
 namespace SafeContainers
 {
@@ -26,14 +27,13 @@ class safeList
 {
 public:
     safeList()
-        : _lock(_mut)
-          , _list(std::shared_ptr<std::list<T>>())
+        : _list(std::make_shared<std::list<T>>())
           , _useDestructor(true)
     {
+        _mut.unlock();
     }
     explicit safeList(std::shared_ptr<std::list<T>> list_in)
-        : _lock(_mut)
-          , _list(list_in)
+        : _list(list_in)
           , _useDestructor(true)
     {
     }
@@ -42,73 +42,73 @@ public:
     /* Modifiers */
     void push_front(const T& val)
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list.push_front(val);
     }
     void push_front(T&& val)
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list.push_front(val);
     }
     void pop_front()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list.pop_front();
     }
     void push_back(const T& val)
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list->push_back(val);
     }
     void push_back(T&& val)
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list->push_back(val);
     }
     void pop_back()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list.pop_back();
     }
 
     /* Element Access */
     T& front()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.front();
     }
     T& back()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.back();
     }
 
     /* Capacity */
     bool empty() noexcept
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.empty();
     }
     size_t size() noexcept
     {
-        _lock.lock();
-        return _list.size();
+        std::unique_lock<std::mutex> lock(_mut);
+        return _list->size();
     }
     size_t max_size() noexcept
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.max_size();
     }
 
     /* Merge lists */
     void merge(std::list<T>& x)
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list.merge(x);
     }
     void merge(std::list<T>&& x)
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         _list.merge(x);
     }
 
@@ -116,23 +116,23 @@ public:
     typedef typename std::list<T>::iterator iterator;
     iterator begin()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.begin();
     }
     iterator end()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.end();
     }
     typedef typename std::list<T>::const_iterator const_iterator;
     const_iterator cbegin()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.cbegin();
     }
     const_iterator cend()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list.end();
     }
 
@@ -142,15 +142,15 @@ public:
      */
     std::list<T>& getList()
     {
-        _lock.lock();
+        std::unique_lock<std::mutex> lock(_mut);
         return _list;
     }
 private:
-    std::unique_lock<std::mutex> _lock;
     std::shared_ptr<std::list<T>> _list;
     bool _useDestructor;
     std::mutex _mut;
 };
+
 } /* namespace SafeContainers */
 
 #endif /* PROTOCOLDEVELOPER_SAFELIST_H */

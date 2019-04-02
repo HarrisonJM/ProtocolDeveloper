@@ -19,10 +19,10 @@
 int main()
 {
     auto pluginCreator =
-        boost::dll::import_alias<std::shared_ptr<PluginLoader::I_Plugin<
-            Communication::I_communication>>>("/home/hmarcks/src/ProtocolDeveloper/cmake-build-debug/myLibraries/libnetworkCommunication/libnetworkCommunication.so"
-                                              , "createNewPlugin"
-                                              , boost::dll::load_mode::append_decorations)
+        boost::dll::import_alias<std::shared_ptr<
+            Communication::I_communication>>("/home/hmarcks/src/ProtocolDeveloper/cmake-build-debug/myLibraries/libnetworkCommunication/libnetworkCommunication.so"
+                                             , "createNewPlugin"
+                                             , boost::dll::load_mode::append_decorations)
             .get()->get();
 
     std::cout << (*pluginCreator).getPluginName() << std::endl;

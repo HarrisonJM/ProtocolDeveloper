@@ -9,6 +9,7 @@
  */
 #include <string>
 #include <vector>
+#include <pluginLoader/PluginLoaderCommon.h>
 #include "../../pluginLoader/include/I_protocolInterface.h"
 
 #ifndef PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
@@ -28,6 +29,21 @@ class HelloWorldProtocol
 public:
     HelloWorldProtocol();
     ~HelloWorldProtocol() override;
+    /*!
+     * @brief Returns the plugins name
+     * @return The name of the plugin (as a const char*)
+     */
+    virtual const char* getPluginName() override;
+    /*!
+     * @brief Returns the version of the plugin
+     * @return The plugin version
+     */
+    virtual const char* getPluginVersion() override;
+    /*!
+     * @brief Returns the plugin _type_
+     * @return The the plugin is (as an enum)
+     */
+    virtual PluginLoader::PLUGINTYPE_t getPluginType() override;
     /*!
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target

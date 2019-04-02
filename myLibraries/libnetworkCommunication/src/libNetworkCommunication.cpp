@@ -27,7 +27,8 @@ namespace libNetworkCommunication
  */
 libNetworkCommunication::libNetworkCommunication()
     : _portToSendTo(9687)
-      , _destinationAddress(new char[16384])
+//      , _destinationAddress(new char[16384])
+      , _destinationAddress("127.0.0.1")
       , _outSocket(-1)
       , _tcpOrUDP(1)
       , _servInfo(nullptr)
@@ -41,12 +42,36 @@ libNetworkCommunication::libNetworkCommunication()
  */
 libNetworkCommunication::libNetworkCommunication(std::shared_ptr<cFunctions::I_cNetComm> iOInterface)
     : _portToSendTo(9687)
-      , _destinationAddress(new char[16384])
+      , _destinationAddress("127.0.0.1")
       , _outSocket(-1)
       , _tcpOrUDP(1)
       , _servInfo(nullptr)
       , _netCommFunctions(std::move(iOInterface))
 {
+}
+/*!
+ * @brief Returns the plugins name
+ * @return The name of the plugin (as a const char*)
+ */
+const char* libNetworkCommunication::getPluginName()
+{
+    return "libNetworkCommunication-def";
+}
+/*!
+ * @brief Returns the version of the plugin
+ * @return The plugin version
+ */
+const char* libNetworkCommunication::getPluginVersion()
+{
+    return "1.0";
+}
+/*!
+ * @brief Returns the plugin _type_
+ * @return The the plugin is (as an enum)
+ */
+PluginLoader::PLUGINTYPE_t libNetworkCommunication::getPluginType()
+{
+    return PluginLoader::PLUGINTYPE_t::COMMUNICATION;
 }
 /*!
  * @brief Sends the provided data on the socket
@@ -57,10 +82,10 @@ libNetworkCommunication::libNetworkCommunication(std::shared_ptr<cFunctions::I_c
 ssize_t libNetworkCommunication::SendData(void* payLoad_p
                                           , size_t size)
 {
-    ssize_t numBytes = _netCommFunctions->send(_outSocket
-                                               , payLoad_p
-                                               , size
-                                               , 0);
+    ssize_t numBytes = _netCommFunctions->sendTo(_outSocket
+                                                 , payLoad_p
+                                                 , size
+                                                 , 0);
     if (-1 == numBytes)
     {
         perror("Send");
@@ -77,10 +102,10 @@ ssize_t libNetworkCommunication::SendData(void* payLoad_p
 ssize_t libNetworkCommunication::ReceiveData(void* payLoad_p
                                              , size_t size)
 {
-    ssize_t numBytes = _netCommFunctions->recv(_outSocket
-                                               , payLoad_p
-                                               , size
-                                               , 0);
+    ssize_t numBytes = _netCommFunctions->recvFrom(_outSocket
+                                                   , payLoad_p
+                                                   , size
+                                                   , 0);
     if (-1 == numBytes)
     {
         perror("Recv");
@@ -164,10 +189,10 @@ bool libNetworkCommunication::SetupAddrInfo()
     hints.ai_flags = AI_PASSIVE; // Do *my* IP for me
 
     int status = 0;
-    status = _netCommFunctions->getaddrinfo(_destinationAddress
-                                            , std::to_string(_portToSendTo).c_str()
-                                            , &hints
-                                            , &addrsGotten);
+    status = _netCommFunctions->getaddressinfo(_destinationAddress.c_str()
+                                               , std::to_string(_portToSendTo).c_str()
+                                               , &hints
+                                               , &addrsGotten);
     /*!
      * @todo Change when using [out] values worked out
      * See related tests for this class
@@ -199,20 +224,20 @@ bool libNetworkCommunication::DoSocketAndConnect()
 
     for (p = _servInfo; nullptr != p; p = p->ai_next)
     {
-        _outSocket = _netCommFunctions->socket(p->ai_family
-                                               , p->ai_socktype
-                                               , p->ai_protocol);
+        _outSocket = _netCommFunctions->createSocket(p->ai_family
+                                                     , p->ai_socktype
+                                                     , p->ai_protocol);
         if (-1 == _outSocket)
         {
             perror("client socket");
             continue;
         }
 
-        if (-1 == _netCommFunctions->connect(_outSocket
-                                             , p->ai_addr
-                                             , p->ai_addrlen))
+        if (-1 == _netCommFunctions->connectToRemote(_outSocket
+                                                     , p->ai_addr
+                                                     , p->ai_addrlen))
         {
-            _netCommFunctions->close(_outSocket);
+            _netCommFunctions->closeConnection(_outSocket);
             perror("client connect");
             continue;
         }
@@ -227,7 +252,7 @@ bool libNetworkCommunication::DoSocketAndConnect()
         return false;
     }
 
-    _netCommFunctions->freeaddrinfo(_servInfo);
+    _netCommFunctions->freeaddressinfo(_servInfo);
 
     return true;
 }

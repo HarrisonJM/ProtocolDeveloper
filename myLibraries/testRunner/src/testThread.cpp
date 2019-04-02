@@ -1,5 +1,6 @@
 /*!
- * @brief
+ * @brief The individual test thread that will handle sending and sending/receiving data
+ * to/FROM the target
  *
  * @author hmarcks
  *
@@ -11,6 +12,8 @@
 #include <boost/asio.hpp>
 
 #include "testThread.h"
+//#include "../../helloWorldProtocol/include/HelloWorldProtocol.h"
+#include "libnetworkCommunication/libNetworkCommunication.h"
 
 namespace TestRunner
 {
@@ -48,27 +51,37 @@ void TestThread::StartTest()
     boost::asio::steady_timer t(io
                                 , boost::asio::chrono::microseconds(_fireRatioMicro));
 
+    auto _commsInterface2 = new libNetworkCommunication::libNetworkCommunication;
+    _commsInterface2->EstablishConnection();
+
     while (true)
     {
         t.wait();
         /* Interract with the protocol */
 //        auto protData = std::make_shared<Protocol::DataStruct>(); /* Protocol should track state */
+//! @TODO: fix this
+//        auto _ProtocolInterface2 = new hwProt::HelloWorldProtocol;
+//        auto protData = _ProtocolInterface2->GetDataToSend();
         auto protData = _ProtocolInterface->GetDataToSend();
         /* Interact with the target */
-        _commsInterface->SendData(protData->_data_p
-                                  , protData->_size);
-        _commsInterface->ReceiveData(protData->_data_p
+        auto foo = protData->_data_p;
+        auto bar = protData->_size;
+        _commsInterface2->SendData(foo
+                                   , bar);
+        _commsInterface2->ReceiveData(protData->_data_p
                                      , protData->_size);
         /* Process the result */
         _ProtocolInterface->DecodeResult(protData);
         /* Store the result */
         _resultsList.push_back(*protData);
-        _codeList.push_back(_ProtocolInterface->GetResultCode());
+//        _codeList.push_back(_ProtocolInterface->GetResultCode());
         /* Check if the thread must die */
         if (_killHandler)
             break;
     }
-    _finished = true;
+    t.wait();
+    _commsInterface2->Disconnect();
+    SetFinished(true);
 }
 /*!
  * @brief Returns whether or not the thread is finished
@@ -76,8 +89,7 @@ void TestThread::StartTest()
  */
 bool TestThread::GetFinished()
 {
-    std::unique_lock<std::mutex> lock(_finishedMut);
-    lock.lock();
+    std::lock_guard<std::mutex> lock(_finishedMut);
     return _finished;
 }
 /*!
@@ -85,9 +97,7 @@ bool TestThread::GetFinished()
  */
 void TestThread::SetFinished(bool newVal)
 {
-    std::unique_lock<std::mutex> lock(_finishedMut);
-    lock.lock();
-
+    std::lock_guard<std::mutex> lock(_finishedMut);
     _finished = newVal;
 }
 } /* namespace TestRunner */

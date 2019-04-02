@@ -53,10 +53,10 @@ protected:
         freeaddrinfo(testData->ai_next);
         testData->ai_next = nullptr;
         EXPECT_CALL(*cnetmock
-                    , getaddrinfo(MatchesRegex("localhost")
-                                  , MatchesRegex("9687")
-                                  , _
-                                  , _))
+                    , getaddressinfo(MatchesRegex("localhost")
+                                     , MatchesRegex("9687")
+                                     , _
+                                     , _))
             .Times(1)
             .WillOnce(DoAll(SetArgPointee<3>(testData)
                             , Return(0)));
@@ -67,10 +67,10 @@ TEST_F(networkCommunicationTests
        , SendData)
 {
     EXPECT_CALL(*cnetmock
-                , send(-1
-                       , nullptr
-                       , 0
-                       , 0))
+                , sendTo(-1
+                         , nullptr
+                         , 0
+                         , 0))
         .Times(2)
         .WillOnce(Return(1))
         .WillOnce(Return(-1));
@@ -91,10 +91,10 @@ TEST_F(networkCommunicationTests
        , ReceiveData)
 {
     EXPECT_CALL(*cnetmock
-                , recv(-1
-                       , NULL
-                       , 0
-                       , 0))
+                , recvFrom(-1
+                           , NULL
+                           , 0
+                           , 0))
         .Times(2)
         .WillOnce(Return(1))
         .WillOnce(Return(-1));
@@ -116,21 +116,21 @@ TEST_F(networkCommunicationTests
     setupGetAddrInfo_Success();
 
     EXPECT_CALL(*cnetmock
-                , socket(testData->ai_family
-                         , testData->ai_socktype
-                         , testData->ai_protocol))
+                , createSocket(testData->ai_family
+                               , testData->ai_socktype
+                               , testData->ai_protocol))
         .Times(1)
         .WillOnce(Return(99));
 
     EXPECT_CALL(*cnetmock
-                , connect(99
-                          , testData->ai_addr
-                          , testData->ai_addrlen))
+                , connectToRemote(99
+                                  , testData->ai_addr
+                                  , testData->ai_addrlen))
         .Times(1)
         .WillOnce(Return(0));
 
     EXPECT_CALL(*cnetmock
-                , freeaddrinfo(_))
+                , freeaddressinfo(_))
         .Times(1);
 
     ASSERT_TRUE(nC->EstablishConnection());
@@ -140,10 +140,10 @@ TEST_F(networkCommunicationTests
        , EstablishConnection_getAddr_Fail)
 {
     EXPECT_CALL(*cnetmock
-                , getaddrinfo(MatchesRegex("localhost")
-                              , MatchesRegex("9687")
-                              , _
-                              , _))
+                , getaddressinfo(MatchesRegex("localhost")
+                                 , MatchesRegex("9687")
+                                 , _
+                                 , _))
         .Times(1)
         .WillOnce(Return(-1));
 
@@ -161,14 +161,14 @@ TEST_F(networkCommunicationTests
     setupGetAddrInfo_Success();
 
     EXPECT_CALL(*cnetmock
-                , socket(testData->ai_family
-                         , testData->ai_socktype
-                         , testData->ai_protocol))
+                , createSocket(testData->ai_family
+                               , testData->ai_socktype
+                               , testData->ai_protocol))
         .Times(1)
         .WillOnce(Return(-1));
 
     EXPECT_CALL(*cnetmock
-                , freeaddrinfo(_))
+                , freeaddressinfo(_))
         .Times(1);
 
     testing::internal::CaptureStderr();
@@ -183,25 +183,25 @@ TEST_F(networkCommunicationTests
     setupGetAddrInfo_Success();
 
     EXPECT_CALL(*cnetmock
-                , socket(testData->ai_family
-                         , testData->ai_socktype
-                         , testData->ai_protocol))
+                , createSocket(testData->ai_family
+                               , testData->ai_socktype
+                               , testData->ai_protocol))
         .Times(1)
         .WillOnce(Return(99));
 
     EXPECT_CALL(*cnetmock
-                , connect(99
-                          , testData->ai_addr
-                          , testData->ai_addrlen))
+                , connectToRemote(99
+                                  , testData->ai_addr
+                                  , testData->ai_addrlen))
         .Times(1)
         .WillOnce(Return(-1));
 
     EXPECT_CALL(*cnetmock
-                , close(99))
+                , closeConnection(99))
         .Times(1);
 
     EXPECT_CALL(*cnetmock
-                , freeaddrinfo(_))
+                , freeaddressinfo(_))
         .Times(1);
 
     testing::internal::CaptureStderr();

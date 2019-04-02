@@ -220,7 +220,7 @@ void TestObjectBuilder::_ConfigurationChild(testConfiguration& conf)
                         break;
                 }
             }
-            catch (baseAnalyser_Exception const& e)
+            catch (parserExceptionBase const& e)
             {
                 // Log exception
             }
