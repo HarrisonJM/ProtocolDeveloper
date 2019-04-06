@@ -190,7 +190,6 @@ void TestRunner::_WaitForThreads()
         if (!_threadsVec[i]->GetFinished())
         {
             notAllDone = 1;
-//            _threadsVec.erase(_threadsVec.begin() + i);
         }
         /* adjust loop */
         if (i + 1 >= _threadsVec.size())
