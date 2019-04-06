@@ -47,7 +47,8 @@ namespace BasicHelloServer
     private:
         /* METHODS */
         //! Handles incoming requests and sends the data to wherever it needs to go
-        void _HandleRequest(int fd);
+        void _HandleRequest(int fd
+                            , int ID);
 
         /* Not Methods */
         //! Reference to the server

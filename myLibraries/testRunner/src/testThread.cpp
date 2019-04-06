@@ -10,6 +10,7 @@
  */
 
 #include <boost/asio.hpp>
+#include <iostream>
 
 #include "testThread.h"
 //#include "../../helloWorldProtocol/include/HelloWorldProtocol.h"
@@ -52,9 +53,9 @@ void TestThread::StartTest()
                                 , boost::asio::chrono::microseconds(_fireRatioMicro));
 
     auto _commsInterface2 = new libNetworkCommunication::libNetworkCommunication;
-    _commsInterface2->EstablishConnection();
-
-    while (true)
+    auto connSucc = _commsInterface2->EstablishConnection();
+    int counter = 0;
+    while (connSucc)
     {
         t.wait();
         /* Interract with the protocol */
@@ -66,21 +67,34 @@ void TestThread::StartTest()
         /* Interact with the target */
         auto foo = protData->_data_p;
         auto bar = protData->_size;
-        _commsInterface2->SendData(foo
-                                   , bar);
-        _commsInterface2->ReceiveData(protData->_data_p
-                                     , protData->_size);
+
+        auto error = _commsInterface2->SendData(foo
+                                                , bar);
+        if (-1 != error)
+        {
+            break;
+        }
+        error = _commsInterface2->ReceiveData(protData->_data_p
+                                              , protData->_size);
+        if (-1 != error)
+        {
+            break;
+        }
         /* Process the result */
         _ProtocolInterface->DecodeResult(protData);
         /* Store the result */
         _resultsList.push_back(*protData);
+        std::cout << counter << std::endl;
 //        _codeList.push_back(_ProtocolInterface->GetResultCode());
         /* Check if the thread must die */
         if (_killHandler)
+        {
+            _commsInterface2->Disconnect();
             break;
+        }
+        counter++;
     }
     t.wait();
-    _commsInterface2->Disconnect();
     SetFinished(true);
 }
 /*!

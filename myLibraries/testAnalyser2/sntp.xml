@@ -23,7 +23,7 @@
         <protocol protocol="Hello World Protocol"/> <!-- What is the name of the protocol library (so/dll) -->
         <rate tps="10"/> <!-- How many transactions per second do we wish to send? -->
         <chaos multiplier="20"/> <!-- How perfect 10 do we wish to send -->
-        <duration seconds="2"/> <!-- For how long -->
+        <duration seconds="20"/> <!-- For how long -->
         <threads max="5"/> <!-- Maximum threads allowed -->
         <threadsPerInterface tpi="1"/> <!-- How many threads can a comms interface be assigned.
                                        The comms will need to be thread safe for values higher than 1 -->

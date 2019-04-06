@@ -32,7 +32,7 @@ namespace BasicHelloServer
         setupAddrInfo();
         doSocketAndBind();
         doListen();
-    };
+    }
 
 //-----------------------------------------------------------------------------
 

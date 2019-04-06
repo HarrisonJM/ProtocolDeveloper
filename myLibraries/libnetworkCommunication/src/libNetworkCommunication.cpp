@@ -28,7 +28,7 @@ namespace libNetworkCommunication
 libNetworkCommunication::libNetworkCommunication()
     : _portToSendTo(9687)
 //      , _destinationAddress(new char[16384])
-      , _destinationAddress("127.0.0.1")
+      , _destinationAddress("localhost")
       , _outSocket(-1)
       , _tcpOrUDP(1)
       , _servInfo(nullptr)
@@ -85,7 +85,7 @@ ssize_t libNetworkCommunication::SendData(void* payLoad_p
     ssize_t numBytes = _netCommFunctions->sendTo(_outSocket
                                                  , payLoad_p
                                                  , size
-                                                 , 0);
+                                                 , MSG_NOSIGNAL);
     if (-1 == numBytes)
     {
         perror("Send");

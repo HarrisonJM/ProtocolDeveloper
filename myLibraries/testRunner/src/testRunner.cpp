@@ -77,12 +77,12 @@ bool TestRunner::BeginTesting()
     SafeContainers::safeList<Protocol::DataStruct> results;
     SafeContainers::safeList<int> resultCodes;
 
-    long maxThreads = utility::StringToLong(_testFile.GetTestConfiguration()._maxThreads);
-    long tps = utility::StringToLong(_testFile.GetTestConfiguration()._tps);
-    long ratio = _GetRatio(tps
+    const auto maxThreads = utility::StringToLong(_testFile.GetTestConfiguration()._maxThreads);
+    const auto tps = utility::StringToLong(_testFile.GetTestConfiguration()._tps);
+    const auto ratio = _GetRatio(tps
                            , maxThreads);
     /*! @todo Need to separate and edit for changing comms interfaces */
-    for (long i = 0L; i < 1; ++i)
+    for (auto i = 0L; i < maxThreads; ++i)
     {
         auto tfObj = std::make_shared<TestThread>(_killThreadHandler
                                                   , availableCommsInterfaces[0]
@@ -181,6 +181,7 @@ void TestRunner::_WaitForThreads()
     {
         sleep(1);
     }
+    io.stop();
     /* Wait until all threads have finished */
     for (unsigned i = 0; i < _threadsVec.size(); ++i)
     {
