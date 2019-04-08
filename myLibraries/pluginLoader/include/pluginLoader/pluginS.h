@@ -16,7 +16,7 @@
 
 #include "PluginLoaderCommon.h"
 
-namespace PluginLoader
+namespace pluginLoader
 {
 template<class TypeToReturn>
 struct Plugin_S
@@ -36,6 +36,6 @@ public:
     void* _libHandle;
 };
 
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINS_H */

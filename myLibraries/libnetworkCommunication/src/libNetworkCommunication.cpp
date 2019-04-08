@@ -72,9 +72,9 @@ const char* libNetworkCommunication::getPluginVersion()
  * @brief Returns the plugin _type_
  * @return The the plugin is (as an enum)
  */
-PluginLoader::PLUGINTYPE_t libNetworkCommunication::getPluginType()
+pluginLoader::PLUGINTYPE_t libNetworkCommunication::getPluginType()
 {
-    return PluginLoader::PLUGINTYPE_t::COMMUNICATION;
+    return pluginLoader::PLUGINTYPE_t::COMMUNICATION;
 }
 /*!
  * @brief Sends the provided data on the socket

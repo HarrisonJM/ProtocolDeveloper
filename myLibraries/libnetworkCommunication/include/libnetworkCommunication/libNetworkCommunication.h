@@ -59,7 +59,7 @@ public:
      * @brief Returns the plugin _type_
      * @return The the plugin is (as an enum)
      */
-    virtual PluginLoader::PLUGINTYPE_t getPluginType() override;
+    virtual pluginLoader::PLUGINTYPE_t getPluginType() override;
     /*!
      * @brief Sends data
      * @param payLoad_p The data we wish to send

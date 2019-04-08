@@ -15,7 +15,7 @@
 #include <cstring>
 #include <utility/extraExceptionBase.h>
 
-namespace PluginLoader
+namespace pluginLoader
 {
 class PluginException
     : public utility::extraExceptionBase
@@ -82,6 +82,6 @@ public:
     }
 };
 
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADER_EXCEPTION_H */

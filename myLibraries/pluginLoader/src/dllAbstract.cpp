@@ -11,7 +11,7 @@
 #include <dlfcn.h>
 #include "dllAbstract.h"
 
-namespace PluginLoader
+namespace pluginLoader
 {
 
 }

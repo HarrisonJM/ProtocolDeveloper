@@ -14,7 +14,7 @@
 
 #include "pluginLoader/PluginLoaderCommon.h"
 
-namespace PluginLoader
+namespace pluginLoader
 {
 /*!
  * @brief Top-level base class the plugin interfaces should derive from
@@ -41,9 +41,9 @@ public:
      * @brief Returns the plugin _type_
      * @return The the plugin is (as an enum)
      */
-    virtual PluginLoader::PLUGINTYPE_t getPluginType() = 0;
+    virtual pluginLoader::PLUGINTYPE_t getPluginType() = 0;
 };
 
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_I_PLUGIN_H */

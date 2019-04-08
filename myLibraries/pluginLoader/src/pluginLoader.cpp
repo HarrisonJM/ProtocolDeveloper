@@ -12,7 +12,7 @@
 #include <pluginLoader/pluginLoader.h>
 #include "pluginLoaderTemplate.h"
 
-namespace PluginLoader
+namespace pluginLoader
 {
 /*!
  * @brief Constructor
@@ -113,4 +113,4 @@ sharedMap_t<Protocol::I_protocolInterface>& PluginLoader::getProtocolPlugins()
     return _protocolPlugins;
 }
 
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */

@@ -54,15 +54,14 @@ void TestThread::StartTest()
 {
     /* Setup the threads firing context */
     boost::asio::io_context io;
-    boost::asio::steady_timer t(io
-                                , boost::asio::chrono::microseconds(_fireRatioMicro));
+    boost::asio::steady_timer t(io);
+    t.expires_after(boost::asio::chrono::microseconds(_fireRatioMicro));
 
     auto _commsInterface2 = new libNetworkCommunication::libNetworkCommunication;
     auto connSucc = _commsInterface2->EstablishConnection();
     short error = 0;
     while (connSucc)
     {
-        t.wait();
         /* Interract with the protocol */
 //        auto protData = std::make_shared<Protocol::DataStruct>(); /* Protocol should track state */
 //! @TODO: fix this
@@ -92,6 +91,7 @@ void TestThread::StartTest()
         std::cout << (char*) (protData->_data_p) << std::endl;
         /* Store the result */
         _resultsList.push_back(*protData);
+        std::cout << protData->_data_p << std::endl;
 //        _codeList.push_back(_ProtocolInterface->GetResultCode());
         /* Check if the thread must die */
         if (_killHandler)
@@ -100,6 +100,9 @@ void TestThread::StartTest()
                        , LoggerClasses::logLevel::INFO);
             break;
         }
+        t.async_wait(std::bind(&TestThread::_dummyFunc, this));
+        io.run();
+        t.expires_after(std::chrono::microseconds(_fireRatioMicro));
     }
     if (connSucc)
     {
@@ -145,5 +148,9 @@ void TestThread::SetFinished(bool newVal)
 {
     std::lock_guard<std::mutex> lock(_finishedMut);
     _finished = newVal;
+}
+void TestThread::_dummyFunc(void)
+{
+    return;
 }
 } /* namespace TestRunner */

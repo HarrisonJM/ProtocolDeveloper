@@ -10,7 +10,7 @@
  */
 #include "pluginLoaderTemplate.h"
 
-namespace PluginLoader
+namespace pluginLoader
 {
 /*!
  * @brief Specialised template method specifically for finding I_Communication plugins

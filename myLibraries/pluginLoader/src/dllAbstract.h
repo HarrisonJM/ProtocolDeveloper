@@ -14,28 +14,34 @@
 #include <string>
 #include <memory>
 #include <iostream>
+#include <I_dllAbstract.h>
 #include "pluginLoader_exception.h"
 
-namespace PluginLoader
+namespace pluginLoader
 {
 /*!
  * @brief Class that hides the ugly dlfcn functions
+ * @tparam T The _type_ of the plugin we're returning
  */
 template<typename T>
-class dllAbstract
+class dllAbstract : public I_dllAbstract<T>
 {
 public:
     /*!
      * @brief Constructor, comforms to RAiI
      * @param path The path to the dll
      */
-    dllAbstract(std::string path)
-        : _DLLHandle(nullptr)
+    explicit dllAbstract(std::string const &path)
+            :
+            I_dllAbstract<T>(path)
+            , _DLLHandle(nullptr)
     {
         _DLLHandle = dlopen(path.c_str()
                             , RTLD_LAZY);
         if (!_DLLHandle)
+        {
             throw PluginHandleNullException(dlerror());
+        }
     }
     /*!
      * @brief Destructor
@@ -50,15 +56,15 @@ public:
      */
     std::shared_ptr<T> GetPluginFactory()
     {
-        using allocClass = T* (*)();
-        using deleteClass = void (*)(T*);
+        using allocClass = T *(*)();
+        using deleteClass = void (*)(T *);
 
         auto createPlugin = reinterpret_cast<allocClass>(
-            dlsym(_DLLHandle
-                  , "createNewObject"));
+                dlsym(_DLLHandle
+                      , "createNewObject"));
         auto destroyPlugin = reinterpret_cast<deleteClass>(
-            dlsym(_DLLHandle
-                  , "destroyPlugin"));
+                dlsym(_DLLHandle
+                      , "destroyPlugin"));
 
         if (!createPlugin || !destroyPlugin)
         {
@@ -67,17 +73,16 @@ public:
         }
 
         return std::shared_ptr<T>(
-            createPlugin()
-            , [destroyPlugin](T* p)
-            { destroyPlugin(p); });
+                createPlugin()
+                , [destroyPlugin](T *p)
+                { destroyPlugin(p); });
     }
 private:
     /*!
      * @brief A pointer to the handle used to open the SO
      */
-    void* _DLLHandle;
+    void *_DLLHandle;
 };
-
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_DLLABSTRACT_H */

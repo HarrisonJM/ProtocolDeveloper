@@ -24,7 +24,7 @@ int main()
                  , nullptr);
 
     for (fs::directory_entry const&
-            x : make_iterator_range(fs::directory_iterator("/home/hmarcks/src/builds/protDev-debug/myLibraries/helloWorldProtocol")
+            x : make_iterator_range(fs::directory_iterator("../../../myLibraries/helloWorldProtocol")
                                     , {}))
     {
         auto type = ::magic_file(handle

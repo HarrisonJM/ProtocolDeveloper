@@ -85,6 +85,11 @@ private:
     bool _finished;
     /*! @brief mutex used for accessing the _finished member */
     std::mutex _finishedMut;
+
+    /*!
+     * @brief dummy function for boost's asynch_wait
+     */
+     void _dummyFunc();
 };
 } /* namespace TestRunner */
 

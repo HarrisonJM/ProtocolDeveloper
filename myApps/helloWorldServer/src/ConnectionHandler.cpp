@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <iostream>
 #include <sys/socket.h>
+#include <iomanip>
 
 #include "BasicHello.h"
 #include "ConnectionHandler.h"
@@ -82,7 +83,7 @@ void ConnectionHandler::_HandleRequest(int fd
              , 30
              , 0);
         _cfg->receiveData(payLoad);
-        std::cout << (char*) payLoad << std::endl;
+
         send(fd
              , _cfg->sendData()
              , 30

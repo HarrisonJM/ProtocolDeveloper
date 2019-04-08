@@ -26,9 +26,9 @@
 namespace TestRunner
 {
 TestRunner::TestRunner(std::string const& testfilePath
-                       , PluginLoader::sharedMap_t<
+                       , pluginLoader::sharedMap_t<
     Communication::I_communication> commsInterfaces_in
-                       , PluginLoader::sharedMap_t<
+                       , pluginLoader::sharedMap_t<
     Protocol::I_protocolInterface> protocolInterfaces_in
                        , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
                        , ThreadHandler::ThreadPool& threadPool_in
@@ -64,13 +64,13 @@ bool TestRunner::BeginTesting()
      * @todo exception for wrong config name
      */
     std::vector<std::shared_ptr<Communication::I_communication>> availableCommsInterfaces;
-    {
-        auto interfaceFactory =
-            _commsInterface.at(_testFile.GetTestConfiguration()._commsHandler);
-
-//        auto if_shr = std::make_shared<Communication::I_communication>(*interfaceFactory);
-        availableCommsInterfaces.push_back(_commsInterface.at(_testFile.GetTestConfiguration()._commsHandler));
-    }
+//    {
+//        auto interfaceFactory =
+//            _commsInterface.at(_testFile.GetTestConfiguration()._commsHandler);
+//
+////        auto if_shr = std::make_shared<Communication::I_communication>(*interfaceFactory);
+//        availableCommsInterfaces.push_back(_commsInterface.at(_testFile.GetTestConfiguration()._commsHandler));
+//    }
     std::vector<std::shared_ptr<Protocol::I_protocolInterface>> availableProtInterfaces;
     {
         auto interfaceFactory =
@@ -110,6 +110,7 @@ bool TestRunner::BeginTesting()
     _WaitForThreads();
     LOGMESSAGE("Testing Finished"
                , LoggerClasses::logLevel::INFO);
+
     return retval;
 }
 /*!
@@ -144,7 +145,7 @@ testAnalyser2::TestFile TestRunner::_GetTestFile(std::unique_ptr<testAnalyser2::
     return newTF;
 }
 /*!
- * @brief Calculates the sending ratio (transactions per microsecond
+ * @brief Calculates the sending ratio (transactions per microsecond)
  * @param rate Transactions wanted per second
  * @param numOfThreads How many threads there are
  * @return How often each thread needs to fire in milliseconds
@@ -165,7 +166,7 @@ void TestRunner::_TimerHandler(const boost::system::error_code& e)
     _killThreadHandler.SetT(true);
 }
 /*!
- * @brief Sets up the timer and polls for the threads to finish
+ * @brief Sets up the timer and polls for the threads to finish.
  */
 void TestRunner::_WaitForThreads()
 {

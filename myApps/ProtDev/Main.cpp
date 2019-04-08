@@ -6,7 +6,7 @@
 #include <iomanip>
 
 int main(int argc
-         , char** argv)
+         , char **argv)
 {
     ThreadHandler::ThreadPool pool(10);
     pool.InitPool();
@@ -27,11 +27,14 @@ int main(int argc
                                                             , "").OpenNewLog(ss.str()
                                                                              , LoggerClasses::StrategyEnums::FSTREAM);
     // Load plugins
-    PluginLoader::PluginLoader PL(_loggerID);
-    PL.ScanForComms("/home/hmarcks/src/builds/protDev-debug/myLibraries/libnetworkCommunication/");
-    PL.ScanForProtocols("/home/hmarcks/src/builds/protDev-debug/myLibraries/helloWorldProtocol/");
+    pluginLoader::PluginLoader PL(_loggerID);
+//    PL.ScanForComms("/home/hmarcks/src/builds/protDev-debug/myLibraries/libnetworkCommunication/");
+//    PL.ScanForProtocols("/home/hmarcks/src/builds/protDev-debug/myLibraries/helloWorldProtocol/");
+    PL.ScanForComms("../../myLibraries/libnetworkCommunication/");
+    PL.ScanForProtocols("../../myLibraries/helloWorldProtocol/lib");
 
     std::string testFileName = "../../../../ProtocolDeveloper/myLibraries/testAnalyser2/sntp.xml";
+//    std::string testFileName = "../../../../ProtocolDeveloper/myLibraries/testAnalyser2/broken.xml";
 
     try
     {
@@ -44,9 +47,9 @@ int main(int argc
                                   , pool
                                   , 0);
         tr.BeginTesting();
-
-    } catch (std::exception& e)
+    } catch (std::exception &e)
     {
+        std::cout << e.what() << std::endl;
         LOGMESSAGE(e.what()
                    , LoggerClasses::logLevel::ERROR);
         exit(1);

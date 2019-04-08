@@ -65,9 +65,9 @@ public:
      * @param threadPool_in a reference tot he threadpool we wish to use
      */
     TestRunner(std::string const& testfilePath
-               , PluginLoader::sharedMap_t<
+               , pluginLoader::sharedMap_t<
         Communication::I_communication> commsInterfaces_in
-               , PluginLoader::sharedMap_t<
+               , pluginLoader::sharedMap_t<
         Protocol::I_protocolInterface> protocolInterfaces_in
                , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
                , ThreadHandler::ThreadPool& threadPool_in
@@ -97,9 +97,9 @@ private:
     /*! @brief A reference to the test analyser, will also store our parsed test file*/
     std::unique_ptr<testAnalyser2::I_TestAnalyser2> _TestAnalyser;
     /*! @brief Shared map containing all the possible communication interface plugins we can use */
-    const PluginLoader::sharedMap_t<Communication::I_communication> _commsInterface;
+    const pluginLoader::sharedMap_t<Communication::I_communication> _commsInterface;
     /*! @brief Shared map containing all the possible protocol interface plugins we can use */
-    const PluginLoader::sharedMap_t<Protocol::I_protocolInterface> _protocolInterface;
+    const pluginLoader::sharedMap_t<Protocol::I_protocolInterface> _protocolInterface;
     // ThreadHandler
     /*! @brief the threadpool we'll be adding our tests to */
     ThreadHandler::ThreadPool& _threadPool;

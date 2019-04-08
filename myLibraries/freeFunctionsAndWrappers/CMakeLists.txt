@@ -5,7 +5,7 @@ set(LIB_NAME "freeFunctionsAndWrappers")
 add_library(${LIB_NAME}
         src/cNetComm.cpp
         src/cStdLib.cpp
-        src/cStdio.cpp)
+        src/cStdio.cpp include/I_cDlfcn.h src/cDlfcn.cpp include/freeFunctionsAndWrappers/cDlfcn.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build

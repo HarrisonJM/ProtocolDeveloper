@@ -10,7 +10,7 @@
                                                            their starting values -->
         <variable name="VN" action="stay" value="4"/>
         <variable name="Mode" action="stay" value="3"/>
-        <variable name="Stratum" action="stay" value="2"/>
+        <variable name="Stratum" action="stay" value="2"/
 
         <operation name="terminate" storedIn="Stratum" value="0"/> <!-- Operations are user
                                                                         defined within the protocol
@@ -18,7 +18,7 @@
     </dataPoint>
     <config>
         <!--<testName name="KoD test/SNTP"/>
-        <protocol protocol="sntp"/> What is the name of the protocol library (so/dll) -->
+        <protocol protocol="sntp"/> <!-- What is the name of the protocol library (so/dll) -->
         <testName name="HWP"/>
         <protocol protocol="Hello World Protocol"/> <!-- What is the name of the protocol library (so/dll) -->
         <rate tps="10"/> <!-- How many transactions per second do we wish to send? -->

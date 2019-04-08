@@ -36,7 +36,7 @@
 
 //#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
 
-namespace PluginLoader
+namespace pluginLoader
 {
 /*!
  * @brief Class that loads the plugins we want for the desired area
@@ -145,7 +145,7 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
                 /* Check the file for its magic number to confirm it is indeed a shared object*/
                 auto type = ::magic_file(handle
                                          , file.path().native().c_str());
-                if (std::string(type).find("shared object") != std::string::npos)
+//                if (std::string(type).find("shared object") != std::string::npos)
                 {
                     try
                     {
@@ -211,6 +211,6 @@ bool PluginLoaderTemplate<Protocol::I_protocolInterface>::_CheckCorrectType(PLUG
 
 //! @todo More specializations
 
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADERCOMMS_H */

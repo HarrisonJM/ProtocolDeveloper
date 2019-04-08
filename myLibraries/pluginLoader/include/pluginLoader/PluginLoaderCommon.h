@@ -19,7 +19,7 @@
 #include <functional>
 #include <map>
 
-namespace PluginLoader
+namespace pluginLoader
 {
 //#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
 /*!
@@ -76,6 +76,6 @@ enum PLUGINTYPE_t
 template<class TypeToUse>
 using sharedMap_t = std::map<std::string, std::shared_ptr<TypeToUse>>;
 
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADERCOMMON_H */

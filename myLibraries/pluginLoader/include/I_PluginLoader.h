@@ -13,7 +13,7 @@
 
 #include <string>
 
-namespace PluginLoader
+namespace pluginLoader
 {
 class I_PluginLoader
 {

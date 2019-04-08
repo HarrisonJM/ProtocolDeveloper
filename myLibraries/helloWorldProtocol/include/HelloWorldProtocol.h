@@ -43,7 +43,7 @@ public:
      * @brief Returns the plugin _type_
      * @return The the plugin is (as an enum)
      */
-    virtual PluginLoader::PLUGINTYPE_t getPluginType() override;
+    virtual pluginLoader::PLUGINTYPE_t getPluginType() override;
     /*!
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target

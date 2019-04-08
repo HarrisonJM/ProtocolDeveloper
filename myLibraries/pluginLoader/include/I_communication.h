@@ -25,7 +25,7 @@ namespace Communication
  * @brief Defines the interface for listening
  */
 class I_communication
-    : public PluginLoader::I_Plugin
+    : public pluginLoader::I_Plugin
 {
 public:
     /*! Default Destructor */
@@ -69,7 +69,7 @@ public:
      * @brief Returns the plugin _type_
      * @return The the plugin is (as an enum)
      */
-    virtual PluginLoader::PLUGINTYPE_t getPluginType() = 0;
+    virtual pluginLoader::PLUGINTYPE_t getPluginType() = 0;
 };
 }
 

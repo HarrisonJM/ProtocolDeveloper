@@ -13,7 +13,7 @@
 
 int main()
 {
-//    std::string xmlLocation = "/home/hmarcks/src/ProtocolDeveloper/myLibraries/testAnalyser2/sntp.xml";
+//    std::string xmlLocation = "/home/hmarcks/src/ProtocolDeveloper/myLibraries/testAnalyser2/broken.xml";
     std::string xmlLocation = "aaaa";
     try
     {

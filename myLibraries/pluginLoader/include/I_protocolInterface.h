@@ -40,7 +40,7 @@ struct DataStruct
  * @brief Base Protocol interface
  */
 class I_protocolInterface
-    : public PluginLoader::I_Plugin
+    : public pluginLoader::I_Plugin
 {
 public:
     /*! @brief Destructor */
@@ -59,7 +59,7 @@ public:
      * @brief Returns the plugin _type_
      * @return The the plugin is (as an enum)
      */
-    virtual PluginLoader::PLUGINTYPE_t getPluginType() = 0;
+    virtual pluginLoader::PLUGINTYPE_t getPluginType() = 0;
     /*!
      * @brief Decodes the data returned from the target
      * @param payLoad The payload received from the target

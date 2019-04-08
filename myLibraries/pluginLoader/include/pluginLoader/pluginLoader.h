@@ -25,7 +25,7 @@
 #include <I_PluginLoader.h>
 #include <I_protocolInterface.h>
 
-namespace PluginLoader
+namespace pluginLoader
 {
 
 class PluginLoader
@@ -61,6 +61,6 @@ private:
      */
     void _ScanForPlugins(std::string extraQualification);
 };
-} /* namespace PluginLoader */
+} /* namespace pluginLoader */
 
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADER_H */

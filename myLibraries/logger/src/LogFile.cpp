@@ -84,7 +84,7 @@ void LogFile::WriteAllMessagesToStream()
     {
         std::string message;
         _messagesToWrite.pop_front(message);
-        *_logOutStream << message;
+        (*_logOutStream).operator<<(message.c_str());
     }
 }
 /*!

@@ -14,54 +14,57 @@ using ::testing::StrictMock;
 using ::testing::_;
 using ::testing::Return;
 
-namespace LoggerClasses {
+namespace LoggerClasses
+{
 class LogHandlerTests : public ::testing::Test
 {
 protected:
     std::string _path = "";
     int _maxLogs = 5;
-    LogHandler *lh;
+
     void SetUp() override
     {
-//        lh = new LogHandler(_maxLogs,
-//                            _path);
+        LoggerClasses::LogHandler::GetInstance(_maxLogs
+                                               , _path);
     }
+
     void TearDown() override
     {
 
     }
+
+    auto GetInstance() -> decltype(LoggerClasses::LogHandler::GetInstance(_maxLogs
+                                                                         , _path))
+    {
+        return LoggerClasses::LogHandler::GetInstance(_maxLogs
+                                                      , _path);
+    }
 };
 
-TEST_F(LogHandlerTests,
-       constructor)
+TEST_F(LogHandlerTests
+       , constructor_01)
 {
-    lh->KillHandler();
+    GetInstance().KillHandler();
     ASSERT_TRUE(true);
 }
 
-TEST_F(LogHandlerTests,
-       openNewLogWithoutEIS)
+TEST_F(LogHandlerTests
+       , openNewLogWithoutEIS_02)
 {
-    int64_t logID = lh->OpenNewLog("testLog",
-                                   StrategyEnums::FSTREAM);
-    EXPECT_NE(logID,
-              -1);
+    int64_t logID = GetInstance().OpenNewLog("testLog"
+                                            , StrategyEnums::FSTREAM);
+    EXPECT_NE(logID
+              , -1);
 
-    auto log = lh->GetLogFileByID(logID);
+    auto log = GetInstance().GetLogFileByID(logID);
 
-    lh->AddMessageToLog(logID,
-                        "TEST MESSAGE",
-                        logLevel::INFO);
-
+    GetInstance().AddMessageToLog(logID
+                                 , "TEST MESSAGE"
+                                 , logLevel::INFO);
     testing::internal::CaptureStdout();
     log->WriteAllMessagesToStream();
-    std::string out = testing::internal::GetCapturedStdout();
-
-    std::cout << log->ReturnLatestMessage() << std::endl;
-
-    std::cout << "BLAH: " << out << std::endl;
-
-    lh->KillHandler();
+    GetInstance().CloseLog(logID);
+    GetInstance().KillHandler();
 }
 
 } /* namespace LoggerClasses */

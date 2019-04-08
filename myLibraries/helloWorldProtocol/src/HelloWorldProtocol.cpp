@@ -65,9 +65,9 @@ const char* HelloWorldProtocol::getPluginVersion()
  * @brief Returns the plugin _type_
  * @return The the plugin is (as an enum)
  */
-PluginLoader::PLUGINTYPE_t HelloWorldProtocol::getPluginType()
+pluginLoader::PLUGINTYPE_t HelloWorldProtocol::getPluginType()
 {
-    return PluginLoader::PLUGINTYPE_t::PROTOCOL;
+    return pluginLoader::PLUGINTYPE_t::PROTOCOL;
 }
 /*!
  * @brief Decodes a payload and sets the return code accordingly

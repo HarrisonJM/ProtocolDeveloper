@@ -53,10 +53,10 @@ export(TARGETS ${LIB_NAME}
        FILE ${LIB_NAME}Config.cmake)
 
 ### TEST STUFF ###
-add_executable(testTestHandler
+add_executable(test${LIB_NAME}
                tests/${LIB_NAME}Tests.cpp)
 
-target_link_libraries(testTestHandler
+target_link_libraries(test${LIB_NAME}
                       ${LIB_NAME}
                       gtest_main
                       gtest)

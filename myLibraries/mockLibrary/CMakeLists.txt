@@ -25,6 +25,7 @@ target_link_libraries(${LIB_NAME} INTERFACE
         logger
         freeFunctionsAndWrappers
         threadPool
+        pluginLoader
         ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).
