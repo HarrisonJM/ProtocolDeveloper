@@ -27,9 +27,14 @@
 
 #include <pluginLoader/PluginLoaderCommon.h>
 #include <filesystem>
+#include <magic.h>
 #include "pluginLoader/pluginS.h"
 #include "dllAbstract.h"
 #include "pluginLoader_exception.h"
+#include "../../logger/include/logger/LogHandler.h"
+#include "../../logger/include/logger/loggerUtility.h"
+
+//#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
 
 namespace PluginLoader
 {
@@ -55,7 +60,8 @@ public:
      */
     PluginLoaderTemplate(std::string const& prefix
                          , std::string const& qualifier
-                         , sharedMap_t<TpluginType>& plugins);
+                         , sharedMap_t<TpluginType>& plugins
+                         , const long loggerID);
     /*!
      * @brief Default Destructor
      */
@@ -75,6 +81,8 @@ public:
      */
     sharedMap_t<TpluginType> getPlugins();
 private:
+    /*! @brief The ID of the logger we're using */
+    const long _loggerID;
     /*! @brief The full default path of the where the comms plugins are*/
     std::string _fullPath;
     /*! @brief Communication Plugins */
@@ -96,8 +104,10 @@ private:
 template<class TpluginType>
 PluginLoaderTemplate<TpluginType>::PluginLoaderTemplate(std::string const& prefix
                                                         , std::string const& qualifier
-                                                        , sharedMap_t<TpluginType>& plugins)
-    : _fullPath(prefix + "/" + qualifier)
+                                                        , sharedMap_t<TpluginType>& plugins
+                                                        , const long loggerID)
+    : _loggerID(loggerID)
+      , _fullPath(prefix + "/" + qualifier)
       , _plugins(plugins)
 {
 }
@@ -118,32 +128,44 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
 {
     if (!std::filesystem::is_directory(newDir))
     {
-        //! @todo Not a directory. throw
+        char str[] = "";
+        throw PluginSuppliedDirectoryIsNotADirectory(str);
     }
     else
     {
+        auto handle = ::magic_open(MAGIC_NONE | MAGIC_COMPRESS);
+        ::magic_load(handle
+                     , nullptr);
+
         for (const auto& file : std::filesystem::directory_iterator(newDir))
         {
             /* Currently pointed to file is not a directory */
             if (!std::filesystem::is_directory(file))
             {
-                try
+                /* Check the file for its magic number to confirm it is indeed a shared object*/
+                auto type = ::magic_file(handle
+                                         , file.path().native().c_str());
+                if (std::string(type).find("shared object") != std::string::npos)
                 {
-                    dllAbstract<TpluginType> da(std::filesystem::path(file).string());
-                    auto foo = da.GetPluginFactory();
-
-                    if (_CheckCorrectType(foo->getPluginType()))
+                    try
                     {
-                        _plugins.insert(std::pair<std::string, decltype(foo)>
-                                            (foo->getPluginName()
-                                             , foo));
+                        dllAbstract<TpluginType> da(std::filesystem::path(file).string());
+                        auto foo = da.GetPluginFactory();
+
+                        if (_CheckCorrectType(foo->getPluginType()))
+                        {
+                            _plugins.insert(std::pair<std::string, decltype(foo)>
+                                                (foo->getPluginName()
+                                                 , foo));
+                        }
                     }
-                }
-                catch (PluginException& e)
-                {
-                    // Incorrect file type in directory or smth
-                    std::cout << e.what() << std::endl;
-                    continue;
+                    catch (PluginException& e)
+                    {
+                        // Couldn't load file
+                        LOGMESSAGE(e.what()
+                                   , LoggerClasses::logLevel::ERROR);
+                        continue;
+                    }
                 }
             }
         }

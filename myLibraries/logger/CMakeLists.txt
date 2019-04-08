@@ -25,7 +25,6 @@ target_include_directories(logger PUBLIC
 target_link_libraries(logger
         safeContainers
         utility
-        threadPool
         mockLibrary)
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).

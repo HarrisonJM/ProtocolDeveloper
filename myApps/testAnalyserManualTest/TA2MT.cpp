@@ -17,7 +17,8 @@ int main()
     std::string xmlLocation = "aaaa";
     try
     {
-        testAnalyser2::TestAnalyser2 TA2(xmlLocation);
+        testAnalyser2::TestAnalyser2 TA2(xmlLocation
+                                         , 0);
         TA2.startAnalysis();
         testAnalyser2::TestFile& TF = TA2.GetTestFile();
     }

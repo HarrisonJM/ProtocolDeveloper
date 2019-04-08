@@ -14,7 +14,7 @@
 
 #include "I_TimeTicker.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 class I_TimeTickerFactory
@@ -22,6 +22,6 @@ class I_TimeTickerFactory
     ~I_TimeTickerFactory() = default;
 };
 
-} /* namespace TimeTicker */
+} /* namespace timeTicker */
 
 #endif /* PROTOCOLDEVELOPER_I_TIMETICKERFACTORY_H */

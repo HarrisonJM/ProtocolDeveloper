@@ -32,7 +32,7 @@ class PluginLoader
     : public I_PluginLoader
 {
 public:
-    PluginLoader();
+    PluginLoader(int loggerID);
     ~PluginLoader() override = default;
     bool ScanForAllPluginsDefaultLoc() override;
     bool ScanForAllPluginsNewLoc(std::string const& pathToPlugins) override;
@@ -43,6 +43,7 @@ public:
 //    void ScanForTestCase(std::string const &pathToPlugins) override ;
 
 private:
+    const long _loggerID;
     /*! @brief The prefix to where the plugins are kept i.e. /opt/ProtDev/plugins/ */
     std::string _prefix;
     /*!

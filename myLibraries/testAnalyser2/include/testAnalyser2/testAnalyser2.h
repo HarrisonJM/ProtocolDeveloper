@@ -27,7 +27,8 @@ public:
      * @brief Constructor
      * @param testfile The absolute location of the testfile
      */
-    explicit TestAnalyser2(std::string& testfile);
+    explicit TestAnalyser2(std::string& testfile
+                           , const int64_t loggerID);
     /*!
      * @brief destructor
      */
@@ -47,6 +48,8 @@ public:
      */
     bool isAnalysed() override;
 private:
+    /*! @brief the ID of the logger */
+    const int64_t _loggerID;
     /*!
      * @brief Whether the analysis has been performed/completed
      */

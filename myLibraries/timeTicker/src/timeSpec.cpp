@@ -8,13 +8,13 @@
  * @date 18/12/18
  */
 
-#include "wallClock.h"
+#include "timeTicker/wallClock.h"
 #include <timeTicker/timeTickerCommon.h>
 #include <cstdint>
 #include "timeSpec.h"
 #include "timeTickerDefinitions.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 TimeSpec::TimeSpec()
@@ -125,4 +125,4 @@ int TimeSpec::getClockGetTime(TTTimeClockId clockId
     return clock_gettime(clockId
                          , time_p);
 }
-} /* TimeTicker */
+} /* timeTicker */

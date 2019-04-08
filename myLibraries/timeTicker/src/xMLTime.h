@@ -12,7 +12,7 @@
 #ifndef PROTOCOLDEVELOPER_XMLTIME_H
 #define PROTOCOLDEVELOPER_XMLTIME_H
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 /*!
@@ -37,6 +37,6 @@ public:
 private:
 };
 
-} /* TimeTicker */
+} /* timeTicker */
 
 #endif /*PROTOCOLDEVELOPER_XMLTIME_H*/

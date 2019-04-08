@@ -14,8 +14,12 @@
 
 namespace PluginLoader
 {
-
-PluginLoader::PluginLoader()
+/*!
+ * @brief Constructor
+ * @param loggerID ID of the logger it should use
+ */
+PluginLoader::PluginLoader(int loggerID)
+    : _loggerID(loggerID)
 {
 }
 /*!
@@ -27,7 +31,6 @@ bool PluginLoader::ScanForAllPluginsDefaultLoc()
 {
     ScanForComms(_prefix);
     ScanForProtocols(_prefix);
-//    ScanForTestCase(_prefix);
     return true;
 }
 /*!
@@ -39,7 +42,6 @@ bool PluginLoader::ScanForAllPluginsNewLoc(std::string const& pathToPlugins)
 {
     ScanForComms(pathToPlugins);
     ScanForProtocols(pathToPlugins);
-//    ScanForTestCase(pathToPlugins);
     return false;
 }
 /*!
@@ -50,27 +52,62 @@ void PluginLoader::ScanForComms(std::string const& pathToPlugins)
 {
     PluginLoaderTemplate<Communication::I_communication> plt(pathToPlugins
                                                              , ""
-                                                             , _commsPlugins);
-    plt.ScanForPlugins();
+                                                             , _commsPlugins
+                                                             , 0);
+    LOGMESSAGE("Scanning for Comms plugins"
+               , LoggerClasses::logLevel::INFO);
+    try
+    {
+        plt.ScanForPlugins();
+    } catch (std::exception& e)
+    {
+        LOGMESSAGE(e.what()
+                   , LoggerClasses::logLevel::ERROR);
+    }
+
     this->_commsPlugins = plt.getPlugins();
 }
-
+/*!
+ * @brief Scans for protocol plugins
+ * @param pathToPlugins The path to where the plugins are located
+ */
 void PluginLoader::ScanForProtocols(std::string const& pathToPlugins)
 {
     PluginLoaderTemplate<Protocol::I_protocolInterface> plt(pathToPlugins
-                                                             , ""
-                                                             , _protocolPlugins);
-    plt.ScanForPlugins();
+                                                            , ""
+                                                            , _protocolPlugins
+                                                            , 0);
+    LOGMESSAGE("Scanning for Protocol plugins"
+               , LoggerClasses::logLevel::INFO);
+    try
+    {
+        plt.ScanForPlugins();
+    } catch (std::exception& e)
+    {
+        LOGMESSAGE(e.what()
+                   , LoggerClasses::logLevel::ERROR);
+    }
     this->_protocolPlugins = plt.getPlugins();
 }
+/*!
+ * @brief
+ * @param extraQualification
+ */
 void PluginLoader::_ScanForPlugins(std::string extraQualification)
 {
 }
-
+/*!
+ * @brief Returns the sharedmap that cotnains all the comms plugins
+ * @return a map of sharedptr's to comms plguins
+ */
 sharedMap_t<Communication::I_communication>& PluginLoader::getCommsPlugins()
 {
     return _commsPlugins;
 }
+/*!
+ * @brief Returns the sharedmap that cotnains all the protocol plugins
+ * @return a map of sharedptr's to protocol plguins
+ */
 sharedMap_t<Protocol::I_protocolInterface>& PluginLoader::getProtocolPlugins()
 {
     return _protocolPlugins;

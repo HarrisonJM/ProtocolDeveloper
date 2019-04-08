@@ -12,7 +12,7 @@
 
 #include "timeTicker/timeTrackerFactory.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 TimeTickerFactory::TimeTickerFactory()

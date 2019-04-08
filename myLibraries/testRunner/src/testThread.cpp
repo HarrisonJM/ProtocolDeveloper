@@ -11,9 +11,10 @@
 
 #include <boost/asio.hpp>
 #include <iostream>
+#include <logger/loggerUtility.h>
+#include <logger/LogHandler.h>
 
 #include "testThread.h"
-//#include "../../helloWorldProtocol/include/HelloWorldProtocol.h"
 #include "libnetworkCommunication/libNetworkCommunication.h"
 
 namespace TestRunner
@@ -32,8 +33,12 @@ TestThread::TestThread(const utility::ThreadSafeT<bool>& killThread_in
                        , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
                        , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
                        , SafeContainers::safeList<int>& codeList_in
-                       , long ratio_in)
-    : _fireRatioMicro(ratio_in)
+                       , long ratio_in
+                       , int64_t loggerID
+                       , int threadID)
+    : _loggerID(loggerID)
+      , _threadID(threadID)
+      , _fireRatioMicro(ratio_in)
       , _killHandler(killThread_in)
       , _commsInterface(commsInterface_in)
       , _ProtocolInterface(protocolInterface_in)
@@ -54,7 +59,7 @@ void TestThread::StartTest()
 
     auto _commsInterface2 = new libNetworkCommunication::libNetworkCommunication;
     auto connSucc = _commsInterface2->EstablishConnection();
-    int counter = 0;
+    short error = 0;
     while (connSucc)
     {
         t.wait();
@@ -68,32 +73,59 @@ void TestThread::StartTest()
         auto foo = protData->_data_p;
         auto bar = protData->_size;
 
-        auto error = _commsInterface2->SendData(foo
-                                                , bar);
-        if (-1 != error)
+        error = _commsInterface2->SendData(foo
+                                           , bar);
+        if (-1 == error)
         {
+            error = 1;
             break;
         }
         error = _commsInterface2->ReceiveData(protData->_data_p
                                               , protData->_size);
-        if (-1 != error)
+        if (-1 == error)
         {
+            error = 2;
             break;
         }
         /* Process the result */
         _ProtocolInterface->DecodeResult(protData);
+        std::cout << (char*) (protData->_data_p) << std::endl;
         /* Store the result */
         _resultsList.push_back(*protData);
-        std::cout << counter << std::endl;
 //        _codeList.push_back(_ProtocolInterface->GetResultCode());
         /* Check if the thread must die */
         if (_killHandler)
         {
-            _commsInterface2->Disconnect();
+            LOGMESSAGE("Kill handler invoked"
+                       , LoggerClasses::logLevel::INFO);
             break;
         }
-        counter++;
     }
+    if (connSucc)
+    {
+        switch (error)
+        {
+            case 1:
+                LOGMESSAGE("Send error"
+                           , LoggerClasses::logLevel::INFO);
+                break;
+            case 2:
+                LOGMESSAGE("Receive error"
+                           , LoggerClasses::logLevel::INFO);
+                break;
+            default:
+                LOGMESSAGE("Test thread finished"
+                           , LoggerClasses::logLevel::INFO);
+                break;
+        }
+        _commsInterface2->Disconnect();
+    }
+    else
+    {
+        LOGMESSAGE("Connection failure"
+                   , LoggerClasses::logLevel::INFO);
+    }
+
     t.wait();
     SetFinished(true);
 }

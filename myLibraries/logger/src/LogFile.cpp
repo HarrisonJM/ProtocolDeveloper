@@ -11,6 +11,7 @@
 #include <ostream>
 #include <map>
 #include <sstream>
+#include <iomanip>
 
 #include "utility/utility.h"
 #include "LogFile.h"
@@ -136,13 +137,19 @@ void LogFile::_GenerateHeader()
 std::string LogFile::_GenerateLogMessage(const std::string& message
                                          , logLevel lvl)
 {
+    auto t = std::time(nullptr);
+    auto tm = std::localtime(&t);
+    std::stringstream ss;
+    ss << std::put_time(tm
+                        , "%H-%M-%S");
+
     std::string fullMessage;
     fullMessage += "[";
     fullMessage += _logLevels.getValue(lvl);
     fullMessage += "]";
     fullMessage += "[";
     //! @todo dating/timing mechanisms
-    fullMessage += "Date";
+    fullMessage += (ss.str());
     fullMessage += "]: ";
     fullMessage += message;
     fullMessage += "\n";

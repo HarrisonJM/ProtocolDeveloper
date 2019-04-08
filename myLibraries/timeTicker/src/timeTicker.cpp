@@ -12,7 +12,7 @@
 
 #include "timeTicker/timeTicker.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 TimeTicker::TimeTicker()
@@ -32,4 +32,4 @@ const char* TimeTicker::getStringMicro(const struct timeval* tv)
 {
     return "Don't use the base class (string)";
 }
-} /* namespace TimeTicker */
+} /* namespace timeTicker */

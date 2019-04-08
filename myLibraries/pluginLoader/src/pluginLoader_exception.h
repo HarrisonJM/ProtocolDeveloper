@@ -27,7 +27,7 @@ public:
     }
     virtual const char* what() override
     {
-        return "\nPluginException";
+        return "PluginException";
     }
 };
 /*!
@@ -44,7 +44,7 @@ public:
     }
     const char* what() override
     {
-        return _BuildError("\nReturned DLL Handle is NULL. ERROR: ");
+        return _BuildError("Returned DLL Handle is NULL. ERROR: ");
     }
 };
 /*!
@@ -61,7 +61,24 @@ public:
     }
     const char* what() override
     {
-        return _BuildError("\nReturned DLL factory is NULL.");
+        return _BuildError("Returned DLL factory is NULL.");
+    }
+};
+/*!
+ * @brief The plugin has returned NULL when finding the factory symbol
+ */
+class PluginSuppliedDirectoryIsNotADirectory
+    : public PluginException
+{
+public:
+    explicit PluginSuppliedDirectoryIsNotADirectory(char* dlError)
+        : PluginException(dlError)
+    {
+
+    }
+    const char* what() override
+    {
+        return _BuildError("Plugin Supplied Directory Is Not A Directory.");
     }
 };
 

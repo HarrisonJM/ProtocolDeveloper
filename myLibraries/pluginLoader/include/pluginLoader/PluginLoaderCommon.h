@@ -21,6 +21,7 @@
 
 namespace PluginLoader
 {
+//#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
 /*!
  * @brief Handles conversions between std and boost shared ptrs
  * https://stackoverflow.com/questions/12314967/cohabitation-of-boostshared-ptr-and-stdshared-ptr

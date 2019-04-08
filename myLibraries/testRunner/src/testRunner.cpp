@@ -20,6 +20,7 @@
 #include <testRunner/testRunner.h>
 #include <safeList/safeList.h>
 #include <iostream>
+#include <logger/LogHandler.h>
 #include "testThread.h"
 
 namespace TestRunner
@@ -30,8 +31,10 @@ TestRunner::TestRunner(std::string const& testfilePath
                        , PluginLoader::sharedMap_t<
     Protocol::I_protocolInterface> protocolInterfaces_in
                        , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
-                       , ThreadHandler::ThreadPool& threadPool_in)
-    : _testFilePath(testfilePath)
+                       , ThreadHandler::ThreadPool& threadPool_in
+                       , int64_t loggerID)
+    : _loggerID(loggerID)
+      , _testFilePath(testfilePath)
       , _TestAnalyser(std::move(TA_in))
       , _commsInterface(std::move(commsInterfaces_in))
       , _protocolInterface(std::move(protocolInterfaces_in))
@@ -47,6 +50,9 @@ TestRunner::TestRunner(std::string const& testfilePath
  */
 bool TestRunner::BeginTesting()
 {
+    LOGMESSAGE("Testing Setup"
+               , LoggerClasses::logLevel::INFO);
+
     bool retval = true;
 
     /* Gets the plugin Spawners */
@@ -80,8 +86,10 @@ bool TestRunner::BeginTesting()
     const auto maxThreads = utility::StringToLong(_testFile.GetTestConfiguration()._maxThreads);
     const auto tps = utility::StringToLong(_testFile.GetTestConfiguration()._tps);
     const auto ratio = _GetRatio(tps
-                           , maxThreads);
+                                 , maxThreads);
     /*! @todo Need to separate and edit for changing comms interfaces */
+    LOGMESSAGE("Creating jobs"
+               , LoggerClasses::logLevel::INFO);
     for (auto i = 0L; i < maxThreads; ++i)
     {
         auto tfObj = std::make_shared<TestThread>(_killThreadHandler
@@ -89,22 +97,19 @@ bool TestRunner::BeginTesting()
                                                   , availableProtInterfaces[0]
                                                   , results
                                                   , resultCodes
-                                                  , ratio);
-//        auto tfObj = new TestThread(_killThreadHandler
-//                                    , availableCommsInterfaces[0]
-//                                    , availableProtInterfaces[0]
-//                                    , results
-//                                    , resultCodes
-//                                    , ratio);
+                                                  , ratio
+                                                  , _loggerID
+                                                  , i);
         std::function<void(void)> testFunc = std::bind(&TestThread::StartTest
                                                        , tfObj);
         _threadPool.AddTaskToQueue(testFunc);
         _threadsVec.push_back(tfObj);
     }
+
     /* Poller */
     _WaitForThreads();
-
-    std::cout << "Here I be" << std::endl;
+    LOGMESSAGE("Testing Finished"
+               , LoggerClasses::logLevel::INFO);
     return retval;
 }
 /*!
@@ -182,6 +187,8 @@ void TestRunner::_WaitForThreads()
         sleep(1);
     }
     io.stop();
+    LOGMESSAGE("Test timer has Expired"
+               , LoggerClasses::logLevel::INFO);
     /* Wait until all threads have finished */
     for (unsigned i = 0; i < _threadsVec.size(); ++i)
     {
@@ -199,6 +206,5 @@ void TestRunner::_WaitForThreads()
         if (!notAllDone)
             break;
     }
-    std::cout << "End of wait" << std::endl;
 }
 } /* namespace TestRunner */

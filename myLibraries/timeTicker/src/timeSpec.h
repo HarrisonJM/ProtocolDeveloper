@@ -15,7 +15,7 @@
 #include <timeTicker/timeTicker.h>
 #include "timeTicker/timeTickerCommon.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 class TimeSpec : public TimeTicker

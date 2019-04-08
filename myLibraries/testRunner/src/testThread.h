@@ -43,7 +43,9 @@ public:
                , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
                , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
                , SafeContainers::safeList<int>& codeList_in
-               , long ratio_in);
+               , long ratio_in
+               , int64_t loggerID
+               , int threadID);
     /*!
      * @brief Destructor
      */
@@ -63,6 +65,10 @@ public:
      */
     void SetFinished(bool newVal);
 private:
+    /*! @brief The Id for the logger */
+    const int64_t _loggerID;
+    /*! @brief The ID for this thread */
+    const int _threadID;
     /*! @brief The amount of time (in micro seconds) between each successive fire */
     const long _fireRatioMicro;
     /*! @brief Threadsafe bool kill handler for the thread */

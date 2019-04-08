@@ -21,7 +21,7 @@
 
 #include <I_gMTHandler.h>
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 class GMTHandler : public I_gMTHandler
@@ -43,6 +43,6 @@ private:
     std::unique_ptr<cFunctions::I_cStdio> _stdioModule;
 };
 
-} /* TimeTicker */
+} /* timeTicker */
 
 #endif /* PROTOCOLDEVELOPER_GMTHANDLER_H */

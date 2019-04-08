@@ -10,25 +10,25 @@
 
 namespace ThreadHandler
 {
-
 /*!
  * @brief Constructor
  *
  * @param maxNumberOfThreadsSize_in Defines the maximum size the queue can take
  */
 ThreadPool::ThreadPool(unsigned int maxNumberOfThreadsSize_in)
-    :   _killPool(false),
-        _threads(maxNumberOfThreadsSize_in)
+    : _maximumNumberOfThreads(maxNumberOfThreadsSize_in)
+      , _killPool(false)
+      , _threads(maxNumberOfThreadsSize_in)
 {
 
 }
-
 /*!
  * @brief Default contructor
  */
 ThreadPool::ThreadPool()
-    : _killPool(false),
-      _threads(0)
+    : _maximumNumberOfThreads(0)
+      , _killPool(false)
+      , _threads(0)
 {
 
 }
@@ -47,15 +47,14 @@ void ThreadPool::shutdown()
     _killPool = true;
     _cond_var.notify_all();
 
-    for ( unsigned int i = 0; i < _threads.size(); ++i)
+    for (unsigned int i = 0; i < _threads.size(); ++i)
     {
-        if(_threads[i].joinable())
+        if (_threads[i].joinable())
         {
             _threads[i].join();
         }
     }
 }
-
 /*!
  * @brief Initialises the thread pool by filling the vector with locked threads
  */
@@ -63,8 +62,16 @@ void ThreadPool::InitPool()
 {
     for (unsigned int i = 0; i < _threads.size(); ++i)
     {
-        _threads[i] = std::thread(WorkerThread(this, i));
+        _threads[i] = std::thread(WorkerThread(this
+                                               , i));
     }
 }
-
+/*!
+ * @brief Returns how many threads are available
+ * @return The number of workers that are available
+ */
+int ThreadPool::GetFreeWorkers()
+{
+    return _threads.size();
+}
 } /* namespace ThreadHandler */

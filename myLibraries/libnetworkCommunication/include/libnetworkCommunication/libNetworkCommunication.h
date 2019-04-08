@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <mutex>
 #include "freeFunctionsAndWrappers/cNetComm.h"
 
 #include <I_libNetworkCommunication.h>
@@ -109,6 +110,8 @@ public:
      * @param iOInterface A shared_ptr containing the concrete implementation we wish to use
      */
     void SetInterface(std::shared_ptr<cFunctions::I_cNetComm> iOInterface) override;
+
+    static bool _alreadyConnected;
 private:
     /*! @brief The port we're conducting business on */
     int _portToSendTo;

@@ -33,6 +33,8 @@ public:
 
     void operator()() override ;
 private:
+    /*! @brief tracks the standby status of the thread */
+    bool _standingBy;
     //! @brief Pointer to the threads pool
     ThreadPool *_pool;
     //! @brief The Threads ID

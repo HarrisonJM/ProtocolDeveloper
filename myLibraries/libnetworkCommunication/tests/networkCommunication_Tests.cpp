@@ -25,12 +25,14 @@ protected:
 
     void SetUp() override
     {
+        nC->_alreadyConnected = false;
         cnetmock = std::make_shared<StrictMock<cFunctions::cNetCommMocks>>();
         nC = std::make_shared<libNetworkCommunication::libNetworkCommunication>(cnetmock);
     }
 
     void TearDown() override
     {
+        nC->_alreadyConnected = false;
         freeaddrinfo(testData);
     }
 
@@ -49,11 +51,12 @@ protected:
 
     void setupGetAddrInfo_Success()
     {
+        nC->_alreadyConnected = false;
         setupServinfo(&testData);
         freeaddrinfo(testData->ai_next);
         testData->ai_next = nullptr;
         EXPECT_CALL(*cnetmock
-                    , getaddressinfo(MatchesRegex("localhost")
+                    , getaddressinfo(MatchesRegex("127.0.0.1")
                                      , MatchesRegex("9687")
                                      , _
                                      , _))
@@ -70,7 +73,7 @@ TEST_F(networkCommunicationTests
                 , sendTo(-1
                          , nullptr
                          , 0
-                         , 0))
+                         , 16384))
         .Times(2)
         .WillOnce(Return(1))
         .WillOnce(Return(-1));
@@ -84,7 +87,7 @@ TEST_F(networkCommunicationTests
                            , 0)
               , -1);
     ASSERT_EQ(testing::internal::GetCapturedStderr()
-              , "Send: Inappropriate ioctl for device\n");
+              , "Send: Success\n");
 }
 
 TEST_F(networkCommunicationTests
@@ -107,7 +110,7 @@ TEST_F(networkCommunicationTests
                               , 0)
               , -1);
     ASSERT_EQ(testing::internal::GetCapturedStderr()
-              , "Recv: Inappropriate ioctl for device\n");
+              , "Recv: Success\n");
 }
 
 TEST_F(networkCommunicationTests
@@ -134,13 +137,14 @@ TEST_F(networkCommunicationTests
         .Times(1);
 
     ASSERT_TRUE(nC->EstablishConnection());
+    nC->_alreadyConnected = false;
 }
 
 TEST_F(networkCommunicationTests
        , EstablishConnection_getAddr_Fail)
 {
     EXPECT_CALL(*cnetmock
-                , getaddressinfo(MatchesRegex("localhost")
+                , getaddressinfo(MatchesRegex("127.0.0.1")
                                  , MatchesRegex("9687")
                                  , _
                                  , _))
@@ -149,6 +153,7 @@ TEST_F(networkCommunicationTests
 
     testing::internal::CaptureStderr();
     ASSERT_FALSE(nC->EstablishConnection());
+    nC->_alreadyConnected = false;
     std::string stderrOut = testing::internal::GetCapturedStderr();
 
     ASSERT_EQ(stderrOut
@@ -173,6 +178,7 @@ TEST_F(networkCommunicationTests
 
     testing::internal::CaptureStderr();
     ASSERT_FALSE(nC->EstablishConnection());
+    nC->_alreadyConnected = false;
     ASSERT_EQ(testing::internal::GetCapturedStderr()
               , "client socket: No such file or directory\nCould not connect to remote\n");
 }
@@ -206,6 +212,7 @@ TEST_F(networkCommunicationTests
 
     testing::internal::CaptureStderr();
     ASSERT_FALSE(nC->EstablishConnection());
+    nC->_alreadyConnected = false;
     ASSERT_EQ(testing::internal::GetCapturedStderr()
               , "client connect: No such file or directory\nCould not connect to remote\n");
 }

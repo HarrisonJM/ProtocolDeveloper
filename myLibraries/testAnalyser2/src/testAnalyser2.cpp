@@ -11,6 +11,7 @@
 #include <filesystem>
 
 #include <testAnalyser2/testAnalyser2.h>
+#include <logger/LogHandler.h>
 #include "testObjectBuilder.h"
 #include "analysisException.h"
 
@@ -19,9 +20,12 @@ namespace testAnalyser2
 /*!
  * @brief Constructor
  * @param testfile The absolute location of the testfile
+ * @exception analyserFileDoesntExist_Exception The requested testfile doesn't exist
  */
-TestAnalyser2::TestAnalyser2(std::string& testfile)
-    : _testFileLoc(testfile)
+TestAnalyser2::TestAnalyser2(std::string& testfile
+                             , const int64_t loggerID)
+    : _loggerID(loggerID)
+      , _testFileLoc(testfile)
 {
     if (!std::filesystem::exists(_testFileLoc))
     {
@@ -37,15 +41,20 @@ void TestAnalyser2::startAnalysis()
     {
         TestObjectBuilder objBuil(_testFile
                                   , _testFileLoc);
+        LOGMESSAGE("Analysis of testcase started"
+                   , LoggerClasses::logLevel::INFO);
         try
         {
             objBuil.TopLevelNode();
             _analysed = true;
         }
-        catch (parserExceptionBase const& e)
+        catch (parserExceptionBase& e)
         {
-            // Log error?
+            LOGMESSAGE(e.what()
+                       , LoggerClasses::logLevel::ERROR);
         }
+        LOGMESSAGE("Analysis of testcase completed"
+                   , LoggerClasses::logLevel::INFO);
     }
 }
 /*!
@@ -56,6 +65,9 @@ TestFile& TestAnalyser2::GetTestFile()
 {
     if (_analysed)
         return _testFile;
+
+    LOGMESSAGE("testcase not yet parsed"
+               , LoggerClasses::logLevel::DEBUG);
 
     auto blankboy = new TestFile;
     return *blankboy;

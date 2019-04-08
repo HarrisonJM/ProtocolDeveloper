@@ -82,7 +82,7 @@ void ConnectionHandler::_HandleRequest(int fd
              , 30
              , 0);
         _cfg->receiveData(payLoad);
-
+        std::cout << (char*) payLoad << std::endl;
         send(fd
              , _cfg->sendData()
              , 30

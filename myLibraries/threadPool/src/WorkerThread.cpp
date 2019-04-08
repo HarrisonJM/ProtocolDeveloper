@@ -18,10 +18,11 @@ namespace ThreadHandler
  * @param pool_in The Threads associated Pool Queue
  * @param id_in The Threads ID
  */
-WorkerThread::WorkerThread(ThreadPool *pool_in,
-                           const int id_in)
-    : _pool(pool_in),
-      _ID(id_in)
+WorkerThread::WorkerThread(ThreadPool* pool_in
+                           , const int id_in)
+    : _standingBy(true)
+      , _pool(pool_in)
+      , _ID(id_in)
 {
 
 }
@@ -43,7 +44,7 @@ void WorkerThread::operator()()
     //! We'll store the popped work task in here
     std::function<void()> func = nullptr;
 
-    while(!_pool->_killPool)
+    while (!_pool->_killPool)
     {
         //! The lock needs to be deleted
         {
@@ -54,8 +55,12 @@ void WorkerThread::operator()()
             _pool->_taskQueue.pop_front(func);
         }
 
-        if(func)
+        if (func)
+        {
+            _standingBy = false;
             func();
+            _standingBy = true;
+        }
     }
 }
 

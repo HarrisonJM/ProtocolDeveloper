@@ -8,7 +8,7 @@
  * @date 18/12/18
  */
 
-#include "wallClock.h"
+#include "timeTicker/wallClock.h"
 #include <timeTicker/timeTickerCommon.h>
 #include <sys/time.h>
 #include <cstdio>
@@ -19,7 +19,7 @@
 
 #include "timeTicker/timeVal.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 /*!
  * @brief Default Constructor
@@ -264,4 +264,4 @@ TTRetCode TimeVal::PrintGeneralizedTime(const TT_tm_t* tm_p
         return TT_RC_SUCCESS;
     }
 }
-} /* TimeTicker */
+} /* timeTicker */

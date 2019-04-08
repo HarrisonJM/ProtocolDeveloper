@@ -23,7 +23,7 @@
 #include "timeTickerDefinitions.h"
 #include "timeTicker/timeTickerCommon.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 class TimeVal
@@ -55,6 +55,6 @@ private:
     const char* _genTimevalToString(const TT_timeval_t* tv
                                     , size_t numDecimalDigits);
 };
-} /* TimeTicker */
+} /* timeTicker */
 
 #endif /* PROTOCOLDEVELOPER_TIMEVAL_H */

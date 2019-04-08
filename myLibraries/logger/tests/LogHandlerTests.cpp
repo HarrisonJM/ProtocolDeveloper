@@ -23,8 +23,8 @@ protected:
     LogHandler *lh;
     void SetUp() override
     {
-        lh = new LogHandler(_maxLogs,
-                            _path);
+//        lh = new LogHandler(_maxLogs,
+//                            _path);
     }
     void TearDown() override
     {

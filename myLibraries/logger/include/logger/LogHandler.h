@@ -23,23 +23,30 @@
 #include "I_LogStrategy.h"
 #include "threadPool/ThreadPool.h"
 
+#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
+
 namespace LoggerClasses
 {
 
 class LogHandler
     : public I_LogHandler
 {
-public:
+private:
     //! Constructor
     LogHandler(int maxLogs
-               , const std::string& path);
+               , std::string path);
     //! Constructor, Mainly for testing
     LogHandler(int maxLogs
-               , const std::string& path
-               , std::unique_ptr<I_LogStrategy> ilo);
+               , std::string path
+               , std::shared_ptr<I_LogStrategy> ilo);
+public:
     //! Destructor
     ~LogHandler() override;
-
+    static LogHandler& GetInstance(int maxLogs
+                                   , std::string path);
+    static LogHandler& GetInstance(int maxLogs
+                                   , std::string path
+                                   , std::unique_ptr<I_LogStrategy> ilo);
     //! Opens a new log file, returns the ID of the newly opened log, no EIS
     int64_t OpenNewLog(const std::string& logName
                        , StrategyEnums strategy) override;
@@ -73,7 +80,7 @@ public:
 
 private:
     //! The strategy Handler
-    const std::unique_ptr<I_LogStrategy> _ilo_p;
+    const std::shared_ptr<I_LogStrategy> _ilo_p;
     //! Will hold all open logs, referenced by an ID
     std::map<int64_t, std::shared_ptr<I_LogFile>> _openLogs;
     //! Maps the log name to a specific ID
@@ -94,7 +101,18 @@ private:
     bool _killHandler;
     //! Complete check
     bool _flushComplete;
+    /*!
+     * @brief Creates the log handler instance (Meyers' Singleton)
+     * @param maxLogs The maxmimum number of logs we can have open at once
+     * @param path The Directory to store logs in (will be prepended to log file names
+     * @param a uniqueptr containing the strategy implementation we want to use
+     * @return A reference to the loghandler
+     */
+    static LogHandler& _GetInstance(int maxLogs
+                                    , std::string path
+                                    , std::shared_ptr<I_LogStrategy> ilo);
 };
+
 }
 
 #endif //PROTOCOLDEVELOPER_LOGHANDLER_H

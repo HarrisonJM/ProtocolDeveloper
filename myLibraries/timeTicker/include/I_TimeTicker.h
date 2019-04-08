@@ -14,7 +14,7 @@
 #include <ctime>
 #include <climits>
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 class I_TimeTicker
@@ -28,6 +28,6 @@ public:
 private:
 };
 
-} /* namespace TimeTicker */
+} /* namespace timeTicker */
 
 #endif /* PROTOCOLDEVELOPER_I_TIMETICKER_H */

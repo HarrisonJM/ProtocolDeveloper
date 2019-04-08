@@ -32,6 +32,7 @@ target_link_libraries(pluginLoader
                       boost_filesystem
                       freeFunctionsAndWrappers
                       testAnalyser2
+                      magic
                       ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).

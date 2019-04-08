@@ -21,7 +21,7 @@
 #include "../../freeFunctionsAndWrappers/include/I_cStdio.h"
 #include "../../freeFunctionsAndWrappers/include/I_cStdLib.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 class WallClock
@@ -44,6 +44,6 @@ private:
     std::unique_ptr<cFunctions::I_cStdio> _cstdioModule;
     std::unique_ptr<cFunctions::I_cStdLib> _cstdlibModule;
 };
-} /* TimeTicker */
+} /* timeTicker */
 
 #endif /* PROTOCOLDEVELOPER_WALLCLOCK_H */

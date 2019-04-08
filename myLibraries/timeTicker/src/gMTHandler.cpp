@@ -9,9 +9,9 @@
  */
 
 #include "gMTHandler.h"
-#include "timeTickerDefinitions.h"
+#include "timeTicker/timeTickerDefinitions.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 /*!
  * @brief Normal constructor, uses default wrappers
@@ -107,4 +107,4 @@ TTRetCode_E GMTHandler::GetGMTOffset(const TT_tm_t* tm_p
     return TTRetCode::TT_RC_SUCCESS;
 }
 
-} /* namespace TimeTicker */
+} /* namespace timeTicker */

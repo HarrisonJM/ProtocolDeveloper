@@ -13,7 +13,7 @@
 
 #include <timeTicker/timeTickerCommon.h>
 
-namespace TimeTicker
+namespace timeTicker
 {
 class I_gMTHandler
 {
@@ -26,5 +26,5 @@ public:
                                      , TTGMTOffset_t* offset_p) const = 0;
 private:
 };
-} /* namespace TimeTicker */
+} /* namespace timeTicker */
 #endif /* PROTOCOLDEVELOPER_I_GMTHANDLER_H */

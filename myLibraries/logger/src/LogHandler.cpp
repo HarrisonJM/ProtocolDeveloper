@@ -25,12 +25,11 @@ namespace LoggerClasses
  * @brief Constructor
  * @param maxLogs The maxmimum number of logs we can have open at once
  * @param path The Directory to store logs in (will be prepended to log file names
- * @param threadHandler A pointer to a pre-setup threadpool
  */
 LogHandler::LogHandler(int maxLogs
-                       , const std::string& path)
+                       , std::string path)
     :
-    _ilo_p(std::make_unique<LogHandlerStrategy>(LogHandlerStrategy()))
+    _ilo_p(std::make_shared<LogHandlerStrategy>(LogHandlerStrategy()))
     , _openLogs()
     , _nameToID()
     , _maxLogs(maxLogs)
@@ -43,10 +42,15 @@ LogHandler::LogHandler(int maxLogs
     , _flushComplete(false)
 {
 }
-
+/*!
+ * @brief Constructor
+ * @param maxLogs The maxmimum number of logs we can have open at once
+ * @param path The Directory to store logs in (will be prepended to log file names
+ * @param ilo a uniqueptr containing the strategy implementation we want to use
+ */
 LogHandler::LogHandler(int maxLogs
-                       , const std::string& path
-                       , std::unique_ptr<I_LogStrategy> ilo)
+                       , std::string path
+                       , std::shared_ptr<I_LogStrategy> ilo)
     :
     _ilo_p(std::move(ilo))
     , _openLogs()
@@ -72,6 +76,35 @@ LogHandler::~LogHandler()
     CloseAllLogs();
 }
 /*!
+ * @brief Creates the log handler instance (Meyers' Singleton)
+ * @param maxLogs The maxmimum number of logs we can have open at once
+ * @param path The Directory to store logs in (will be prepended to log file names
+ * @return A reference to the loghandler
+ */
+LogHandler& LogHandler::GetInstance(int maxLogs
+                                    , std::string path)
+{
+    static std::shared_ptr<LogHandlerStrategy> strat;
+    return _GetInstance(maxLogs
+                        , std::move(path)
+                        , std::move(strat));
+}
+/*!
+ * @brief Creates the log handler instance (Meyers' Singleton)
+ * @param maxLogs The maxmimum number of logs we can have open at once
+ * @param path The Directory to store logs in (will be prepended to log file names
+ * @param a uniqueptr containing the strategy implementation we want to use
+ * @return A reference to the loghandler
+ */
+LogHandler& LogHandler::GetInstance(int maxLogs
+                                    , std::string path
+                                    , std::unique_ptr<I_LogStrategy> ilo)
+{
+    return _GetInstance(maxLogs
+                        , path
+                        , std::move(ilo));
+}
+/*!
  * @brief Opens a new log without an Extra Information
  * @param logName The name of the new log
  * @return The ID of the newly created log
@@ -79,9 +112,9 @@ LogHandler::~LogHandler()
 int64_t LogHandler::OpenNewLog(const std::string& logName
                                , StrategyEnums strategy = StrategyEnums::STDOUT)
 {
-    return OpenNewLog(logName,
-                      "",
-                      strategy);
+    return OpenNewLog(logName
+                      , ""
+                      , strategy);
 }
 /*!
  * @brief Opens a new log
@@ -97,14 +130,13 @@ int64_t LogHandler::OpenNewLog(const std::string& logName
         return -1;
 
     LogHandlerStrategy strategySelector;
-    auto newOSTream_p = strategySelector.returnOstream(strategy,
-                                                       (_pathPrefix + "/" + logName));
+    auto newOSTream_p = strategySelector.returnOstream(strategy
+                                                       , (_pathPrefix + "/" + logName));
 
-    auto newLog = std::make_shared<LogFile>(logName,
-                                            EIS,
-                                            std::move(newOSTream_p),
-                                            _condVar);
-
+    auto newLog = std::make_shared<LogFile>(logName
+                                            , EIS
+                                            , std::move(newOSTream_p)
+                                            , _condVar);
     _openLogs[_logIDIndex] = newLog;
     _nameToID[logName] = _logIDIndex;
     _logIDIndex++;
@@ -156,13 +188,12 @@ void LogHandler::AddMessageToLog(int64_t logID
     try
     {
         GetLogFileByID(logID)->AddLogMessage(message
-                                             ,
-                                           lvl);
+                                             , lvl);
     }
-    catch (log_logIDMinusOne &e)
+    catch (log_logIDMinusOne& e)
     {
     }
-    catch (std::exception &e)
+    catch (std::exception& e)
     {
         throw log_mapOutOfBounds();
     }
@@ -180,10 +211,9 @@ void LogHandler::AddMessageToLog(const std::string& logName
     try
     {
         GetLogFileByName(logName)->AddLogMessage(message
-                                                 ,
-                                               lvl);
+                                                 , lvl);
     }
-    catch (loggerException &e)
+    catch (loggerException& e)
     {
         std::cerr << "Logger exception: " << e.what() << std::endl;
     }
@@ -201,7 +231,7 @@ std::shared_ptr<I_LogFile> LogHandler::GetLogFileByID(int64_t logID) const
     {
         logFile_shr = _openLogs.at(logID);
     }
-    catch (std::exception &e)
+    catch (std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
@@ -221,7 +251,7 @@ std::shared_ptr<I_LogFile> LogHandler::GetLogFileByName(const std::string& logNa
     {
         logFile_shr = _openLogs.at(_nameToID.at(logName));
     }
-    catch (std::exception &e)
+    catch (std::exception& e)
     {
         //! @todo personalised exceptions
         std::cout << e.what() << std::endl;
@@ -236,14 +266,14 @@ std::shared_ptr<I_LogFile> LogHandler::GetLogFileByName(const std::string& logNa
  */
 void LogHandler::FlushMessagesToStreams()
 {
-    do
+    while (!_killHandler)
     {
         std::unique_lock<std::mutex> locker(_condMut);
         _condVar.wait(locker);
 
         for (auto lf : _openLogs)
             lf.second->WriteAllMessagesToStream();
-    } while (!_killHandler);
+    }
 
     for (auto lf : _openLogs)
         lf.second->WriteAllMessagesToStream();
@@ -257,4 +287,21 @@ void LogHandler::KillHandler()
 {
     _killHandler = true;
 }
+/*!
+ * @brief Returns the singleton instance
+ * @param maxLogs The maximum number of logs we can have open
+ * @param path The path to the log files
+ * @param ilo The log strategy we wish to use (for testing)
+ * @return A reference to our singleton handler
+ */
+LogHandler& LogHandler::_GetInstance(int maxLogs
+                                     , std::string path
+                                     , std::shared_ptr<I_LogStrategy> ilo)
+{
+    static LogHandler instance(maxLogs
+                               , path
+                               , std::move(ilo));
+    return instance;
+}
+
 } /* namespace LoggerClasses */

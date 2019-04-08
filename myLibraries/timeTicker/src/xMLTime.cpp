@@ -13,7 +13,7 @@
 #include <cstring>
 #include "xMLTime.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 XMLTime::XMLTime()
@@ -85,4 +85,4 @@ char* XMLTime::getXMLTimestamp(time_t t
 
     return ret;
 }
-} /* TimeTicker */
+} /* timeTicker */

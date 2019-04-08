@@ -90,18 +90,25 @@ public:
          */
         return work_p->get_future();
     }
-
     /*!
      * @brief Waits for all threads to finish and then shuts them down
      */
     void shutdown() override;
+    /*!
+     * @brief Returns how many threads are available
+     * @return The number of workers that are available
+     */
+    int GetFreeWorkers();
 
 private:
+    /*! @brief maximumNumberOfThreads */
+    int _maximumNumberOfThreads;
+    /*! @brief Kills the pool and all the threads */
     bool _killPool;
+    /*! @brief Stores all the threads */
     std::vector<std::thread> _threads;
-
+    /*! @brief All the tasks */
     SafeContainers::SafeQueue<std::function<void()>> _taskQueue;
-
     //! @brief Stops threads from picking up the same task
     std::mutex _mutex;
     //! @brief Lets us control what threads do directly

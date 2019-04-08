@@ -22,12 +22,15 @@
 
 namespace libNetworkCommunication
 {
+
+bool libNetworkCommunication::_alreadyConnected = false;
+
 /*!
  * @brief Constructor
  */
 libNetworkCommunication::libNetworkCommunication()
-    : _portToSendTo(9687)
-//      , _destinationAddress(new char[16384])
+    :
+    _portToSendTo(9687)
       , _destinationAddress("localhost")
       , _outSocket(-1)
       , _tcpOrUDP(1)
@@ -119,11 +122,15 @@ ssize_t libNetworkCommunication::ReceiveData(void* payLoad_p
  */
 bool libNetworkCommunication::EstablishConnection()
 {
-    if (SetupAddrInfo())
-        if (DoSocketAndConnect())
-            return true;
+    if (!_alreadyConnected)
+        if (SetupAddrInfo())
+            if (DoSocketAndConnect())
+            {
+                _alreadyConnected = true;
+                return _alreadyConnected;
+            }
 
-    return false;
+    return _alreadyConnected;
 }
 /*!
  * @brief Disconnects form the remote
@@ -256,13 +263,5 @@ bool libNetworkCommunication::DoSocketAndConnect()
 
     return true;
 }
-
-/*! @brief N.B. (OLD)use of two different names for in-plugin class name (libNetworkCommunication)
- * and the exported name (NetworkCommunication)
- * @{
- * extern "C" BOOST_SYMBOL_EXPORT libNetworkCommunication NetworkCommunication;
- * libNetworkCommunication NetworkCommunication;
- * @}
- */
 
 } /* namespace libNetworkCommunication */

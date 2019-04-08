@@ -15,7 +15,7 @@
 #include <future>
 #include "I_TimeTicker.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 /*!
  * @brief Selects the type of timer one would like
@@ -45,6 +45,6 @@ public:
 
 private:
 };
-} /* TimeTicker */
+} /* timeTicker */
 
 #endif /* PROTOCOLDEVELOPER_TIMETICKERFACTORY_H */

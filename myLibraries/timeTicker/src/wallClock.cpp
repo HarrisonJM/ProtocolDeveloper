@@ -12,9 +12,9 @@
 #include <freeFunctionsAndWrappers/cStdLib.h>
 #include <gMTHandler.h>
 
-#include "wallClock.h"
+#include "timeTicker/wallClock.h"
 
-namespace TimeTicker
+namespace timeTicker
 {
 /*!
  * @brief Default constructor
@@ -69,4 +69,4 @@ const char* WallClock::getTimeToString(time_t theTime)
 
     return retStr_P;
 }
-} /* TimeTicker */
+} /* timeTicker */

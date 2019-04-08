@@ -29,6 +29,7 @@ target_include_directories(${LIB_NAME} PUBLIC
 target_link_libraries(${LIB_NAME}
                       utility
                       stdc++fs
+                      logger
                       ) ## Insert libraries as needed
 
 # 'make install' to the correct locations (provided by GNUInstallDirs).

@@ -70,7 +70,8 @@ public:
                , PluginLoader::sharedMap_t<
         Protocol::I_protocolInterface> protocolInterfaces_in
                , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
-               , ThreadHandler::ThreadPool& threadPool_in);
+               , ThreadHandler::ThreadPool& threadPool_in
+               , int64_t loggerID);
     /*!
      * @brief Destructor
      */
@@ -87,6 +88,8 @@ public:
      */
     bool AccessKillThreadHandler(std::optional<bool> newVal);
 private:
+    /*! @brief The ID of the logger we wish to use */
+    const int64_t _loggerID;
     /*! @brief The full path to the testcase */
     const std::string _testFilePath;
     /*! The mutex used to control the testThreads */

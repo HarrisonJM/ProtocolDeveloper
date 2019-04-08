@@ -21,7 +21,7 @@
 #include <cstdint>
 #include <climits>
 
-namespace TimeTicker
+namespace timeTicker
 {
 
 class TimeTicker : public I_TimeTicker
@@ -37,6 +37,6 @@ private:
 
 };
 
-} /* TimeTicker */
+} /* timeTicker */
 
 #endif /*PROTOCOLDEVELOPER_TIMETICKER_H*/
