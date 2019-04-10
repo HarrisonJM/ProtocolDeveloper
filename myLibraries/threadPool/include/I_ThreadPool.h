@@ -1,6 +1,15 @@
-//
-// Created by hmarcks on 21/05/18.
-//
+/*!
+ * @brief Interface for the thread pool itself
+ *
+ * @author hmarcks
+ *
+ * @date 10/04/2019
+ *
+ * @addtogroup threadPool
+ * @{
+ * @addtogroup interfaces
+ * @{
+ */
 
 #ifndef PROTOCOLDEVELOPER_I_TESTTHREADPOOL_H
 #define PROTOCOLDEVELOPER_I_TESTTHREADPOOL_H
@@ -25,5 +34,5 @@ public:
     virtual void InitPool() = 0;
     virtual void shutdown() = 0;
 };
-
+/*! @} @} */
 #endif //PROTOCOLDEVELOPER_I_TESTTHREADPOOL_H

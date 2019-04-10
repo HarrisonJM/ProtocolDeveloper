@@ -4,6 +4,8 @@
  * @date 19/02/2019
  *
  * @author hmarcks
+ * @addtogroup helloWorldProtocol
+ * @{
  */
 
 #include <gtest/gtest.h>
@@ -11,7 +13,7 @@
 #include <I_protocolInterface.h>
 #include <HelloWorldProtocol.h>
 
-namespace hwProt
+namespace helloWorldProtocol
 {
 
 static const char* helloStr = "Hello, World!\r\n\0\0\0";
@@ -237,4 +239,6 @@ TEST_F(helloworldPStrategy
     ASSERT_EQ((char*) data->_data_p
               , std::string(helloStr));
 }
-} /* namespace hwProt */
+} /* namespace helloWorldProtocol */
+
+/*! @} */

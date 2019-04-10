@@ -1,0 +1,97 @@
+.TH "testCaseHandler::DataPoint" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+testCaseHandler::DataPoint
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDataPoint\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fB~DataPoint\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBRegisterVariable\fP (std::unique_ptr< \fBvariable\fP > newTI)"
+.br
+.RI "Registers a new Variable for use in the dataPoint\&. "
+.ti -1c
+.RI "void \fBRegisterOperation\fP (std::unique_ptr< \fBoperation\fP > newTI)"
+.br
+.RI "Registers a new operation for use in the datapoint\&. "
+.ti -1c
+.RI "std::string \fBGetPattern\fP ()"
+.br
+.RI "Returns the the pattern\&. "
+.ti -1c
+.RI "void \fBsetPattern\fP (std::string pattern_in)"
+.br
+.RI "Sets the datapoints pattern that we'll be editing\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file dataPoint\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string testCaseHandler::DataPoint::GetPattern ()"
+
+.PP
+Returns the the pattern\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A string containing the pattern 
+.RE
+.PP
+
+.PP
+Definition at line 52 of file dataPoint\&.cpp\&.
+.SS "void testCaseHandler::DataPoint::RegisterOperation (std::unique_ptr< \fBoperation\fP > newTI)"
+
+.PP
+Registers a new operation for use in the datapoint\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewTI\fP A shared_ptr containing the operation 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file dataPoint\&.cpp\&.
+.SS "void testCaseHandler::DataPoint::RegisterVariable (std::unique_ptr< \fBvariable\fP > newTI)"
+
+.PP
+Registers a new Variable for use in the dataPoint\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewTI\fP A shared_ptr containing the new variable 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file dataPoint\&.cpp\&.
+.SS "void testCaseHandler::DataPoint::setPattern (std::string pattern_in)"
+
+.PP
+Sets the datapoints pattern that we'll be editing\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpattern_in\fP The pattern we want to set for this dataPoint 
+.RE
+.PP
+
+.PP
+Definition at line 60 of file dataPoint\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

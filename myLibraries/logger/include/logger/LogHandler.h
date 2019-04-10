@@ -7,7 +7,8 @@
  *
  * @date 12/08/18
  *
- * @addtogroup Logger
+ * @addtogroup logger
+ * @{
  */
 
 #ifndef PROTOCOLDEVELOPER_LOGHANDLER_H
@@ -22,60 +23,127 @@
 #include "I_LogFile.h"
 #include "I_LogStrategy.h"
 #include "threadPool/ThreadPool.h"
+/*!
+ * @brief Macro that requires whatever is using it to have a "_loggerID" variable in scope
+ */
+#define LOGMESSAGE(message_MACRO, level_MACRO) logger::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
 
-#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
-
-namespace LoggerClasses
+namespace logger
 {
-
+/*!
+ * @brief The log handler class. Handles The duties of creation and message comittal
+ */
 class LogHandler
     : public I_LogHandler
 {
 private:
-    //! Constructor
+    /*!
+     * @brief Constructor
+     * @param maxLogs Maximum number of logs
+     * @param path The path to the logs
+     */
     LogHandler(int maxLogs
                , std::string path);
-    //! Constructor, Mainly for testing
+    /*!
+     * @brief Constructor, Mainly for testing
+     * @param maxLogs Maximum number of logs
+     * @param path The path to the logs
+     * @param ilo An implementation of the log strategy
+     */
     LogHandler(int maxLogs
                , std::string path
                , std::shared_ptr<I_LogStrategy> ilo);
 public:
     //! Destructor
     ~LogHandler() override;
+    /*!
+     * @brief Returns the singleton instance
+     * @param maxLogs The maximum number of logs we can have open
+     * @param path The path to the log files
+     * @return A reference to our singleton handler
+     */
     static LogHandler& GetInstance(int maxLogs
                                    , std::string path);
+    /*!
+     * @brief Returns the singleton instance
+     * @param maxLogs The maximum number of logs we can have open
+     * @param path The path to the log files
+     * @param ilo The log strategy we wish to use (for testing)
+     * @return A reference to our singleton handler
+     */
     static LogHandler& GetInstance(int maxLogs
                                    , std::string path
                                    , std::unique_ptr<I_LogStrategy> ilo);
-    //! Opens a new log file, returns the ID of the newly opened log, no EIS
+    /*!
+     * @brief Opens a new log file, returns the ID of the newly opened log, no EIS
+     * @param logName The name of the log
+     * @param strategy How/where the messages should be printed
+     * @return The ID of the newly opened log file
+     */
     int64_t OpenNewLog(const std::string& logName
                        , StrategyEnums strategy) override;
-    //! Opens a new log file, returns the ID of the newly opened log
+    /*!
+     * @brief Opens a new log file, returns the ID of the newly opened log
+     * @param logName The name of the log
+     * @param EIS The "extra information" string that will be printed at the
+     * top of a log file to denote more detail.
+     * @param strategy How/where the messages should be printed
+     * @return The ID of the newly opened log file
+     */
     int64_t OpenNewLog(const std::string& logName
                        , const std::string& EIS
                        , StrategyEnums strategy) override;
-    //! Closes a log file, based on the logs ID
+    /*!
+     * @brief Closes the log file referred to by logID
+     * @param logID The log ID of the file we wish to close
+     */
     void CloseLog(int64_t logID) override;
-    //! Closes a log file
+    /*!
+     * @brief Closes the log file referred to by its name
+     * @param logName The name of the log file we wish to close
+     */
     void CloseLog(const std::string& logName) override;
-    //! Closes all Log files
+    /*!
+     * @brief Closes all open log files handled by this handler
+     */
     void CloseAllLogs() override;
-
-    //! Adds a message to a log using the log ID
+    /*!
+     * @brief Adds a message to a log using the log ID
+     * @param logID The log we wish to add a message to
+     * @param message The message we wish to print
+     * @param lvl The severity of the message
+     */
     void AddMessageToLog(int64_t logID
                          , const std::string& message
                          , logLevel lvl) const override;
-    //! Adds a message to a log using the logs file name
+    /*!
+     * @brief Adds a message to a log using the log's name
+     * @param logName The log we wish to add a message to
+     * @param message The message we wish to print
+     * @param lvl The severity of the message
+     */
     void AddMessageToLog(const std::string& logName
                          , const std::string& message
                          , logLevel lvl) const override;
-    //! Returns an entire, specific, log based on its ID
+    /*!
+     * @brief Returns an entire, specific, log based on its ID
+     * @param logID The id of the log we wish to retrieve
+     * @return A shared_ptr to the log file we want
+     */
     std::shared_ptr<I_LogFile> GetLogFileByID(int64_t logID) const override;
-    //! Returns an entire, specific, log based on its name
+    /*!
+     * @brief Returns an entire, specific, log based on its ID
+     * @param logName The name of the log we wish to retrieve
+     * @return A shared_ptr to the log file we want
+     */
     std::shared_ptr<I_LogFile> GetLogFileByName(const std::string& logName) const override;
-    //! Flush messages to stream
+    /*!
+     * @brief Flushes all log messages to their respective streams
+     */
     void FlushMessagesToStreams() override;
-    //! Sets the internal killHandler to false
+    /*!
+     * @brief Sets the killhandler to die
+     */
     void KillHandler() override;
 
 private:
@@ -113,6 +181,6 @@ private:
                                     , std::shared_ptr<I_LogStrategy> ilo);
 };
 
-}
-
+} /* namespace logger */
+/*! @} */
 #endif //PROTOCOLDEVELOPER_LOGHANDLER_H

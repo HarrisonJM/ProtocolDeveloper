@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup Plugin Loader
- *
+ * @{
  * @date 24/12/18
  *
  * @todo Move the ptr functions to their own file or smth
@@ -21,7 +21,6 @@
 
 namespace pluginLoader
 {
-//#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
 /*!
  * @brief Handles conversions between std and boost shared ptrs
  * https://stackoverflow.com/questions/12314967/cohabitation-of-boostshared-ptr-and-stdshared-ptr
@@ -72,10 +71,11 @@ enum PLUGINTYPE_t
 
 /*!
  * @brief A shared ptr to a map of strings and sharedptr's containing plugin interfaces
+ * @tparam The type of plugin we're storing
  */
 template<class TypeToUse>
 using sharedMap_t = std::map<std::string, std::shared_ptr<TypeToUse>>;
 
 } /* namespace pluginLoader */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADERCOMMON_H */

@@ -1,14 +1,15 @@
 /*!
- * @brief
+ * @brief Base exception for handling mroe complex exceptions
  *
  * @author hmarcks
  *
- * @addtogroup
+ * @addtogroup utility
+ * @{
+ * @addtogroup extraExceptionBase
+ * @{
  *
  * @date 23/03/19
  */
-
-
 #ifndef PROTOCOLDEVELOPER_EXTRAEXCEPTIONBASE_H
 #define PROTOCOLDEVELOPER_EXTRAEXCEPTIONBASE_H
 
@@ -85,5 +86,5 @@ public:
     ~extraExceptionBase() override = default;
 };
 } /* namespace utility */
-
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_EXTRAEXCEPTIONBASE_H */

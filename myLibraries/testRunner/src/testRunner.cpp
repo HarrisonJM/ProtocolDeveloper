@@ -4,7 +4,8 @@
  *
  * @author hmarcks
  *
- * @addtogroup Test Runner
+ * @addtogroup testRunner
+ * @{
  *
  * @date 13/01/19
  */
@@ -23,17 +24,26 @@
 #include <logger/LogHandler.h>
 #include "testThread.h"
 
-namespace TestRunner
+namespace testRunner
 {
+/*!
+ * @brief Constructor Sets up the environment
+ * @param testfilePath The path to the testfile we wish to run
+ * @param commsInterfaces_in A reference to the sharedMap of comms interfaces, for searching through
+ * @param protocolInterfaces_in A reference to the sharedMap of Protocol Interfaces, for searching through
+ * @param TA_in A unique pointer to the test case analyser
+ * @param threadPool_in a reference tot he threadpool we wish to use
+ * @param loggerID The ID of the logger we wish to use
+ */
 TestRunner::TestRunner(std::string const& testfilePath
                        , pluginLoader::sharedMap_t<
     Communication::I_communication> commsInterfaces_in
                        , pluginLoader::sharedMap_t<
     Protocol::I_protocolInterface> protocolInterfaces_in
                        , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
-                       , ThreadHandler::ThreadPool& threadPool_in
+                       , threadPool::ThreadPool& threadPool_in
                        , int64_t loggerID)
-    : _loggerID(loggerID)
+    :  _loggerID(loggerID)
       , _testFilePath(testfilePath)
       , _TestAnalyser(std::move(TA_in))
       , _commsInterface(std::move(commsInterfaces_in))
@@ -51,7 +61,7 @@ TestRunner::TestRunner(std::string const& testfilePath
 bool TestRunner::BeginTesting()
 {
     LOGMESSAGE("Testing Setup"
-               , LoggerClasses::logLevel::INFO);
+               , logger::logLevel::INFO);
 
     bool retval = true;
 
@@ -64,13 +74,13 @@ bool TestRunner::BeginTesting()
      * @todo exception for wrong config name
      */
     std::vector<std::shared_ptr<Communication::I_communication>> availableCommsInterfaces;
-//    {
-//        auto interfaceFactory =
-//            _commsInterface.at(_testFile.GetTestConfiguration()._commsHandler);
-//
-////        auto if_shr = std::make_shared<Communication::I_communication>(*interfaceFactory);
-//        availableCommsInterfaces.push_back(_commsInterface.at(_testFile.GetTestConfiguration()._commsHandler));
-//    }
+    {
+        auto interfaceFactory =
+            _commsInterface.at(_testFile.GetTestConfiguration()._commsHandler);
+
+//        auto if_shr = std::make_shared<Communication::I_communication>(*interfaceFactory);
+        availableCommsInterfaces.push_back(_commsInterface.at(_testFile.GetTestConfiguration()._commsHandler));
+    }
     std::vector<std::shared_ptr<Protocol::I_protocolInterface>> availableProtInterfaces;
     {
         auto interfaceFactory =
@@ -80,8 +90,8 @@ bool TestRunner::BeginTesting()
         //    availableProtInterfaces[0]->init_Protocol();
     }
 
-    SafeContainers::safeList<Protocol::DataStruct> results;
-    SafeContainers::safeList<int> resultCodes;
+    safeContainers::safeList<Protocol::DataStruct> results;
+    safeContainers::safeList<int> resultCodes;
 
     const auto maxThreads = utility::StringToLong(_testFile.GetTestConfiguration()._maxThreads);
     const auto tps = utility::StringToLong(_testFile.GetTestConfiguration()._tps);
@@ -89,7 +99,7 @@ bool TestRunner::BeginTesting()
                                  , maxThreads);
     /*! @todo Need to separate and edit for changing comms interfaces */
     LOGMESSAGE("Creating jobs"
-               , LoggerClasses::logLevel::INFO);
+               , logger::logLevel::INFO);
     for (auto i = 0L; i < maxThreads; ++i)
     {
         auto tfObj = std::make_shared<TestThread>(_killThreadHandler
@@ -109,7 +119,7 @@ bool TestRunner::BeginTesting()
     /* Poller */
     _WaitForThreads();
     LOGMESSAGE("Testing Finished"
-               , LoggerClasses::logLevel::INFO);
+               , logger::logLevel::INFO);
 
     return retval;
 }
@@ -189,7 +199,7 @@ void TestRunner::_WaitForThreads()
     }
     io.stop();
     LOGMESSAGE("Test timer has Expired"
-               , LoggerClasses::logLevel::INFO);
+               , logger::logLevel::INFO);
     /* Wait until all threads have finished */
     for (unsigned i = 0; i < _threadsVec.size(); ++i)
     {
@@ -208,4 +218,5 @@ void TestRunner::_WaitForThreads()
             break;
     }
 }
-} /* namespace TestRunner */
+} /* namespace testRunner */
+/*! @} */

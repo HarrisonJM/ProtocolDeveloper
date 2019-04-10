@@ -1,0 +1,189 @@
+.TH "SafeContainers::SafeQueue< T >" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SafeContainers::SafeQueue< T > \- \fBSafeQueue\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <SafeQueue\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSafeQueue\fP ()"
+.br
+.RI "Default constructor\&. "
+.ti -1c
+.RI "virtual \fB~SafeQueue\fP ()"
+.br
+.RI "Default destructor\&. "
+.ti -1c
+.RI "virtual bool \fBpush\fP (T &newElement)"
+.br
+.RI "push "
+.ti -1c
+.RI "virtual void \fBpop_front\fP (T &t)"
+.br
+.RI "Returns the element from the front of the queue and removes it\&. "
+.ti -1c
+.RI "template<class\&.\&.\&. Args> void \fBemplace\fP (Args &&\&.\&.\&. args)"
+.br
+.RI "Creates a class in place and places at the back of the queue\&. "
+.ti -1c
+.RI "virtual T \fBfront\fP ()"
+.br
+.RI "front "
+.ti -1c
+.RI "virtual T \fBback\fP ()"
+.br
+.RI "back "
+.ti -1c
+.RI "virtual bool \fBempty\fP ()"
+.br
+.RI "empty "
+.ti -1c
+.RI "virtual size_t \fBsize\fP ()"
+.br
+.RI "Returns the number of elements in the queue\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class T>
+.br
+class SafeContainers::SafeQueue< T >"
+\fBSafeQueue\fP\&. 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type of object it'll be storing 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file SafeQueue\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class T> \fBSafeContainers::SafeQueue\fP< T >::\fBSafeQueue\fP ()\fC [inline]\fP"
+
+.PP
+Default constructor\&. Default constructor\&. Assigns a 16k buffer to the queue 
+.PP
+Definition at line 32 of file SafeQueue\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class T> virtual T \fBSafeContainers::SafeQueue\fP< T >::back ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+back 
+.PP
+\fBReturns:\fP
+.RS 4
+a copy of the last element of the queue 
+.RE
+.PP
+
+.PP
+Definition at line 122 of file SafeQueue\&.h\&.
+.SS "template<class T> template<class\&.\&.\&. Args> void \fBSafeContainers::SafeQueue\fP< T >::emplace (Args &&\&.\&.\&. args)\fC [inline]\fP"
+
+.PP
+Creates a class in place and places at the back of the queue\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIArgs\fP Move type? 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargs\fP Args with which to build the thing? 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+None 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file SafeQueue\&.h\&.
+.SS "template<class T> virtual bool \fBSafeContainers::SafeQueue\fP< T >::empty ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+empty Checks to see if the queue is empty, returning true or false, dependent
+.PP
+\fBReturns:\fP
+.RS 4
+true if queue is full 
+.RE
+.PP
+
+.PP
+Definition at line 136 of file SafeQueue\&.h\&.
+.SS "template<class T> virtual T \fBSafeContainers::SafeQueue\fP< T >::front ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+front Returns a copy of the front element of the queue
+.PP
+\fBReturns:\fP
+.RS 4
+A copy of the element at the front of the queue 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file SafeQueue\&.h\&.
+.SS "template<class T> virtual void \fBSafeContainers::SafeQueue\fP< T >::pop_front (T & t)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the element from the front of the queue and removes it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The value from the front of the queue 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file SafeQueue\&.h\&.
+.SS "template<class T> virtual bool \fBSafeContainers::SafeQueue\fP< T >::push (T & newElement)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+push Pushes a new element to the back of the queue
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewElement\fP A reference containing what is to be written to queue
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+ture if successfully added to the queue, otherwise false 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file SafeQueue\&.h\&.
+.SS "template<class T> virtual size_t \fBSafeContainers::SafeQueue\fP< T >::size ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the number of elements in the queue\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The number of elements int he queue 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file SafeQueue\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

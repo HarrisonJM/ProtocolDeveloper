@@ -1,0 +1,70 @@
+.TH "BasicHelloServer::ConnectionHandler" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BasicHelloServer::ConnectionHandler \- Handles incoming connections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ConnectionHandler\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConnectionHandler\fP (\fBServerSetup\fP &server)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fB~ConnectionHandler\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBAcceptNewConnections\fP ()"
+.br
+.RI "Accepts new connections\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Handles incoming connections\&. 
+
+Passes information to where it might be required 
+.PP
+Definition at line 36 of file ConnectionHandler\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BasicHelloServer::ConnectionHandler::ConnectionHandler (\fBServerSetup\fP & server)\fC [explicit]\fP"
+
+.PP
+Constructor\&. Basic constructor\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserver\fP A reference to the server information 
+.RE
+.PP
+
+.PP
+Definition at line 22 of file ConnectionHandler\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void BasicHelloServer::ConnectionHandler::AcceptNewConnections ()"
+
+.PP
+Accepts new connections\&. Accepts incoming client connections\&.
+.PP
+Forks off extra client connections
+.PP
+\fBReturns:\fP
+.RS 4
+None 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file ConnectionHandler\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

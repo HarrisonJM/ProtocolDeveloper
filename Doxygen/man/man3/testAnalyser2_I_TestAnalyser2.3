@@ -1,0 +1,65 @@
+.TH "testAnalyser2::I_TestAnalyser2" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+testAnalyser2::I_TestAnalyser2
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBtestAnalyser2::TestAnalyser2\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fB~I_TestAnalyser2\fP ()=default"
+.br
+.RI "destructor "
+.ti -1c
+.RI "virtual void \fBstartAnalysis\fP ()=0"
+.br
+.RI "Starts the testfile analysis\&. "
+.ti -1c
+.RI "virtual \fBTestFile\fP & \fBGetTestFile\fP ()=0"
+.br
+.RI "Returns a reference to the testfile object (That's ready for use) "
+.ti -1c
+.RI "virtual bool \fBisAnalysed\fP ()=0"
+.br
+.RI "Returns whether or not the testfile has been analysed yet\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 17 of file I_TestAnalyser2\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual \fBTestFile\fP& testAnalyser2::I_TestAnalyser2::GetTestFile ()\fC [pure virtual]\fP"
+
+.PP
+Returns a reference to the testfile object (That's ready for use) 
+.PP
+\fBReturns:\fP
+.RS 4
+A Testfile reference 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::TestAnalyser2\fP\&.
+.SS "virtual bool testAnalyser2::I_TestAnalyser2::isAnalysed ()\fC [pure virtual]\fP"
+
+.PP
+Returns whether or not the testfile has been analysed yet\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true for analysed, otherwise false 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::TestAnalyser2\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

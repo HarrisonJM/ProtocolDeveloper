@@ -3,7 +3,10 @@
  *
  *  A thread safe queue wrapper.
  *
- *  @addtogroup Utility
+ * @addtogroup safeContainers
+ * @{
+ * @addtogroup safeList
+ * @{
  *
  *  @date March 2018
  *
@@ -14,7 +17,7 @@
 #include <queue>
 #include <mutex>
 
-namespace SafeContainers {
+namespace safeContainers {
 /*!
  * @brief SafeQueue
  *
@@ -165,6 +168,6 @@ private:
     std::mutex _mut;
 };
 
-} /* namespace SafeContainers */
-
+} /* namespace safeContainers */
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_SAFEQUEUE_H */

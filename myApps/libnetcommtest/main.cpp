@@ -8,12 +8,12 @@
  * @date 06/04/19
  */
 
-#include <libnetworkCommunication/libNetworkCommunication.h>
+#include <libnetworkCommunication/networkCommunication.h>
 #include <iostream>
 
 int main()
 {
-    libNetworkCommunication::libNetworkCommunication n;
+    networkCommunication::NetworkCommunication n;
     n.EstablishConnection();
 
     char str[128];

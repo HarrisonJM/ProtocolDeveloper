@@ -4,7 +4,8 @@
  * @addtogroup mocksLibrary
  *
  * @date May 2018
- *
+ * @addtogroup mockLibrary
+ * @{
  */
 
 #include "gmock/gmock.h"
@@ -53,3 +54,4 @@ public:
         addrlen));
 };
 } /* namespace cFunctions */
+/*! @} */

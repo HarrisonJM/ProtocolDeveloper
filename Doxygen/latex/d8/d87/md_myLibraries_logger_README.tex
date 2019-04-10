@@ -1,0 +1,11 @@
+\#\+Library\+: logger
+
+{\bfseries{Description}} The logging classes collection. This library is devoted to thread safe logging, complete with a handler specifically designed to remove as much processing away from the main running threads as physically possible. Can output messages either to a dedicated std\+::filestream or to std\+::cout/std\+::cerr.
+
+{\bfseries{Gotchas}}
+
+{\bfseries{How to use}}
+
+Components that wish to use logging should have ac opy of the log interface to write to only. Components that wish to log should be totally agnostic of the handler.
+
+{\bfseries{Method}} 

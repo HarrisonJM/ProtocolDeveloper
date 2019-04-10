@@ -1,0 +1,129 @@
+.TH "ThreadHandler::ThreadPool" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ThreadHandler::ThreadPool \- A Thread Pool Queue that handles information that needs to be passed back and forth\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ThreadPool\&.h>\fP
+.PP
+Inherits \fBI_ThreadPool\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBThreadPool\fP (unsigned int maxNumberOfThreadsSize_in)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBThreadPool\fP ()"
+.br
+.RI "Default Constructor\&. "
+.ti -1c
+.RI "virtual \fB~ThreadPool\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBInitPool\fP () override"
+.br
+.RI "Inits the thread pool\&. "
+.ti -1c
+.RI "template<typename T , typename \&.\&.\&. Args> auto \fBAddTaskToQueue\fP (T &&t, Args &&\&.\&.\&. args) \-> std::future< decltype(t(args\&.\&.\&.))>"
+.br
+.RI "Adds a task (parameter bound function) to the queue\&. "
+.ti -1c
+.RI "void \fBshutdown\fP () override"
+.br
+.RI "Waits for all threads to finish and then shuts them down\&. "
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBWorkerThread\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A Thread Pool Queue that handles information that needs to be passed back and forth\&. 
+.PP
+Definition at line 29 of file ThreadPool\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ThreadHandler::ThreadPool::ThreadPool (unsigned int maxNumberOfThreadsSize_in)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxNumberOfThreadsSize_in\fP Defines the maximum size the queue can take 
+.RE
+.PP
+
+.PP
+Definition at line 19 of file ThreadPool\&.cpp\&.
+.SS "ThreadHandler::ThreadPool::ThreadPool ()"
+
+.PP
+Default Constructor\&. Default contructor\&. 
+.PP
+Definition at line 29 of file ThreadPool\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T , typename \&.\&.\&. Args> auto ThreadHandler::ThreadPool::AddTaskToQueue (T && t, Args &&\&.\&.\&. args) \-> std::future<decltype(t(args\&.\&.\&.))>
+    \fC [inline]\fP"
+
+.PP
+Adds a task (parameter bound function) to the queue\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP A function type 
+.br
+\fI\&.\&.\&.Args\fP Variadic template that holds the function parameters 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt\fP A Universal reference to a function (Scott Meyers) 
+.br
+\fIargs\fP The arguments to bind/pack into the function 
+.RE
+.PP
+Create a function that can be run
+.PP
+Store the function first in a packaged_task to allow asynchronous execution Store it in a shared pointer for copying
+.PP
+Wrap as a function so it can be returned from
+.PP
+Add task to task queue
+.PP
+Wake up a sleeping thread
+.PP
+Return the packaged_task future, due to the wrapped nature, function execution will update the future
+.PP
+Definition at line 61 of file ThreadPool\&.h\&.
+.SS "void ThreadHandler::ThreadPool::InitPool ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Inits the thread pool\&. Initialises the thread pool by filling the vector with locked threads\&. 
+.PP
+Implements \fBI_ThreadPool\fP\&.
+.PP
+Definition at line 62 of file ThreadPool\&.cpp\&.
+.SS "void ThreadHandler::ThreadPool::shutdown ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Waits for all threads to finish and then shuts them down\&. Waits for threads to finish work and then shuts down\&. 
+.PP
+Implements \fBI_ThreadPool\fP\&.
+.PP
+Definition at line 45 of file ThreadPool\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

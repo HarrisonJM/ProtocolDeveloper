@@ -4,7 +4,9 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
+ * @addtogroup tests
+ * @{
  * @date 12/01/19
  */
 

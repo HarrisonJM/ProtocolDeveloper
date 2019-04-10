@@ -1,11 +1,18 @@
 /*!
  * @brief Tests related to the logFile class
+ *
+ * @author hmarcks
+ *
+ * @addtogroup logger
+ * @{
+ * @addtogroup tests
+ * @{
  */
 
 #include "../src/LogFile.h"
 #include "gtest/gtest.h"
 
-namespace LoggerClasses
+namespace logger
 {
 
 class LogFileTests : public ::testing::Test
@@ -175,4 +182,6 @@ TEST_F(LogFileTests
               , csvout);
 }
 
-}
+} /* namespace logger */
+
+/*! @} @} */

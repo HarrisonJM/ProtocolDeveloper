@@ -1,4 +1,8 @@
-
+/*!
+ * @brief mocks for the workerthread in the tpq
+ * @addtogroup mockLibrary
+ * @{
+ */
 #include "gmock/gmock.h"
 
 #ifndef PROTOCOLDEVELOPER_WORKERTHREADMOCKS_H
@@ -13,5 +17,5 @@ class WorkerThreadMocks
     MOCK_METHOD0(ROUNDBRACKOP, void());
     virtual void operator()() override { return ROUNDBRACKOP(); }
 };
-
+/*! @} */
 #endif //PROTOCOLDEVELOPER_WORKERTHREADMOCKS_H

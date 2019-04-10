@@ -6,6 +6,9 @@
  * @author hmarcks
  *
  * @addtogroup utility
+ * @{
+ * @addtogroup stringUtility
+ * @{
  */
 
 #include <string>
@@ -41,4 +44,5 @@ long StringToLong(const std::string& numberStr)
     ss >> ret;
     return ret;
 }
+/*! @} @} */
 } /* namespace Utility */

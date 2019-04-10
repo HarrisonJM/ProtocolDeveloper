@@ -6,6 +6,9 @@
  * Payload will contain all required information.
  *
  * @addtogroup CommunicationHandler
+ * @{
+ * @addtogroup interfaces
+ * @{
  *
  * @date March 2018
  */
@@ -72,5 +75,5 @@ public:
     virtual pluginLoader::PLUGINTYPE_t getPluginType() = 0;
 };
 }
-
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_COMMUNICATIONINTERFACE_H */

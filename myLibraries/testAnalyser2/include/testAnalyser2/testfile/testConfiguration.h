@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 03/01/19
  */
 
@@ -31,5 +31,5 @@ struct testConfiguration
     std::string _commsHandler;
 };
 } /* namespace testAnalyser2 */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_TESTCONFIGURATION_H */

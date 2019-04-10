@@ -1,0 +1,130 @@
+\hypertarget{classSafeContainers_1_1safeList}{}\section{Safe\+Containers\+::safe\+List$<$ T $>$ Class Template Reference}
+\label{classSafeContainers_1_1safeList}\index{SafeContainers::safeList$<$ T $>$@{SafeContainers::safeList$<$ T $>$}}
+
+
+A thread safe queue.  
+
+
+
+
+{\ttfamily \#include $<$safe\+List.\+h$>$}
+
+
+
+Inheritance diagram for Safe\+Containers\+::safe\+List$<$ T $>$\+:
+% FIG 0
+
+
+Collaboration diagram for Safe\+Containers\+::safe\+List$<$ T $>$\+:
+% FIG 1
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_ac5c9cb951014e13f0a83e8f4f7d7f5ae}\label{classSafeContainers_1_1safeList_ac5c9cb951014e13f0a83e8f4f7d7f5ae}} 
+typedef std\+::list$<$ T $>$\+::iterator {\bfseries iterator}
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_aa341a97abaf143b3a8cb314d4a067ca8}\label{classSafeContainers_1_1safeList_aa341a97abaf143b3a8cb314d4a067ca8}} 
+typedef std\+::list$<$ T $>$\+::const\+\_\+iterator {\bfseries const\+\_\+iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a351b6f4a2ad6fc8055fddc21f41617a2}\label{classSafeContainers_1_1safeList_a351b6f4a2ad6fc8055fddc21f41617a2}} 
+{\bfseries safe\+List} (std\+::shared\+\_\+ptr$<$ std\+::list$<$ T $>$$>$ list\+\_\+in)
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a25a4f869326a2e14e268a73de22a6902}\label{classSafeContainers_1_1safeList_a25a4f869326a2e14e268a73de22a6902}} 
+void {\bfseries push\+\_\+front} (const T \&val)
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_aa475c5bf39b96376b2155bd4334edced}\label{classSafeContainers_1_1safeList_aa475c5bf39b96376b2155bd4334edced}} 
+void {\bfseries push\+\_\+front} (T \&\&val)
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_abc97b786b314a26cfce8824b7e33af6f}\label{classSafeContainers_1_1safeList_abc97b786b314a26cfce8824b7e33af6f}} 
+void {\bfseries pop\+\_\+front} ()
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_abbf387e257f1aa1dc5226ed92041068e}\label{classSafeContainers_1_1safeList_abbf387e257f1aa1dc5226ed92041068e}} 
+void {\bfseries push\+\_\+back} (const T \&val)
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_ac8f3fcbe71961127dff12ca57a4bdcff}\label{classSafeContainers_1_1safeList_ac8f3fcbe71961127dff12ca57a4bdcff}} 
+void {\bfseries push\+\_\+back} (T \&\&val)
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_af99f2d025cb5a5717a4df712bfa9995e}\label{classSafeContainers_1_1safeList_af99f2d025cb5a5717a4df712bfa9995e}} 
+void {\bfseries pop\+\_\+back} ()
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_aa895e153bfd1a93226b09b8a3dcd14de}\label{classSafeContainers_1_1safeList_aa895e153bfd1a93226b09b8a3dcd14de}} 
+T \& {\bfseries front} ()
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a84cfd0d0b35c43d37401c78578f2bda1}\label{classSafeContainers_1_1safeList_a84cfd0d0b35c43d37401c78578f2bda1}} 
+T \& {\bfseries back} ()
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_ae9e3c2fc600a6337afb89454e0c52e1e}\label{classSafeContainers_1_1safeList_ae9e3c2fc600a6337afb89454e0c52e1e}} 
+bool {\bfseries empty} () noexcept
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_acad718d12b04a42d86f6d1e26aba0e49}\label{classSafeContainers_1_1safeList_acad718d12b04a42d86f6d1e26aba0e49}} 
+size\+\_\+t {\bfseries size} () noexcept
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a41ec678910d8c73fbd1f7f39a2fca8d3}\label{classSafeContainers_1_1safeList_a41ec678910d8c73fbd1f7f39a2fca8d3}} 
+size\+\_\+t {\bfseries max\+\_\+size} () noexcept
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a85f6e2e9f5e79d69fa09cd35a430dd4b}\label{classSafeContainers_1_1safeList_a85f6e2e9f5e79d69fa09cd35a430dd4b}} 
+void {\bfseries merge} (std\+::list$<$ T $>$ \&x)
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a8cd93a04e2701ae1e3a8eb89029f26ff}\label{classSafeContainers_1_1safeList_a8cd93a04e2701ae1e3a8eb89029f26ff}} 
+void {\bfseries merge} (std\+::list$<$ T $>$ \&\&x)
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_aa9024e8d0b214ba918f7954ce67d181c}\label{classSafeContainers_1_1safeList_aa9024e8d0b214ba918f7954ce67d181c}} 
+iterator {\bfseries begin} ()
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a815d568394039a8867bc8fe700572a20}\label{classSafeContainers_1_1safeList_a815d568394039a8867bc8fe700572a20}} 
+iterator {\bfseries end} ()
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_a7c341d26c3751c471cb899ff1fe15ebb}\label{classSafeContainers_1_1safeList_a7c341d26c3751c471cb899ff1fe15ebb}} 
+const\+\_\+iterator {\bfseries cbegin} ()
+\item 
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_af02f6e2f0e27678694e354b604d7ee48}\label{classSafeContainers_1_1safeList_af02f6e2f0e27678694e354b604d7ee48}} 
+const\+\_\+iterator {\bfseries cend} ()
+\item 
+std\+::list$<$ T $>$ \& \mbox{\hyperlink{classSafeContainers_1_1safeList_ad4fa563a40289125869321d85312f24d}{get\+List}} ()
+\begin{DoxyCompactList}\small\item\em Returns the underlying list container (for merging) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Safe\+Containers\+::safe\+List$<$ T $>$}
+
+A thread safe queue. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type the list should take \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 26 of file safe\+List.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSafeContainers_1_1safeList_ad4fa563a40289125869321d85312f24d}\label{classSafeContainers_1_1safeList_ad4fa563a40289125869321d85312f24d}} 
+\index{SafeContainers::safeList$<$ T $>$@{SafeContainers::safeList$<$ T $>$}!getList@{getList}}
+\index{getList@{getList}!SafeContainers::safeList$<$ T $>$@{SafeContainers::safeList$<$ T $>$}}
+\subsubsection{\texorpdfstring{getList()}{getList()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+std\+::list$<$T$>$\& \mbox{\hyperlink{classSafeContainers_1_1safeList}{Safe\+Containers\+::safe\+List}}$<$ T $>$\+::get\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the underlying list container (for merging) 
+
+\begin{DoxyReturn}{Returns}
+A reference to the underlying std\+::list 
+\end{DoxyReturn}
+
+
+Definition at line 143 of file safe\+List.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/safe\+Containers/include/safe\+List/safe\+List.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,8 @@
+digraph "testCaseHandler::TestCaseParser"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{testCaseHandler::TestCase\lParser\n||+ TestCaseParser()\l+ ~TestCaseParser()\l+ MoveToNextEntry()\l+ GetCurrentEntryName()\l+ GetCurrentEntryAttribute()\l+ GetEntryData()\l+ GetEntryType()\l+ MoveToSibling()\l+ MoveToNexTSibling()\l+ DoneWithSibling()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

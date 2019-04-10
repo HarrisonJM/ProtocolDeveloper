@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup Plugin Loader
- *
+ * @{
  * @date 23/03/19
  */
 
@@ -83,5 +83,5 @@ public:
 };
 
 } /* namespace pluginLoader */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADER_EXCEPTION_H */

@@ -1,0 +1,140 @@
+\hypertarget{classutility_1_1ThreadSafeT}{}\section{utility\+::Thread\+SafeT$<$ T $>$ Class Template Reference}
+\label{classutility_1_1ThreadSafeT}\index{utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}}
+
+
+Allows for basic thread safe access to some type.  
+
+
+
+
+{\ttfamily \#include $<$thread\+Safe\+T.\+h$>$}
+
+
+
+Inheritance diagram for utility\+::Thread\+SafeT$<$ T $>$\+:
+% FIG 0
+
+
+Collaboration diagram for utility\+::Thread\+SafeT$<$ T $>$\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classutility_1_1ThreadSafeT_a7cdb74cfeaa11742df2953be2e43648c}{Thread\+SafeT}} (T initial)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutility_1_1ThreadSafeT_a1869bec4c8a169389a8b83ab5e772efe}\label{classutility_1_1ThreadSafeT_a1869bec4c8a169389a8b83ab5e772efe}} 
+\mbox{\hyperlink{classutility_1_1ThreadSafeT_a1869bec4c8a169389a8b83ab5e772efe}{$\sim$\+Thread\+SafeT}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classutility_1_1ThreadSafeT_ad9e354cd1ee317c01c282ef2b75e786e}{GetT}} ()
+\begin{DoxyCompactList}\small\item\em Returns the internal T store. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classutility_1_1ThreadSafeT_aa9b826970186d0826179c4346707c3eb}{SetT}} (T new\+Val)
+\begin{DoxyCompactList}\small\item\em Sets the internal T variable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classutility_1_1ThreadSafeT_a14a00e1e039c17524cc58808975c3198}{operator bool}} () const
+\begin{DoxyCompactList}\small\item\em Implicit conversion operator for easier use in ifs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class utility\+::\+Thread\+Safe\+T$<$ T $>$}
+
+Allows for basic thread safe access to some type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type the class should protect \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 24 of file thread\+Safe\+T.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classutility_1_1ThreadSafeT_a7cdb74cfeaa11742df2953be2e43648c}\label{classutility_1_1ThreadSafeT_a7cdb74cfeaa11742df2953be2e43648c}} 
+\index{utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}!ThreadSafeT@{ThreadSafeT}}
+\index{ThreadSafeT@{ThreadSafeT}!utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}}
+\subsubsection{\texorpdfstring{ThreadSafeT()}{ThreadSafeT()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{classutility_1_1ThreadSafeT}{utility\+::\+Thread\+SafeT}}$<$ T $>$\+::\mbox{\hyperlink{classutility_1_1ThreadSafeT}{Thread\+SafeT}} (\begin{DoxyParamCaption}\item[{T}]{initial }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial} & The initial value the value should take \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file thread\+Safe\+T.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classutility_1_1ThreadSafeT_ad9e354cd1ee317c01c282ef2b75e786e}\label{classutility_1_1ThreadSafeT_ad9e354cd1ee317c01c282ef2b75e786e}} 
+\index{utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}!GetT@{GetT}}
+\index{GetT@{GetT}!utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}}
+\subsubsection{\texorpdfstring{GetT()}{GetT()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+T \mbox{\hyperlink{classutility_1_1ThreadSafeT}{utility\+::\+Thread\+SafeT}}$<$ T $>$\+::GetT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the internal T store. 
+
+\begin{DoxyReturn}{Returns}
+The current value of T 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file thread\+Safe\+T.\+h.
+
+\mbox{\Hypertarget{classutility_1_1ThreadSafeT_a14a00e1e039c17524cc58808975c3198}\label{classutility_1_1ThreadSafeT_a14a00e1e039c17524cc58808975c3198}} 
+\index{utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}}
+\subsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{classutility_1_1ThreadSafeT}{utility\+::\+Thread\+SafeT}}$<$ T $>$\+::operator bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implicit conversion operator for easier use in ifs. 
+
+\begin{DoxyReturn}{Returns}
+The internally stored bool 
+\end{DoxyReturn}
+
+
+Definition at line 64 of file thread\+Safe\+T.\+h.
+
+\mbox{\Hypertarget{classutility_1_1ThreadSafeT_aa9b826970186d0826179c4346707c3eb}\label{classutility_1_1ThreadSafeT_aa9b826970186d0826179c4346707c3eb}} 
+\index{utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}!SetT@{SetT}}
+\index{SetT@{SetT}!utility::ThreadSafeT$<$ T $>$@{utility::ThreadSafeT$<$ T $>$}}
+\subsubsection{\texorpdfstring{SetT()}{SetT()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+void \mbox{\hyperlink{classutility_1_1ThreadSafeT}{utility\+::\+Thread\+SafeT}}$<$ T $>$\+::SetT (\begin{DoxyParamCaption}\item[{T}]{new\+Val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the internal T variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Val} & The new value that T should take \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to itself 
+\end{DoxyReturn}
+
+
+Definition at line 55 of file thread\+Safe\+T.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/utility/include/utility/thread\+Safe\+T.\+h\end{DoxyCompactItemize}

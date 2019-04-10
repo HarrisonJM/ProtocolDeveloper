@@ -3,9 +3,9 @@
  *
  * The HelloWorldProtocol data generation and decoder, defintion
  *
- * @ingroup Protocol
- *
  * @date March 2018
+ * @addtogroup helloWorldProtocol
+ * @{
  */
 #include <string>
 #include <HelloWorldProtocol.h>
@@ -20,7 +20,7 @@
  * After that it will be extended to have and process error codes
  * It can then be extended to function with/as a sister protocolHandler
  */
-namespace hwProt
+namespace helloWorldProtocol
 {
 
 u_int8_t HelloWorldProtocol::_numberOfInstances = 0;
@@ -151,4 +151,6 @@ void HelloWorldProtocol::SetDataPoints(testAnalyser2::dataPoint testDP)
     _testDP = testDP;
 }
 
-} /* namespace hwProt */
+} /* namespace helloWorldProtocol */
+
+/*! @} */

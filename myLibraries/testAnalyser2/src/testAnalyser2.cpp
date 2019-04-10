@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 02/01/19
  */
 
@@ -42,7 +42,7 @@ void TestAnalyser2::startAnalysis()
         TestObjectBuilder objBuil(_testFile
                                   , _testFileLoc);
         LOGMESSAGE("Analysis of testcase started"
-                   , LoggerClasses::logLevel::INFO);
+                   , logger::logLevel::INFO);
         try
         {
             objBuil.TopLevelNode();
@@ -51,10 +51,10 @@ void TestAnalyser2::startAnalysis()
         catch (parserExceptionBase& e)
         {
             LOGMESSAGE(e.what()
-                       , LoggerClasses::logLevel::ERROR);
+                       , logger::logLevel::ERROR);
         }
         LOGMESSAGE("Analysis of testcase completed"
-                   , LoggerClasses::logLevel::INFO);
+                   , logger::logLevel::INFO);
     }
 }
 /*!
@@ -67,7 +67,7 @@ TestFile& TestAnalyser2::GetTestFile()
         return _testFile;
 
     LOGMESSAGE("testcase not yet parsed"
-               , LoggerClasses::logLevel::DEBUG);
+               , logger::logLevel::DEBUG);
 
     auto blankboy = new TestFile;
     return *blankboy;
@@ -81,3 +81,4 @@ bool TestAnalyser2::isAnalysed()
     return _analysed;
 }
 } /* namespace testAnalyser2 */
+/*! @} */

@@ -2,7 +2,8 @@
  * @brief Implements a thread pool queue for running tests against the comms
  * handler
  *
- * @addtogroup Thread Handler
+ * @addtogroup threadPool
+ * @{
  *
  * @date 20/05/2018
  */
@@ -21,7 +22,7 @@
 #include <safeQueues/SafeQueue.h>
 #include "I_ThreadPool.h"
 
-namespace ThreadHandler
+namespace threadPool
 {
 /*!
  * @brief A Thread Pool Queue that handles information that needs to be passed back and forth
@@ -59,7 +60,7 @@ public:
      */
     template<typename T, typename ...Args>
     auto AddTaskToQueue(T &&t
-                        , Args &&... args) -> std::future<decltype(t(args...))>
+                        , Args &&... args) -> std::shared_future<decltype(t(args...))>
     {
         /*! Create a function that can be run */
         std::function<decltype(t(args...))()>
@@ -108,12 +109,12 @@ private:
     /*! @brief Stores all the threads */
     std::vector<std::thread> _threads;
     /*! @brief All the tasks */
-    SafeContainers::SafeQueue<std::function<void()>> _taskQueue;
+    safeContainers::SafeQueue<std::function<void()>> _taskQueue;
     //! @brief Stops threads from picking up the same task
     std::mutex _mutex;
     //! @brief Lets us control what threads do directly
     std::condition_variable _cond_var;
 };
-} /* namespace ThreadHandler */
-
+} /* namespace threadPool */
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_TESTTHREADHANDLER_H */

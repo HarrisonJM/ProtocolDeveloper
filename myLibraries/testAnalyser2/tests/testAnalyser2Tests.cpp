@@ -3,7 +3,10 @@
  *
  * @author hmarcks
  *
- * @addtogroup
+ * @addtogroup testCaseAnalyser2
+ * @{
+ * @addtogroup tests
+ * @{
  *
  * @date 02/01/19
  */

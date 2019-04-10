@@ -1,0 +1,15 @@
+digraph "TestRunner::TestRunner::BeginTesting"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node2 [label="TestRunner::TestRunner\l::BeginTesting",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Kicks off the entirety of the testing."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="TestRunner::TestThread\l::StartTest",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/d43/classTestRunner_1_1TestThread.html#a76bafaf7bb25c238bfb86081e1393a2d",tooltip="Performs the test."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="libNetworkCommunication\l::libNetworkCommunication\l::EstablishConnection",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d9/dfa/classlibNetworkCommunication_1_1libNetworkCommunication.html#a93730e78b0aeef62fc45974a26ecc3c0",tooltip="Establishes a connection with the remote."];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="TestRunner::TestThread\l::SetFinished",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d3/d43/classTestRunner_1_1TestThread.html#ad2ffc72393710905ba51959641c68eb3",tooltip="Sets the internal finished boolean (threadsafe)"];
+}

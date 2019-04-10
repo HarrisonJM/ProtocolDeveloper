@@ -2,7 +2,7 @@
  * @brief The thread worker that carries out tasks given to it
  *
  * @addtogroup Thread Handler
- *
+ * @{
  * @date 23/5/18
  */
 
@@ -10,9 +10,8 @@
 
 #include "WorkerThread.h"
 
-namespace ThreadHandler
+namespace threadPool
 {
-
 /*!
  * @brief Constructor for a worker
  * @param pool_in The Threads associated Pool Queue
@@ -24,17 +23,13 @@ WorkerThread::WorkerThread(ThreadPool* pool_in
       , _pool(pool_in)
       , _ID(id_in)
 {
-
 }
-
 /*!
  * @brief Destructor
  */
 WorkerThread::~WorkerThread()
 {
-
 }
-
 /*!
  * @brief Runs the Threads. Overloading allows us to emplace an instance
  * of the class into a std::thread and start waiting for a task simultaneously
@@ -63,5 +58,5 @@ void WorkerThread::operator()()
         }
     }
 }
-
-} /* ThreadHandler */
+/*! @} */
+} /* threadPool */

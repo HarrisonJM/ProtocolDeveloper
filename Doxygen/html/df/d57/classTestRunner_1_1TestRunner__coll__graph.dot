@@ -1,0 +1,8 @@
+digraph "TestRunner::TestRunner"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{TestRunner::TestRunner\n||+ TestRunner()\l+ ~TestRunner()\l+ BeginTesting()\l+ AccessKillThreadHandler()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="TestRunner class. \"Implements\" a testcase and other settings."];
+}

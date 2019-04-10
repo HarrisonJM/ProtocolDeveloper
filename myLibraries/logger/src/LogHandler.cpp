@@ -7,7 +7,8 @@
  *
  * @date 12/08/18
  *
- * @addtogroup Logger
+ * @addtogroup logger
+ * @{
  */
 
 #include <functional>
@@ -19,7 +20,7 @@
 #include "LogHandlerStrategy.h"
 #include "loggerExceptions.h"
 
-namespace LoggerClasses
+namespace logger
 {
 /*!
  * @brief Constructor
@@ -304,4 +305,5 @@ LogHandler& LogHandler::_GetInstance(int maxLogs
     return instance;
 }
 
-} /* namespace LoggerClasses */
+} /* namespace logger */
+/*! @} */

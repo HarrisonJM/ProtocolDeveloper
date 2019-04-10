@@ -87,4 +87,5 @@ public:
     virtual void SetDataPoints(testAnalyser2::dataPoint testDP) = 0;
 };
 } /* namespace Protocol */
+/*! @} */
 #endif //PROTOCOLDEVELOPER_PROTOCOLINTERFACE_H

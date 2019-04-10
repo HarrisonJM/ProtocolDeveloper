@@ -1,0 +1,14 @@
+digraph "PluginLoader::PluginException"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node6 [label="{PluginLoader::PluginException\n||+ PluginException()\l+ what()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node7 [label="{utility::extraExceptionBase\n||+ extraExceptionBase()\l+ what()\l+ ~extraExceptionBase()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d5/d78/classutility_1_1extraExceptionBase.html",tooltip="PluginException base class for handling the dlError ro any other extras."];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node8 [label="{utility::extraExceptionBase\lLength\n||+ extraExceptionBaseLength()\l+ what()\l+ ~extraExceptionBaseLength()\l# _BuildError()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$de/d02/classutility_1_1extraExceptionBaseLength.html",tooltip="Base analyser exception class."];
+  Node9 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node9 [label="{exception\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

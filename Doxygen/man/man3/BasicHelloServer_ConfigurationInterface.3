@@ -1,0 +1,46 @@
+.TH "BasicHelloServer::ConfigurationInterface" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BasicHelloServer::ConfigurationInterface \- \fBConfigurationInterface\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ConfigurationInterface\&.h>\fP
+.PP
+Inherited by \fBBasicHelloServer::BasicHello\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBreceiveData\fP (void *dataIn)=0"
+.br
+.RI "Receives data from the OUTSIDE\&. "
+.ti -1c
+.RI "virtual void * \fBsendData\fP ()=0"
+.br
+.RI "Sends data to the client\&. "
+.ti -1c
+.RI "virtual \fB~ConfigurationInterface\fP ()=0"
+.br
+.RI "Destructor\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBConfigurationInterface\fP\&. 
+
+defines how the connection handler interfaces with a configuration Will be used later as a part fo a factory so that we can decide which type of testing we wish to accomplish using the helloWord server 
+.PP
+Definition at line 20 of file ConfigurationInterface\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BasicHelloServer::ConfigurationInterface::~ConfigurationInterface ()\fC [pure virtual]\fP, \fC [default]\fP"
+
+.PP
+Destructor\&. default virtual constructor 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="PluginLoader::PluginLoader\lTemplate\< TpluginType \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d8/d2a/classPluginLoader_1_1PluginLoaderTemplate.html",tooltip="Class that loads the plugins we want for the desired area."];
+}

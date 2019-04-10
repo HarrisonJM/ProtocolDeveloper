@@ -1,0 +1,191 @@
+\hypertarget{classCommunication_1_1I__communication}{}\section{Communication\+::I\+\_\+communication Class Reference}
+\label{classCommunication_1_1I__communication}\index{Communication::I\_communication@{Communication::I\_communication}}
+
+
+Defines the interface for listening.  
+
+
+
+
+{\ttfamily \#include $<$I\+\_\+communication.\+h$>$}
+
+
+
+Inheritance diagram for Communication\+::I\+\_\+communication\+:
+% FIG 0
+
+
+Collaboration diagram for Communication\+::I\+\_\+communication\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCommunication_1_1I__communication_a99bb16b4f894003f22b1b1cfecd95217}{$\sim$\+I\+\_\+communication}} ()=default
+\item 
+virtual ssize\+\_\+t \mbox{\hyperlink{classCommunication_1_1I__communication_ad25474a90b1bf2789e9ab6ff57b3406e}{Send\+Data}} (void $\ast$pay\+Load\+\_\+p, size\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Sends Data to the remote. \end{DoxyCompactList}\item 
+virtual ssize\+\_\+t \mbox{\hyperlink{classCommunication_1_1I__communication_a48699762983e2bc64cc1e0642bf2e235}{Receive\+Data}} (void $\ast$pay\+Load\+\_\+p, size\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Recevies Data from the Remote. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classCommunication_1_1I__communication_a2e602d8d262f409c36d4170898c61023}{Establish\+Connection}} ()=0
+\begin{DoxyCompactList}\small\item\em Establishes a Connection with the remote. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCommunication_1_1I__communication_a083b6e95a487e3e8bdd64222d226dbc9}\label{classCommunication_1_1I__communication_a083b6e95a487e3e8bdd64222d226dbc9}} 
+virtual void \mbox{\hyperlink{classCommunication_1_1I__communication_a083b6e95a487e3e8bdd64222d226dbc9}{Disconnect}} ()=0
+\begin{DoxyCompactList}\small\item\em Disconnects from the target. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classCommunication_1_1I__communication_a5ef61375a8126f29c38cc1aa17339563}{get\+Plugin\+Name}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the plugins name. \end{DoxyCompactList}\item 
+virtual const char $\ast$ \mbox{\hyperlink{classCommunication_1_1I__communication_a3ff1f75536d5a7394ef736353bd29e53}{get\+Plugin\+Version}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the version of the plugin. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{namespacePluginLoader_a7b1358e9577b47b5d4b16231a5a81699}{Plugin\+Loader\+::\+P\+L\+U\+G\+I\+N\+T\+Y\+P\+E\+\_\+t}} \mbox{\hyperlink{classCommunication_1_1I__communication_a531577d9a13f3fcb566a350b74184823}{get\+Plugin\+Type}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the plugin {\itshape type} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Defines the interface for listening. 
+
+Definition at line 27 of file I\+\_\+communication.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCommunication_1_1I__communication_a99bb16b4f894003f22b1b1cfecd95217}\label{classCommunication_1_1I__communication_a99bb16b4f894003f22b1b1cfecd95217}} 
+\index{Communication::I\_communication@{Communication::I\_communication}!````~I\_communication@{$\sim$I\_communication}}
+\index{````~I\_communication@{$\sim$I\_communication}!Communication::I\_communication@{Communication::I\_communication}}
+\subsubsection{\texorpdfstring{$\sim$I\_communication()}{~I\_communication()}}
+{\footnotesize\ttfamily Communication\+::\+I\+\_\+communication\+::$\sim$\+I\+\_\+communication (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Default Destructor 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCommunication_1_1I__communication_a2e602d8d262f409c36d4170898c61023}\label{classCommunication_1_1I__communication_a2e602d8d262f409c36d4170898c61023}} 
+\index{Communication::I\_communication@{Communication::I\_communication}!EstablishConnection@{EstablishConnection}}
+\index{EstablishConnection@{EstablishConnection}!Communication::I\_communication@{Communication::I\_communication}}
+\subsubsection{\texorpdfstring{EstablishConnection()}{EstablishConnection()}}
+{\footnotesize\ttfamily virtual bool Communication\+::\+I\+\_\+communication\+::\+Establish\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Establishes a Connection with the remote. 
+
+\begin{DoxyReturn}{Returns}
+True on success 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a93730e78b0aeef62fc45974a26ecc3c0}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_a03c615443e3a028782677c78d559b1c1}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+\mbox{\Hypertarget{classCommunication_1_1I__communication_a5ef61375a8126f29c38cc1aa17339563}\label{classCommunication_1_1I__communication_a5ef61375a8126f29c38cc1aa17339563}} 
+\index{Communication::I\_communication@{Communication::I\_communication}!getPluginName@{getPluginName}}
+\index{getPluginName@{getPluginName}!Communication::I\_communication@{Communication::I\_communication}}
+\subsubsection{\texorpdfstring{getPluginName()}{getPluginName()}}
+{\footnotesize\ttfamily const char$\ast$ Communication\+::\+I\+\_\+communication\+::get\+Plugin\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the plugins name. 
+
+\begin{DoxyReturn}{Returns}
+The name of the plugin (as a const char$\ast$) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPluginLoader_1_1I__Plugin_a4c45255b16398fff512940a5e5b8322a}{Plugin\+Loader\+::\+I\+\_\+\+Plugin}}.
+
+
+
+Implemented in \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a2d09c69b582a66b37100ce87ee1acdd1}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_aa4a1a2180bdbf7b13ec0dd17f3cbb459}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+\mbox{\Hypertarget{classCommunication_1_1I__communication_a531577d9a13f3fcb566a350b74184823}\label{classCommunication_1_1I__communication_a531577d9a13f3fcb566a350b74184823}} 
+\index{Communication::I\_communication@{Communication::I\_communication}!getPluginType@{getPluginType}}
+\index{getPluginType@{getPluginType}!Communication::I\_communication@{Communication::I\_communication}}
+\subsubsection{\texorpdfstring{getPluginType()}{getPluginType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{namespacePluginLoader_a7b1358e9577b47b5d4b16231a5a81699}{Plugin\+Loader\+::\+P\+L\+U\+G\+I\+N\+T\+Y\+P\+E\+\_\+t}} Communication\+::\+I\+\_\+communication\+::get\+Plugin\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the plugin {\itshape type} 
+
+\begin{DoxyReturn}{Returns}
+The the plugin is (as an enum) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPluginLoader_1_1I__Plugin_aa7d2ca3f7a8551c590a7cbda0f1648f5}{Plugin\+Loader\+::\+I\+\_\+\+Plugin}}.
+
+
+
+Implemented in \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a6851c7c48cde1af3d2b6e131fce6b8bc}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_a22412ea75e41d612c66c42b3c4dab1f3}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+\mbox{\Hypertarget{classCommunication_1_1I__communication_a3ff1f75536d5a7394ef736353bd29e53}\label{classCommunication_1_1I__communication_a3ff1f75536d5a7394ef736353bd29e53}} 
+\index{Communication::I\_communication@{Communication::I\_communication}!getPluginVersion@{getPluginVersion}}
+\index{getPluginVersion@{getPluginVersion}!Communication::I\_communication@{Communication::I\_communication}}
+\subsubsection{\texorpdfstring{getPluginVersion()}{getPluginVersion()}}
+{\footnotesize\ttfamily virtual const char$\ast$ Communication\+::\+I\+\_\+communication\+::get\+Plugin\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the version of the plugin. 
+
+\begin{DoxyReturn}{Returns}
+The plugin version 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classPluginLoader_1_1I__Plugin_a43fb739a14ea1cc5ca6a77896a5f7b8f}{Plugin\+Loader\+::\+I\+\_\+\+Plugin}}.
+
+
+
+Implemented in \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a78dce6f61316f1f2068c0f03c7cc4b32}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_a07a5da99fc896208065f34aa89453499}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+\mbox{\Hypertarget{classCommunication_1_1I__communication_a48699762983e2bc64cc1e0642bf2e235}\label{classCommunication_1_1I__communication_a48699762983e2bc64cc1e0642bf2e235}} 
+\index{Communication::I\_communication@{Communication::I\_communication}!ReceiveData@{ReceiveData}}
+\index{ReceiveData@{ReceiveData}!Communication::I\_communication@{Communication::I\_communication}}
+\subsubsection{\texorpdfstring{ReceiveData()}{ReceiveData()}}
+{\footnotesize\ttfamily virtual ssize\+\_\+t Communication\+::\+I\+\_\+communication\+::\+Receive\+Data (\begin{DoxyParamCaption}\item[{void $\ast$}]{pay\+Load\+\_\+p,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Recevies Data from the Remote. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pay\+Load\+\_\+p} & Where to store the payload we\textquotesingle{}re receiving \\
+\hline
+{\em size} & The size of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes sent written 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_adbe327ebbc37c81231c3f9843300c778}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_ad8c03e24047f105a93549443c2ec2c92}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+\mbox{\Hypertarget{classCommunication_1_1I__communication_ad25474a90b1bf2789e9ab6ff57b3406e}\label{classCommunication_1_1I__communication_ad25474a90b1bf2789e9ab6ff57b3406e}} 
+\index{Communication::I\_communication@{Communication::I\_communication}!SendData@{SendData}}
+\index{SendData@{SendData}!Communication::I\_communication@{Communication::I\_communication}}
+\subsubsection{\texorpdfstring{SendData()}{SendData()}}
+{\footnotesize\ttfamily virtual ssize\+\_\+t Communication\+::\+I\+\_\+communication\+::\+Send\+Data (\begin{DoxyParamCaption}\item[{void $\ast$}]{pay\+Load\+\_\+p,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Sends Data to the remote. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pay\+Load\+\_\+p} & The payload we\textquotesingle{}re sending \\
+\hline
+{\em size} & The size of the payload \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes sent 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a250d34be8725b543412b792e375972ac}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_add643ce010a3712f9097dc36f45bfd50}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/plugin\+Loader/include/I\+\_\+communication.\+h\end{DoxyCompactItemize}

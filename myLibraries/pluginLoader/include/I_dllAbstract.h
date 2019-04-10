@@ -2,6 +2,10 @@
  * @brief Interface for the dllAbstract class
  * @author Harrison Marcks
  * @date 8/4/19
+ * @addtogroup pluginLoader
+ * @{
+ * @addtogroup interfaces
+ * @{
  */
 
 #ifndef __PROTOCOLDEVELOPER_I_DLLABSTRACT_H__
@@ -36,5 +40,5 @@ public:
     virtual std::shared_ptr<T> GetPluginFactory() = 0;
 };
 } /* namespace pluginLoader */
-
+/*! @} @} */
 #endif //__PROTOCOLDEVELOPER_I_DLLABSTRACT_H__

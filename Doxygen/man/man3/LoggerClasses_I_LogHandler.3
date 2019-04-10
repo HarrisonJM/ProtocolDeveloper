@@ -1,0 +1,69 @@
+.TH "LoggerClasses::I_LogHandler" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoggerClasses::I_LogHandler
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBLoggerClasses::LogHandler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~I_LogHandler\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual int64_t \fBOpenNewLog\fP (const std::string &logName, StrategyEnums strategy)=0"
+.br
+.RI "Opens a new log file, returns the ID of the newly opened log, no EIS\&. "
+.ti -1c
+.RI "virtual int64_t \fBOpenNewLog\fP (const std::string &logName, const std::string &EIS, StrategyEnums strategy)=0"
+.br
+.RI "Opens a new log file, returns the ID of the newly opened log\&. "
+.ti -1c
+.RI "virtual void \fBCloseLog\fP (int64_t logID)=0"
+.br
+.RI "Closes a log file, based on the logs ID\&. "
+.ti -1c
+.RI "virtual void \fBCloseLog\fP (const std::string &logName)=0"
+.br
+.RI "Closes a log file\&. "
+.ti -1c
+.RI "virtual void \fBCloseAllLogs\fP ()=0"
+.br
+.RI "Closes all Log files\&. "
+.ti -1c
+.RI "virtual void \fBAddMessageToLog\fP (int64_t logID, const std::string &message, logLevel lvl) const =0"
+.br
+.RI "Adds a message to a log using the log ID\&. "
+.ti -1c
+.RI "virtual void \fBAddMessageToLog\fP (const std::string &logName, const std::string &message, logLevel lvl) const =0"
+.br
+.RI "Adds a message to a log using the logs file name\&. "
+.ti -1c
+.RI "virtual std::shared_ptr< \fBI_LogFile\fP > \fBGetLogFileByID\fP (int64_t logID) const =0"
+.br
+.RI "Returns an entire, specific, log based on its ID\&. "
+.ti -1c
+.RI "virtual std::shared_ptr< \fBI_LogFile\fP > \fBGetLogFileByName\fP (const std::string &logName) const =0"
+.br
+.RI "Returns an entire, specific, log based on its name\&. "
+.ti -1c
+.RI "virtual void \fBFlushMessagesToStreams\fP ()=0"
+.br
+.RI "Flush messages to stream\&. "
+.ti -1c
+.RI "virtual void \fBKillHandler\fP ()=0"
+.br
+.RI "Sets the internal killHandler to false\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 19 of file I_LogHandler\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

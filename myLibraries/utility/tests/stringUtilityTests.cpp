@@ -4,6 +4,9 @@
  * @author hmarcks
  *
  * @addtogroup utility
+ * @{
+ * @addtogroup tests
+ * @{
  *
  * @date 22/02/19
  */
@@ -20,7 +23,7 @@ TEST(stringUtilityTests
     const int firstTest = 4;
     std::string out1 = addXLetter(firstTest
                                   , 'x');
-    ASSERT_EQ(out1.size()
+    EXPECT_EQ(out1.size()
               , firstTest);
 }
 
@@ -30,7 +33,7 @@ TEST(stringUtilityTests
     const int firstTest = -1;
     std::string out1 = addXLetter(firstTest
                                   , 'x');
-    ASSERT_EQ(out1.size()
+    EXPECT_EQ(out1.size()
               , 0);
 }
 
@@ -40,7 +43,7 @@ TEST(stringUtilityTests
     std::string out1 = "1337";
     const long stringOut = StringToLong(out1);
 
-    ASSERT_EQ(stringOut
+    EXPECT_EQ(stringOut
               , 1337L);
 }
 
@@ -50,7 +53,7 @@ TEST(stringUtilityTests
     std::string out1 = "-156";
     const long stringOut = StringToLong(out1);
 
-    ASSERT_EQ(stringOut
+    EXPECT_EQ(stringOut
               , -156L);
 }
 
@@ -60,7 +63,9 @@ TEST(stringUtilityTests
     std::string out1 = "AAAAA";
     const long stringOut = StringToLong(out1);
 
-    ASSERT_EQ(stringOut
+    EXPECT_EQ(stringOut
               , 0);
 }
 } /* namespace utility */
+
+/*! @} */

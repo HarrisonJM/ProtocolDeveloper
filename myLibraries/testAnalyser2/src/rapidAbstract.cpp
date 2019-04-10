@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 02/01/19
  */
 
@@ -181,3 +181,5 @@ rapidxml::node_type RapidAbstract::GetCurrentNodeType()
     return _currentNode.top()->type();
 }
 } /* namespace testAnalyser2 */
+
+/*! @} */

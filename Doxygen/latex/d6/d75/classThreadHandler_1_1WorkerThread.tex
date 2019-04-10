@@ -1,0 +1,91 @@
+\hypertarget{classThreadHandler_1_1WorkerThread}{}\section{Thread\+Handler\+::Worker\+Thread Class Reference}
+\label{classThreadHandler_1_1WorkerThread}\index{ThreadHandler::WorkerThread@{ThreadHandler::WorkerThread}}
+
+
+A thread that carries out a task. Made a nested class so that it can have access to the pools members.  
+
+
+
+
+{\ttfamily \#include $<$Worker\+Thread.\+h$>$}
+
+
+
+Inheritance diagram for Thread\+Handler\+::Worker\+Thread\+:
+% FIG 0
+
+
+Collaboration diagram for Thread\+Handler\+::Worker\+Thread\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classThreadHandler_1_1WorkerThread_aaa5da8c1265e775e4bced4526ea70887}{Worker\+Thread}} (\mbox{\hyperlink{classThreadHandler_1_1ThreadPool}{Thread\+Pool}} $\ast$pool\+\_\+in, const int id\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Constructor for a worker. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classThreadHandler_1_1WorkerThread_ab7e7c25c6ab34e69ce925c08230f246f}\label{classThreadHandler_1_1WorkerThread_ab7e7c25c6ab34e69ce925c08230f246f}} 
+virtual \mbox{\hyperlink{classThreadHandler_1_1WorkerThread_ab7e7c25c6ab34e69ce925c08230f246f}{$\sim$\+Worker\+Thread}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classThreadHandler_1_1WorkerThread_aec4053e02c749fea8f382b9e2c7bf91a}{operator()}} () override
+\begin{DoxyCompactList}\small\item\em Runs the Threads. Overloading allows us to emplace an instance of the class into a std\+::thread and start waiting for a task simultaneously. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A thread that carries out a task. Made a nested class so that it can have access to the pools members. 
+
+Definition at line 21 of file Worker\+Thread.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classThreadHandler_1_1WorkerThread_aaa5da8c1265e775e4bced4526ea70887}\label{classThreadHandler_1_1WorkerThread_aaa5da8c1265e775e4bced4526ea70887}} 
+\index{ThreadHandler::WorkerThread@{ThreadHandler::WorkerThread}!WorkerThread@{WorkerThread}}
+\index{WorkerThread@{WorkerThread}!ThreadHandler::WorkerThread@{ThreadHandler::WorkerThread}}
+\subsubsection{\texorpdfstring{WorkerThread()}{WorkerThread()}}
+{\footnotesize\ttfamily Thread\+Handler\+::\+Worker\+Thread\+::\+Worker\+Thread (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classThreadHandler_1_1ThreadPool}{Thread\+Pool}} $\ast$}]{pool\+\_\+in,  }\item[{const int}]{id\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Constructor for a worker. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pool\+\_\+in} & The Threads associated Pool Queue \\
+\hline
+{\em id\+\_\+in} & The Threads ID \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 21 of file Worker\+Thread.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classThreadHandler_1_1WorkerThread_aec4053e02c749fea8f382b9e2c7bf91a}\label{classThreadHandler_1_1WorkerThread_aec4053e02c749fea8f382b9e2c7bf91a}} 
+\index{ThreadHandler::WorkerThread@{ThreadHandler::WorkerThread}!operator()@{operator()}}
+\index{operator()@{operator()}!ThreadHandler::WorkerThread@{ThreadHandler::WorkerThread}}
+\subsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily void Thread\+Handler\+::\+Worker\+Thread\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Runs the Threads. Overloading allows us to emplace an instance of the class into a std\+::thread and start waiting for a task simultaneously. 
+
+We\textquotesingle{}ll store the popped work task in here
+
+The lock needs to be deleted 
+
+Implements \mbox{\hyperlink{classThreadHandler_1_1I__WorkerThread_ac3cc1cc1d0c7830b5b3a2425d55ac48d}{Thread\+Handler\+::\+I\+\_\+\+Worker\+Thread}}.
+
+
+
+Definition at line 41 of file Worker\+Thread.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/thread\+Pool/src/Worker\+Thread.\+h\item 
+my\+Libraries/thread\+Pool/src/Worker\+Thread.\+cpp\end{DoxyCompactItemize}

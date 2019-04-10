@@ -1,0 +1,120 @@
+\hypertarget{classTimeTicker_1_1GMTHandler}{}\section{Time\+Ticker\+::G\+M\+T\+Handler Class Reference}
+\label{classTimeTicker_1_1GMTHandler}\index{TimeTicker::GMTHandler@{TimeTicker::GMTHandler}}
+
+
+Inheritance diagram for Time\+Ticker\+::G\+M\+T\+Handler\+:
+% FIG 0
+
+
+Collaboration diagram for Time\+Ticker\+::G\+M\+T\+Handler\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimeTicker_1_1GMTHandler_a3e6117fb95d4b718fd675c7adbf0f461}\label{classTimeTicker_1_1GMTHandler_a3e6117fb95d4b718fd675c7adbf0f461}} 
+\mbox{\hyperlink{classTimeTicker_1_1GMTHandler_a3e6117fb95d4b718fd675c7adbf0f461}{G\+M\+T\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em Normal constructor, uses default wrappers. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTimeTicker_1_1GMTHandler_a6deaf65737b34b1ed1c12e4c7ea33f4b}{G\+M\+T\+Handler}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1cStdLib}{c\+Functions\+::c\+Std\+Lib}} $>$ stdlib\+Module, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1cStdio}{c\+Functions\+::c\+Stdio}} $>$ stdio\+Module)
+\begin{DoxyCompactList}\small\item\em Testing/non-\/std functions constructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classTimeTicker_1_1GMTHandler_ae47cdc7af3fcd0b28aee668e35b8f696}{Print\+G\+M\+T\+Offset}} (const struct tm $\ast$the\+Time\+T\+M\+\_\+p, char $\ast$buffer\+\_\+p, size\+\_\+t length) const override
+\begin{DoxyCompactList}\small\item\em Finds the G\+MT offset and then prints it to the provided buffer. \end{DoxyCompactList}\item 
+T\+T\+Ret\+Code\+\_\+E \mbox{\hyperlink{classTimeTicker_1_1GMTHandler_ad5732f5089f4fb8df8720995cdc930d7}{Get\+G\+M\+T\+Offset}} (const struct tm $\ast$tm\+\_\+p, \mbox{\hyperlink{structTTGMTOffset}{T\+T\+G\+M\+T\+Offset\+\_\+t}} $\ast$offset\+\_\+p) const override
+\begin{DoxyCompactList}\small\item\em Gets the G\+MT Offset and stores it in offset\+\_\+p. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 27 of file g\+M\+T\+Handler.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimeTicker_1_1GMTHandler_a6deaf65737b34b1ed1c12e4c7ea33f4b}\label{classTimeTicker_1_1GMTHandler_a6deaf65737b34b1ed1c12e4c7ea33f4b}} 
+\index{TimeTicker::GMTHandler@{TimeTicker::GMTHandler}!GMTHandler@{GMTHandler}}
+\index{GMTHandler@{GMTHandler}!TimeTicker::GMTHandler@{TimeTicker::GMTHandler}}
+\subsubsection{\texorpdfstring{GMTHandler()}{GMTHandler()}}
+{\footnotesize\ttfamily Time\+Ticker\+::\+G\+M\+T\+Handler\+::\+G\+M\+T\+Handler (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1cStdLib}{c\+Functions\+::c\+Std\+Lib}} $>$}]{stdlib\+Module,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1cStdio}{c\+Functions\+::c\+Stdio}} $>$}]{stdio\+Module }\end{DoxyParamCaption})}
+
+
+
+Testing/non-\/std functions constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stdlib\+Module} & An unq\+\_\+p to a std\+Lib (or similiar) module \\
+\hline
+{\em stdio\+Module} & An unq\+\_\+p to an stdio (or similiar) module \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 29 of file g\+M\+T\+Handler.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimeTicker_1_1GMTHandler_ad5732f5089f4fb8df8720995cdc930d7}\label{classTimeTicker_1_1GMTHandler_ad5732f5089f4fb8df8720995cdc930d7}} 
+\index{TimeTicker::GMTHandler@{TimeTicker::GMTHandler}!GetGMTOffset@{GetGMTOffset}}
+\index{GetGMTOffset@{GetGMTOffset}!TimeTicker::GMTHandler@{TimeTicker::GMTHandler}}
+\subsubsection{\texorpdfstring{GetGMTOffset()}{GetGMTOffset()}}
+{\footnotesize\ttfamily T\+T\+Ret\+Code\+\_\+E Time\+Ticker\+::\+G\+M\+T\+Handler\+::\+Get\+G\+M\+T\+Offset (\begin{DoxyParamCaption}\item[{const struct tm $\ast$}]{tm\+\_\+p,  }\item[{\mbox{\hyperlink{structTTGMTOffset}{T\+T\+G\+M\+T\+Offset\+\_\+t}} $\ast$}]{offset\+\_\+p }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the G\+MT Offset and stores it in offset\+\_\+p. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm\+\_\+p} & A tim struct ptr that contains the time \\
+\hline
+{\em offset\+\_\+p} & Where to store the offset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on failure 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classTimeTicker_1_1I__gMTHandler}{Time\+Ticker\+::\+I\+\_\+g\+M\+T\+Handler}}.
+
+
+
+Definition at line 84 of file g\+M\+T\+Handler.\+cpp.
+
+\mbox{\Hypertarget{classTimeTicker_1_1GMTHandler_ae47cdc7af3fcd0b28aee668e35b8f696}\label{classTimeTicker_1_1GMTHandler_ae47cdc7af3fcd0b28aee668e35b8f696}} 
+\index{TimeTicker::GMTHandler@{TimeTicker::GMTHandler}!PrintGMTOffset@{PrintGMTOffset}}
+\index{PrintGMTOffset@{PrintGMTOffset}!TimeTicker::GMTHandler@{TimeTicker::GMTHandler}}
+\subsubsection{\texorpdfstring{PrintGMTOffset()}{PrintGMTOffset()}}
+{\footnotesize\ttfamily int Time\+Ticker\+::\+G\+M\+T\+Handler\+::\+Print\+G\+M\+T\+Offset (\begin{DoxyParamCaption}\item[{const struct tm $\ast$}]{the\+Time\+T\+M\+\_\+p,  }\item[{char $\ast$}]{buffer\+\_\+p,  }\item[{size\+\_\+t}]{length }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Finds the G\+MT offset and then prints it to the provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the\+Time\+T\+M\+\_\+p} & A pointer to The current time \\
+\hline
+{\em buffer\+\_\+p} & Where to store the printed offset \\
+\hline
+{\em length} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes printed 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classTimeTicker_1_1I__gMTHandler}{Time\+Ticker\+::\+I\+\_\+g\+M\+T\+Handler}}.
+
+
+
+Definition at line 42 of file g\+M\+T\+Handler.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/time\+Ticker/src/g\+M\+T\+Handler.\+h\item 
+my\+Libraries/time\+Ticker/src/g\+M\+T\+Handler.\+cpp\end{DoxyCompactItemize}

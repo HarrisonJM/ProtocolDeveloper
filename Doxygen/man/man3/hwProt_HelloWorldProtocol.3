@@ -1,0 +1,206 @@
+.TH "hwProt::HelloWorldProtocol" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+hwProt::HelloWorldProtocol \- \fBHelloWorldProtocol\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <HelloWorldProtocol\&.h>\fP
+.PP
+Inherits \fBProtocol::I_protocolInterface\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHelloWorldProtocol\fP ()"
+.br
+.RI "Constructor, builds internal possible results vector\&. "
+.ti -1c
+.RI "\fB~HelloWorldProtocol\fP () override"
+.br
+.RI "Destructor, make threadsafe\&. "
+.ti -1c
+.RI "virtual const char * \fBgetPluginName\fP () override"
+.br
+.RI "Returns the plugins name\&. "
+.ti -1c
+.RI "virtual const char * \fBgetPluginVersion\fP () override"
+.br
+.RI "Returns the version of the plugin\&. "
+.ti -1c
+.RI "virtual \fBPluginLoader::PLUGINTYPE_t\fP \fBgetPluginType\fP () override"
+.br
+.RI "Returns the plugin \fItype\fP "
+.ti -1c
+.RI "void \fBDecodeResult\fP (std::shared_ptr< \fBProtocol::DataStruct\fP > payLoad) override"
+.br
+.RI "Decodes the data returned from the target\&. "
+.ti -1c
+.RI "std::shared_ptr< \fBProtocol::DataStruct\fP > \fBGetDataToSend\fP () override"
+.br
+.RI "Builds a packet to send BACK to the target based on what was received\&. "
+.ti -1c
+.RI "std::shared_ptr< \fBProtocol::DataStruct\fP > \fBGetResult\fP () override"
+.br
+.RI "The final result of the returned data\&. "
+.ti -1c
+.RI "int \fBGetResultCode\fP () override"
+.br
+.RI "The result code returned/calculated\&. "
+.ti -1c
+.RI "void \fBSetDataPoints\fP (\fBtestAnalyser2::dataPoint\fP testDP) override"
+.br
+.RI "Sets the protocols datapoints\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBHelloWorldProtocol\fP\&. 
+
+declares the header that will be used to help generate and decode the helloworldprotocol information 
+.PP
+Definition at line 26 of file HelloWorldProtocol\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void hwProt::HelloWorldProtocol::DecodeResult (std::shared_ptr< \fBProtocol::DataStruct\fP > payLoad)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Decodes the data returned from the target\&. Decodes a payload and sets the return code accordingly\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpayLoad\fP The payload received from the target
+.br
+\fIpayLoad\fP The received Payload 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 76 of file HelloWorldProtocol\&.cpp\&.
+.SS "std::shared_ptr< \fBProtocol::DataStruct\fP > hwProt::HelloWorldProtocol::GetDataToSend ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Builds a packet to send BACK to the target based on what was received\&. Fetches the message and sets up the struct we're going to send\&.
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to a struct of data and the data's sizes
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Needs work 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to the struct containg our information 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 101 of file HelloWorldProtocol\&.cpp\&.
+.SS "const char * hwProt::HelloWorldProtocol::getPluginName ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the plugins name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the plugin (as a const char*) 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 52 of file HelloWorldProtocol\&.cpp\&.
+.SS "\fBPluginLoader::PLUGINTYPE_t\fP hwProt::HelloWorldProtocol::getPluginType ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the plugin \fItype\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+The the plugin is (as an enum) 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 68 of file HelloWorldProtocol\&.cpp\&.
+.SS "const char * hwProt::HelloWorldProtocol::getPluginVersion ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the version of the plugin\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The plugin version 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 60 of file HelloWorldProtocol\&.cpp\&.
+.SS "std::shared_ptr< \fBProtocol::DataStruct\fP > hwProt::HelloWorldProtocol::GetResult ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+The final result of the returned data\&. Returns the last given result\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The returned data
+.PP
+The last raw result data 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 133 of file HelloWorldProtocol\&.cpp\&.
+.SS "int hwProt::HelloWorldProtocol::GetResultCode ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+The result code returned/calculated\&. Returns the latest result code returned from the remote (if applicable)
+.PP
+\fBReturns:\fP
+.RS 4
+Result code
+.PP
+The Last Result Code 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 141 of file HelloWorldProtocol\&.cpp\&.
+.SS "void hwProt::HelloWorldProtocol::SetDataPoints (\fBtestAnalyser2::dataPoint\fP testDP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Sets the protocols datapoints\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItestDP\fP The datapoints we're using 
+.RE
+.PP
+
+.PP
+Implements \fBProtocol::I_protocolInterface\fP\&.
+.PP
+Definition at line 149 of file HelloWorldProtocol\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

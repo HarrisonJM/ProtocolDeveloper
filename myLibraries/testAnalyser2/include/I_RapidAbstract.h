@@ -5,7 +5,9 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
+ * @addtogroup interfaces
+ * @{
  * @date 12/01/19
  *
  * @todo rapidabstract interface
@@ -82,5 +84,5 @@ public:
     virtual rapidxml::node_type GetCurrentNodeType() = 0;
 };
 } /* namespace testAnalyser2 */
-
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_I_RAPIDABSTRACT_H */

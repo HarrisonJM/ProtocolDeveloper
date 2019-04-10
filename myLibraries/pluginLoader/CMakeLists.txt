@@ -6,11 +6,9 @@ add_library(pluginLoader
             include/pluginLoader/pluginLoader.h
             src/pluginLoaderTemplate.h
             include/pluginLoader/PluginLoaderCommon.h
-            include/pluginLoader/pluginS.h
             include/I_plugin.h
             src/pluginLoaderTemplate.cpp
             src/pluginLoaderTemplate.h
-            src/dllAbstract.cpp
             src/dllAbstract.h
             include/I_dllAbstract.h
             src/pluginLoader_exception.h include/I_pluginLoaderTemplate.h)
@@ -60,6 +58,7 @@ export(TARGETS pluginLoader
 
 # Every library has unit tests, of course
 add_executable(testPluginLoader
+               tests/pluginLoaderTestsMain.cpp
                tests/pluginLoaderTests.cpp)
 target_link_libraries(testPluginLoader
                       pluginLoader

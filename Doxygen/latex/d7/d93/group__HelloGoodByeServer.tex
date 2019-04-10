@@ -1,0 +1,45 @@
+\hypertarget{group__HelloGoodByeServer}{}\section{Hello\+Good\+Bye\+Server}
+\label{group__HelloGoodByeServer}\index{HelloGoodByeServer@{HelloGoodByeServer}}
+
+
+Basic\+Hello\+Configuration definition.  
+
+
+Basic\+Hello\+Configuration definition. 
+
+Sets up the server.
+
+Entry point for the hello goodbye server.
+
+Handles incoming and outgoing connections.
+
+default destructor definition for the configuration interface
+
+Basic\+Hello\+Configuration declaration.
+
+defines the basic hello configuration for simple back and forthing between the Prot\+Dev and the server. Sends Hello if it receives good bye, and vice versa
+
+\begin{DoxyDate}{Date}
+March 2018
+
+March 2018
+\end{DoxyDate}
+The Hello\+Goodbye server will deal in and serve the purposes of testing the Prot\+Dev The protocol is defined as sending Hello or goodbye (dependent on receiving the opposite response) in a variety of interpretable ways.
+
+A simple Hello World server. Will send Hello/goodbye world depending on what it receives. Will be used to help develop and test different features of the prot dev program
+
+Listen function that will listen for connections, spawn a thread when a connection is made A function that sends information back away and then dies Might be worth implementing a simple kill\+Server command
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Increase complexity for more tests 
+
+Add more configurations 
+
+Reap children (The harvest is small) 
+
+Tidy up (remove singletons and probably more)\end{DoxyRefDesc}
+
+
+\begin{DoxyDate}{Date}
+March 2018 
+\end{DoxyDate}

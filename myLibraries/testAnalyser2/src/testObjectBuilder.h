@@ -6,7 +6,7 @@
  * @addtogroup testAnalyser2
  *
  * @date 03/01/19
- *
+ * @{
  * @todo rapidabstract interface
  */
 
@@ -126,5 +126,5 @@ private:
     bool _ConfigCommsHandler(testConfiguration& TC);
 };
 } /* namespace testAnalyser2 */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_TESTOBJECTBUILDER_H */

@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 03/01/19
  *
  * @todo Refactor variables and operations into their respective classes!
@@ -573,3 +573,4 @@ bool TestObjectBuilder::_ConfigCommsHandler(testConfiguration& TC)
     return retval;
 }
 } /* namespace testAnalyser2 */
+/*! @} */

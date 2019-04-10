@@ -1,0 +1,131 @@
+.TH "LoggerClasses::LogFile" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoggerClasses::LogFile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBLoggerClasses::I_LogFile\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogFile\fP (const std::string &logName, const std::string &EIS, std::unique_ptr< std::ostream > outFile, std::condition_variable &CV)"
+.br
+.RI "constructor "
+.ti -1c
+.RI "\fB~LogFile\fP () override"
+.br
+.RI "destructor "
+.ti -1c
+.RI "void \fBAddLogMessage\fP (const std::string &message, logLevel lvl) override"
+.br
+.RI "Add a log message\&. "
+.ti -1c
+.RI "std::string \fBReturnOldestMessage\fP () override"
+.br
+.RI "Returns the oldest message to be written\&. "
+.ti -1c
+.RI "void \fBWriteAllMessagesToStream\fP () override"
+.br
+.RI "Writes The oldest message from the queue to the provided stream\&. "
+.ti -1c
+.RI "std::string \fBReturnLatestMessage\fP () override"
+.br
+.RI "Returns the latest message to be written\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 27 of file LogFile\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LoggerClasses::LogFile::LogFile (const std::string & logName, const std::string & EIS, std::unique_ptr< std::ostream > outFile, std::condition_variable & CV)"
+
+.PP
+constructor 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogName\fP The full name of the log file 
+.br
+\fIEIS\fP The extra information string 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file LogFile\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void LoggerClasses::LogFile::AddLogMessage (const std::string & message, logLevel lvl)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Add a log message\&. Adds a log message to the message queue\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImessage\fP The message 
+.br
+\fIlvl\fP The log level 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Whether the message was successfully added to the queue 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogFile\fP\&.
+.PP
+Definition at line 59 of file LogFile\&.cpp\&.
+.SS "std::string LoggerClasses::LogFile::ReturnLatestMessage ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the latest message to be written\&. Returns the latest message yet to be written to the log file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+A std::string containing the message 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogFile\fP\&.
+.PP
+Definition at line 93 of file LogFile\&.cpp\&.
+.SS "std::string LoggerClasses::LogFile::ReturnOldestMessage ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns the oldest message to be written\&. Returns earliest written message of the log file\&.
+.PP
+\fBReturns:\fP
+.RS 4
+A string containing the oldest message 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogFile\fP\&.
+.PP
+Definition at line 72 of file LogFile\&.cpp\&.
+.SS "void LoggerClasses::LogFile::WriteAllMessagesToStream ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Writes The oldest message from the queue to the provided stream\&. Writes all messages to the stream\&.
+.PP
+\fBTodo\fP
+.RS 4
+Use Conditional variable to trigger a buffer empty 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogFile\fP\&.
+.PP
+Definition at line 80 of file LogFile\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

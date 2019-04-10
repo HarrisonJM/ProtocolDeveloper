@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup Plugin Loader
- *
+ * @{
  * @date 24/12/18
  */
 
@@ -55,14 +55,14 @@ void PluginLoader::ScanForComms(std::string const& pathToPlugins)
                                                              , _commsPlugins
                                                              , 0);
     LOGMESSAGE("Scanning for Comms plugins"
-               , LoggerClasses::logLevel::INFO);
+               , logger::logLevel::INFO);
     try
     {
         plt.ScanForPlugins();
     } catch (std::exception& e)
     {
         LOGMESSAGE(e.what()
-                   , LoggerClasses::logLevel::ERROR);
+                   , logger::logLevel::ERROR);
     }
 
     this->_commsPlugins = plt.getPlugins();
@@ -78,23 +78,16 @@ void PluginLoader::ScanForProtocols(std::string const& pathToPlugins)
                                                             , _protocolPlugins
                                                             , 0);
     LOGMESSAGE("Scanning for Protocol plugins"
-               , LoggerClasses::logLevel::INFO);
+               , logger::logLevel::INFO);
     try
     {
         plt.ScanForPlugins();
     } catch (std::exception& e)
     {
         LOGMESSAGE(e.what()
-                   , LoggerClasses::logLevel::ERROR);
+                   , logger::logLevel::ERROR);
     }
     this->_protocolPlugins = plt.getPlugins();
-}
-/*!
- * @brief
- * @param extraQualification
- */
-void PluginLoader::_ScanForPlugins(std::string extraQualification)
-{
 }
 /*!
  * @brief Returns the sharedmap that cotnains all the comms plugins
@@ -114,3 +107,4 @@ sharedMap_t<Protocol::I_protocolInterface>& PluginLoader::getProtocolPlugins()
 }
 
 } /* namespace pluginLoader */
+/*! @} */

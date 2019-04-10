@@ -1,0 +1,133 @@
+\hypertarget{classTestRunner_1_1TestRunner}{}\section{Test\+Runner\+::Test\+Runner Class Reference}
+\label{classTestRunner_1_1TestRunner}\index{TestRunner::TestRunner@{TestRunner::TestRunner}}
+
+
+\mbox{\hyperlink{classTestRunner_1_1TestRunner}{Test\+Runner}} class. \char`\"{}\+Implements\char`\"{} a testcase and other settings.  
+
+
+
+
+{\ttfamily \#include $<$test\+Runner.\+h$>$}
+
+
+
+Collaboration diagram for Test\+Runner\+::Test\+Runner\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTestRunner_1_1TestRunner_a00b558f4bdc3553e357e992afafaf69d}{Test\+Runner}} (std\+::string const \&testfile\+Path, \mbox{\hyperlink{namespacePluginLoader_a8e505caea20d9f45155939545d29f6ba}{Plugin\+Loader\+::shared\+Map\+\_\+t}}$<$ \mbox{\hyperlink{classCommunication_1_1I__communication}{Communication\+::\+I\+\_\+communication}} $>$ comms\+Interfaces\+\_\+in, \mbox{\hyperlink{namespacePluginLoader_a8e505caea20d9f45155939545d29f6ba}{Plugin\+Loader\+::shared\+Map\+\_\+t}}$<$ \mbox{\hyperlink{classProtocol_1_1I__protocolInterface}{Protocol\+::\+I\+\_\+protocol\+Interface}} $>$ protocol\+Interfaces\+\_\+in, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classtestAnalyser2_1_1I__TestAnalyser2}{test\+Analyser2\+::\+I\+\_\+\+Test\+Analyser2}} $>$ T\+A\+\_\+in, \mbox{\hyperlink{classThreadHandler_1_1ThreadPool}{Thread\+Handler\+::\+Thread\+Pool}} \&thread\+Pool\+\_\+in)
+\begin{DoxyCompactList}\small\item\em Constructor Sets up the environment. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTestRunner_1_1TestRunner_a06673bd35ba48548fb411efce5db0421}\label{classTestRunner_1_1TestRunner_a06673bd35ba48548fb411efce5db0421}} 
+\mbox{\hyperlink{classTestRunner_1_1TestRunner_a06673bd35ba48548fb411efce5db0421}{$\sim$\+Test\+Runner}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTestRunner_1_1TestRunner_a6d445a66f517e64d67f636d3bcab44c0}{Begin\+Testing}} ()
+\begin{DoxyCompactList}\small\item\em Kicks off the entirety of the testing. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTestRunner_1_1TestRunner_aaf6f2a7fa3055ab8771ffa503906fcb1}{Access\+Kill\+Thread\+Handler}} (std\+::optional$<$ bool $>$ new\+Val)
+\begin{DoxyCompactList}\small\item\em Access the internal kill thread handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{classTestRunner_1_1TestRunner}{Test\+Runner}} class. \char`\"{}\+Implements\char`\"{} a testcase and other settings. 
+
+Definition at line 56 of file test\+Runner.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTestRunner_1_1TestRunner_a00b558f4bdc3553e357e992afafaf69d}\label{classTestRunner_1_1TestRunner_a00b558f4bdc3553e357e992afafaf69d}} 
+\index{TestRunner::TestRunner@{TestRunner::TestRunner}!TestRunner@{TestRunner}}
+\index{TestRunner@{TestRunner}!TestRunner::TestRunner@{TestRunner::TestRunner}}
+\subsubsection{\texorpdfstring{TestRunner()}{TestRunner()}}
+{\footnotesize\ttfamily Test\+Runner\+::\+Test\+Runner\+::\+Test\+Runner (\begin{DoxyParamCaption}\item[{std\+::string const \&}]{testfile\+Path,  }\item[{\mbox{\hyperlink{namespacePluginLoader_a8e505caea20d9f45155939545d29f6ba}{Plugin\+Loader\+::shared\+Map\+\_\+t}}$<$ \mbox{\hyperlink{classCommunication_1_1I__communication}{Communication\+::\+I\+\_\+communication}} $>$}]{comms\+Interfaces\+\_\+in,  }\item[{\mbox{\hyperlink{namespacePluginLoader_a8e505caea20d9f45155939545d29f6ba}{Plugin\+Loader\+::shared\+Map\+\_\+t}}$<$ \mbox{\hyperlink{classProtocol_1_1I__protocolInterface}{Protocol\+::\+I\+\_\+protocol\+Interface}} $>$}]{protocol\+Interfaces\+\_\+in,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classtestAnalyser2_1_1I__TestAnalyser2}{test\+Analyser2\+::\+I\+\_\+\+Test\+Analyser2}} $>$}]{T\+A\+\_\+in,  }\item[{\mbox{\hyperlink{classThreadHandler_1_1ThreadPool}{Thread\+Handler\+::\+Thread\+Pool}} \&}]{thread\+Pool\+\_\+in }\end{DoxyParamCaption})}
+
+
+
+Constructor Sets up the environment. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em testfile\+Path} & The path to the testfile we wish to run \\
+\hline
+{\em comms\+Interfaces\+\_\+in} & A reference to the shared\+Map of comms interfaces, for searching through \\
+\hline
+{\em protocol\+Interfaces\+\_\+in} & A reference to the shared\+Map of Protocol Interfaces, for searching through \\
+\hline
+{\em T\+A\+\_\+in} & A unique pointer to the test case analyser \\
+\hline
+{\em thread\+Pool\+\_\+in} & a reference tot he threadpool we wish to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 27 of file test\+Runner.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTestRunner_1_1TestRunner_aaf6f2a7fa3055ab8771ffa503906fcb1}\label{classTestRunner_1_1TestRunner_aaf6f2a7fa3055ab8771ffa503906fcb1}} 
+\index{TestRunner::TestRunner@{TestRunner::TestRunner}!AccessKillThreadHandler@{AccessKillThreadHandler}}
+\index{AccessKillThreadHandler@{AccessKillThreadHandler}!TestRunner::TestRunner@{TestRunner::TestRunner}}
+\subsubsection{\texorpdfstring{AccessKillThreadHandler()}{AccessKillThreadHandler()}}
+{\footnotesize\ttfamily bool Test\+Runner\+::\+Test\+Runner\+::\+Access\+Kill\+Thread\+Handler (\begin{DoxyParamCaption}\item[{std\+::optional$<$ bool $>$}]{new\+Val }\end{DoxyParamCaption})}
+
+
+
+Access the internal kill thread handler. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Val} & The new value it should take \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value fo the killthreadhandler 
+\end{DoxyReturn}
+
+
+Definition at line 115 of file test\+Runner.\+cpp.
+
+\mbox{\Hypertarget{classTestRunner_1_1TestRunner_a6d445a66f517e64d67f636d3bcab44c0}\label{classTestRunner_1_1TestRunner_a6d445a66f517e64d67f636d3bcab44c0}} 
+\index{TestRunner::TestRunner@{TestRunner::TestRunner}!BeginTesting@{BeginTesting}}
+\index{BeginTesting@{BeginTesting}!TestRunner::TestRunner@{TestRunner::TestRunner}}
+\subsubsection{\texorpdfstring{BeginTesting()}{BeginTesting()}}
+{\footnotesize\ttfamily bool Test\+Runner\+::\+Test\+Runner\+::\+Begin\+Testing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Kicks off the entirety of the testing. 
+
+Will kick off and perform the testing.
+
+\begin{DoxyReturn}{Returns}
+True for successful run, otherwise false
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000034}{Todo}}]needs more methods \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+true for successful, otherwise false 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000035}{Todo}}]Set up multiple interfaces for the threads (if wanted) so put me in a loop \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000036}{Todo}}]Move blocks into templated methods \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000037}{Todo}}]More plugins (thread handler, etc) \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000038}{Todo}}]exception for wrong config name \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000039}{Todo}}]Need to separate and edit for changing comms interfaces \end{DoxyRefDesc}
+
+
+Definition at line 48 of file test\+Runner.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/test\+Runner/include/test\+Runner/test\+Runner.\+h\item 
+my\+Libraries/test\+Runner/src/test\+Runner.\+cpp\end{DoxyCompactItemize}

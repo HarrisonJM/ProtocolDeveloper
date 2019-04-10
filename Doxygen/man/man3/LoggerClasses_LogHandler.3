@@ -1,0 +1,286 @@
+.TH "LoggerClasses::LogHandler" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoggerClasses::LogHandler
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBLoggerClasses::I_LogHandler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogHandler\fP (int maxLogs, const std::string &path)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBLogHandler\fP (int maxLogs, const std::string &path, std::unique_ptr< \fBI_LogStrategy\fP > ilo)"
+.br
+.RI "Constructor, Mainly for testing\&. "
+.ti -1c
+.RI "\fB~LogHandler\fP () override"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "int64_t \fBOpenNewLog\fP (const std::string &logName, StrategyEnums strategy) override"
+.br
+.RI "Opens a new log file, returns the ID of the newly opened log, no EIS\&. "
+.ti -1c
+.RI "int64_t \fBOpenNewLog\fP (const std::string &logName, const std::string &EIS, StrategyEnums strategy) override"
+.br
+.RI "Opens a new log file, returns the ID of the newly opened log\&. "
+.ti -1c
+.RI "void \fBCloseLog\fP (int64_t logID) override"
+.br
+.RI "Closes a log file, based on the logs ID\&. "
+.ti -1c
+.RI "void \fBCloseLog\fP (const std::string &logName) override"
+.br
+.RI "Closes a log file\&. "
+.ti -1c
+.RI "void \fBCloseAllLogs\fP () override"
+.br
+.RI "Closes all Log files\&. "
+.ti -1c
+.RI "void \fBAddMessageToLog\fP (int64_t logID, const std::string &message, logLevel lvl) const override"
+.br
+.RI "Adds a message to a log using the log ID\&. "
+.ti -1c
+.RI "void \fBAddMessageToLog\fP (const std::string &logName, const std::string &message, logLevel lvl) const override"
+.br
+.RI "Adds a message to a log using the logs file name\&. "
+.ti -1c
+.RI "std::shared_ptr< \fBI_LogFile\fP > \fBGetLogFileByID\fP (int64_t logID) const override"
+.br
+.RI "Returns an entire, specific, log based on its ID\&. "
+.ti -1c
+.RI "std::shared_ptr< \fBI_LogFile\fP > \fBGetLogFileByName\fP (const std::string &logName) const override"
+.br
+.RI "Returns an entire, specific, log based on its name\&. "
+.ti -1c
+.RI "void \fBFlushMessagesToStreams\fP () override"
+.br
+.RI "Flush messages to stream\&. "
+.ti -1c
+.RI "void \fBKillHandler\fP () override"
+.br
+.RI "Sets the internal killHandler to false\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 29 of file LogHandler\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LoggerClasses::LogHandler::LogHandler (int maxLogs, const std::string & path)"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxLogs\fP The maxmimum number of logs we can have open at once 
+.br
+\fIpath\fP The Directory to store logs in (will be prepended to log file names 
+.br
+\fIthreadHandler\fP A pointer to a pre-setup threadpool 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file LogHandler\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void LoggerClasses::LogHandler::AddMessageToLog (int64_t logID, const std::string & message, logLevel lvl) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Adds a message to a log using the log ID\&. Adds a message to a currently open lgo based on its ID\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogID\fP The ID of the log to add a message to 
+.br
+\fImessage\fP The message 
+.br
+\fIlvl\fP The level of the log as an enum 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 152 of file LogHandler\&.cpp\&.
+.SS "void LoggerClasses::LogHandler::AddMessageToLog (const std::string & logName, const std::string & message, logLevel lvl) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Adds a message to a log using the logs file name\&. Adds a log message to an open log based on its name\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogName\fP The name of the lgo to add a message to 
+.br
+\fImessage\fP The message 
+.br
+\fIlvl\fP The level of the lgo as an enum 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 176 of file LogHandler\&.cpp\&.
+.SS "void LoggerClasses::LogHandler::CloseAllLogs ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Closes all Log files\&. Close all currently open logs\&. 
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 141 of file LogHandler\&.cpp\&.
+.SS "void LoggerClasses::LogHandler::CloseLog (int64_t logID)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Closes a log file, based on the logs ID\&. Close a log based on its ID\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogID\fP The ID of the lgo to close 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+True 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 120 of file LogHandler\&.cpp\&.
+.SS "void LoggerClasses::LogHandler::CloseLog (const std::string & logName)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Closes a log file\&. Close a log based on its name\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogName\fP The name of the lgo to close 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 134 of file LogHandler\&.cpp\&.
+.SS "void LoggerClasses::LogHandler::FlushMessagesToStreams ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Flush messages to stream\&. Flushes all all messages for logs to their respective streams\&.
+.PP
+Uses a conditional variable to know when there are messages to write 
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 237 of file LogHandler\&.cpp\&.
+.SS "std::shared_ptr< \fBI_LogFile\fP > LoggerClasses::LogHandler::GetLogFileByID (int64_t logID) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns an entire, specific, log based on its ID\&. Returns a pointer to an opened log based on its ID\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogID\fP The ID of the log to return 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to a log or an empty reference 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 196 of file LogHandler\&.cpp\&.
+.SS "std::shared_ptr< \fBI_LogFile\fP > LoggerClasses::LogHandler::GetLogFileByName (const std::string & logName) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns an entire, specific, log based on its name\&. Returns a pointer to an opened log based on its ID\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogName\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to a log or an empty reference 
+.RE
+.PP
+
+.PP
+\fBTodo\fP
+.RS 4
+personalised exceptions 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 216 of file LogHandler\&.cpp\&.
+.SS "void LoggerClasses::LogHandler::KillHandler ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Sets the internal killHandler to false\&. sets the _killHandler member to true, allowing the handler to perform any last cleanup 
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 256 of file LogHandler\&.cpp\&.
+.SS "int64_t LoggerClasses::LogHandler::OpenNewLog (const std::string & logName, StrategyEnums strategy = \fCStrategyEnums::STDOUT\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Opens a new log file, returns the ID of the newly opened log, no EIS\&. Opens a new log without an Extra Information\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogName\fP The name of the new log 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ID of the newly created log 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 79 of file LogHandler\&.cpp\&.
+.SS "int64_t LoggerClasses::LogHandler::OpenNewLog (const std::string & logName, const std::string & EIS, StrategyEnums strategy = \fCStrategyEnums::FSTREAM\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Opens a new log file, returns the ID of the newly opened log\&. Opens a new log\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlogName\fP The name of the log 
+.br
+\fIEIS\fP Extra information to be written to the log 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The ID of the newly created log, -1 on error 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogHandler\fP\&.
+.PP
+Definition at line 92 of file LogHandler\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

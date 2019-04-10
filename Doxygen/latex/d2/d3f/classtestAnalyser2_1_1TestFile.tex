@@ -1,0 +1,187 @@
+\hypertarget{classtestAnalyser2_1_1TestFile}{}\section{test\+Analyser2\+::Test\+File Class Reference}
+\label{classtestAnalyser2_1_1TestFile}\index{testAnalyser2::TestFile@{testAnalyser2::TestFile}}
+
+
+Object representation of a testfile.  
+
+
+
+
+{\ttfamily \#include $<$test\+File.\+h$>$}
+
+
+
+Collaboration diagram for test\+Analyser2\+::Test\+File\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classtestAnalyser2_1_1TestFile_ae626148fab71cd482ab642d555421495}{Get\+Number\+Of\+Data\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Returns the total number of datapoints. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structtestAnalyser2_1_1dataPoint}{data\+Point}} \& \mbox{\hyperlink{classtestAnalyser2_1_1TestFile_a36b227c43962158aa86e17cf888fe515}{Get\+Data\+Point}} (int index)
+\begin{DoxyCompactList}\small\item\em Gets a specific datapoint. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{structtestAnalyser2_1_1dataPoint}{data\+Point}} $>$ \& \mbox{\hyperlink{classtestAnalyser2_1_1TestFile_a547b149d49429a2124245c7e2dccf6e7}{Get\+All\+Data\+Points}} ()
+\begin{DoxyCompactList}\small\item\em Returns a reference to the vector containing all datapoints. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structtestAnalyser2_1_1testConfiguration}{test\+Configuration}} \& \mbox{\hyperlink{classtestAnalyser2_1_1TestFile_a1c5053e9521ad606e2c1361db7c30b70}{Get\+Test\+Configuration}} ()
+\begin{DoxyCompactList}\small\item\em Returns A const reference to the tests configuration information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtestAnalyser2_1_1TestFile_ab0d5ab55a41a9bf4f15f0eb10f945bd3}{Add\+Data\+Point}} (\mbox{\hyperlink{structtestAnalyser2_1_1dataPoint}{data\+Point}} \&new\+DP)
+\begin{DoxyCompactList}\small\item\em Adds a new datapoint to the testcase. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classtestAnalyser2_1_1TestFile_aabedadfa43358f3069e0fe958d7582e7}{Add\+Configuration}} (\mbox{\hyperlink{structtestAnalyser2_1_1testConfiguration}{test\+Configuration}} \&new\+Conf)
+\begin{DoxyCompactList}\small\item\em Adds the configuration to the testcase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Object representation of a testfile. 
+
+Definition at line 24 of file test\+File.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtestAnalyser2_1_1TestFile_aabedadfa43358f3069e0fe958d7582e7}\label{classtestAnalyser2_1_1TestFile_aabedadfa43358f3069e0fe958d7582e7}} 
+\index{testAnalyser2::TestFile@{testAnalyser2::TestFile}!AddConfiguration@{AddConfiguration}}
+\index{AddConfiguration@{AddConfiguration}!testAnalyser2::TestFile@{testAnalyser2::TestFile}}
+\subsubsection{\texorpdfstring{AddConfiguration()}{AddConfiguration()}}
+{\footnotesize\ttfamily void test\+Analyser2\+::\+Test\+File\+::\+Add\+Configuration (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtestAnalyser2_1_1testConfiguration}{test\+Configuration}} \&}]{new\+Conf }\end{DoxyParamCaption})}
+
+
+
+Adds the configuration to the testcase. 
+
+Adds a new testconfiguration to testfile representation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Conf} & The configuration we wish to add\\
+\hline
+{\em new\+Conf} & A reference to the configuration \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 60 of file test\+File.\+cpp.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1TestFile_ab0d5ab55a41a9bf4f15f0eb10f945bd3}\label{classtestAnalyser2_1_1TestFile_ab0d5ab55a41a9bf4f15f0eb10f945bd3}} 
+\index{testAnalyser2::TestFile@{testAnalyser2::TestFile}!AddDataPoint@{AddDataPoint}}
+\index{AddDataPoint@{AddDataPoint}!testAnalyser2::TestFile@{testAnalyser2::TestFile}}
+\subsubsection{\texorpdfstring{AddDataPoint()}{AddDataPoint()}}
+{\footnotesize\ttfamily void test\+Analyser2\+::\+Test\+File\+::\+Add\+Data\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtestAnalyser2_1_1dataPoint}{data\+Point}} \&}]{new\+DP }\end{DoxyParamCaption})}
+
+
+
+Adds a new datapoint to the testcase. 
+
+Adds a new datapoint to the internal vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+DP} & The new datapoint we wish to add\\
+\hline
+{\em new\+DP} & A reference to the new datapoint \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file test\+File.\+cpp.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1TestFile_a547b149d49429a2124245c7e2dccf6e7}\label{classtestAnalyser2_1_1TestFile_a547b149d49429a2124245c7e2dccf6e7}} 
+\index{testAnalyser2::TestFile@{testAnalyser2::TestFile}!GetAllDataPoints@{GetAllDataPoints}}
+\index{GetAllDataPoints@{GetAllDataPoints}!testAnalyser2::TestFile@{testAnalyser2::TestFile}}
+\subsubsection{\texorpdfstring{GetAllDataPoints()}{GetAllDataPoints()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structtestAnalyser2_1_1dataPoint}{data\+Point}} $>$ \& test\+Analyser2\+::\+Test\+File\+::\+Get\+All\+Data\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a reference to the vector containing all datapoints. 
+
+Returns a reference to the entire datapoint object vector.
+
+\begin{DoxyReturn}{Returns}
+A reference to the vector containing all data points
+
+A reference to the entire datapoint object vector 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file test\+File.\+cpp.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1TestFile_a36b227c43962158aa86e17cf888fe515}\label{classtestAnalyser2_1_1TestFile_a36b227c43962158aa86e17cf888fe515}} 
+\index{testAnalyser2::TestFile@{testAnalyser2::TestFile}!GetDataPoint@{GetDataPoint}}
+\index{GetDataPoint@{GetDataPoint}!testAnalyser2::TestFile@{testAnalyser2::TestFile}}
+\subsubsection{\texorpdfstring{GetDataPoint()}{GetDataPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structtestAnalyser2_1_1dataPoint}{data\+Point}} \& test\+Analyser2\+::\+Test\+File\+::\+Get\+Data\+Point (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Gets a specific datapoint. 
+
+Returns a datapoint ref by the index it\textquotesingle{}s stored at.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Which datapoint to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to that datapoint
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em index} & Which datapoint we want \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A datapoint reference 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file test\+File.\+cpp.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1TestFile_ae626148fab71cd482ab642d555421495}\label{classtestAnalyser2_1_1TestFile_ae626148fab71cd482ab642d555421495}} 
+\index{testAnalyser2::TestFile@{testAnalyser2::TestFile}!GetNumberOfDataPoints@{GetNumberOfDataPoints}}
+\index{GetNumberOfDataPoints@{GetNumberOfDataPoints}!testAnalyser2::TestFile@{testAnalyser2::TestFile}}
+\subsubsection{\texorpdfstring{GetNumberOfDataPoints()}{GetNumberOfDataPoints()}}
+{\footnotesize\ttfamily size\+\_\+t test\+Analyser2\+::\+Test\+File\+::\+Get\+Number\+Of\+Data\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the total number of datapoints. 
+
+Returns the amount of data points present.
+
+\begin{DoxyReturn}{Returns}
+The number of datapoints as a size\+\_\+t
+
+a size\+\_\+t with the number of datapoints stored 
+\end{DoxyReturn}
+
+
+Definition at line 19 of file test\+File.\+cpp.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1TestFile_a1c5053e9521ad606e2c1361db7c30b70}\label{classtestAnalyser2_1_1TestFile_a1c5053e9521ad606e2c1361db7c30b70}} 
+\index{testAnalyser2::TestFile@{testAnalyser2::TestFile}!GetTestConfiguration@{GetTestConfiguration}}
+\index{GetTestConfiguration@{GetTestConfiguration}!testAnalyser2::TestFile@{testAnalyser2::TestFile}}
+\subsubsection{\texorpdfstring{GetTestConfiguration()}{GetTestConfiguration()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structtestAnalyser2_1_1testConfiguration}{test\+Configuration}} \& test\+Analyser2\+::\+Test\+File\+::\+Get\+Test\+Configuration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns A const reference to the tests configuration information. 
+
+Returns a const ref to the testconfiguration data.
+
+\begin{DoxyReturn}{Returns}
+A const ref to the object\textquotesingle{}s Configuration data
+
+A const ref to the testconfiguration data 
+\end{DoxyReturn}
+
+
+Definition at line 44 of file test\+File.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/test\+Analyser2/include/test\+Analyser2/test\+File.\+h\item 
+my\+Libraries/test\+Analyser2/src/test\+File.\+cpp\end{DoxyCompactItemize}

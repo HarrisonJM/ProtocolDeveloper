@@ -1,0 +1,134 @@
+.TH "TestRunner::TestRunner" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TestRunner::TestRunner \- \fBTestRunner\fP class\&. 'Implements' a testcase and other settings\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <testRunner\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTestRunner\fP (std::string const &testfilePath, \fBPluginLoader::sharedMap_t\fP< \fBCommunication::I_communication\fP > commsInterfaces_in, \fBPluginLoader::sharedMap_t\fP< \fBProtocol::I_protocolInterface\fP > protocolInterfaces_in, std::unique_ptr< \fBtestAnalyser2::I_TestAnalyser2\fP > TA_in, \fBThreadHandler::ThreadPool\fP &threadPool_in)"
+.br
+.RI "Constructor Sets up the environment\&. "
+.ti -1c
+.RI "\fB~TestRunner\fP ()=default"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "bool \fBBeginTesting\fP ()"
+.br
+.RI "Kicks off the entirety of the testing\&. "
+.ti -1c
+.RI "bool \fBAccessKillThreadHandler\fP (std::optional< bool > newVal)"
+.br
+.RI "Access the internal kill thread handler\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBTestRunner\fP class\&. 'Implements' a testcase and other settings\&. 
+.PP
+Definition at line 56 of file testRunner\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TestRunner::TestRunner::TestRunner (std::string const & testfilePath, \fBPluginLoader::sharedMap_t\fP< \fBCommunication::I_communication\fP > commsInterfaces_in, \fBPluginLoader::sharedMap_t\fP< \fBProtocol::I_protocolInterface\fP > protocolInterfaces_in, std::unique_ptr< \fBtestAnalyser2::I_TestAnalyser2\fP > TA_in, \fBThreadHandler::ThreadPool\fP & threadPool_in)"
+
+.PP
+Constructor Sets up the environment\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItestfilePath\fP The path to the testfile we wish to run 
+.br
+\fIcommsInterfaces_in\fP A reference to the sharedMap of comms interfaces, for searching through 
+.br
+\fIprotocolInterfaces_in\fP A reference to the sharedMap of Protocol Interfaces, for searching through 
+.br
+\fITA_in\fP A unique pointer to the test case analyser 
+.br
+\fIthreadPool_in\fP a reference tot he threadpool we wish to use 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file testRunner\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool TestRunner::TestRunner::AccessKillThreadHandler (std::optional< bool > newVal)"
+
+.PP
+Access the internal kill thread handler\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewVal\fP The new value it should take 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The value fo the killthreadhandler 
+.RE
+.PP
+
+.PP
+Definition at line 115 of file testRunner\&.cpp\&.
+.SS "bool TestRunner::TestRunner::BeginTesting ()"
+
+.PP
+Kicks off the entirety of the testing\&. Will kick off and perform the testing\&.
+.PP
+\fBReturns:\fP
+.RS 4
+True for successful run, otherwise false
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+needs more methods 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true for successful, otherwise false 
+.RE
+.PP
+
+.PP
+\fBTodo\fP
+.RS 4
+Set up multiple interfaces for the threads (if wanted) so put me in a loop 
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Move blocks into templated methods 
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+More plugins (thread handler, etc) 
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+exception for wrong config name 
+.RE
+.PP
+.PP
+\fBTodo\fP
+.RS 4
+Need to separate and edit for changing comms interfaces 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file testRunner\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

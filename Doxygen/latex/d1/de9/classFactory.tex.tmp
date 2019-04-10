@@ -1,0 +1,24 @@
+\hypertarget{classFactory}{}\section{Factory Class Reference}
+\label{classFactory}\index{Factory@{Factory}}
+
+
+Collaboration diagram for Factory\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFactory_aab9dc3ceeb213e413e9350d8f9298d11}\label{classFactory_aab9dc3ceeb213e413e9350d8f9298d11}} 
+{\bfseries Factory} (std\+::string identifier)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Factory.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Apps/spikes/factory\+Spike/Factory.\+h\end{DoxyCompactItemize}

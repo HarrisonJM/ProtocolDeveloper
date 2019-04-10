@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 02/01/19
  */
 
@@ -39,6 +39,7 @@ struct testOperation
 /*!@}*/
 /*!
  * @brief The datapoint itself, with related information
+ * @{
  */
 struct dataPoint
 {
@@ -48,5 +49,5 @@ struct dataPoint
 };
 /*!@}*/
 } /* namespace testAnalyser2 */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_DATAPOINT_H */

@@ -3,9 +3,9 @@
  *
  * The HelloWorldProtocol data generation and decoder, decalration
  *
- * @ingroup Protocol
- *
  * @date March 2018
+ * @addtogroup helloWorldProtocol
+ * @{
  */
 #include <string>
 #include <vector>
@@ -15,7 +15,7 @@
 #ifndef PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
 #define PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H
 
-namespace hwProt
+namespace helloWorldProtocol
 {
 /*!
  * @brief HelloWorldProtocol
@@ -89,6 +89,6 @@ private:
     u_int8_t _curInstance;
 };
 
-}
-
+} /* namespace helloWorldProtocol */
+/*! @} */
 #endif //PROTOCOLDEVELOPER_HELLOWORLDPROTOCOL_H

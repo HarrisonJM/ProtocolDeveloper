@@ -1,0 +1,277 @@
+\hypertarget{classcFunctions_1_1cNetComm}{}\section{c\+Functions\+::c\+Net\+Comm Class Reference}
+\label{classcFunctions_1_1cNetComm}\index{cFunctions::cNetComm@{cFunctions::cNetComm}}
+
+
+\mbox{\hyperlink{classcFunctions_1_1cNetComm}{c\+Net\+Comm}} Header file  
+
+
+
+
+{\ttfamily \#include $<$c\+Net\+Comm.\+h$>$}
+
+
+
+Inheritance diagram for c\+Functions\+::c\+Net\+Comm\+:
+% FIG 0
+
+
+Collaboration diagram for c\+Functions\+::c\+Net\+Comm\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_a960a73814e546f66af314a28ab2ef2ed}\label{classcFunctions_1_1cNetComm_a960a73814e546f66af314a28ab2ef2ed}} 
+\mbox{\hyperlink{classcFunctions_1_1cNetComm_a960a73814e546f66af314a28ab2ef2ed}{c\+Net\+Comm}} ()=default
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_a865ea043762ab7146e262e9501be9dbe}\label{classcFunctions_1_1cNetComm_a865ea043762ab7146e262e9501be9dbe}} 
+\mbox{\hyperlink{classcFunctions_1_1cNetComm_a865ea043762ab7146e262e9501be9dbe}{$\sim$c\+Net\+Comm}} ()=default
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+ssize\+\_\+t \mbox{\hyperlink{classcFunctions_1_1cNetComm_a774fa4628c85b0410a481ff0acc59272}{send\+To}} (int sockfd, const void $\ast$buf, size\+\_\+t len, int flags) override
+\begin{DoxyCompactList}\small\item\em man 2 send \end{DoxyCompactList}\item 
+ssize\+\_\+t \mbox{\hyperlink{classcFunctions_1_1cNetComm_a23c32fc6d414973d9c868f047db6d1f0}{recv\+From}} (int sockfd, void $\ast$buf, size\+\_\+t len, int flags) override
+\begin{DoxyCompactList}\small\item\em man 2 recv \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classcFunctions_1_1cNetComm_acca23e81b8cdf8d9a46b46564f76cf3a}{close\+Connection}} (int fd) override
+\begin{DoxyCompactList}\small\item\em man 2 close \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classcFunctions_1_1cNetComm_a131fdff9c6242f5b7df5dc82b1ece91c}{getaddressinfo}} (const char $\ast$node, const char $\ast$service, const struct addrinfo $\ast$hints, struct addrinfo $\ast$$\ast$res) override
+\begin{DoxyCompactList}\small\item\em man 3 getaddrinfo \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classcFunctions_1_1cNetComm_aa4fb33283f7eebf80bc3abb0a2bb2dac}{freeaddressinfo}} (struct addrinfo $\ast$res) override
+\begin{DoxyCompactList}\small\item\em man 3 freeadrinfo \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classcFunctions_1_1cNetComm_a793b0e945651f4683fd87690eb9d30e5}{create\+Socket}} (int domain, int type, int protocol) override
+\begin{DoxyCompactList}\small\item\em man 2 socket \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classcFunctions_1_1cNetComm_ad335c59729ab2c48dd380bf7d1c82413}{connect\+To\+Remote}} (int sockfd, const struct sockaddr $\ast$addr, socklen\+\_\+t addrlen) override
+\begin{DoxyCompactList}\small\item\em man 2 remote \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{classcFunctions_1_1cNetComm}{c\+Net\+Comm}} Header file 
+
+Definition at line 19 of file c\+Net\+Comm.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_acca23e81b8cdf8d9a46b46564f76cf3a}\label{classcFunctions_1_1cNetComm_acca23e81b8cdf8d9a46b46564f76cf3a}} 
+\index{cFunctions::cNetComm@{cFunctions::cNetComm}!closeConnection@{closeConnection}}
+\index{closeConnection@{closeConnection}!cFunctions::cNetComm@{cFunctions::cNetComm}}
+\subsubsection{\texorpdfstring{closeConnection()}{closeConnection()}}
+{\footnotesize\ttfamily int c\+Functions\+::c\+Net\+Comm\+::close\+Connection (\begin{DoxyParamCaption}\item[{int}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+man 2 close 
+
+Wrapper for C function close()
+
+
+\begin{DoxyParams}{Parameters}
+{\em fd} & The File descriptor for the socket we wish to close \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, else -\/1 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a810c3bf6177a1c538bc491d4ef87fd0e}{c\+Functions\+::\+I\+\_\+c\+Net\+Comm}}.
+
+
+
+Definition at line 57 of file c\+Net\+Comm.\+cpp.
+
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_ad335c59729ab2c48dd380bf7d1c82413}\label{classcFunctions_1_1cNetComm_ad335c59729ab2c48dd380bf7d1c82413}} 
+\index{cFunctions::cNetComm@{cFunctions::cNetComm}!connectToRemote@{connectToRemote}}
+\index{connectToRemote@{connectToRemote}!cFunctions::cNetComm@{cFunctions::cNetComm}}
+\subsubsection{\texorpdfstring{connectToRemote()}{connectToRemote()}}
+{\footnotesize\ttfamily int c\+Functions\+::c\+Net\+Comm\+::connect\+To\+Remote (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{const struct sockaddr $\ast$}]{addr,  }\item[{socklen\+\_\+t}]{addrlen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+man 2 remote 
+
+Wrapper for C function connect()
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The socket file descriptor for us to communicate on \\
+\hline
+{\em addr} & \\
+\hline
+{\em addrlen} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a89b4fec152062739d3836bec997cfcdf}{c\+Functions\+::\+I\+\_\+c\+Net\+Comm}}.
+
+
+
+Definition at line 109 of file c\+Net\+Comm.\+cpp.
+
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_a793b0e945651f4683fd87690eb9d30e5}\label{classcFunctions_1_1cNetComm_a793b0e945651f4683fd87690eb9d30e5}} 
+\index{cFunctions::cNetComm@{cFunctions::cNetComm}!createSocket@{createSocket}}
+\index{createSocket@{createSocket}!cFunctions::cNetComm@{cFunctions::cNetComm}}
+\subsubsection{\texorpdfstring{createSocket()}{createSocket()}}
+{\footnotesize\ttfamily int c\+Functions\+::c\+Net\+Comm\+::create\+Socket (\begin{DoxyParamCaption}\item[{int}]{domain,  }\item[{int}]{type,  }\item[{int}]{protocol }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+man 2 socket 
+
+Wrapper for C function socket()
+
+
+\begin{DoxyParams}{Parameters}
+{\em domain} & The ai\+\_\+family \\
+\hline
+{\em type} & The ai\+\_\+socktype \\
+\hline
+{\em protocol} & ai\+\_\+protocol \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new socket file descriptor for us to use to communicate 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a42e9b904f7916677f0c1fe144f1471a8}{c\+Functions\+::\+I\+\_\+c\+Net\+Comm}}.
+
+
+
+Definition at line 94 of file c\+Net\+Comm.\+cpp.
+
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_aa4fb33283f7eebf80bc3abb0a2bb2dac}\label{classcFunctions_1_1cNetComm_aa4fb33283f7eebf80bc3abb0a2bb2dac}} 
+\index{cFunctions::cNetComm@{cFunctions::cNetComm}!freeaddressinfo@{freeaddressinfo}}
+\index{freeaddressinfo@{freeaddressinfo}!cFunctions::cNetComm@{cFunctions::cNetComm}}
+\subsubsection{\texorpdfstring{freeaddressinfo()}{freeaddressinfo()}}
+{\footnotesize\ttfamily void c\+Functions\+::c\+Net\+Comm\+::freeaddressinfo (\begin{DoxyParamCaption}\item[{struct addrinfo $\ast$}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+man 3 freeadrinfo 
+
+Wrapper for C function freeaddrinfo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em res} & The linked list result we wish to free \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_ae008e99e178efaa2c4f389c54e350d67}{c\+Functions\+::\+I\+\_\+c\+Net\+Comm}}.
+
+
+
+Definition at line 83 of file c\+Net\+Comm.\+cpp.
+
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_a131fdff9c6242f5b7df5dc82b1ece91c}\label{classcFunctions_1_1cNetComm_a131fdff9c6242f5b7df5dc82b1ece91c}} 
+\index{cFunctions::cNetComm@{cFunctions::cNetComm}!getaddressinfo@{getaddressinfo}}
+\index{getaddressinfo@{getaddressinfo}!cFunctions::cNetComm@{cFunctions::cNetComm}}
+\subsubsection{\texorpdfstring{getaddressinfo()}{getaddressinfo()}}
+{\footnotesize\ttfamily int c\+Functions\+::c\+Net\+Comm\+::getaddressinfo (\begin{DoxyParamCaption}\item[{const char $\ast$}]{node,  }\item[{const char $\ast$}]{service,  }\item[{const struct addrinfo $\ast$}]{hints,  }\item[{struct addrinfo $\ast$$\ast$}]{res }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+man 3 getaddrinfo 
+
+Wrapper for C function getaddrinfo.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & A pointer to the address of the remote we wish to connect to \\
+\hline
+{\em service} & The port we wish to connect on \\
+\hline
+{\em hints} & Any hints we want to supply to get a more specific address range \\
+\hline
+{\em res} & The resultant struct of addresses as a linked list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, or a non-\/zero error code\+: getaddrinfo(3) 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a5b15d4349da4b0bc25a3c5f9cf9965f3}{c\+Functions\+::\+I\+\_\+c\+Net\+Comm}}.
+
+
+
+Definition at line 69 of file c\+Net\+Comm.\+cpp.
+
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_a23c32fc6d414973d9c868f047db6d1f0}\label{classcFunctions_1_1cNetComm_a23c32fc6d414973d9c868f047db6d1f0}} 
+\index{cFunctions::cNetComm@{cFunctions::cNetComm}!recvFrom@{recvFrom}}
+\index{recvFrom@{recvFrom}!cFunctions::cNetComm@{cFunctions::cNetComm}}
+\subsubsection{\texorpdfstring{recvFrom()}{recvFrom()}}
+{\footnotesize\ttfamily ssize\+\_\+t c\+Functions\+::c\+Net\+Comm\+::recv\+From (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{void $\ast$}]{buf,  }\item[{size\+\_\+t}]{len,  }\item[{int}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+man 2 recv 
+
+Wrapper for C function recv()
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The File Descriptor of where we wish to send the packet \\
+\hline
+{\em buf} & The Packet itself \\
+\hline
+{\em len} & The size of the packet \\
+\hline
+{\em flags} & Additional information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes sent, -\/1 on error 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_ab23fbd92da6dc7deeab4e3a5327843dc}{c\+Functions\+::\+I\+\_\+c\+Net\+Comm}}.
+
+
+
+Definition at line 42 of file c\+Net\+Comm.\+cpp.
+
+\mbox{\Hypertarget{classcFunctions_1_1cNetComm_a774fa4628c85b0410a481ff0acc59272}\label{classcFunctions_1_1cNetComm_a774fa4628c85b0410a481ff0acc59272}} 
+\index{cFunctions::cNetComm@{cFunctions::cNetComm}!sendTo@{sendTo}}
+\index{sendTo@{sendTo}!cFunctions::cNetComm@{cFunctions::cNetComm}}
+\subsubsection{\texorpdfstring{sendTo()}{sendTo()}}
+{\footnotesize\ttfamily ssize\+\_\+t c\+Functions\+::c\+Net\+Comm\+::send\+To (\begin{DoxyParamCaption}\item[{int}]{sockfd,  }\item[{const void $\ast$}]{buf,  }\item[{size\+\_\+t}]{len,  }\item[{int}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+man 2 send 
+
+Wrapper for C function send()
+
+
+\begin{DoxyParams}{Parameters}
+{\em sockfd} & The File Descriptor of where we wish to send the packet \\
+\hline
+{\em buf} & The Packet itself \\
+\hline
+{\em len} & The size of the packet \\
+\hline
+{\em flags} & Additional information \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes sent, -\/1 on error 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a2cea510561ce6bb715730a80376c2313}{c\+Functions\+::\+I\+\_\+c\+Net\+Comm}}.
+
+
+
+Definition at line 24 of file c\+Net\+Comm.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/free\+Functions\+And\+Wrappers/include/free\+Functions\+And\+Wrappers/c\+Net\+Comm.\+h\item 
+my\+Libraries/free\+Functions\+And\+Wrappers/src/c\+Net\+Comm.\+cpp\end{DoxyCompactItemize}

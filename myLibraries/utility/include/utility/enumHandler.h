@@ -3,7 +3,10 @@
  *
  * Registers a series of enum values and their string equivalents
  *
- * @addtogroup Utility
+ * @addtogroup utility
+ * @{
+ * @addtogroup enumHandler
+ * @{
  *
  * @date 10/08/18
  */
@@ -58,6 +61,6 @@ private:
      */
     std::map<K, V> _keyPairs;
 };
-} /* namespace SafeContainers */
-
+} /* namespace safeContainers */
+/*! @} @} */
 #endif //PROTOCOLDEVELOPER_ENUMHANDLER_H

@@ -2,13 +2,13 @@
  * @brief testThreadPool class handles all the systems tasks by adding any jobs
  * to the task queue and threads will pick  up tasks to complete as necessary
  *
- * @addtogroup thread handler
- *
+ * @addtogroup threadPool
+ * @{
  */
 #include "threadPool/ThreadPool.h"
 #include "WorkerThread.h"
 
-namespace ThreadHandler
+namespace threadPool
 {
 /*!
  * @brief Constructor
@@ -74,4 +74,5 @@ int ThreadPool::GetFreeWorkers()
 {
     return _threads.size();
 }
-} /* namespace ThreadHandler */
+/*! @} */
+} /* namespace threadPool */

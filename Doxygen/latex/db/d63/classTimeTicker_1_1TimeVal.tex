@@ -1,0 +1,164 @@
+\hypertarget{classTimeTicker_1_1TimeVal}{}\section{Time\+Ticker\+::Time\+Val Class Reference}
+\label{classTimeTicker_1_1TimeVal}\index{TimeTicker::TimeVal@{TimeTicker::TimeVal}}
+
+
+Inheritance diagram for Time\+Ticker\+::Time\+Val\+:
+% FIG 0
+
+
+Collaboration diagram for Time\+Ticker\+::Time\+Val\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimeTicker_1_1TimeVal_a9fe049b689b43d8f5ab38ee703d6a18a}\label{classTimeTicker_1_1TimeVal_a9fe049b689b43d8f5ab38ee703d6a18a}} 
+\mbox{\hyperlink{classTimeTicker_1_1TimeVal_a9fe049b689b43d8f5ab38ee703d6a18a}{Time\+Val}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTimeTicker_1_1TimeVal_a21338e34d06fba75217223f8239c2c20}{Time\+Val}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classTimeTicker_1_1I__gMTHandler}{I\+\_\+g\+M\+T\+Handler}} $>$ gmt\+Handler, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1I__cStdio}{c\+Functions\+::\+I\+\_\+c\+Stdio}} $>$ stdio\+Module)
+\begin{DoxyCompactList}\small\item\em Allows the underlying modules to be swapped out with something more non-\/standard. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classTimeTicker_1_1TimeVal_a7f874b58b0af4de06be9426ab43f3a0d}{get\+Time\+Stamp\+Micro}} () override
+\begin{DoxyCompactList}\small\item\em Returns a char string containing a timestamp generated using struct timeval (Microsecond Precision) \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classTimeTicker_1_1TimeVal_a9a5456bb38407bc436649431e3f026b1}{get\+Timestamp\+Milli}} () override
+\begin{DoxyCompactList}\small\item\em Returns a char string containing a timestamp generated using struct timeval (Millisecond Precision) \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classTimeTicker_1_1TimeVal_ae62b5b5a2ddd13f44394a4ef62c4a5d7}{get\+String\+Micro}} (const struct timeval $\ast$tv) override
+\begin{DoxyCompactList}\small\item\em Returns a char string containing a timestamp generated using struct timeval. \end{DoxyCompactList}\item 
+T\+T\+Ret\+Code \mbox{\hyperlink{classTimeTicker_1_1TimeVal_a1f3e870f512f586fd529173c0cf47874}{Print\+Generalized\+Time}} (const T\+T\+\_\+tm\+\_\+t $\ast$tm\+\_\+p, unsigned int $\ast$microsecs\+\_\+p, unsigned int fraction\+Digits, char $\ast$buf\+\_\+p, size\+\_\+t buf\+Size)
+\begin{DoxyCompactList}\small\item\em Prints the time given in tm\+\_\+p according to R\+FC 4517 (Y\+Y\+Y\+Y\+M\+M\+D\+D\+H\+H\+M\+M\+SS\mbox{[}.fff\mbox{]}\mbox{[}Z$\vert$\mbox{[}+-\/\mbox{]}hhmm\mbox{]}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 29 of file time\+Val.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimeTicker_1_1TimeVal_a21338e34d06fba75217223f8239c2c20}\label{classTimeTicker_1_1TimeVal_a21338e34d06fba75217223f8239c2c20}} 
+\index{TimeTicker::TimeVal@{TimeTicker::TimeVal}!TimeVal@{TimeVal}}
+\index{TimeVal@{TimeVal}!TimeTicker::TimeVal@{TimeTicker::TimeVal}}
+\subsubsection{\texorpdfstring{TimeVal()}{TimeVal()}}
+{\footnotesize\ttfamily Time\+Ticker\+::\+Time\+Val\+::\+Time\+Val (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classTimeTicker_1_1I__gMTHandler}{I\+\_\+g\+M\+T\+Handler}} $>$}]{gmt\+Handler,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1I__cStdio}{c\+Functions\+::\+I\+\_\+c\+Stdio}} $>$}]{stdio\+Module }\end{DoxyParamCaption})}
+
+
+
+Allows the underlying modules to be swapped out with something more non-\/standard. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gmt\+Handler} & The gmt Handler we wish to use \\
+\hline
+{\em stdio\+Module} & The stdio module we wish to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file time\+Val.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimeTicker_1_1TimeVal_ae62b5b5a2ddd13f44394a4ef62c4a5d7}\label{classTimeTicker_1_1TimeVal_ae62b5b5a2ddd13f44394a4ef62c4a5d7}} 
+\index{TimeTicker::TimeVal@{TimeTicker::TimeVal}!getStringMicro@{getStringMicro}}
+\index{getStringMicro@{getStringMicro}!TimeTicker::TimeVal@{TimeTicker::TimeVal}}
+\subsubsection{\texorpdfstring{getStringMicro()}{getStringMicro()}}
+{\footnotesize\ttfamily const char $\ast$ Time\+Ticker\+::\+Time\+Val\+::get\+String\+Micro (\begin{DoxyParamCaption}\item[{const struct timeval $\ast$}]{tv }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns a char string containing a timestamp generated using struct timeval. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tv} & The timeval struct we wish to get the time for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The timestamp in Y\+Y\+Y\+Y-\/\+M\+M-\/\+DD H\+H\+:\+MM\+:S\+S.\+F\+FF\mbox{[}(+$\vert$-\/\+H\+H\+MM)$\vert$Z\mbox{]} 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classTimeTicker_1_1TimeTicker}{Time\+Ticker\+::\+Time\+Ticker}}.
+
+
+
+Definition at line 77 of file time\+Val.\+cpp.
+
+\mbox{\Hypertarget{classTimeTicker_1_1TimeVal_a7f874b58b0af4de06be9426ab43f3a0d}\label{classTimeTicker_1_1TimeVal_a7f874b58b0af4de06be9426ab43f3a0d}} 
+\index{TimeTicker::TimeVal@{TimeTicker::TimeVal}!getTimeStampMicro@{getTimeStampMicro}}
+\index{getTimeStampMicro@{getTimeStampMicro}!TimeTicker::TimeVal@{TimeTicker::TimeVal}}
+\subsubsection{\texorpdfstring{getTimeStampMicro()}{getTimeStampMicro()}}
+{\footnotesize\ttfamily const char $\ast$ Time\+Ticker\+::\+Time\+Val\+::get\+Time\+Stamp\+Micro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns a char string containing a timestamp generated using struct timeval (Microsecond Precision) 
+
+\begin{DoxyReturn}{Returns}
+The timestamp in Y\+Y\+Y\+Y-\/\+M\+M-\/\+DD H\+H\+:\+MM\+:S\+S.\+F\+FF\mbox{[}(+$\vert$-\/\+H\+H\+MM)$\vert$Z\mbox{]} 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classTimeTicker_1_1TimeTicker}{Time\+Ticker\+::\+Time\+Ticker}}.
+
+
+
+Definition at line 47 of file time\+Val.\+cpp.
+
+\mbox{\Hypertarget{classTimeTicker_1_1TimeVal_a9a5456bb38407bc436649431e3f026b1}\label{classTimeTicker_1_1TimeVal_a9a5456bb38407bc436649431e3f026b1}} 
+\index{TimeTicker::TimeVal@{TimeTicker::TimeVal}!getTimestampMilli@{getTimestampMilli}}
+\index{getTimestampMilli@{getTimestampMilli}!TimeTicker::TimeVal@{TimeTicker::TimeVal}}
+\subsubsection{\texorpdfstring{getTimestampMilli()}{getTimestampMilli()}}
+{\footnotesize\ttfamily const char $\ast$ Time\+Ticker\+::\+Time\+Val\+::get\+Timestamp\+Milli (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns a char string containing a timestamp generated using struct timeval (Millisecond Precision) 
+
+\begin{DoxyReturn}{Returns}
+The timestamp in Y\+Y\+Y\+Y-\/\+M\+M-\/\+DD H\+H\+:\+MM\+:S\+S.\+F\+FF\mbox{[}(+$\vert$-\/\+H\+H\+MM)$\vert$Z\mbox{]} 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classTimeTicker_1_1TimeTicker}{Time\+Ticker\+::\+Time\+Ticker}}.
+
+
+
+Definition at line 62 of file time\+Val.\+cpp.
+
+\mbox{\Hypertarget{classTimeTicker_1_1TimeVal_a1f3e870f512f586fd529173c0cf47874}\label{classTimeTicker_1_1TimeVal_a1f3e870f512f586fd529173c0cf47874}} 
+\index{TimeTicker::TimeVal@{TimeTicker::TimeVal}!PrintGeneralizedTime@{PrintGeneralizedTime}}
+\index{PrintGeneralizedTime@{PrintGeneralizedTime}!TimeTicker::TimeVal@{TimeTicker::TimeVal}}
+\subsubsection{\texorpdfstring{PrintGeneralizedTime()}{PrintGeneralizedTime()}}
+{\footnotesize\ttfamily T\+T\+Ret\+Code Time\+Ticker\+::\+Time\+Val\+::\+Print\+Generalized\+Time (\begin{DoxyParamCaption}\item[{const T\+T\+\_\+tm\+\_\+t $\ast$}]{tm\+\_\+p,  }\item[{unsigned int $\ast$}]{microsecs\+\_\+p,  }\item[{unsigned int}]{fraction\+Digits,  }\item[{char $\ast$}]{buf\+\_\+p,  }\item[{size\+\_\+t}]{buf\+Size }\end{DoxyParamCaption})}
+
+
+
+Prints the time given in tm\+\_\+p according to R\+FC 4517 (Y\+Y\+Y\+Y\+M\+M\+D\+D\+H\+H\+M\+M\+SS\mbox{[}.fff\mbox{]}\mbox{[}Z$\vert$\mbox{[}+-\/\mbox{]}hhmm\mbox{]}) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tm\+\_\+p} & The tm struct we wish to use (that contains the time) \\
+\hline
+{\em microsecs\+\_\+p} & Where the microseconds are located \\
+\hline
+{\em fraction\+Digits} & How many places after the DP do we want \\
+\hline
+{\em buf\+\_\+p} & Where to store the time stamp \\
+\hline
+{\em buf\+Size} & How large is the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false for failure, true on success 
+\end{DoxyReturn}
+
+
+Definition at line 154 of file time\+Val.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/time\+Ticker/include/time\+Ticker/time\+Val.\+h\item 
+my\+Libraries/time\+Ticker/src/time\+Val.\+cpp\end{DoxyCompactItemize}

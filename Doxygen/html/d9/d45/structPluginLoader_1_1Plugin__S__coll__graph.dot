@@ -1,0 +1,8 @@
+digraph "PluginLoader::Plugin_S&lt; TypeToReturn &gt;"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{PluginLoader::Plugin\l_S\< TypeToReturn \>\n|+ _getPluginName\l+ _getPluginVersion\l+ _getPluginType\l+ _newPlugin\l+ _libHandle\l|+ Plugin_S()\l+ ~Plugin_S()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+}

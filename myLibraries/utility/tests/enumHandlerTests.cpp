@@ -1,9 +1,12 @@
 /*!
- * @brief
+ * @brief Tests the enum handler class
  *
  * @author hmarcks
  *
- * @addtogroup
+ * @addtogroup utility
+ * @{
+ * @addtogroup tests
+ * @{
  *
  * @date 22/02/19
  */
@@ -38,10 +41,11 @@ TEST_F(EnumHandlerFixture
     eh.RegisterEnum(testEnum2, "testEnum2");
     eh.RegisterEnum(testEnum3, "testEnum3");
 
-    ASSERT_EQ(eh.getValue(testEnum2), "testEnum2");
-    ASSERT_EQ(eh.getValue(testEnum3), "testEnum3");
-    ASSERT_EQ(eh.getValue(testEnum1), "testEnum1");
+    EXPECT_EQ(eh.getValue(testEnum2), "testEnum2");
+    EXPECT_EQ(eh.getValue(testEnum3), "testEnum3");
+    EXPECT_EQ(eh.getValue(testEnum1), "testEnum1");
 }
 
 
 } /* namespace utility */
+/*! @} */

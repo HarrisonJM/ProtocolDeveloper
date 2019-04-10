@@ -7,7 +7,7 @@
  * @author hmarcks
  *
  * @addtogroup logger
- *
+ * @{
  * @todo Add register method So that users can add their own handling strategy
  */
 
@@ -21,33 +21,64 @@
 #include "logger/loggerUtility.h"
 #include "I_LogStrategy.h"
 
-namespace LoggerClasses {
+namespace logger
+{
 
-class LogHandlerStrategy : public I_LogStrategy
+class LogHandlerStrategy
+    : public I_LogStrategy
 {
 public:
     //! Constructor
     explicit LogHandlerStrategy() = default;
-    //! Switchcase, strategy selector
+    /*!
+     * @brief returns the desired std::ostream base based on a StrategyEnum
+     * @param strat The strategy we wish to select
+     * @param fileName The filename of the file we wish to open
+     * @return A unique_ptr contining the stream we wish to use
+     */
     std::unique_ptr<std::ostream> returnOstream(StrategyEnums strat
                                                 , const std::string& fileName) const override;
 private:
-    //! Fstream factory
+    /*!
+     * @brief setsup a filestream for use
+     * @param fileName the filename of the log
+     * @return A unique_ptr contianing the filestream
+     */
     std::unique_ptr<std::ostream> setupFstream(const std::string& fileName) const;
-    //! String String factory
+    /*!
+     * @brief String stream factory
+     * @return A unique_ptr contianing the stringstream
+     */
     std::unique_ptr<std::ostream> setupSStream() const;
-    //! Stream to stderr
+    /*!
+     * @brief stderr stream factory
+     * @return A unique_ptr contianing the stderr
+     */
     std::unique_ptr<std::ostream> setupSTDERR() const;
-    //! Stream to stdout
+    /*!
+     * @brief stderr stream factory
+     * @return A unique_ptr contianing the stdout
+     */
     std::unique_ptr<std::ostream> setupSTDOUT() const;
 
     //! overloads << to allow streaming to stdout/stderr, may not work
-    class overloadStreamForSTD : public std::ostream
+    class overloadStreamForSTD
+        : public std::ostream
     {
     public:
+        /*!
+         * @brief Constructor for the overload stream package
+         * @param oStream_in The ostream we wish to pass in
+         */
         overloadStreamForSTD(std::ostream* oStream_in)
-        : _outStrategy(oStream_in)
-        { }
+            : _outStrategy(oStream_in)
+        {}
+        /*!
+         * @brief operator<< overload
+         * @tparam T The type the output should take
+         * @param message The message we wish to print
+         * @return A reference to the stream
+         */
         template<class T>
         overloadStreamForSTD& operator<<(const T& message)
         {
@@ -55,13 +86,23 @@ private:
             return *this;
         }
     private:
+        //! A pointer to the ostream we want to use
         std::ostream* _outStrategy;
     };
-
-    //! overloads specifically for stdout, stuff and things
-    class stdoutStream : public std::ostream
+    /*!
+     * @brief Constructor for the overload stream package
+     * @param oStream_in The ostream we wish to pass in
+     */
+    class stdoutStream
+        : public std::ostream
     {
     public:
+        /*!
+         * @brief operator<< overload
+         * @tparam T The type the output should take
+         * @param message The message we wish to print
+         * @return A reference to the stream
+         */
         template<class T>
         stdoutStream& operator<<(const T& obj)
         {
@@ -71,5 +112,6 @@ private:
     };
 };
 
-} /* namespace LoggerClasses */
+} /* namespace logger */
+/*! @} */
 #endif //PROTOCOLDEVELOPER_LOGHANDLERSTRATEGY_H

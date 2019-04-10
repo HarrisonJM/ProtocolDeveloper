@@ -1,0 +1,197 @@
+.TH "testAnalyser2::I_RapidAbstract" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+testAnalyser2::I_RapidAbstract
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual const char * \fBGetCurrentNodeName\fP ()=0"
+.br
+.RI "Gets the current node name\&. "
+.ti -1c
+.RI "virtual bool \fBMoveToNextNode\fP ()=0"
+.br
+.RI "Moves to the next node (straight downly) "
+.ti -1c
+.RI "virtual const char * \fBGetNodeValue\fP ()=0"
+.br
+.RI "Gets the Node's data (for a node_data type) "
+.ti -1c
+.RI "virtual std::size_t \fBGetNodeValueSize\fP ()=0"
+.br
+.RI "Returns the size of the nodes value\&. "
+.ti -1c
+.RI "virtual bool \fBMoveToChild\fP ()=0"
+.br
+.RI "Moves to the child node (diagonally) "
+.ti -1c
+.RI "virtual void \fBExitChild\fP ()=0"
+.br
+.RI "Returns to the previous highest node\&. "
+.ti -1c
+.RI "virtual bool \fBSelectAttribute\fP ()=0"
+.br
+.RI "Selects an attribute to start reading that\&. "
+.ti -1c
+.RI "virtual bool \fBMoveToNextAttribute\fP ()=0"
+.br
+.RI "Gets the next attribute in a node\&. "
+.ti -1c
+.RI "virtual const char * \fBGetAttributeName\fP ()=0"
+.br
+.RI "Gets the attribute's name\&. "
+.ti -1c
+.RI "virtual const char * \fBGetAttributeValue\fP ()=0"
+.br
+.RI "Gets the attribute's value\&. "
+.ti -1c
+.RI "virtual rapidxml::node_type \fBGetCurrentNodeType\fP ()=0"
+.br
+.RI "Returns the current node's type\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 24 of file I_RapidAbstract\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual const char* testAnalyser2::I_RapidAbstract::GetAttributeName ()\fC [pure virtual]\fP"
+
+.PP
+Gets the attribute's name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A char* contianing the node name 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual const char* testAnalyser2::I_RapidAbstract::GetAttributeValue ()\fC [pure virtual]\fP"
+
+.PP
+Gets the attribute's value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A char* contianing the node name 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual const char* testAnalyser2::I_RapidAbstract::GetCurrentNodeName ()\fC [pure virtual]\fP"
+
+.PP
+Gets the current node name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A char* contianing the node name 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual rapidxml::node_type testAnalyser2::I_RapidAbstract::GetCurrentNodeType ()\fC [pure virtual]\fP"
+
+.PP
+Returns the current node's type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The node type that we have encountered as a rapidxml::node_type::[type] 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual const char* testAnalyser2::I_RapidAbstract::GetNodeValue ()\fC [pure virtual]\fP"
+
+.PP
+Gets the Node's data (for a node_data type) 
+.PP
+\fBReturns:\fP
+.RS 4
+const char* containg the data 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual std::size_t testAnalyser2::I_RapidAbstract::GetNodeValueSize ()\fC [pure virtual]\fP"
+
+.PP
+Returns the size of the nodes value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+the size of the value in the node 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual bool testAnalyser2::I_RapidAbstract::MoveToChild ()\fC [pure virtual]\fP"
+
+.PP
+Moves to the child node (diagonally) 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success, otherwise false 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual bool testAnalyser2::I_RapidAbstract::MoveToNextAttribute ()\fC [pure virtual]\fP"
+
+.PP
+Gets the next attribute in a node\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success, otherwise false 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual bool testAnalyser2::I_RapidAbstract::MoveToNextNode ()\fC [pure virtual]\fP"
+
+.PP
+Moves to the next node (straight downly) 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success, otherwise false 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+.SS "virtual bool testAnalyser2::I_RapidAbstract::SelectAttribute ()\fC [pure virtual]\fP"
+
+.PP
+Selects an attribute to start reading that\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success, otherwise false 
+.RE
+.PP
+
+.PP
+Implemented in \fBtestAnalyser2::RapidAbstract\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

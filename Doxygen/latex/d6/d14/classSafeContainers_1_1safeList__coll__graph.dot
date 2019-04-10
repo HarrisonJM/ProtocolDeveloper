@@ -1,0 +1,8 @@
+digraph "SafeContainers::safeList&lt; T &gt;"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node3 [label="{SafeContainers::safeList\< T \>\n||+ safeList()\l+ safeList()\l+ ~safeList()\l+ push_front()\l+ push_front()\l+ pop_front()\l+ push_back()\l+ push_back()\l+ pop_back()\l+ front()\l+ back()\l+ empty()\l+ size()\l+ max_size()\l+ merge()\l+ merge()\l+ begin()\l+ end()\l+ cbegin()\l+ cend()\l+ getList()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="A thread safe queue."];
+}

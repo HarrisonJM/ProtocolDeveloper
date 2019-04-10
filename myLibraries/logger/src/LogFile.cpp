@@ -5,7 +5,8 @@
  *
  * @date 08/07/18
  *
- * @addtogroup LoggerClasses
+ * @addtogroup logger
+ * @{
  */
 
 #include <ostream>
@@ -16,7 +17,7 @@
 #include "utility/utility.h"
 #include "LogFile.h"
 
-namespace LoggerClasses
+namespace logger
 {
 /*!
  * @brief constructor
@@ -84,7 +85,8 @@ void LogFile::WriteAllMessagesToStream()
     {
         std::string message;
         _messagesToWrite.pop_front(message);
-        (*_logOutStream).operator<<(message.c_str());
+        *_logOutStream << message;
+//        (*_logOutStream).operator<<(message.c_str()); <---- unit tests fail when using this
     }
 }
 /*!
@@ -177,5 +179,5 @@ std::string LogFile::extractEIS(std::string& EISref)
 
     return returnVal;
 }
-} /* namespace LoggerClass */
-
+} /* namespace logger */
+/*! @} */

@@ -12,7 +12,8 @@
  *
  * @author hmarcks
  *
- * @addtogroup Test Runner
+ * @addtogroup testRunner
+ * @{
  *
  * @date 13/01/19
  */
@@ -21,18 +22,20 @@
 #define PROTOCOLDEVELOPER_TESTRUNNER_H
 
 #include <string>
+#include <boost/system/error_code.hpp>
 
 #include <I_communication.h>
 #include <I_protocolInterface.h>
 #include <I_TestAnalyser2.h>
 
-#include <pluginLoader/pluginLoader.h>
-#include <boost/system/error_code.hpp>
+#include <I_testRunner.h>
 
+#include <pluginLoader/pluginLoader.h>
 #include <threadPool/ThreadPool.h>
+
 #include <utility/threadSafeT.h>
 
-namespace TestRunner
+namespace testRunner
 {
 class TestThread;
 /*!
@@ -54,6 +57,7 @@ enum missingCodes_e
  * @brief TestRunner class. "Implements" a testcase and other settings
  */
 class TestRunner
+    : public I_testRunner
 {
 public:
     /*!
@@ -63,6 +67,7 @@ public:
      * @param protocolInterfaces_in A reference to the sharedMap of Protocol Interfaces, for searching through
      * @param TA_in A unique pointer to the test case analyser
      * @param threadPool_in a reference tot he threadpool we wish to use
+     * @param loggerID The ID of the logger we wish to use
      */
     TestRunner(std::string const& testfilePath
                , pluginLoader::sharedMap_t<
@@ -70,7 +75,7 @@ public:
                , pluginLoader::sharedMap_t<
         Protocol::I_protocolInterface> protocolInterfaces_in
                , std::unique_ptr<testAnalyser2::I_TestAnalyser2> TA_in
-               , ThreadHandler::ThreadPool& threadPool_in
+               , threadPool::ThreadPool& threadPool_in
                , int64_t loggerID);
     /*!
      * @brief Destructor
@@ -80,13 +85,13 @@ public:
      * @brief Kicks off the entirety of the testing
      * @return True for successful run, otherwise false
      */
-    bool BeginTesting();
+    bool BeginTesting() override;
     /*!
      * @brief Access the internal kill thread handler
      * @param newVal The new value it should take
      * @return The value fo the killthreadhandler
      */
-    bool AccessKillThreadHandler(std::optional<bool> newVal);
+    bool AccessKillThreadHandler(std::optional<bool> newVal) override;
 private:
     /*! @brief The ID of the logger we wish to use */
     const int64_t _loggerID;
@@ -100,14 +105,13 @@ private:
     const pluginLoader::sharedMap_t<Communication::I_communication> _commsInterface;
     /*! @brief Shared map containing all the possible protocol interface plugins we can use */
     const pluginLoader::sharedMap_t<Protocol::I_protocolInterface> _protocolInterface;
-    // ThreadHandler
+    // threadPool
     /*! @brief the threadpool we'll be adding our tests to */
-    ThreadHandler::ThreadPool& _threadPool;
+    threadPool::ThreadPool& _threadPool;
     /*! @brief Controls whether the test needs to DIE */
     utility::ThreadSafeT<bool> _killThreadHandler;
     /*! @brief Contains all the created threads */
     std::vector<std::shared_ptr<TestThread>> _threadsVec;
-//    std::vector<TestThread*> _threadsVec;
     /*! @brief The testfile itself */
     testAnalyser2::TestFile _testFile;
 
@@ -136,6 +140,6 @@ private:
      */
     void _WaitForThreads();
 };
-} /* namespace TestRunner */
-
+} /* namespace testRunner */
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_TESTRUNNER_H */

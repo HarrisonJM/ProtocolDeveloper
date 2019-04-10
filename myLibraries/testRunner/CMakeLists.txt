@@ -6,7 +6,7 @@ add_library(${LIB_NAME}
             src/testRunner.cpp
             src/testThread.cpp
             src/testThread.h
-            )
+            include/I_testRunner.h include/I_testThread.h)
 
 # Define headers for this library. PUBLIC headers are used for
 # compiling the library, and will be added to consumers' build
@@ -54,10 +54,13 @@ export(TARGETS ${LIB_NAME}
 
 ### TEST STUFF ###
 add_executable(test${LIB_NAME}
-               tests/${LIB_NAME}Tests.cpp)
+               tests/${LIB_NAME}Tests.cpp tests/testRunnerTestsMain.cpp)
 
 target_link_libraries(test${LIB_NAME}
                       ${LIB_NAME}
+                      logger
+                      threadPool
+                      utility
                       gtest_main
                       gtest)
 

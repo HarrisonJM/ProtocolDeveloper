@@ -1,0 +1,10 @@
+digraph "PluginLoader::PluginLoader"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node0 [label="{PluginLoader::PluginLoader\n||+ PluginLoader()\l+ ~PluginLoader()\l+ ScanForAllPluginsDefaultLoc()\l+ ScanForAllPluginsNewLoc()\l+ ScanForComms()\l+ ScanForProtocols()\l+ getCommsPlugins()\l+ getProtocolPlugins()\l* _commsPlugins\l* _protocolPlugins\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node1 [label="{PluginLoader::I_PluginLoader\n||+ ~I_PluginLoader()\l+ ScanForAllPluginsDefaultLoc()\l+ ScanForAllPluginsNewLoc()\l+ ScanForComms()\l+ ScanForProtocols()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d2/d16/classPluginLoader_1_1I__PluginLoader.html",tooltip=" "];
+}

@@ -4,6 +4,9 @@
  * @date 10/28/18
  *
  * @addtogroup utility
+ * @{
+ * @addtogroup freeFunctions
+ * @{
  */
 
 #ifndef PROTOCOLDEVELOPER_UTILITYFUNCTIONS_H
@@ -25,4 +28,5 @@ extern std::string addXLetter(int count
 extern long StringToLong(const std::string& numberStr);
 
 }
+/*! @} @} */
 #endif //PROTOCOLDEVELOPER_UTILITYFUNCTIONS_H

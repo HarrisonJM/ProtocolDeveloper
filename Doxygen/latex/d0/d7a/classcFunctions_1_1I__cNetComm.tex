@@ -1,0 +1,55 @@
+\hypertarget{classcFunctions_1_1I__cNetComm}{}\section{c\+Functions\+::I\+\_\+c\+Net\+Comm Class Reference}
+\label{classcFunctions_1_1I__cNetComm}\index{cFunctions::I\_cNetComm@{cFunctions::I\_cNetComm}}
+
+
+interfaec for the cnetcomm class for mocking  
+
+
+
+
+{\ttfamily \#include $<$I\+\_\+c\+Net\+Comm.\+h$>$}
+
+
+
+Inheritance diagram for c\+Functions\+::I\+\_\+c\+Net\+Comm\+:
+% FIG 0
+
+
+Collaboration diagram for c\+Functions\+::I\+\_\+c\+Net\+Comm\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcFunctions_1_1I__cNetComm_a2cea510561ce6bb715730a80376c2313}\label{classcFunctions_1_1I__cNetComm_a2cea510561ce6bb715730a80376c2313}} 
+virtual ssize\+\_\+t \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a2cea510561ce6bb715730a80376c2313}{send\+To}} (int sockfd, const void $\ast$buf, size\+\_\+t len, int flags)=0
+\begin{DoxyCompactList}\small\item\em man 2 send() \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcFunctions_1_1I__cNetComm_ab23fbd92da6dc7deeab4e3a5327843dc}\label{classcFunctions_1_1I__cNetComm_ab23fbd92da6dc7deeab4e3a5327843dc}} 
+virtual ssize\+\_\+t \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_ab23fbd92da6dc7deeab4e3a5327843dc}{recv\+From}} (int sockfd, void $\ast$buf, size\+\_\+t len, int flags)=0
+\begin{DoxyCompactList}\small\item\em man 2 recv() \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcFunctions_1_1I__cNetComm_a810c3bf6177a1c538bc491d4ef87fd0e}\label{classcFunctions_1_1I__cNetComm_a810c3bf6177a1c538bc491d4ef87fd0e}} 
+virtual int \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a810c3bf6177a1c538bc491d4ef87fd0e}{close\+Connection}} (int fd)=0
+\begin{DoxyCompactList}\small\item\em man 2 close() \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcFunctions_1_1I__cNetComm_a5b15d4349da4b0bc25a3c5f9cf9965f3}\label{classcFunctions_1_1I__cNetComm_a5b15d4349da4b0bc25a3c5f9cf9965f3}} 
+virtual int \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a5b15d4349da4b0bc25a3c5f9cf9965f3}{getaddressinfo}} (const char $\ast$node, const char $\ast$service, const struct addrinfo $\ast$hints, struct addrinfo $\ast$$\ast$res)=0
+\begin{DoxyCompactList}\small\item\em man 2 getaddrinfo() \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcFunctions_1_1I__cNetComm_ae008e99e178efaa2c4f389c54e350d67}\label{classcFunctions_1_1I__cNetComm_ae008e99e178efaa2c4f389c54e350d67}} 
+virtual void \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_ae008e99e178efaa2c4f389c54e350d67}{freeaddressinfo}} (struct addrinfo $\ast$res)=0
+\begin{DoxyCompactList}\small\item\em man 2 freeaddrinfo \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcFunctions_1_1I__cNetComm_a42e9b904f7916677f0c1fe144f1471a8}\label{classcFunctions_1_1I__cNetComm_a42e9b904f7916677f0c1fe144f1471a8}} 
+virtual int \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a42e9b904f7916677f0c1fe144f1471a8}{create\+Socket}} (int domain, int type, int protocol)=0
+\begin{DoxyCompactList}\small\item\em man 2 socket \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classcFunctions_1_1I__cNetComm_a89b4fec152062739d3836bec997cfcdf}\label{classcFunctions_1_1I__cNetComm_a89b4fec152062739d3836bec997cfcdf}} 
+virtual int \mbox{\hyperlink{classcFunctions_1_1I__cNetComm_a89b4fec152062739d3836bec997cfcdf}{connect\+To\+Remote}} (int sockfd, const struct sockaddr $\ast$addr, socklen\+\_\+t addrlen)=0
+\begin{DoxyCompactList}\small\item\em man 2 connect() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+interfaec for the cnetcomm class for mocking 
+
+Definition at line 20 of file I\+\_\+c\+Net\+Comm.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/free\+Functions\+And\+Wrappers/include/I\+\_\+c\+Net\+Comm.\+h\end{DoxyCompactItemize}

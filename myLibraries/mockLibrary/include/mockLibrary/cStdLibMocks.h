@@ -4,7 +4,8 @@
  * @addtogroup mocksLibrary
  *
  * @date May 2018
- *
+ * @addtogroup mockLibrary
+ * @{
  */
 
 #ifndef PROTOCOLDEVELOPER_CSTDLIBMOCKS_H
@@ -26,5 +27,5 @@ public:
 };
 
 } /* namespace cFunctions */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_CSTDLIBMOCKS_H */

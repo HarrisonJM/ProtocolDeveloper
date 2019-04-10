@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup PluginLoader
- *
+ * @{
  * @date 30/12/18
  * @todo More specializations
  */
@@ -33,3 +33,5 @@ bool PluginLoaderTemplate<Protocol::I_protocolInterface>::_CheckCorrectType(PLUG
     return (PLUGINTYPE_t::PROTOCOL == pt1);
 }
 }
+
+/*! @} */

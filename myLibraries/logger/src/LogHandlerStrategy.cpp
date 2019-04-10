@@ -7,11 +7,14 @@
  * @author hmarcks
  *
  * @date 28/08/18
+ *
+ * @addtogroup logger
+ * @{
  */
 
 #include "LogHandlerStrategy.h"
 
-namespace LoggerClasses
+namespace logger
 {
 
 /*!
@@ -52,8 +55,8 @@ std::unique_ptr<std::ostream> LogHandlerStrategy::returnOstream(StrategyEnums st
 std::unique_ptr<std::ostream> LogHandlerStrategy::setupFstream(const std::string& fileName) const
 {
     auto newStream_up = std::make_unique<std::fstream>();
-    newStream_up->open(fileName,
-                       std::ios_base::out | std::ios_base::app);
+    newStream_up->open(fileName
+                       , std::ios_base::out | std::ios_base::app);
 
     return std::move(newStream_up);
 }
@@ -84,4 +87,5 @@ std::unique_ptr<std::ostream> LogHandlerStrategy::setupSTDOUT() const
     auto unq_outstream = std::make_unique<stdoutStream>();
     return std::move(unq_outstream);
 }
-} /* namespace LoggerClasses */
+} /* namespace logger */
+/*! @} */

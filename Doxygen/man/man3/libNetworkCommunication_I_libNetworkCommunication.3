@@ -1,0 +1,251 @@
+.TH "libNetworkCommunication::I_libNetworkCommunication" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+libNetworkCommunication::I_libNetworkCommunication \- The NetworkCommunication class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <I_libNetworkCommunication\&.h>\fP
+.PP
+Inherits \fBCommunication::I_communication\fP\&.
+.PP
+Inherited by \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~I_libNetworkCommunication\fP ()=default"
+.br
+.RI "Default destructor N\&.B\&. auto-formatter puts '= 0' on next line\&. "
+.ti -1c
+.RI "virtual const char * \fBgetPluginName\fP ()=0"
+.br
+.RI "Returns the plugins name\&. "
+.ti -1c
+.RI "virtual const char * \fBgetPluginVersion\fP ()=0"
+.br
+.RI "Returns the version of the plugin\&. "
+.ti -1c
+.RI "virtual \fBPluginLoader::PLUGINTYPE_t\fP \fBgetPluginType\fP ()=0"
+.br
+.RI "Returns the plugin \fItype\fP "
+.ti -1c
+.RI "virtual ssize_t \fBSendData\fP (void *payLoad_p, size_t size)=0"
+.br
+.RI "Sends data\&. "
+.ti -1c
+.RI "virtual ssize_t \fBReceiveData\fP (void *payLoad_p, size_t size)=0"
+.br
+.RI "Recevies Data\&. "
+.ti -1c
+.RI "virtual bool \fBEstablishConnection\fP ()=0"
+.br
+.RI "Establishes a connection with the remote\&. "
+.ti -1c
+.RI "virtual void \fBDisconnect\fP ()=0"
+.br
+.RI "Disconnects from the target\&. "
+.ti -1c
+.RI "virtual void \fBSetPortToSendTo\fP (int port)=0"
+.br
+.RI "Sets the port we wish to send on\&. "
+.ti -1c
+.RI "virtual void \fBSetDestinationAddress\fP (char *destinationAddress)=0"
+.br
+.RI "Set the destination's address\&. "
+.ti -1c
+.RI "virtual void \fBSetTCPOrUDP\fP (int tcpOrUDP)=0"
+.br
+.RI "Set whether TCP or UDP\&. "
+.ti -1c
+.RI "virtual void \fBSetServInfo\fP (addrinfo *_servinfo)=0"
+.br
+.RI "Supply extra information for connecting to a server\&. "
+.ti -1c
+.RI "virtual void \fBSetInterface\fP (std::shared_ptr< \fBcFunctions::I_cNetComm\fP > iOInterface)=0"
+.br
+.RI "The Interface we want to connect over\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The NetworkCommunication class\&. 
+.PP
+Definition at line 21 of file I_libNetworkCommunication\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool libNetworkCommunication::I_libNetworkCommunication::EstablishConnection ()\fC [pure virtual]\fP"
+
+.PP
+Establishes a connection with the remote\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true for success, otherwise false 
+.RE
+.PP
+
+.PP
+Implements \fBCommunication::I_communication\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual const char* libNetworkCommunication::I_libNetworkCommunication::getPluginName ()\fC [pure virtual]\fP"
+
+.PP
+Returns the plugins name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the plugin (as a const char*) 
+.RE
+.PP
+
+.PP
+Implements \fBCommunication::I_communication\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual \fBPluginLoader::PLUGINTYPE_t\fP libNetworkCommunication::I_libNetworkCommunication::getPluginType ()\fC [pure virtual]\fP"
+
+.PP
+Returns the plugin \fItype\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+The the plugin is (as an enum) 
+.RE
+.PP
+
+.PP
+Implements \fBCommunication::I_communication\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual const char* libNetworkCommunication::I_libNetworkCommunication::getPluginVersion ()\fC [pure virtual]\fP"
+
+.PP
+Returns the version of the plugin\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The plugin version 
+.RE
+.PP
+
+.PP
+Implements \fBCommunication::I_communication\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual ssize_t libNetworkCommunication::I_libNetworkCommunication::ReceiveData (void * payLoad_p, size_t size)\fC [pure virtual]\fP"
+
+.PP
+Recevies Data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpayLoad_p\fP Where to store the data we've recevied 
+.br
+\fIsize\fP The size of the payload buffer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The size of the data received 
+.RE
+.PP
+
+.PP
+Implements \fBCommunication::I_communication\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual ssize_t libNetworkCommunication::I_libNetworkCommunication::SendData (void * payLoad_p, size_t size)\fC [pure virtual]\fP"
+
+.PP
+Sends data\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpayLoad_p\fP The data we wish to send 
+.br
+\fIsize\fP The size of the data 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The size of the data sent 
+.RE
+.PP
+
+.PP
+Implements \fBCommunication::I_communication\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual void libNetworkCommunication::I_libNetworkCommunication::SetDestinationAddress (char * destinationAddress)\fC [pure virtual]\fP"
+
+.PP
+Set the destination's address\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestinationAddress\fP The address we wish to send to 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual void libNetworkCommunication::I_libNetworkCommunication::SetInterface (std::shared_ptr< \fBcFunctions::I_cNetComm\fP > iOInterface)\fC [pure virtual]\fP"
+
+.PP
+The Interface we want to connect over\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIiOInterface\fP A shared_ptr containing the concrete implementation we wish to use 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual void libNetworkCommunication::I_libNetworkCommunication::SetPortToSendTo (int port)\fC [pure virtual]\fP"
+
+.PP
+Sets the port we wish to send on\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP The port we wish to send on 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual void libNetworkCommunication::I_libNetworkCommunication::SetServInfo (addrinfo * _servinfo)\fC [pure virtual]\fP"
+
+.PP
+Supply extra information for connecting to a server\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI_servinfo\fP A pointer to the address info we wish to use 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+.SS "virtual void libNetworkCommunication::I_libNetworkCommunication::SetTCPOrUDP (int tcpOrUDP)\fC [pure virtual]\fP"
+
+.PP
+Set whether TCP or UDP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItcpOrUDP\fP 1 for TCP, 0 for UDP 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

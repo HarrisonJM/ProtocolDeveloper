@@ -1,0 +1,163 @@
+.TH "Communication::I_communication" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Communication::I_communication \- Defines the interface for listening\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <I_communication\&.h>\fP
+.PP
+Inherits \fBPluginLoader::I_Plugin\fP\&.
+.PP
+Inherited by \fBlibNetworkCommunication::I_libNetworkCommunication\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fB~I_communication\fP ()=default"
+.br
+.ti -1c
+.RI "virtual ssize_t \fBSendData\fP (void *payLoad_p, size_t size)=0"
+.br
+.RI "Sends Data to the remote\&. "
+.ti -1c
+.RI "virtual ssize_t \fBReceiveData\fP (void *payLoad_p, size_t size)=0"
+.br
+.RI "Recevies Data from the Remote\&. "
+.ti -1c
+.RI "virtual bool \fBEstablishConnection\fP ()=0"
+.br
+.RI "Establishes a Connection with the remote\&. "
+.ti -1c
+.RI "virtual void \fBDisconnect\fP ()=0"
+.br
+.RI "Disconnects from the target\&. "
+.ti -1c
+.RI "const char * \fBgetPluginName\fP ()=0"
+.br
+.RI "Returns the plugins name\&. "
+.ti -1c
+.RI "virtual const char * \fBgetPluginVersion\fP ()=0"
+.br
+.RI "Returns the version of the plugin\&. "
+.ti -1c
+.RI "virtual \fBPluginLoader::PLUGINTYPE_t\fP \fBgetPluginType\fP ()=0"
+.br
+.RI "Returns the plugin \fItype\fP "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the interface for listening\&. 
+.PP
+Definition at line 27 of file I_communication\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Communication::I_communication::~I_communication ()\fC [default]\fP"
+Default Destructor 
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual bool Communication::I_communication::EstablishConnection ()\fC [pure virtual]\fP"
+
+.PP
+Establishes a Connection with the remote\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+True on success 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP, and \fBlibNetworkCommunication::I_libNetworkCommunication\fP\&.
+.SS "const char* Communication::I_communication::getPluginName ()\fC [pure virtual]\fP"
+
+.PP
+Returns the plugins name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The name of the plugin (as a const char*) 
+.RE
+.PP
+
+.PP
+Implements \fBPluginLoader::I_Plugin\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP, and \fBlibNetworkCommunication::I_libNetworkCommunication\fP\&.
+.SS "virtual \fBPluginLoader::PLUGINTYPE_t\fP Communication::I_communication::getPluginType ()\fC [pure virtual]\fP"
+
+.PP
+Returns the plugin \fItype\fP 
+.PP
+\fBReturns:\fP
+.RS 4
+The the plugin is (as an enum) 
+.RE
+.PP
+
+.PP
+Implements \fBPluginLoader::I_Plugin\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP, and \fBlibNetworkCommunication::I_libNetworkCommunication\fP\&.
+.SS "virtual const char* Communication::I_communication::getPluginVersion ()\fC [pure virtual]\fP"
+
+.PP
+Returns the version of the plugin\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The plugin version 
+.RE
+.PP
+
+.PP
+Implements \fBPluginLoader::I_Plugin\fP\&.
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP, and \fBlibNetworkCommunication::I_libNetworkCommunication\fP\&.
+.SS "virtual ssize_t Communication::I_communication::ReceiveData (void * payLoad_p, size_t size)\fC [pure virtual]\fP"
+
+.PP
+Recevies Data from the Remote\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpayLoad_p\fP Where to store the payload we're receiving 
+.br
+\fIsize\fP The size of the buffer 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes sent written 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP, and \fBlibNetworkCommunication::I_libNetworkCommunication\fP\&.
+.SS "virtual ssize_t Communication::I_communication::SendData (void * payLoad_p, size_t size)\fC [pure virtual]\fP"
+
+.PP
+Sends Data to the remote\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpayLoad_p\fP The payload we're sending 
+.br
+\fIsize\fP The size of the payload 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes sent 
+.RE
+.PP
+
+.PP
+Implemented in \fBlibNetworkCommunication::libNetworkCommunication\fP, and \fBlibNetworkCommunication::I_libNetworkCommunication\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

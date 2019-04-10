@@ -4,7 +4,9 @@
  * @author hmarcks
  *
  * @addtogroup utility
- *
+ * @{
+ * @addtogroup tests
+ * @{
  * @date 22/02/19
  */
 
@@ -29,13 +31,14 @@ TYPED_TEST(threadSafeTFixture
            , test1)
 {
     ThreadSafeT<TypeParam> Type(3);
-    ASSERT_EQ(Type.GetT()
+    EXPECT_EQ(Type.GetT()
               , 3);
 
     Type.SetT(Type.GetT() + 1);
-    ASSERT_EQ(Type.GetT()
+    EXPECT_EQ(Type.GetT()
               , 4);
 }
 
 } /* namespace Utility */
 
+/*! @} */

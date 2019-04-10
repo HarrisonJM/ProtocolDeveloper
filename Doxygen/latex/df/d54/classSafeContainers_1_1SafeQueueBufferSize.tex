@@ -1,0 +1,276 @@
+\hypertarget{classSafeContainers_1_1SafeQueueBufferSize}{}\section{Safe\+Containers\+::Safe\+Queue\+Buffer\+Size$<$ T $>$ Class Template Reference}
+\label{classSafeContainers_1_1SafeQueueBufferSize}\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+
+
+\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Queue\+Buffer\+Size}}.  
+
+
+
+
+{\ttfamily \#include $<$Safe\+Queue\+Buffer\+Size.\+h$>$}
+
+
+
+Collaboration diagram for Safe\+Containers\+::Safe\+Queue\+Buffer\+Size$<$ T $>$\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_aa32dc6697399fc6caf5daeae487d552d}{Safe\+Queue\+Buffer\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_aea60f2d6f74622e15518def00a1838a6}{Safe\+Queue\+Buffer\+Size}} (size\+\_\+t in\+\_\+\+Max\+Buff)
+\begin{DoxyCompactList}\small\item\em Buffer Size Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_a44422311c9f5ba1652b09a38c85b9c01}\label{classSafeContainers_1_1SafeQueueBufferSize_a44422311c9f5ba1652b09a38c85b9c01}} 
+virtual \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_a44422311c9f5ba1652b09a38c85b9c01}{$\sim$\+Safe\+Queue}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_ae807868ecb6d9d052460d3e672465902}{push}} (T \&new\+Element)
+\begin{DoxyCompactList}\small\item\em push \end{DoxyCompactList}\item 
+virtual T \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_ad79da418fbe0e89212c3cecf69dbe43a}{pop\+\_\+front}} ()
+\begin{DoxyCompactList}\small\item\em pop\+\_\+front \end{DoxyCompactList}\item 
+{\footnotesize template$<$class... Args$>$ }\\void \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_ad96ffce7d2637737515882c3da0274ee}{emplace}} (Args \&\&... args)
+\begin{DoxyCompactList}\small\item\em Creates a class in place and places at the back of the queue. \end{DoxyCompactList}\item 
+virtual T \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_afd0c81d73603b43f6ed1a12130733cb6}{front}} ()
+\begin{DoxyCompactList}\small\item\em front \end{DoxyCompactList}\item 
+virtual T \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_a4b4b10ec7856724be38501fbfb6f9394}{back}} ()
+\begin{DoxyCompactList}\small\item\em back \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_a7f20de3963f43b86282a33108f784831}{empty}} ()
+\begin{DoxyCompactList}\small\item\em empty \end{DoxyCompactList}\item 
+virtual size\+\_\+t \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_a326e5f16d2b178f5065cfef9ebab4d65}{size}} ()
+\begin{DoxyCompactList}\small\item\em Returns the number of elements in the queue. \end{DoxyCompactList}\item 
+virtual size\+\_\+t \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize_ae046a90a1ac9683f90c21eeaa4be2f37}{real\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Returns the size of the queue in bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size$<$ T $>$}
+
+\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Queue\+Buffer\+Size}}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of object it\textquotesingle{}ll be storing \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 24 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_aa32dc6697399fc6caf5daeae487d552d}\label{classSafeContainers_1_1SafeQueueBufferSize_aa32dc6697399fc6caf5daeae487d552d}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!SafeQueueBufferSize@{SafeQueueBufferSize}}
+\index{SafeQueueBufferSize@{SafeQueueBufferSize}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{SafeQueueBufferSize()}{SafeQueueBufferSize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Queue\+Buffer\+Size}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+Default constructor. Assigns a 16k buffer to the queue 
+
+Definition at line 32 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_aea60f2d6f74622e15518def00a1838a6}\label{classSafeContainers_1_1SafeQueueBufferSize_aea60f2d6f74622e15518def00a1838a6}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!SafeQueueBufferSize@{SafeQueueBufferSize}}
+\index{SafeQueueBufferSize@{SafeQueueBufferSize}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{SafeQueueBufferSize()}{SafeQueueBufferSize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::\mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Queue\+Buffer\+Size}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{in\+\_\+\+Max\+Buff }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Buffer Size Constructor. 
+
+Assigns the maximum buffer size to whatever is passed
+
+
+\begin{DoxyParams}{Parameters}
+{\em in\+\_\+\+Max\+Buff} & The maximum size (in bytes) that the logs buffer can be \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_a4b4b10ec7856724be38501fbfb6f9394}\label{classSafeContainers_1_1SafeQueueBufferSize_a4b4b10ec7856724be38501fbfb6f9394}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!back@{back}}
+\index{back@{back}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{back()}{back()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual T \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+back 
+
+Returns a copy of the last element of the queue
+
+\begin{DoxyReturn}{Returns}
+a copy of the last element of the queue 
+\end{DoxyReturn}
+
+
+Definition at line 158 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_ad96ffce7d2637737515882c3da0274ee}\label{classSafeContainers_1_1SafeQueueBufferSize_ad96ffce7d2637737515882c3da0274ee}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!emplace@{emplace}}
+\index{emplace@{emplace}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{emplace()}{emplace()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+template$<$class... Args$>$ \\
+void \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::emplace (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates a class in place and places at the back of the queue. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Args} & Move type? \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em args} & Args with which to build the thing? \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 127 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_a7f20de3963f43b86282a33108f784831}\label{classSafeContainers_1_1SafeQueueBufferSize_a7f20de3963f43b86282a33108f784831}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!empty@{empty}}
+\index{empty@{empty}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual bool \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+empty 
+
+Checks to see if the queue is empty, returning true or false, dependent
+
+\begin{DoxyReturn}{Returns}
+true if queue is full 
+\end{DoxyReturn}
+
+
+Definition at line 172 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_afd0c81d73603b43f6ed1a12130733cb6}\label{classSafeContainers_1_1SafeQueueBufferSize_afd0c81d73603b43f6ed1a12130733cb6}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!front@{front}}
+\index{front@{front}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{front()}{front()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual T \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+front 
+
+Returns a copy of the front element of the queue
+
+\begin{DoxyReturn}{Returns}
+A copy of the element at the front of the queue 
+\end{DoxyReturn}
+
+
+Definition at line 144 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_ad79da418fbe0e89212c3cecf69dbe43a}\label{classSafeContainers_1_1SafeQueueBufferSize_ad79da418fbe0e89212c3cecf69dbe43a}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!pop\_front@{pop\_front}}
+\index{pop\_front@{pop\_front}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{pop\_front()}{pop\_front()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual T \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::pop\+\_\+front (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+pop\+\_\+front 
+
+Returns the element from the front of the queue and removes it
+
+\begin{DoxyReturn}{Returns}
+Returns the value from the front of the queue 
+\end{DoxyReturn}
+
+
+Definition at line 101 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_ae807868ecb6d9d052460d3e672465902}\label{classSafeContainers_1_1SafeQueueBufferSize_ae807868ecb6d9d052460d3e672465902}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!push@{push}}
+\index{push@{push}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{push()}{push()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual bool \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::push (\begin{DoxyParamCaption}\item[{T \&}]{new\+Element }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+push 
+
+Pushes a new element to the back of the queue
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Element} & A reference containing what is to be written to queue\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ture if successfully added to the queue, otherwise false 
+\end{DoxyReturn}
+
+
+Definition at line 81 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_ae046a90a1ac9683f90c21eeaa4be2f37}\label{classSafeContainers_1_1SafeQueueBufferSize_ae046a90a1ac9683f90c21eeaa4be2f37}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!realSize@{realSize}}
+\index{realSize@{realSize}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{realSize()}{realSize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual size\+\_\+t \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::real\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Returns the size of the queue in bytes. 
+
+\begin{DoxyReturn}{Returns}
+The number of elements in the queue 
+\end{DoxyReturn}
+
+
+Definition at line 197 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+\mbox{\Hypertarget{classSafeContainers_1_1SafeQueueBufferSize_a326e5f16d2b178f5065cfef9ebab4d65}\label{classSafeContainers_1_1SafeQueueBufferSize_a326e5f16d2b178f5065cfef9ebab4d65}} 
+\index{SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}!size@{size}}
+\index{size@{size}!SafeContainers::SafeQueueBufferSize$<$ T $>$@{SafeContainers::SafeQueueBufferSize$<$ T $>$}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual size\+\_\+t \mbox{\hyperlink{classSafeContainers_1_1SafeQueueBufferSize}{Safe\+Containers\+::\+Safe\+Queue\+Buffer\+Size}}$<$ T $>$\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Returns the number of elements in the queue. 
+
+\begin{DoxyReturn}{Returns}
+The number of elements int he queue 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file Safe\+Queue\+Buffer\+Size.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/safe\+Containers/include/safe\+Queues/Safe\+Queue\+Buffer\+Size.\+h\end{DoxyCompactItemize}

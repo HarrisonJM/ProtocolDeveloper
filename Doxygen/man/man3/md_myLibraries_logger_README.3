@@ -1,0 +1,16 @@
+.TH "md_myLibraries_logger_README" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md_myLibraries_logger_README \- README 
+#Library: logger
+.PP
+\fBDescription\fP The logging classes collection\&. This library is devoted to thread safe logging, complete with a handler specifically designed to remove as much processing away from the main running threads as physically possible\&. Can output messages either to a dedicated std::filestream or to std::cout/std::cerr\&.
+.PP
+\fBGotchas\fP
+.PP
+\fBHow to use\fP
+.PP
+Components that wish to use logging should have ac opy of the log interface to write to only\&. Components that wish to log should be totally agnostic of the handler\&.
+.PP
+\fBMethod\fP 

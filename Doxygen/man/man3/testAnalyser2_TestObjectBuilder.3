@@ -1,0 +1,71 @@
+.TH "testAnalyser2::TestObjectBuilder" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+testAnalyser2::TestObjectBuilder
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTestObjectBuilder\fP (\fBTestFile\fP &testfile_in, std::string filePath)"
+.br
+.RI "Constructor, uses the default rapidAbstract class\&. "
+.ti -1c
+.RI "\fBTestObjectBuilder\fP (\fBTestFile\fP &testfile_in, std::unique_ptr< \fBI_RapidAbstract\fP > parser_in)"
+.br
+.RI "Constructor, allows a different \fBRapidAbstract\fP implementation to be used\&. "
+.ti -1c
+.RI "void \fBTopLevelNode\fP ()"
+.br
+.RI "Where we enter the testcase\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 58 of file testObjectBuilder\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "testAnalyser2::TestObjectBuilder::TestObjectBuilder (\fBTestFile\fP & testfile_in, std::string filePath)"
+
+.PP
+Constructor, uses the default rapidAbstract class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItestfile_in\fP The testfile object that represents the file we're reading in 
+.br
+\fIfilePath\fP The path to the file that we want to open 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file testObjectBuilder\&.cpp\&.
+.SS "testAnalyser2::TestObjectBuilder::TestObjectBuilder (\fBTestFile\fP & testfile_in, std::unique_ptr< \fBI_RapidAbstract\fP > parser_in)"
+
+.PP
+Constructor, allows a different \fBRapidAbstract\fP implementation to be used\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItestfile_in\fP The testfile object that represents the file we're reading in 
+.br
+\fIparser_in\fP A unique pointer containing the \fBRapidAbstract\fP implementation 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file testObjectBuilder\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void testAnalyser2::TestObjectBuilder::TopLevelNode ()"
+
+.PP
+Where we enter the testcase\&. The toplevel node (<testcase>) 
+.PP
+Definition at line 54 of file testObjectBuilder\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

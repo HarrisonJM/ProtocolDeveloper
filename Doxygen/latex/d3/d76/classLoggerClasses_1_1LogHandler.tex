@@ -1,0 +1,376 @@
+\hypertarget{classLoggerClasses_1_1LogHandler}{}\section{Logger\+Classes\+::Log\+Handler Class Reference}
+\label{classLoggerClasses_1_1LogHandler}\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+
+
+Inheritance diagram for Logger\+Classes\+::Log\+Handler\+:
+% FIG 0
+
+
+Collaboration diagram for Logger\+Classes\+::Log\+Handler\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a6541f77d814d526ff05628da3940573e}{Log\+Handler}} (int max\+Logs, const std\+::string \&path)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a5ef57687394c628a2c8a0bf70c758de5}\label{classLoggerClasses_1_1LogHandler_a5ef57687394c628a2c8a0bf70c758de5}} 
+\mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a5ef57687394c628a2c8a0bf70c758de5}{Log\+Handler}} (int max\+Logs, const std\+::string \&path, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classLoggerClasses_1_1I__LogStrategy}{I\+\_\+\+Log\+Strategy}} $>$ ilo)
+\begin{DoxyCompactList}\small\item\em Constructor, Mainly for testing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_ac2411d79efcefd3d45436e2abbb9727d}\label{classLoggerClasses_1_1LogHandler_ac2411d79efcefd3d45436e2abbb9727d}} 
+\mbox{\hyperlink{classLoggerClasses_1_1LogHandler_ac2411d79efcefd3d45436e2abbb9727d}{$\sim$\+Log\+Handler}} () override
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int64\+\_\+t \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a78959a9c67210c64511bd18b7a3c8861}{Open\+New\+Log}} (const std\+::string \&log\+Name, Strategy\+Enums strategy) override
+\begin{DoxyCompactList}\small\item\em Opens a new log file, returns the ID of the newly opened log, no E\+IS. \end{DoxyCompactList}\item 
+int64\+\_\+t \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_afeb4c6f0786cb9ae1d0488955d72aa4b}{Open\+New\+Log}} (const std\+::string \&log\+Name, const std\+::string \&E\+IS, Strategy\+Enums strategy) override
+\begin{DoxyCompactList}\small\item\em Opens a new log file, returns the ID of the newly opened log. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a23f7c4a588bc16e6432ae59071f5d847}{Close\+Log}} (int64\+\_\+t log\+ID) override
+\begin{DoxyCompactList}\small\item\em Closes a log file, based on the logs ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_aa05e0b9ca6afa0ca634ba4404ca29d3d}{Close\+Log}} (const std\+::string \&log\+Name) override
+\begin{DoxyCompactList}\small\item\em Closes a log file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a38dcaa7d1bcbfdd9b05483ea86657e6b}{Close\+All\+Logs}} () override
+\begin{DoxyCompactList}\small\item\em Closes all Log files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_ada6d788e50a7902ac81fba8b3344392a}{Add\+Message\+To\+Log}} (int64\+\_\+t log\+ID, const std\+::string \&message, log\+Level lvl) const override
+\begin{DoxyCompactList}\small\item\em Adds a message to a log using the log ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a2bba7cc390106f65d5d1c8147301faa3}{Add\+Message\+To\+Log}} (const std\+::string \&log\+Name, const std\+::string \&message, log\+Level lvl) const override
+\begin{DoxyCompactList}\small\item\em Adds a message to a log using the logs file name. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLoggerClasses_1_1I__LogFile}{I\+\_\+\+Log\+File}} $>$ \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a7f277be7cd639c6b37e2753df1f4925c}{Get\+Log\+File\+By\+ID}} (int64\+\_\+t log\+ID) const override
+\begin{DoxyCompactList}\small\item\em Returns an entire, specific, log based on its ID. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLoggerClasses_1_1I__LogFile}{I\+\_\+\+Log\+File}} $>$ \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_ae6a51c1ec30e7aef116be8c906e8387f}{Get\+Log\+File\+By\+Name}} (const std\+::string \&log\+Name) const override
+\begin{DoxyCompactList}\small\item\em Returns an entire, specific, log based on its name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_adf0211bf69aef576ea9585933d24086d}{Flush\+Messages\+To\+Streams}} () override
+\begin{DoxyCompactList}\small\item\em Flush messages to stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoggerClasses_1_1LogHandler_a5cff5ca829dc09d1d73e02e63eb65a0a}{Kill\+Handler}} () override
+\begin{DoxyCompactList}\small\item\em Sets the internal kill\+Handler to false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 29 of file Log\+Handler.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a6541f77d814d526ff05628da3940573e}\label{classLoggerClasses_1_1LogHandler_a6541f77d814d526ff05628da3940573e}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!LogHandler@{LogHandler}}
+\index{LogHandler@{LogHandler}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{LogHandler()}{LogHandler()}}
+{\footnotesize\ttfamily Logger\+Classes\+::\+Log\+Handler\+::\+Log\+Handler (\begin{DoxyParamCaption}\item[{int}]{max\+Logs,  }\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Logs} & The maxmimum number of logs we can have open at once \\
+\hline
+{\em path} & The Directory to store logs in (will be prepended to log file names \\
+\hline
+{\em thread\+Handler} & A pointer to a pre-\/setup threadpool \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file Log\+Handler.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_ada6d788e50a7902ac81fba8b3344392a}\label{classLoggerClasses_1_1LogHandler_ada6d788e50a7902ac81fba8b3344392a}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!AddMessageToLog@{AddMessageToLog}}
+\index{AddMessageToLog@{AddMessageToLog}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{AddMessageToLog()}{AddMessageToLog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Logger\+Classes\+::\+Log\+Handler\+::\+Add\+Message\+To\+Log (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{log\+ID,  }\item[{const std\+::string \&}]{message,  }\item[{log\+Level}]{lvl }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Adds a message to a log using the log ID. 
+
+Adds a message to a currently open lgo based on its ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+ID} & The ID of the log to add a message to \\
+\hline
+{\em message} & The message \\
+\hline
+{\em lvl} & The level of the log as an enum \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a2e8c845fd0f58376995d5b858c99ac95}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 152 of file Log\+Handler.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a2bba7cc390106f65d5d1c8147301faa3}\label{classLoggerClasses_1_1LogHandler_a2bba7cc390106f65d5d1c8147301faa3}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!AddMessageToLog@{AddMessageToLog}}
+\index{AddMessageToLog@{AddMessageToLog}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{AddMessageToLog()}{AddMessageToLog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Logger\+Classes\+::\+Log\+Handler\+::\+Add\+Message\+To\+Log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+Name,  }\item[{const std\+::string \&}]{message,  }\item[{log\+Level}]{lvl }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Adds a message to a log using the logs file name. 
+
+Adds a log message to an open log based on its name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Name} & The name of the lgo to add a message to \\
+\hline
+{\em message} & The message \\
+\hline
+{\em lvl} & The level of the lgo as an enum \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_aa9db5e8d4bcd800663bb4dc08cbdda14}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 176 of file Log\+Handler.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 3
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a38dcaa7d1bcbfdd9b05483ea86657e6b}\label{classLoggerClasses_1_1LogHandler_a38dcaa7d1bcbfdd9b05483ea86657e6b}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!CloseAllLogs@{CloseAllLogs}}
+\index{CloseAllLogs@{CloseAllLogs}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{CloseAllLogs()}{CloseAllLogs()}}
+{\footnotesize\ttfamily void Logger\+Classes\+::\+Log\+Handler\+::\+Close\+All\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Closes all Log files. 
+
+Close all currently open logs. 
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a297dc04793c0640700860d36e70bc718}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 141 of file Log\+Handler.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 4
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a23f7c4a588bc16e6432ae59071f5d847}\label{classLoggerClasses_1_1LogHandler_a23f7c4a588bc16e6432ae59071f5d847}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!CloseLog@{CloseLog}}
+\index{CloseLog@{CloseLog}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{CloseLog()}{CloseLog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Logger\+Classes\+::\+Log\+Handler\+::\+Close\+Log (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{log\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Closes a log file, based on the logs ID. 
+
+Close a log based on its ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+ID} & The ID of the lgo to close \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a658c99568d629e22f4c8b69f03c1a96c}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 120 of file Log\+Handler.\+cpp.
+
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_aa05e0b9ca6afa0ca634ba4404ca29d3d}\label{classLoggerClasses_1_1LogHandler_aa05e0b9ca6afa0ca634ba4404ca29d3d}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!CloseLog@{CloseLog}}
+\index{CloseLog@{CloseLog}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{CloseLog()}{CloseLog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Logger\+Classes\+::\+Log\+Handler\+::\+Close\+Log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Closes a log file. 
+
+Close a log based on its name.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Name} & The name of the lgo to close \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a2cba089bf717569c3bccea8ed6013c21}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 134 of file Log\+Handler.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 5
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_adf0211bf69aef576ea9585933d24086d}\label{classLoggerClasses_1_1LogHandler_adf0211bf69aef576ea9585933d24086d}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!FlushMessagesToStreams@{FlushMessagesToStreams}}
+\index{FlushMessagesToStreams@{FlushMessagesToStreams}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{FlushMessagesToStreams()}{FlushMessagesToStreams()}}
+{\footnotesize\ttfamily void Logger\+Classes\+::\+Log\+Handler\+::\+Flush\+Messages\+To\+Streams (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Flush messages to stream. 
+
+Flushes all all messages for logs to their respective streams.
+
+Uses a conditional variable to know when there are messages to write 
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a54dad8b6f0fc32bc4bb4ba52f0d378da}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 237 of file Log\+Handler.\+cpp.
+
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a7f277be7cd639c6b37e2753df1f4925c}\label{classLoggerClasses_1_1LogHandler_a7f277be7cd639c6b37e2753df1f4925c}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!GetLogFileByID@{GetLogFileByID}}
+\index{GetLogFileByID@{GetLogFileByID}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{GetLogFileByID()}{GetLogFileByID()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLoggerClasses_1_1I__LogFile}{I\+\_\+\+Log\+File}} $>$ Logger\+Classes\+::\+Log\+Handler\+::\+Get\+Log\+File\+By\+ID (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{log\+ID }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns an entire, specific, log based on its ID. 
+
+Returns a pointer to an opened log based on its ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+ID} & The ID of the log to return \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a log or an empty reference 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_acbcae07a24a5f379a24e26a81c04189e}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 196 of file Log\+Handler.\+cpp.
+
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_ae6a51c1ec30e7aef116be8c906e8387f}\label{classLoggerClasses_1_1LogHandler_ae6a51c1ec30e7aef116be8c906e8387f}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!GetLogFileByName@{GetLogFileByName}}
+\index{GetLogFileByName@{GetLogFileByName}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{GetLogFileByName()}{GetLogFileByName()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classLoggerClasses_1_1I__LogFile}{I\+\_\+\+Log\+File}} $>$ Logger\+Classes\+::\+Log\+Handler\+::\+Get\+Log\+File\+By\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+Name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns an entire, specific, log based on its name. 
+
+Returns a pointer to an opened log based on its ID.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Name} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a log or an empty reference 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000010}{Todo}}]personalised exceptions \end{DoxyRefDesc}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a04149417f54199a40cc1b677df7940a3}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 216 of file Log\+Handler.\+cpp.
+
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a5cff5ca829dc09d1d73e02e63eb65a0a}\label{classLoggerClasses_1_1LogHandler_a5cff5ca829dc09d1d73e02e63eb65a0a}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!KillHandler@{KillHandler}}
+\index{KillHandler@{KillHandler}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{KillHandler()}{KillHandler()}}
+{\footnotesize\ttfamily void Logger\+Classes\+::\+Log\+Handler\+::\+Kill\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Sets the internal kill\+Handler to false. 
+
+sets the \+\_\+kill\+Handler member to true, allowing the handler to perform any last cleanup 
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a7eba5b30d6f29d9cb8691832fd0b7c7a}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 256 of file Log\+Handler.\+cpp.
+
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_a78959a9c67210c64511bd18b7a3c8861}\label{classLoggerClasses_1_1LogHandler_a78959a9c67210c64511bd18b7a3c8861}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!OpenNewLog@{OpenNewLog}}
+\index{OpenNewLog@{OpenNewLog}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{OpenNewLog()}{OpenNewLog()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int64\+\_\+t Logger\+Classes\+::\+Log\+Handler\+::\+Open\+New\+Log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+Name,  }\item[{Strategy\+Enums}]{strategy = {\ttfamily StrategyEnums\+:\+:STDOUT} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Opens a new log file, returns the ID of the newly opened log, no E\+IS. 
+
+Opens a new log without an Extra Information.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Name} & The name of the new log \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The ID of the newly created log 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_af3f21c5055e10cd7be79264de3345eb4}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 79 of file Log\+Handler.\+cpp.
+
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandler_afeb4c6f0786cb9ae1d0488955d72aa4b}\label{classLoggerClasses_1_1LogHandler_afeb4c6f0786cb9ae1d0488955d72aa4b}} 
+\index{LoggerClasses::LogHandler@{LoggerClasses::LogHandler}!OpenNewLog@{OpenNewLog}}
+\index{OpenNewLog@{OpenNewLog}!LoggerClasses::LogHandler@{LoggerClasses::LogHandler}}
+\subsubsection{\texorpdfstring{OpenNewLog()}{OpenNewLog()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int64\+\_\+t Logger\+Classes\+::\+Log\+Handler\+::\+Open\+New\+Log (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{log\+Name,  }\item[{const std\+::string \&}]{E\+IS,  }\item[{Strategy\+Enums}]{strategy = {\ttfamily StrategyEnums\+:\+:FSTREAM} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Opens a new log file, returns the ID of the newly opened log. 
+
+Opens a new log.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Name} & The name of the log \\
+\hline
+{\em E\+IS} & Extra information to be written to the log \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The ID of the newly created log, -\/1 on error 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogHandler_a88a8bfc5c328359e0512dcae76a4d806}{Logger\+Classes\+::\+I\+\_\+\+Log\+Handler}}.
+
+
+
+Definition at line 92 of file Log\+Handler.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/logger/include/logger/Log\+Handler.\+h\item 
+my\+Libraries/logger/src/Log\+Handler.\+cpp\end{DoxyCompactItemize}

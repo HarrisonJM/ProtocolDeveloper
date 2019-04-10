@@ -4,8 +4,10 @@
  *
  * @author hmarcks
  *
- * @addtogroup unitTests
- *
+ * @addtogroup logger
+ * @{
+ * @addtogroup tests
+ * @{
  * @date 12/01/19
  */
 
@@ -18,3 +20,5 @@ int main(int argc
                               , argv);
     return RUN_ALL_TESTS();
 }
+
+/*! @} @} */

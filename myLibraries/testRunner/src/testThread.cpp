@@ -5,7 +5,7 @@
  * @author hmarcks
  *
  * @addtogroup TestRunner
- *
+ * @{
  * @date 16/01/19
  */
 
@@ -15,9 +15,9 @@
 #include <logger/LogHandler.h>
 
 #include "testThread.h"
-#include "libnetworkCommunication/libNetworkCommunication.h"
+#include "libnetworkCommunication/networkCommunication.h"
 
-namespace TestRunner
+namespace testRunner
 {
 /*!
  * @brief Contructor
@@ -31,8 +31,8 @@ namespace TestRunner
 TestThread::TestThread(const utility::ThreadSafeT<bool>& killThread_in
                        , std::shared_ptr<Communication::I_communication>& commsInterface_in
                        , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
-                       , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
-                       , SafeContainers::safeList<int>& codeList_in
+                       , safeContainers::safeList<Protocol::DataStruct>& resultsList_in
+                       , safeContainers::safeList<int>& codeList_in
                        , long ratio_in
                        , int64_t loggerID
                        , int threadID)
@@ -57,7 +57,7 @@ void TestThread::StartTest()
     boost::asio::steady_timer t(io);
     t.expires_after(boost::asio::chrono::microseconds(_fireRatioMicro));
 
-    auto _commsInterface2 = new libNetworkCommunication::libNetworkCommunication;
+    auto _commsInterface2 = new networkCommunication::NetworkCommunication;
     auto connSucc = _commsInterface2->EstablishConnection();
     short error = 0;
     while (connSucc)
@@ -65,7 +65,7 @@ void TestThread::StartTest()
         /* Interract with the protocol */
 //        auto protData = std::make_shared<Protocol::DataStruct>(); /* Protocol should track state */
 //! @TODO: fix this
-//        auto _ProtocolInterface2 = new hwProt::HelloWorldProtocol;
+//        auto _ProtocolInterface2 = new helloWorldProtocol::HelloWorldProtocol;
 //        auto protData = _ProtocolInterface2->GetDataToSend();
         auto protData = _ProtocolInterface->GetDataToSend();
         /* Interact with the target */
@@ -97,7 +97,7 @@ void TestThread::StartTest()
         if (_killHandler)
         {
             LOGMESSAGE("Kill handler invoked"
-                       , LoggerClasses::logLevel::INFO);
+                       , logger::logLevel::INFO);
             break;
         }
         t.async_wait(std::bind(&TestThread::_dummyFunc, this));
@@ -110,15 +110,15 @@ void TestThread::StartTest()
         {
             case 1:
                 LOGMESSAGE("Send error"
-                           , LoggerClasses::logLevel::INFO);
+                           , logger::logLevel::INFO);
                 break;
             case 2:
                 LOGMESSAGE("Receive error"
-                           , LoggerClasses::logLevel::INFO);
+                           , logger::logLevel::INFO);
                 break;
             default:
                 LOGMESSAGE("Test thread finished"
-                           , LoggerClasses::logLevel::INFO);
+                           , logger::logLevel::INFO);
                 break;
         }
         _commsInterface2->Disconnect();
@@ -126,7 +126,7 @@ void TestThread::StartTest()
     else
     {
         LOGMESSAGE("Connection failure"
-                   , LoggerClasses::logLevel::INFO);
+                   , logger::logLevel::INFO);
     }
 
     t.wait();
@@ -149,8 +149,10 @@ void TestThread::SetFinished(bool newVal)
     std::lock_guard<std::mutex> lock(_finishedMut);
     _finished = newVal;
 }
+
 void TestThread::_dummyFunc(void)
 {
     return;
 }
-} /* namespace TestRunner */
+} /* namespace testRunner */
+/*! @} */

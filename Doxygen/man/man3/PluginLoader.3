@@ -1,0 +1,191 @@
+.TH "PluginLoader" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+PluginLoader \- ProtocolPluginLoader\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBdllAbstract\fP"
+.br
+.RI "Class that hides the ugly dlfcn functions\&. "
+.ti -1c
+.RI "class \fBI_Plugin\fP"
+.br
+.RI "Top-level base class the plugin interfaces should derive from\&. "
+.ti -1c
+.RI "class \fBI_PluginLoader\fP"
+.br
+.ti -1c
+.RI "struct \fBPlugin_S\fP"
+.br
+.ti -1c
+.RI "class \fBPluginException\fP"
+.br
+.ti -1c
+.RI "class \fBPluginFactoryNullException\fP"
+.br
+.RI "The plugin has returned NULL when finding the factory symbol\&. "
+.ti -1c
+.RI "class \fBPluginHandleNullException\fP"
+.br
+.RI "The plugin handle has returned NULL (The plugin cannot be opened) "
+.ti -1c
+.RI "class \fBPluginLoader\fP"
+.br
+.ti -1c
+.RI "class \fBPluginLoaderTemplate\fP"
+.br
+.RI "Class that loads the plugins we want for the desired area\&. "
+.ti -1c
+.RI "class \fBProtocolPluginHandler\fP"
+.br
+.RI "Loads our DLL\&. "
+.in -1c
+.SS "Functions"
+
+.PP
+.RI "\fB\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "template<typename T > boost::shared_ptr< T > \fBmake_shared_ptr\fP (std::shared_ptr< T > &ptr)"
+.br
+.RI "Handles conversions between std and boost shared ptrs https://stackoverflow.com/questions/12314967/cohabitation-of-boostshared-ptr-and-stdshared-ptr\&. "
+.ti -1c
+.RI "template<typename T > std::shared_ptr< T > \fBmake_shared_ptr\fP (boost::shared_ptr< T > &ptr)"
+.br
+.RI "Makes a boost::shared_ptr usable by the std library\&. Don't use with weak_ptr's\&. "
+.in -1c
+.in -1c
+.in +1c
+.ti -1c
+.RI "enum \fBPLUGINTYPE_t\fP : short { \fBCOMMUNICATION\fP, \fBPROTOCOL\fP, \fBTHREAD\fP, \fBTESTCASE\fP }"
+.br
+.RI "The different types that the plugin can be\&. "
+.ti -1c
+.RI "template<class TypeToUse > using \fBsharedMap_t\fP = std::map< std::string, std::shared_ptr< TypeToUse > >"
+.br
+.RI "A shared ptr to a map of strings and sharedptr's containing plugin interfaces\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+ProtocolPluginLoader\&. 
+
+Will likely be refactored so that it only loads third party libraries Current purpose is to at some staeg load different protocols in
+.PP
+MUST ADD INGROUP
+.PP
+\fBDate:\fP
+.RS 4
+March 2018 
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+: This needs to be made into a more factory pattern 
+.PP
+: so that different parts of the program may all haev plugins 
+.PP
+: loaded using only a single class 
+.RE
+.PP
+.PP
+See header description
+.PP
+MUST ADD INGROUP
+.PP
+\fBDate:\fP
+.RS 4
+March 2018 
+.RE
+.PP
+
+.SH "Typedef Documentation"
+.PP 
+.SS "template<class TypeToUse > using \fBPluginLoader::sharedMap_t\fP = typedef std::map<std::string, std::shared_ptr<TypeToUse> >"
+
+.PP
+A shared ptr to a map of strings and sharedptr's containing plugin interfaces\&. }@ 
+.PP
+Definition at line 76 of file PluginLoaderCommon\&.h\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBPluginLoader::PLUGINTYPE_t\fP : short"
+
+.PP
+The different types that the plugin can be\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPROTOCOL \fP\fP
+< Used for communication plugins 
+.TP
+\fB\fITHREAD \fP\fP
+< Used for protocol plugins 
+.TP
+\fB\fITESTCASE \fP\fP
+< Used for thread handlers
+.PP
+< Used for testcase plugins 
+.PP
+Definition at line 61 of file PluginLoaderCommon\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T > boost::shared_ptr<T> PluginLoader::make_shared_ptr (std::shared_ptr< T > & ptr)"
+
+.PP
+Handles conversions between std and boost shared ptrs https://stackoverflow.com/questions/12314967/cohabitation-of-boostshared-ptr-and-stdshared-ptr\&. Makes a std::shared pointer usable by the boost library\&. Don't use with weak_ptr's 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type that the shared ptr holds 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP A reference to the pointer we wish to convert 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A copy of the pointer in the form we actually want 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file PluginLoaderCommon\&.h\&.
+.SS "template<typename T > std::shared_ptr<T> PluginLoader::make_shared_ptr (boost::shared_ptr< T > & ptr)"
+
+.PP
+Makes a boost::shared_ptr usable by the std library\&. Don't use with weak_ptr's\&. 
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The type that the shared ptr holds 
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIptr\fP A reference to the pointer we wish to convert 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A copy of the pointer in the form we actually want 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file PluginLoaderCommon\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

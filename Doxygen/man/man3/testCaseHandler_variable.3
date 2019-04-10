@@ -1,0 +1,68 @@
+.TH "testCaseHandler::variable" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+testCaseHandler::variable
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBtestCaseHandler::OpVarBase\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBvariable\fP (std::string name, std::string startingValue, std::string actionToTake)"
+.br
+.RI "Constructor, 3 arguments, completely fills the object\&. "
+.ti -1c
+.RI "\fB~variable\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "std::string \fBgetAction\fP ()"
+.br
+.RI "Getter, _action\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Definition at line 25 of file variable\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "testCaseHandler::variable::variable (std::string name, std::string actionToTake, std::string startingValue)"
+
+.PP
+Constructor, 3 arguments, completely fills the object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP The name of the variable that corresponds to the Datapoints variable 
+.br
+\fIstartingValue\fP The starting value of the Variable 
+.br
+\fIactionToTake\fP The action to take with the variable 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file variable\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string testCaseHandler::variable::getAction ()"
+
+.PP
+Getter, _action\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The action we wish to perform on the variable 
+.RE
+.PP
+
+.PP
+Definition at line 46 of file variable\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

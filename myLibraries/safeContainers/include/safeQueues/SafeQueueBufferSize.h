@@ -1,7 +1,10 @@
 /*!
  * @brief SafeQueue but with a maximum buffer size
  *
- * @addtogroup Utility
+ * @addtogroup safeContainers
+ * @{
+ * @addtogroup safeList
+ * @{
  *
  * @date 20/05/2018
  *
@@ -13,7 +16,7 @@
 #include <queue>
 #include <mutex>
 
-namespace SafeContainers
+namespace safeContainers
 {
 /*!
  * @brief SafeQueueBufferSize
@@ -233,5 +236,5 @@ private:
 };
 
 }
-
+/*! @} @} */
 #endif //PROTOCOLDEVELOPER_SAEFQUEUEBUFFERSIZE_H

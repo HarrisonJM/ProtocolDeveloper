@@ -1,0 +1,80 @@
+\hypertarget{classTimeTicker_1_1WallClock}{}\section{Time\+Ticker\+::Wall\+Clock Class Reference}
+\label{classTimeTicker_1_1WallClock}\index{TimeTicker::WallClock@{TimeTicker::WallClock}}
+
+
+Collaboration diagram for Time\+Ticker\+::Wall\+Clock\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTimeTicker_1_1WallClock_aceaa001d0b506441be4e15622eedb030}\label{classTimeTicker_1_1WallClock_aceaa001d0b506441be4e15622eedb030}} 
+\mbox{\hyperlink{classTimeTicker_1_1WallClock_aceaa001d0b506441be4e15622eedb030}{Wall\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTimeTicker_1_1WallClock_a9ddde6ee806f00e9942a2dacb147e5ad}{Wall\+Clock}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classTimeTicker_1_1I__gMTHandler}{I\+\_\+g\+M\+T\+Handler}} $>$ gmt\+Handler, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1I__cStdio}{c\+Functions\+::\+I\+\_\+c\+Stdio}} $>$ cstdio\+Functions, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1I__cStdLib}{c\+Functions\+::\+I\+\_\+c\+Std\+Lib}} $>$ cstdlib\+Functions)
+\begin{DoxyCompactList}\small\item\em Modular constructor, used to reaplce different std libraries. \end{DoxyCompactList}\item 
+const char $\ast$ \mbox{\hyperlink{classTimeTicker_1_1WallClock_aafa31e3c3a49b0918a71dda59638b000}{get\+Time\+To\+String}} (time\+\_\+t the\+Time)
+\begin{DoxyCompactList}\small\item\em Returns the time as a string (seconds precision) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 27 of file wall\+Clock.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTimeTicker_1_1WallClock_a9ddde6ee806f00e9942a2dacb147e5ad}\label{classTimeTicker_1_1WallClock_a9ddde6ee806f00e9942a2dacb147e5ad}} 
+\index{TimeTicker::WallClock@{TimeTicker::WallClock}!WallClock@{WallClock}}
+\index{WallClock@{WallClock}!TimeTicker::WallClock@{TimeTicker::WallClock}}
+\subsubsection{\texorpdfstring{WallClock()}{WallClock()}}
+{\footnotesize\ttfamily Time\+Ticker\+::\+Wall\+Clock\+::\+Wall\+Clock (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classTimeTicker_1_1I__gMTHandler}{I\+\_\+g\+M\+T\+Handler}} $>$}]{gmt\+Handler,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1I__cStdio}{c\+Functions\+::\+I\+\_\+c\+Stdio}} $>$}]{cstdio\+Functions,  }\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classcFunctions_1_1I__cStdLib}{c\+Functions\+::\+I\+\_\+c\+Std\+Lib}} $>$}]{cstdlib\+Functions }\end{DoxyParamCaption})}
+
+
+
+Modular constructor, used to reaplce different std libraries. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gmt\+Handler} & The gmt\+Handler \\
+\hline
+{\em cstdio\+Functions} & The stdio or equivalent functions \\
+\hline
+{\em cstdlib\+Functions} & The stdlib or equivalent functions \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file wall\+Clock.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTimeTicker_1_1WallClock_aafa31e3c3a49b0918a71dda59638b000}\label{classTimeTicker_1_1WallClock_aafa31e3c3a49b0918a71dda59638b000}} 
+\index{TimeTicker::WallClock@{TimeTicker::WallClock}!getTimeToString@{getTimeToString}}
+\index{getTimeToString@{getTimeToString}!TimeTicker::WallClock@{TimeTicker::WallClock}}
+\subsubsection{\texorpdfstring{getTimeToString()}{getTimeToString()}}
+{\footnotesize\ttfamily const char $\ast$ Time\+Ticker\+::\+Wall\+Clock\+::get\+Time\+To\+String (\begin{DoxyParamCaption}\item[{time\+\_\+t}]{the\+Time }\end{DoxyParamCaption})}
+
+
+
+Returns the time as a string (seconds precision) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em the\+Time} & The time (in seconds) we wish to know \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Char$\ast$ containing the timestamp 
+\end{DoxyReturn}
+
+
+Definition at line 47 of file wall\+Clock.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/time\+Ticker/src/wall\+Clock.\+h\item 
+my\+Libraries/time\+Ticker/src/wall\+Clock.\+cpp\end{DoxyCompactItemize}

@@ -6,6 +6,9 @@
  * @date 22/02/19
  *
  * @addtogroup utility
+ * @{
+ * @addtogroup tests
+ * @{
  */
 
 #include <gtest/gtest.h>
@@ -17,3 +20,5 @@ int main(int argc
                               , argv);
     return RUN_ALL_TESTS();
 }
+
+/*! @} */

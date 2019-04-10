@@ -4,8 +4,8 @@
  *
  * @author hmarcks
  *
- * @addtogroup TestRunner
- *
+ * @addtogroup testRunner
+ * @{
  * @date 16/01/19
  */
 
@@ -21,13 +21,15 @@
 
 #include <testAnalyser2/testfile/dataPoint.h>
 #include <utility/threadSafeT.h>
+#include <I_testThread.h>
 
-namespace TestRunner
+namespace testRunner
 {
 /*!
  * @brief A single test thread
  */
 class TestThread
+    : public I_TestThread
 {
 public:
     /*!
@@ -41,8 +43,8 @@ public:
     TestThread(const utility::ThreadSafeT<bool>& killThread_in
                , std::shared_ptr<Communication::I_communication>& commsInterface_in
                , std::shared_ptr<Protocol::I_protocolInterface>& protocolInterface_in
-               , SafeContainers::safeList<Protocol::DataStruct>& resultsList_in
-               , SafeContainers::safeList<int>& codeList_in
+               , safeContainers::safeList<Protocol::DataStruct>& resultsList_in
+               , safeContainers::safeList<int>& codeList_in
                , long ratio_in
                , int64_t loggerID
                , int threadID);
@@ -53,17 +55,17 @@ public:
     /*!
      * @brief Performs the test
      */
-    void StartTest();
+    void StartTest() override;
     /*!
      * @brief Returns whether or not the thread is finished (threadsafe)
      * @return the internal finished boolean
      */
-    bool GetFinished();
+    bool GetFinished() override;
     /*!
      * @brief Sets the internal finished boolean (threadsafe)
      * @param newVal What to set the finished boolean to
      */
-    void SetFinished(bool newVal);
+    void SetFinished(bool newVal) override;
 private:
     /*! @brief The Id for the logger */
     const int64_t _loggerID;
@@ -78,19 +80,18 @@ private:
     /*! @brief The Protocol that we'll be testing */
     std::shared_ptr<Protocol::I_protocolInterface>& _ProtocolInterface;
     /*! @brief Contains results gained from testing */
-    SafeContainers::safeList<Protocol::DataStruct>& _resultsList;
+    safeContainers::safeList<Protocol::DataStruct>& _resultsList;
     /*! @brief Contains a list of all result codes */
-    SafeContainers::safeList<int>& _codeList;
+    safeContainers::safeList<int>& _codeList;
     /*! @brief tells us if the thread is still running */
     bool _finished;
     /*! @brief mutex used for accessing the _finished member */
     std::mutex _finishedMut;
-
     /*!
      * @brief dummy function for boost's asynch_wait
      */
      void _dummyFunc();
 };
-} /* namespace TestRunner */
-
+} /* namespace testRunner */
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_TESTTHREAD_H */

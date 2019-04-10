@@ -1,0 +1,15 @@
+digraph "testAnalyser2::TestAnalyser2::startAnalysis"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node3 [label="testAnalyser2::TestAnalyser2\l::startAnalysis",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Starts the testfile analysis."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="testAnalyser2::TestAnalyser2\l::isAnalysed",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dd/dfa/classtestAnalyser2_1_1TestAnalyser2.html#adc5a43d9fea5357959b1509af82a8580",tooltip="Returns whether or not the testfile has been analysed yet."];
+  Node3 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="testAnalyser2::TestObject\lBuilder::TopLevelNode",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d7/d48/classtestAnalyser2_1_1TestObjectBuilder.html#a2186737583098c685304c215da5b3e1a",tooltip="Where we enter the testcase."];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="utility::EnumHandler\l::getValue",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$d4/d3b/classutility_1_1EnumHandler.html#aa24c170157579c63d265e43eb7535291",tooltip="Looks up a value based on the key."];
+}

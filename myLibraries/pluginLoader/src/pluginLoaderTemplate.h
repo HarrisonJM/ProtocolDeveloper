@@ -7,7 +7,8 @@
  *
  * @author hmarcks
  *
- * @addtogroup Plugin Loader
+ * @addtogroup pluginLoader
+ * @{
  *
  * @date 24/12/18
  */
@@ -21,20 +22,18 @@
 #include <type_traits>
 #include <cstdlib>
 #include <cxxabi.h>
+#include <magic.h>
+#include <filesystem>
 
 #include <I_communication.h>
 #include <I_protocolInterface.h>
+#include <I_pluginLoaderTemplate.h>
 
 #include <pluginLoader/PluginLoaderCommon.h>
-#include <filesystem>
-#include <magic.h>
-#include "pluginLoader/pluginS.h"
+#include <logger/loggerUtility.h>
+#include <logger/LogHandler.h>
 #include "dllAbstract.h"
 #include "pluginLoader_exception.h"
-#include "../../logger/include/logger/LogHandler.h"
-#include "../../logger/include/logger/loggerUtility.h"
-
-//#define LOGMESSAGE(message_MACRO, level_MACRO) LoggerClasses::LogHandler::GetInstance(0, "").AddMessageToLog(_loggerID, message_MACRO, level_MACRO)
 
 namespace pluginLoader
 {
@@ -51,17 +50,20 @@ namespace pluginLoader
  */
 template<class TpluginType>
 class PluginLoaderTemplate
+    : public I_PluginLoaderTemplate<TpluginType>
 {
 public:
     /*!
      * @brief Constructor
-     * @param _prefix The top level directory where plugins are stored (i.e. "/opt/ProtDev/Plugins")
-     * @param _qualifier The folder the plugins are stored in (i.e. "comms" or "")
+     * @param prefix The top level directory where plugins are stored (i.e. "/opt/ProtDev/Plugins")
+     * @param qualifier The folder the plugins are stored in (i.e. "comms" or "")
+     * @param plugins Where to store the plugins
+     * @param loggerID The ID the of the logger we're using
      */
     PluginLoaderTemplate(std::string const& prefix
                          , std::string const& qualifier
                          , sharedMap_t<TpluginType>& plugins
-                         , const long loggerID);
+                         , long loggerID);
     /*!
      * @brief Default Destructor
      */
@@ -98,8 +100,10 @@ private:
 
 /*!
  * @brief Constructor
- * @param _prefix The top level directory where plugins are stored (i.e. "/opt/ProtDev/Plugins")
- * @param _qualifier The folder the plugins are stored in (i.e. "comms" or "")
+ * @param prefix The top level directory where plugins are stored (i.e. "/opt/ProtDev/Plugins")
+ * @param qualifier The folder the plugins are stored in (i.e. "comms" or "")
+ * @param plugins Where to store the plugins
+ * @param loggerID The ID the of the logger we're using
  */
 template<class TpluginType>
 PluginLoaderTemplate<TpluginType>::PluginLoaderTemplate(std::string const& prefix
@@ -145,7 +149,7 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
                 /* Check the file for its magic number to confirm it is indeed a shared object*/
                 auto type = ::magic_file(handle
                                          , file.path().native().c_str());
-//                if (std::string(type).find("shared object") != std::string::npos)
+                if (std::string(type).find("shared object") != std::string::npos)
                 {
                     try
                     {
@@ -163,7 +167,7 @@ void PluginLoaderTemplate<TpluginType>::ScanForPlugins(std::string newDir)
                     {
                         // Couldn't load file
                         LOGMESSAGE(e.what()
-                                   , LoggerClasses::logLevel::ERROR);
+                                   , logger::logLevel::ERROR);
                         continue;
                     }
                 }
@@ -212,5 +216,5 @@ bool PluginLoaderTemplate<Protocol::I_protocolInterface>::_CheckCorrectType(PLUG
 //! @todo More specializations
 
 } /* namespace pluginLoader */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_PLUGINLOADERCOMMS_H */

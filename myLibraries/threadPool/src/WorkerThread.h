@@ -2,7 +2,7 @@
  * @brief The thread worker that carries out tasks given to it
  *
  * @addtogroup Thread Handler
- *
+ * @{
  * @date 23/5/18
  */
 
@@ -12,7 +12,7 @@
 #include "threadPool/ThreadPool.h"
 #include "I_WorkerThread.h"
 
-namespace ThreadHandler
+namespace threadPool
 {
 /*!
  * @brief A thread that carries out a task. Made a nested class so that it
@@ -41,6 +41,6 @@ private:
     const int _ID;
 };
 
-} /* namespace ThreadHandler */
-
+} /* namespace threadPool */
+/*! @} */
 #endif /*PROTOCOLDEVELOPER_WORKERTHREAD_H*/

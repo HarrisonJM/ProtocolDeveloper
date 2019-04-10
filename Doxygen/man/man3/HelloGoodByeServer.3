@@ -1,0 +1,59 @@
+.TH "HelloGoodByeServer" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HelloGoodByeServer \- BasicHelloConfiguration definition\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SH "Detailed Description"
+.PP 
+BasicHelloConfiguration definition\&. 
+
+Sets up the server\&.
+.PP
+Entry point for the hello goodbye server\&.
+.PP
+Handles incoming and outgoing connections\&.
+.PP
+default destructor definition for the configuration interface
+.PP
+BasicHelloConfiguration declaration\&.
+.PP
+defines the basic hello configuration for simple back and forthing between the ProtDev and the server\&. Sends Hello if it receives good bye, and vice versa
+.PP
+\fBDate:\fP
+.RS 4
+March 2018
+.PP
+March 2018
+.RE
+.PP
+The HelloGoodbye server will deal in and serve the purposes of testing the ProtDev The protocol is defined as sending Hello or goodbye (dependent on receiving the opposite response) in a variety of interpretable ways\&.
+.PP
+A simple Hello World server\&. Will send Hello/goodbye world depending on what it receives\&. Will be used to help develop and test different features of the prot dev program
+.PP
+Listen function that will listen for connections, spawn a thread when a connection is made A function that sends information back away and then dies Might be worth implementing a simple killServer command
+.PP
+\fBTodo\fP
+.RS 4
+Increase complexity for more tests 
+.PP
+Add more configurations 
+.PP
+Reap children (The harvest is small) 
+.PP
+Tidy up (remove singletons and probably more)
+.RE
+.PP
+.PP
+\fBDate:\fP
+.RS 4
+March 2018 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

@@ -1,5 +1,14 @@
 /*!
  * @brief Defines exceptions to be used by the logger
+ *
+ * @author hmarcks
+ *
+ * @date 10/04/19
+ *
+ * @addtogroup logger
+ * @{
+ * @addtogroup exceptions
+ * @{
  */
 
 #ifndef PROTOCOLDEVELOPER_LOGGEREXCEPTIONS_H
@@ -7,7 +16,7 @@
 
 #include <exception>
 
-namespace LoggerClasses {
+namespace logger {
 
 class loggerException : public std::exception
 {
@@ -18,24 +27,24 @@ public:
     }
 };
 
-class log_mapOutOfBounds : public std::exception
+class log_mapOutOfBounds : public loggerException
 {
 public:
-    virtual const char *what()
+    const char *what() override
     {
         return "Requested log file out of bounds/doesn't exist";
     }
 };
 
-class log_logIDMinusOne : public std::exception
+class log_logIDMinusOne : public loggerException
 {
 public:
-    virtual const char *what()
+    const char *what() override
     {
         return "Provided logID is -1. Did the file open?";
     }
 };
 
-} /* namespace LoggerClasses */
-
+} /* namespace logger */
+/*! @} @} */
 #endif //PROTOCOLDEVELOPER_LOGGEREXCEPTIONS_H

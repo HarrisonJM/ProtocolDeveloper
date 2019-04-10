@@ -1,0 +1,11 @@
+digraph "Graphical Class Hierarchy"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="BasicHelloServer::Configuration\lInterface",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/dae/classBasicHelloServer_1_1ConfigurationInterface.html",tooltip="ConfigurationInterface."];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="BasicHelloServer::BasicHello",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$dc/da8/classBasicHelloServer_1_1BasicHello.html",tooltip="A basic hello class."];
+}

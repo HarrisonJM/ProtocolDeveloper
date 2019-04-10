@@ -1,0 +1,109 @@
+.TH "TestCaseHandler" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TestCaseHandler \- Holds all the dataPoints\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SH "Detailed Description"
+.PP 
+Holds all the dataPoints\&. 
+
+Stores a single variable to be acted upon\&.
+.PP
+Returns information/data to be sent after the user requests it\&.
+.PP
+Defines a parser that can walk/traverse an XML document tree\&.
+.PP
+Top-level class that returns a data emitter\&.
+.PP
+'Compiles' the XML into a form that can create data to be used
+.PP
+Stores operations that a thread must take\&.
+.PP
+Stores information pertaining to a Datapoints desired operations\&.
+.PP
+An interpreted Data Point\&.
+.PP
+An entire datapoint\&.
+.PP
+Stores at least one dataPoint and emits the dataPoints data\&.
+.PP
+\fBDate:\fP
+.RS 4
+10/07/18
+.RE
+.PP
+Will need to be threadsafe so that multiple threads can access data items (and the next data items) without breaking\&.
+.PP
+Organises the variables and outputs as a std::string
+.PP
+\fBDate:\fP
+.RS 4
+04/Jul/2018
+.RE
+.PP
+Emits built data items to be sent out by tests\&. Threadsafe
+.PP
+\fBDate:\fP
+.RS 4
+4/Jul/2018
+.RE
+.PP
+Will be read by the protocol that will help describe what action to take should a certain condition be met
+.PP
+\fBDate:\fP
+.RS 4
+10/07/18
+.RE
+.PP
+Pumps out a data emitter and a rate struct
+.PP
+\fBDate:\fP
+.RS 4
+04/Jul/2018
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Output the XML after being tokenized into an intermediate format for faster future parsing
+.RE
+.PP
+.PP
+\fBTodo\fP
+.RS 4
+perahps create this as a seperate app that can be laucnhed from within the core/CLI 
+.RE
+.PP
+.PP
+\fBDate:\fP
+.RS 4
+04/Jul/2018
+.RE
+.PP
+When moving to child/sibling work exclusively on the top/current node and get the 'next sibling'\&.
+.PP
+When the lower level child is done, return to the previous level above\&.
+.PP
+First child is node->first_node()\&. Subsequent nodes are node->next_sibling
+.PP
+\fBDate:\fP
+.RS 4
+03/Jun/2018
+.PP
+30/Jun/18
+.RE
+.PP
+The compiler will output many of this class\&. Each one will contain a variable that it will act on\&. These will be stored in a final 'Data emitter' class that will be loaded by the protocol\&. The protocol will then make calls to it to get data from it\&.
+.PP
+\fBDate:\fP
+.RS 4
+04/Jul/2018 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

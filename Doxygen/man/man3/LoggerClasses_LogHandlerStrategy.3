@@ -1,0 +1,53 @@
+.TH "LoggerClasses::LogHandlerStrategy" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoggerClasses::LogHandlerStrategy
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBLoggerClasses::I_LogStrategy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLogHandlerStrategy\fP ()=default"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "std::unique_ptr< std::ostream > \fBreturnOstream\fP (StrategyEnums strat, const std::string &fileName) const override"
+.br
+.RI "Switchcase, strategy selector\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 26 of file LogHandlerStrategy\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::unique_ptr< std::ostream > LoggerClasses::LogHandlerStrategy::returnOstream (StrategyEnums strat, const std::string & fileName) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Switchcase, strategy selector\&. selects the strategy by which a ostream will be made concrete
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrat\fP An enum dictating what strategy to return 
+.br
+\fIfileName\fP The name of the file we wish to open 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A pointer to a concrete ostream 
+.RE
+.PP
+
+.PP
+Implements \fBLoggerClasses::I_LogStrategy\fP\&.
+.PP
+Definition at line 23 of file LogHandlerStrategy\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

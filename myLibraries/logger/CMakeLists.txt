@@ -51,7 +51,7 @@ add_executable(testLogger
                tests/loggerTestsMain.cpp
                tests/LogFileTests.cpp
                tests/LogHandlerTests.cpp
-               src/LogHandlerStrategy.cpp)
+               src/LogHandlerStrategy.cpp tests/loggerStrategyTests.cpp)
 target_link_libraries(testLogger
                       logger
                       gmock

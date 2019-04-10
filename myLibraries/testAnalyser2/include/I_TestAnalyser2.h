@@ -4,6 +4,9 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
+ * @{
+ * @addtogroup interfaces
+ * @{
  *
  * @date 12/01/19
  */
@@ -37,5 +40,5 @@ public:
     virtual bool isAnalysed() = 0;
 };
 } /* namespace TestAnalyser2 */
-
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_I_TESTANALYSER2_H */

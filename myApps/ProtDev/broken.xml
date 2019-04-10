@@ -27,7 +27,7 @@
         <threads max="5"/> <!-- Maximum threads allowed -->
         <threadsPerInterface tpi="1"/> <!-- How many threads can a comms interface be assigned.
                                        The comms will need to be thread safe for values higher than 1 -->
-        <comms handler="libNetworkCommunication-def"/> <!-- What is the name of the comms library (so/dll) -->
+        <comms handler="NetworkCommunication-def"/> <!-- What is the name of the comms library (so/dll) -->
     </config>
 
 </testCase>

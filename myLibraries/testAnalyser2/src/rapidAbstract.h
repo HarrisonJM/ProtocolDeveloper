@@ -8,7 +8,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 02/01/19
  *
  * @todo rapidabstract interface
@@ -107,5 +107,5 @@ private:
     rapidxml::xml_attribute<>* _currentAttribute;
 };
 } /* namespace testAnalyser2 */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_RAPIDABSTRACT_H */

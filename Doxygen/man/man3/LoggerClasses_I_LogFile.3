@@ -1,0 +1,37 @@
+.TH "LoggerClasses::I_LogFile" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LoggerClasses::I_LogFile
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBLoggerClasses::LogFile\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBAddLogMessage\fP (const std::string &message, logLevel lvl)=0"
+.br
+.RI "Adds a message to the log queue\&. "
+.ti -1c
+.RI "virtual std::string \fBReturnOldestMessage\fP ()=0"
+.br
+.RI "Returns the oldest message in the queue\&. "
+.ti -1c
+.RI "virtual void \fBWriteAllMessagesToStream\fP ()=0"
+.br
+.RI "Writes The oldest message from the queue to the provided stream\&. "
+.ti -1c
+.RI "virtual std::string \fBReturnLatestMessage\fP ()=0"
+.br
+.RI "Returns the latest message to be added\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 20 of file I_LogFile\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

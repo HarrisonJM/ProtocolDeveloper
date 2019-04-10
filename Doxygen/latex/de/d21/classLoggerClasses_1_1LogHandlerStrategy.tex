@@ -1,0 +1,64 @@
+\hypertarget{classLoggerClasses_1_1LogHandlerStrategy}{}\section{Logger\+Classes\+::Log\+Handler\+Strategy Class Reference}
+\label{classLoggerClasses_1_1LogHandlerStrategy}\index{LoggerClasses::LogHandlerStrategy@{LoggerClasses::LogHandlerStrategy}}
+
+
+Inheritance diagram for Logger\+Classes\+::Log\+Handler\+Strategy\+:
+% FIG 0
+
+
+Collaboration diagram for Logger\+Classes\+::Log\+Handler\+Strategy\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandlerStrategy_a760c531109f6c85bc6b172cf2c977ff4}\label{classLoggerClasses_1_1LogHandlerStrategy_a760c531109f6c85bc6b172cf2c977ff4}} 
+\mbox{\hyperlink{classLoggerClasses_1_1LogHandlerStrategy_a760c531109f6c85bc6b172cf2c977ff4}{Log\+Handler\+Strategy}} ()=default
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+std\+::unique\+\_\+ptr$<$ std\+::ostream $>$ \mbox{\hyperlink{classLoggerClasses_1_1LogHandlerStrategy_ab7f8e83edb42c81b9b416018f1c0cfb2}{return\+Ostream}} (Strategy\+Enums strat, const std\+::string \&file\+Name) const override
+\begin{DoxyCompactList}\small\item\em Switchcase, strategy selector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 26 of file Log\+Handler\+Strategy.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLoggerClasses_1_1LogHandlerStrategy_ab7f8e83edb42c81b9b416018f1c0cfb2}\label{classLoggerClasses_1_1LogHandlerStrategy_ab7f8e83edb42c81b9b416018f1c0cfb2}} 
+\index{LoggerClasses::LogHandlerStrategy@{LoggerClasses::LogHandlerStrategy}!returnOstream@{returnOstream}}
+\index{returnOstream@{returnOstream}!LoggerClasses::LogHandlerStrategy@{LoggerClasses::LogHandlerStrategy}}
+\subsubsection{\texorpdfstring{returnOstream()}{returnOstream()}}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$ std\+::ostream $>$ Logger\+Classes\+::\+Log\+Handler\+Strategy\+::return\+Ostream (\begin{DoxyParamCaption}\item[{Strategy\+Enums}]{strat,  }\item[{const std\+::string \&}]{file\+Name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Switchcase, strategy selector. 
+
+selects the strategy by which a ostream will be made concrete
+
+
+\begin{DoxyParams}{Parameters}
+{\em strat} & An enum dictating what strategy to return \\
+\hline
+{\em file\+Name} & The name of the file we wish to open \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to a concrete ostream 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classLoggerClasses_1_1I__LogStrategy_a1c2601ad4bd896794fa7de7fb1dbbbd8}{Logger\+Classes\+::\+I\+\_\+\+Log\+Strategy}}.
+
+
+
+Definition at line 23 of file Log\+Handler\+Strategy.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/logger/src/Log\+Handler\+Strategy.\+h\item 
+my\+Libraries/logger/src/Log\+Handler\+Strategy.\+cpp\end{DoxyCompactItemize}

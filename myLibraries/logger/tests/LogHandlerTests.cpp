@@ -1,5 +1,13 @@
 /*!
  * @brief Tests for the LogHandler class
+ *
+ * @author hmarcks
+ * @date 10/04/19
+ *
+ * @addtogroup logger
+ * @{
+ * @addtogroup tests
+ * @{
  */
 
 #include <gmock/gmock.h>
@@ -14,7 +22,7 @@ using ::testing::StrictMock;
 using ::testing::_;
 using ::testing::Return;
 
-namespace LoggerClasses
+namespace logger
 {
 class LogHandlerTests : public ::testing::Test
 {
@@ -24,19 +32,19 @@ protected:
 
     void SetUp() override
     {
-        LoggerClasses::LogHandler::GetInstance(_maxLogs
+        logger::LogHandler::GetInstance(_maxLogs
                                                , _path);
     }
 
     void TearDown() override
     {
-
+        GetInstance().FlushMessagesToStreams();
     }
 
-    auto GetInstance() -> decltype(LoggerClasses::LogHandler::GetInstance(_maxLogs
+    auto GetInstance() -> decltype(logger::LogHandler::GetInstance(_maxLogs
                                                                          , _path))
     {
-        return LoggerClasses::LogHandler::GetInstance(_maxLogs
+        return logger::LogHandler::GetInstance(_maxLogs
                                                       , _path);
     }
 };
@@ -45,14 +53,21 @@ TEST_F(LogHandlerTests
        , constructor_01)
 {
     GetInstance().KillHandler();
+
+    std::unique_ptr<I_LogStrategy> ilo;
+    logger::LogHandler::GetInstance(_maxLogs
+                                           , _path
+                                           , std::move(ilo));
+
     ASSERT_TRUE(true);
 }
 
 TEST_F(LogHandlerTests
        , openNewLogWithoutEIS_02)
 {
+    GetInstance().KillHandler();
     int64_t logID = GetInstance().OpenNewLog("testLog"
-                                            , StrategyEnums::FSTREAM);
+                                            , StrategyEnums::STDOUT);
     EXPECT_NE(logID
               , -1);
 
@@ -61,10 +76,14 @@ TEST_F(LogHandlerTests
     GetInstance().AddMessageToLog(logID
                                  , "TEST MESSAGE"
                                  , logLevel::INFO);
-    testing::internal::CaptureStdout();
+    GetInstance().AddMessageToLog("testLog"
+                                  , "TEST MESSAGE"
+                                  , logLevel::INFO);
+    GetInstance().KillHandler();
     log->WriteAllMessagesToStream();
     GetInstance().CloseLog(logID);
-    GetInstance().KillHandler();
 }
 
-} /* namespace LoggerClasses */
+} /* namespace logger */
+
+/*! @} @} */

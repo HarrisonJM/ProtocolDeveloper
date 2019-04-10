@@ -48,7 +48,8 @@ add_executable(test${LIB_NAME}
                tests/${LIB_NAME}Tests.cpp
                tests/stringUtilityTests.cpp
                tests/enumHandlerTests.cpp
-               tests/threadSafeTTests.cpp include/utility/extraExceptionBase.h)
+               tests/threadSafeTTests.cpp
+               include/utility/extraExceptionBase.h)
 target_link_libraries(test${LIB_NAME}
                       ${LIB_NAME}
                       gtest_main

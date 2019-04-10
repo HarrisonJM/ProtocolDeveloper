@@ -1,0 +1,84 @@
+\hypertarget{classPluginLoader_1_1dllAbstract}{}\section{Plugin\+Loader\+::dll\+Abstract$<$ T $>$ Class Template Reference}
+\label{classPluginLoader_1_1dllAbstract}\index{PluginLoader::dllAbstract$<$ T $>$@{PluginLoader::dllAbstract$<$ T $>$}}
+
+
+Class that hides the ugly dlfcn functions.  
+
+
+
+
+{\ttfamily \#include $<$dll\+Abstract.\+h$>$}
+
+
+
+Collaboration diagram for Plugin\+Loader\+::dll\+Abstract$<$ T $>$\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classPluginLoader_1_1dllAbstract_a2d525fbaf23c88ac0bfbc5321a09ef8d}{dll\+Abstract}} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em Constructor, comforms to R\+AiI. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classPluginLoader_1_1dllAbstract_a1d7bde106c08fd2613787908a4d026c3}\label{classPluginLoader_1_1dllAbstract_a1d7bde106c08fd2613787908a4d026c3}} 
+\mbox{\hyperlink{classPluginLoader_1_1dllAbstract_a1d7bde106c08fd2613787908a4d026c3}{$\sim$dll\+Abstract}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classPluginLoader_1_1dllAbstract_a1560b7381d7c034642245022479f21e7}{Get\+Plugin\+Factory}} ()
+\begin{DoxyCompactList}\small\item\em Returns a pointer to the factory function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Plugin\+Loader\+::dll\+Abstract$<$ T $>$}
+
+Class that hides the ugly dlfcn functions. 
+
+Definition at line 25 of file dll\+Abstract.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPluginLoader_1_1dllAbstract_a2d525fbaf23c88ac0bfbc5321a09ef8d}\label{classPluginLoader_1_1dllAbstract_a2d525fbaf23c88ac0bfbc5321a09ef8d}} 
+\index{PluginLoader::dllAbstract$<$ T $>$@{PluginLoader::dllAbstract$<$ T $>$}!dllAbstract@{dllAbstract}}
+\index{dllAbstract@{dllAbstract}!PluginLoader::dllAbstract$<$ T $>$@{PluginLoader::dllAbstract$<$ T $>$}}
+\subsubsection{\texorpdfstring{dllAbstract()}{dllAbstract()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+\mbox{\hyperlink{classPluginLoader_1_1dllAbstract}{Plugin\+Loader\+::dll\+Abstract}}$<$ T $>$\+::\mbox{\hyperlink{classPluginLoader_1_1dllAbstract}{dll\+Abstract}} (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor, comforms to R\+AiI. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The path to the dll \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 32 of file dll\+Abstract.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPluginLoader_1_1dllAbstract_a1560b7381d7c034642245022479f21e7}\label{classPluginLoader_1_1dllAbstract_a1560b7381d7c034642245022479f21e7}} 
+\index{PluginLoader::dllAbstract$<$ T $>$@{PluginLoader::dllAbstract$<$ T $>$}!GetPluginFactory@{GetPluginFactory}}
+\index{GetPluginFactory@{GetPluginFactory}!PluginLoader::dllAbstract$<$ T $>$@{PluginLoader::dllAbstract$<$ T $>$}}
+\subsubsection{\texorpdfstring{GetPluginFactory()}{GetPluginFactory()}}
+{\footnotesize\ttfamily template$<$typename T$>$ \\
+std\+::shared\+\_\+ptr$<$T$>$ \mbox{\hyperlink{classPluginLoader_1_1dllAbstract}{Plugin\+Loader\+::dll\+Abstract}}$<$ T $>$\+::Get\+Plugin\+Factory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns a pointer to the factory function. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a function 
+\end{DoxyReturn}
+
+
+Definition at line 51 of file dll\+Abstract.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/plugin\+Loader/src/dll\+Abstract.\+h\end{DoxyCompactItemize}

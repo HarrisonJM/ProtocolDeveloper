@@ -1,0 +1,102 @@
+.TH "TimeTicker::GMTHandler" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TimeTicker::GMTHandler
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBTimeTicker::I_gMTHandler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGMTHandler\fP ()"
+.br
+.RI "Normal constructor, uses default wrappers\&. "
+.ti -1c
+.RI "\fBGMTHandler\fP (std::unique_ptr< \fBcFunctions::cStdLib\fP > stdlibModule, std::unique_ptr< \fBcFunctions::cStdio\fP > stdioModule)"
+.br
+.RI "Testing/non-std functions constructor\&. "
+.ti -1c
+.RI "int \fBPrintGMTOffset\fP (const struct tm *theTimeTM_p, char *buffer_p, size_t length) const override"
+.br
+.RI "Finds the GMT offset and then prints it to the provided buffer\&. "
+.ti -1c
+.RI "TTRetCode_E \fBGetGMTOffset\fP (const struct tm *tm_p, \fBTTGMTOffset_t\fP *offset_p) const override"
+.br
+.RI "Gets the GMT Offset and stores it in offset_p\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 27 of file gMTHandler\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TimeTicker::GMTHandler::GMTHandler (std::unique_ptr< \fBcFunctions::cStdLib\fP > stdlibModule, std::unique_ptr< \fBcFunctions::cStdio\fP > stdioModule)"
+
+.PP
+Testing/non-std functions constructor\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstdlibModule\fP An unq_p to a stdLib (or similiar) module 
+.br
+\fIstdioModule\fP An unq_p to an stdio (or similiar) module 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file gMTHandler\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "TTRetCode_E TimeTicker::GMTHandler::GetGMTOffset (const struct tm * tm_p, \fBTTGMTOffset_t\fP * offset_p) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Gets the GMT Offset and stores it in offset_p\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItm_p\fP A tim struct ptr that contains the time 
+.br
+\fIoffset_p\fP Where to store the offset 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+false on failure 
+.RE
+.PP
+
+.PP
+Implements \fBTimeTicker::I_gMTHandler\fP\&.
+.PP
+Definition at line 84 of file gMTHandler\&.cpp\&.
+.SS "int TimeTicker::GMTHandler::PrintGMTOffset (const struct tm * theTimeTM_p, char * buffer_p, size_t length) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Finds the GMT offset and then prints it to the provided buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItheTimeTM_p\fP A pointer to The current time 
+.br
+\fIbuffer_p\fP Where to store the printed offset 
+.br
+\fIlength\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes printed 
+.RE
+.PP
+
+.PP
+Implements \fBTimeTicker::I_gMTHandler\fP\&.
+.PP
+Definition at line 42 of file gMTHandler\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

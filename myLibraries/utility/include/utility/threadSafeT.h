@@ -4,6 +4,9 @@
  * @author hmarcks
  *
  * @addtogroup utility
+ * @{
+ * @addtogroup threadSafeT
+ * @{
  *
  * @date 17/01/19
  *
@@ -81,6 +84,6 @@ private:
     mutable std::mutex _mut;
 };
 
-} /* namespace SafeContainers */
-
+} /* namespace safeContainers */
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_THREADSAFEBOOL_H */

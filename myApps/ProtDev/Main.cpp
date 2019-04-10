@@ -1,3 +1,11 @@
+/*!
+ * @brief Entry point for the protocol developer program
+ *
+ * @author hmarcks
+ * @date 10/04/19
+ * @addtogroup ProtDev
+ * @{
+ */
 #include <iostream>
 #include <testRunner/testRunner.h>
 #include <pluginLoader/pluginLoader.h>
@@ -8,12 +16,12 @@
 int main(int argc
          , char **argv)
 {
-    ThreadHandler::ThreadPool pool(10);
+    threadPool::ThreadPool pool(10);
     pool.InitPool();
-    LoggerClasses::LogHandler::GetInstance(20
+    logger::LogHandler::GetInstance(20
                                            , "/var/log/protdev/");
-    std::function<void(void)> flushFunc = std::bind(&LoggerClasses::LogHandler::FlushMessagesToStreams
-                                                    , &(LoggerClasses::LogHandler::GetInstance(0
+    std::function<void(void)> flushFunc = std::bind(&logger::LogHandler::FlushMessagesToStreams
+                                                    , &(logger::LogHandler::GetInstance(0
                                                                                                , "")));
     pool.AddTaskToQueue(flushFunc);
 
@@ -23,14 +31,14 @@ int main(int argc
     std::stringstream ss;
     ss << std::put_time(tm
                         , "TESTRUN_%d-%m-%Y_%H-%M-%S");
-    auto _loggerID = LoggerClasses::LogHandler::GetInstance(0
+    auto _loggerID = logger::LogHandler::GetInstance(0
                                                             , "").OpenNewLog(ss.str()
-                                                                             , LoggerClasses::StrategyEnums::FSTREAM);
+                                                                             , logger::StrategyEnums::FSTREAM);
     // Load plugins
     pluginLoader::PluginLoader PL(_loggerID);
-//    PL.ScanForComms("/home/hmarcks/src/builds/protDev-debug/myLibraries/libnetworkCommunication/");
+//    PL.ScanForComms("/home/hmarcks/src/builds/protDev-debug/myLibraries/NetworkCommunication/");
 //    PL.ScanForProtocols("/home/hmarcks/src/builds/protDev-debug/myLibraries/helloWorldProtocol/");
-    PL.ScanForComms("../../myLibraries/libnetworkCommunication/");
+    PL.ScanForComms("../../myLibraries/NetworkCommunication/");
     PL.ScanForProtocols("../../myLibraries/helloWorldProtocol/lib");
 
     std::string testFileName = "../../../../ProtocolDeveloper/myLibraries/testAnalyser2/sntp.xml";
@@ -40,7 +48,7 @@ int main(int argc
     {
         testAnalyser2::TestAnalyser2 TA2(testFileName
                                          , _loggerID);
-        TestRunner::TestRunner tr(testFileName
+        testRunner::TestRunner tr(testFileName
                                   , PL.getCommsPlugins()
                                   , PL.getProtocolPlugins()
                                   , std::make_unique<decltype(TA2)>(TA2)
@@ -51,9 +59,10 @@ int main(int argc
     {
         std::cout << e.what() << std::endl;
         LOGMESSAGE(e.what()
-                   , LoggerClasses::logLevel::ERROR);
+                   , logger::logLevel::ERROR);
         exit(1);
     }
 
     return 0;
 }
+/*! @} */

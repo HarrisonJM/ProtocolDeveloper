@@ -1,0 +1,104 @@
+\hypertarget{classPluginLoader_1_1I__Plugin}{}\section{Plugin\+Loader\+::I\+\_\+\+Plugin Class Reference}
+\label{classPluginLoader_1_1I__Plugin}\index{PluginLoader::I\_Plugin@{PluginLoader::I\_Plugin}}
+
+
+Top-\/level base class the plugin interfaces should derive from.  
+
+
+
+
+{\ttfamily \#include $<$I\+\_\+plugin.\+h$>$}
+
+
+
+Inheritance diagram for Plugin\+Loader\+::I\+\_\+\+Plugin\+:
+% FIG 0
+
+
+Collaboration diagram for Plugin\+Loader\+::I\+\_\+\+Plugin\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPluginLoader_1_1I__Plugin_abfda98d2687828daad7f0b5892fb7a86}\label{classPluginLoader_1_1I__Plugin_abfda98d2687828daad7f0b5892fb7a86}} 
+virtual \mbox{\hyperlink{classPluginLoader_1_1I__Plugin_abfda98d2687828daad7f0b5892fb7a86}{$\sim$\+I\+\_\+\+Plugin}} ()=default
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+virtual const char $\ast$ \mbox{\hyperlink{classPluginLoader_1_1I__Plugin_a4c45255b16398fff512940a5e5b8322a}{get\+Plugin\+Name}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the plugins name. \end{DoxyCompactList}\item 
+virtual const char $\ast$ \mbox{\hyperlink{classPluginLoader_1_1I__Plugin_a43fb739a14ea1cc5ca6a77896a5f7b8f}{get\+Plugin\+Version}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the version of the plugin. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{namespacePluginLoader_a7b1358e9577b47b5d4b16231a5a81699}{Plugin\+Loader\+::\+P\+L\+U\+G\+I\+N\+T\+Y\+P\+E\+\_\+t}} \mbox{\hyperlink{classPluginLoader_1_1I__Plugin_aa7d2ca3f7a8551c590a7cbda0f1648f5}{get\+Plugin\+Type}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the plugin {\itshape type} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Top-\/level base class the plugin interfaces should derive from. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em I\+F\+Type} & The interface type that we want to make a plugin for \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 23 of file I\+\_\+plugin.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classPluginLoader_1_1I__Plugin_a4c45255b16398fff512940a5e5b8322a}\label{classPluginLoader_1_1I__Plugin_a4c45255b16398fff512940a5e5b8322a}} 
+\index{PluginLoader::I\_Plugin@{PluginLoader::I\_Plugin}!getPluginName@{getPluginName}}
+\index{getPluginName@{getPluginName}!PluginLoader::I\_Plugin@{PluginLoader::I\_Plugin}}
+\subsubsection{\texorpdfstring{getPluginName()}{getPluginName()}}
+{\footnotesize\ttfamily virtual const char$\ast$ Plugin\+Loader\+::\+I\+\_\+\+Plugin\+::get\+Plugin\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the plugins name. 
+
+\begin{DoxyReturn}{Returns}
+The name of the plugin (as a const char$\ast$) 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommunication_1_1I__communication_a5ef61375a8126f29c38cc1aa17339563}{Communication\+::\+I\+\_\+communication}}, \mbox{\hyperlink{classProtocol_1_1I__protocolInterface_a53e95b7d9ea9ad8ee179c2663511ce20}{Protocol\+::\+I\+\_\+protocol\+Interface}}, \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a2d09c69b582a66b37100ce87ee1acdd1}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, \mbox{\hyperlink{classhwProt_1_1HelloWorldProtocol_acca6465073e5919a7a74b8f74e869e8e}{hw\+Prot\+::\+Hello\+World\+Protocol}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_aa4a1a2180bdbf7b13ec0dd17f3cbb459}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+\mbox{\Hypertarget{classPluginLoader_1_1I__Plugin_aa7d2ca3f7a8551c590a7cbda0f1648f5}\label{classPluginLoader_1_1I__Plugin_aa7d2ca3f7a8551c590a7cbda0f1648f5}} 
+\index{PluginLoader::I\_Plugin@{PluginLoader::I\_Plugin}!getPluginType@{getPluginType}}
+\index{getPluginType@{getPluginType}!PluginLoader::I\_Plugin@{PluginLoader::I\_Plugin}}
+\subsubsection{\texorpdfstring{getPluginType()}{getPluginType()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{namespacePluginLoader_a7b1358e9577b47b5d4b16231a5a81699}{Plugin\+Loader\+::\+P\+L\+U\+G\+I\+N\+T\+Y\+P\+E\+\_\+t}} Plugin\+Loader\+::\+I\+\_\+\+Plugin\+::get\+Plugin\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the plugin {\itshape type} 
+
+\begin{DoxyReturn}{Returns}
+The the plugin is (as an enum) 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommunication_1_1I__communication_a531577d9a13f3fcb566a350b74184823}{Communication\+::\+I\+\_\+communication}}, \mbox{\hyperlink{classProtocol_1_1I__protocolInterface_aaa1010c6c48d6a4a99998ae383f2172c}{Protocol\+::\+I\+\_\+protocol\+Interface}}, \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a6851c7c48cde1af3d2b6e131fce6b8bc}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, \mbox{\hyperlink{classhwProt_1_1HelloWorldProtocol_aa3a9c97bcf934fa61cd69e19b93a2689}{hw\+Prot\+::\+Hello\+World\+Protocol}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_a22412ea75e41d612c66c42b3c4dab1f3}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+\mbox{\Hypertarget{classPluginLoader_1_1I__Plugin_a43fb739a14ea1cc5ca6a77896a5f7b8f}\label{classPluginLoader_1_1I__Plugin_a43fb739a14ea1cc5ca6a77896a5f7b8f}} 
+\index{PluginLoader::I\_Plugin@{PluginLoader::I\_Plugin}!getPluginVersion@{getPluginVersion}}
+\index{getPluginVersion@{getPluginVersion}!PluginLoader::I\_Plugin@{PluginLoader::I\_Plugin}}
+\subsubsection{\texorpdfstring{getPluginVersion()}{getPluginVersion()}}
+{\footnotesize\ttfamily virtual const char$\ast$ Plugin\+Loader\+::\+I\+\_\+\+Plugin\+::get\+Plugin\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the version of the plugin. 
+
+\begin{DoxyReturn}{Returns}
+The plugin version 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCommunication_1_1I__communication_a3ff1f75536d5a7394ef736353bd29e53}{Communication\+::\+I\+\_\+communication}}, \mbox{\hyperlink{classProtocol_1_1I__protocolInterface_abbdaeb43eba4c18b57e6f7010d9209bc}{Protocol\+::\+I\+\_\+protocol\+Interface}}, \mbox{\hyperlink{classlibNetworkCommunication_1_1libNetworkCommunication_a78dce6f61316f1f2068c0f03c7cc4b32}{lib\+Network\+Communication\+::lib\+Network\+Communication}}, \mbox{\hyperlink{classhwProt_1_1HelloWorldProtocol_ab4c559084de5fa090d75672eff462841}{hw\+Prot\+::\+Hello\+World\+Protocol}}, and \mbox{\hyperlink{classlibNetworkCommunication_1_1I__libNetworkCommunication_a07a5da99fc896208065f34aa89453499}{lib\+Network\+Communication\+::\+I\+\_\+lib\+Network\+Communication}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/plugin\+Loader/include/I\+\_\+plugin.\+h\end{DoxyCompactItemize}

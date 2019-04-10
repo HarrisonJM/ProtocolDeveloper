@@ -1,0 +1,11 @@
+digraph "PluginLoader::PluginLoaderTemplate::ScanForPlugins"
+{
+ // INTERACTIVE_SVG=YES
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node2 [label="PluginLoader::PluginLoader\lTemplate::ScanForPlugins",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Scans for plugins in the provided location."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="PluginLoader::dllAbstract\l::GetPluginFactory",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$df/d1e/classPluginLoader_1_1dllAbstract.html#a1560b7381d7c034642245022479f21e7",tooltip="Returns a pointer to the factory function."];
+}

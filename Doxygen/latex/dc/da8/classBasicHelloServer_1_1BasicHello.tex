@@ -1,0 +1,129 @@
+\hypertarget{classBasicHelloServer_1_1BasicHello}{}\section{Basic\+Hello\+Server\+::Basic\+Hello Class Reference}
+\label{classBasicHelloServer_1_1BasicHello}\index{BasicHelloServer::BasicHello@{BasicHelloServer::BasicHello}}
+
+
+A basic hello class.  
+
+
+
+
+{\ttfamily \#include $<$Basic\+Hello.\+h$>$}
+
+
+
+Inheritance diagram for Basic\+Hello\+Server\+::Basic\+Hello\+:
+% FIG 0
+
+
+Collaboration diagram for Basic\+Hello\+Server\+::Basic\+Hello\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBasicHelloServer_1_1BasicHello_ab57094a6104237e63759bbcb6633a96e}\label{classBasicHelloServer_1_1BasicHello_ab57094a6104237e63759bbcb6633a96e}} 
+\mbox{\hyperlink{classBasicHelloServer_1_1BasicHello_ab57094a6104237e63759bbcb6633a96e}{Basic\+Hello}} ()
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBasicHelloServer_1_1BasicHello_a730b8a4bf8185d49b01adb37a1d0a8d0}\label{classBasicHelloServer_1_1BasicHello_a730b8a4bf8185d49b01adb37a1d0a8d0}} 
+\mbox{\hyperlink{classBasicHelloServer_1_1BasicHello_a730b8a4bf8185d49b01adb37a1d0a8d0}{$\sim$\+Basic\+Hello}} () override
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBasicHelloServer_1_1BasicHello_a51e08649c1783b6e86ef4d329c85dcad}{receive\+Data}} (void $\ast$data\+In) override
+\begin{DoxyCompactList}\small\item\em receives data \end{DoxyCompactList}\item 
+void $\ast$ \mbox{\hyperlink{classBasicHelloServer_1_1BasicHello_aec194431ec40a83e40c09b42b3c31065}{send\+Data}} () override
+\begin{DoxyCompactList}\small\item\em sends the desired response \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBasicHelloServer_1_1BasicHello_ad0854e8076b63f77972c125cf4514de4}{set\+Response}} (const char $\ast$data)
+\begin{DoxyCompactList}\small\item\em Sets the internal response string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A basic hello class. 
+
+Receives and sends hello or goodbye 
+
+Definition at line 25 of file Basic\+Hello.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBasicHelloServer_1_1BasicHello_a51e08649c1783b6e86ef4d329c85dcad}\label{classBasicHelloServer_1_1BasicHello_a51e08649c1783b6e86ef4d329c85dcad}} 
+\index{BasicHelloServer::BasicHello@{BasicHelloServer::BasicHello}!receiveData@{receiveData}}
+\index{receiveData@{receiveData}!BasicHelloServer::BasicHello@{BasicHelloServer::BasicHello}}
+\subsubsection{\texorpdfstring{receiveData()}{receiveData()}}
+{\footnotesize\ttfamily void Basic\+Hello\+Server\+::\+Basic\+Hello\+::receive\+Data (\begin{DoxyParamCaption}\item[{void $\ast$}]{data\+In }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+receives data 
+
+decodes the data and passes it to set\+Response
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\+In} & Recieves and decodes the data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBasicHelloServer_1_1ConfigurationInterface_ac78a0a5d2a619073b272ca216ff14f14}{Basic\+Hello\+Server\+::\+Configuration\+Interface}}.
+
+
+
+Definition at line 50 of file Basic\+Hello.\+cpp.
+
+Here is the call graph for this function\+:
+% FIG 2
+\mbox{\Hypertarget{classBasicHelloServer_1_1BasicHello_aec194431ec40a83e40c09b42b3c31065}\label{classBasicHelloServer_1_1BasicHello_aec194431ec40a83e40c09b42b3c31065}} 
+\index{BasicHelloServer::BasicHello@{BasicHelloServer::BasicHello}!sendData@{sendData}}
+\index{sendData@{sendData}!BasicHelloServer::BasicHello@{BasicHelloServer::BasicHello}}
+\subsubsection{\texorpdfstring{sendData()}{sendData()}}
+{\footnotesize\ttfamily void $\ast$ Basic\+Hello\+Server\+::\+Basic\+Hello\+::send\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+sends the desired response 
+
+Returns the response.
+
+\begin{DoxyReturn}{Returns}
+Void pointer to the response 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classBasicHelloServer_1_1ConfigurationInterface_aafa11e6b4a4aac078138be7ff7e5ad9c}{Basic\+Hello\+Server\+::\+Configuration\+Interface}}.
+
+
+
+Definition at line 62 of file Basic\+Hello.\+cpp.
+
+\mbox{\Hypertarget{classBasicHelloServer_1_1BasicHello_ad0854e8076b63f77972c125cf4514de4}\label{classBasicHelloServer_1_1BasicHello_ad0854e8076b63f77972c125cf4514de4}} 
+\index{BasicHelloServer::BasicHello@{BasicHelloServer::BasicHello}!setResponse@{setResponse}}
+\index{setResponse@{setResponse}!BasicHelloServer::BasicHello@{BasicHelloServer::BasicHello}}
+\subsubsection{\texorpdfstring{setResponse()}{setResponse()}}
+{\footnotesize\ttfamily void Basic\+Hello\+Server\+::\+Basic\+Hello\+::set\+Response (\begin{DoxyParamCaption}\item[{const char $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Sets the internal response string. 
+
+Sets the response.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em data} & A pointer to the data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+
+Definition at line 27 of file Basic\+Hello.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+my\+Apps/hello\+World\+Server/src/Basic\+Hello.\+h\item 
+my\+Apps/hello\+World\+Server/src/Basic\+Hello.\+cpp\end{DoxyCompactItemize}

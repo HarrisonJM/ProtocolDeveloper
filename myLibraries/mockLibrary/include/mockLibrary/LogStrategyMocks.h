@@ -1,5 +1,7 @@
 /*!
  * @brief Mock header for the logStrategyClass
+ * @addtogroup mockLibrary
+ * @{
  */
 
 #ifndef PROTOCOLDEVELOPER_LOGSTRATEGYMOCKS_H
@@ -9,7 +11,7 @@
 
 #include "I_LogStrategy.h"
 
-namespace LoggerClasses {
+namespace logger {
 class LogStrategyMocks : public I_LogStrategy
 {
 public:
@@ -18,5 +20,6 @@ public:
                      strat, std::string
                      fileName));
 };
-} /* namespace LoggerClasses */
+} /* namespace logger */
+/*! @} */
 #endif //PROTOCOLDEVELOPER_LOGSTRATEGYMOCKS_H

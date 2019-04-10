@@ -4,7 +4,9 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
+ * @addtogroup exceptions
+ * @{
  * @date 03/01/19
  *
  * @todo Figure out how to collapse the where() from the rapidxml::parse_error into a single what()
@@ -158,5 +160,5 @@ public:
     const char* _info;
 };
 } /* namespace testAnalyser2 */
-
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_ANALYSISEXCEPTION_H */

@@ -1,0 +1,68 @@
+.TH "TimeTicker::TimeSpec" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TimeTicker::TimeSpec
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBTimeTicker::TimeTicker\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBgetClockGetTime\fP (TTTimeClockId clockId, TT_timespec_t *time_p)"
+.br
+.RI "Returns either the real time (0) Or monotonic time (1) "
+.ti -1c
+.RI "int \fBTimeSubtract\fP (const struct timespec *first_p, const struct timespec *second_p, struct timespec *result_p)"
+.br
+.ti -1c
+.RI "void \fBTimeAdd\fP (const struct timespec *first_p, const struct timespec *second_p, struct timespec *result_p)"
+.br
+.ti -1c
+.RI "int64_t \fBTimeDiff\fP (const struct timespec *timeA_p, const struct timespec *timeB_p)"
+.br
+.ti -1c
+.RI "int64_t \fBTimeDiffNS\fP (const struct timespec *timeA_p, const struct timespec *timeB_p)"
+.br
+.ti -1c
+.RI "int64_t \fBTimeDiffUS\fP (const struct timespec *timeA_p, const struct timespec *timeB_p)"
+.br
+.ti -1c
+.RI "int64_t \fBTimeDiffMS\fP (const struct timespec *timeA_p, const struct timespec *timeB_p)"
+.br
+.ti -1c
+.RI "int64_t \fBTimeDiffS\fP (const struct timespec *timeA_p, const struct timespec *timeB_p)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 21 of file timeSpec\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int TimeTicker::TimeSpec::getClockGetTime (TTTimeClockId clockId, TT_timespec_t * time_p)"
+
+.PP
+Returns either the real time (0) Or monotonic time (1) 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclockId\fP The I of the clock we'd like (As defined by TTTimeClockId) 
+.br
+\fItime_p\fP The timespec struct we'd like to get the time for 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+0 for success, otherwise -1 
+.RE
+.PP
+
+.PP
+Definition at line 122 of file timeSpec\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

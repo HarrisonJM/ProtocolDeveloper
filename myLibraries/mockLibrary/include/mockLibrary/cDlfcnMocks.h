@@ -2,6 +2,8 @@
  * @brief gmock mocks for the cDflcn class
  * @author Harrison Marcks
  * @date 8/4/19
+ * @addtogroup mockLibrary
+ * @{
  */
 
 #include "gmock/gmock.h"
@@ -28,5 +30,5 @@ public:
             void));
 };
 }
-
+/*! @} */
 #endif //__PROTOCOLDEVELOPER_CDLFCNMOCKS_H__

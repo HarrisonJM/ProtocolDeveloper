@@ -1,0 +1,104 @@
+\hypertarget{classutility_1_1EnumHandler}{}\section{utility\+::Enum\+Handler$<$ K, V $>$ Class Template Reference}
+\label{classutility_1_1EnumHandler}\index{utility::EnumHandler$<$ K, V $>$@{utility::EnumHandler$<$ K, V $>$}}
+
+
+Maps enums.  
+
+
+
+
+{\ttfamily \#include $<$enum\+Handler.\+h$>$}
+
+
+
+Inheritance diagram for utility\+::Enum\+Handler$<$ K, V $>$\+:
+% FIG 0
+
+
+Collaboration diagram for utility\+::Enum\+Handler$<$ K, V $>$\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classutility_1_1EnumHandler_af49384d459fa5d1ae9af67d446ba75b1}\label{classutility_1_1EnumHandler_af49384d459fa5d1ae9af67d446ba75b1}} 
+\mbox{\hyperlink{classutility_1_1EnumHandler_af49384d459fa5d1ae9af67d446ba75b1}{Enum\+Handler}} ()=default
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classutility_1_1EnumHandler_a92372a79c030a6a049b5bce87423bab0}\label{classutility_1_1EnumHandler_a92372a79c030a6a049b5bce87423bab0}} 
+\mbox{\hyperlink{classutility_1_1EnumHandler_a92372a79c030a6a049b5bce87423bab0}{$\sim$\+Enum\+Handler}} ()=default
+\begin{DoxyCompactList}\small\item\em Default Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classutility_1_1EnumHandler_a37a6fdef5cc101d22028e6aafd2f719e}{Register\+Enum}} (K key, V value)
+\begin{DoxyCompactList}\small\item\em Registers an Enum to the internal map. \end{DoxyCompactList}\item 
+V \mbox{\hyperlink{classutility_1_1EnumHandler_aa24c170157579c63d265e43eb7535291}{get\+Value}} (K key)
+\begin{DoxyCompactList}\small\item\em Looks up a value based on the key. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class K, class V$>$\newline
+class utility\+::\+Enum\+Handler$<$ K, V $>$}
+
+Maps enums. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em K} & The key by which we want to look up values \\
+\hline
+{\em V} & What we want to return \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 24 of file enum\+Handler.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classutility_1_1EnumHandler_aa24c170157579c63d265e43eb7535291}\label{classutility_1_1EnumHandler_aa24c170157579c63d265e43eb7535291}} 
+\index{utility::EnumHandler$<$ K, V $>$@{utility::EnumHandler$<$ K, V $>$}!getValue@{getValue}}
+\index{getValue@{getValue}!utility::EnumHandler$<$ K, V $>$@{utility::EnumHandler$<$ K, V $>$}}
+\subsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily template$<$class K, class V$>$ \\
+V \mbox{\hyperlink{classutility_1_1EnumHandler}{utility\+::\+Enum\+Handler}}$<$ K, V $>$\+::get\+Value (\begin{DoxyParamCaption}\item[{K}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Looks up a value based on the key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key for the value we wish to look up \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A copy of the stored value 
+\end{DoxyReturn}
+
+
+Definition at line 49 of file enum\+Handler.\+h.
+
+\mbox{\Hypertarget{classutility_1_1EnumHandler_a37a6fdef5cc101d22028e6aafd2f719e}\label{classutility_1_1EnumHandler_a37a6fdef5cc101d22028e6aafd2f719e}} 
+\index{utility::EnumHandler$<$ K, V $>$@{utility::EnumHandler$<$ K, V $>$}!RegisterEnum@{RegisterEnum}}
+\index{RegisterEnum@{RegisterEnum}!utility::EnumHandler$<$ K, V $>$@{utility::EnumHandler$<$ K, V $>$}}
+\subsubsection{\texorpdfstring{RegisterEnum()}{RegisterEnum()}}
+{\footnotesize\ttfamily template$<$class K, class V$>$ \\
+void \mbox{\hyperlink{classutility_1_1EnumHandler}{utility\+::\+Enum\+Handler}}$<$ K, V $>$\+::Register\+Enum (\begin{DoxyParamCaption}\item[{K}]{key,  }\item[{V}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Registers an Enum to the internal map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & The key for the value \\
+\hline
+{\em value} & The value described by the key \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 40 of file enum\+Handler.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/utility/include/utility/enum\+Handler.\+h\end{DoxyCompactItemize}

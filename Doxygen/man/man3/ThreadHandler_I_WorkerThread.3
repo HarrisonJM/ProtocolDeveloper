@@ -1,0 +1,51 @@
+.TH "ThreadHandler::I_WorkerThread" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ThreadHandler::I_WorkerThread \- Thread \fBWorker\fP Interface\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <I_WorkerThread\&.h>\fP
+.PP
+Inherited by \fBThreadHandler::WorkerThread\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~I_WorkerThread\fP ()"
+.br
+.RI "Constructor for a worker\&. "
+.ti -1c
+.RI "virtual void \fBoperator()\fP ()=0"
+.br
+.RI "Runs the Threads\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Thread \fBWorker\fP Interface\&. 
+.PP
+Definition at line 17 of file I_WorkerThread\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual ThreadHandler::I_WorkerThread::~I_WorkerThread ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Constructor for a worker\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpool_in\fP The Threads associated Pool Queue 
+.br
+\fIid_in\fP The Threads ID 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file I_WorkerThread\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

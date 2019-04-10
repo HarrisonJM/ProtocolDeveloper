@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 02/01/19
  */
 
@@ -68,5 +68,5 @@ private:
     testConfiguration _configuration;
 };
 } /* namespace testAnalyser2 */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_TESTFILE_H */

@@ -4,6 +4,9 @@
  * @author hmarcks
  *
  * @addtogroup PluginLoader
+ * @{
+ * @addtogroup interfaces
+ * @{
  *
  * @date 29/12/18
  */
@@ -45,5 +48,5 @@ public:
 };
 
 } /* namespace pluginLoader */
-
+/*! @} @} */
 #endif /* PROTOCOLDEVELOPER_I_PLUGIN_H */

@@ -1,0 +1,68 @@
+.TH "BasicHelloServer::ServerSetup" 3 "Wed Apr 3 2019" "Version 0.1" "Protocol Developer" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BasicHelloServer::ServerSetup \- server setup class  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ServerSetup\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBServerSetup\fP (std::string portToUse)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fB~ServerSetup\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "int \fBgetSockFD\fP ()"
+.br
+.RI "Returns the socket FD\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+server setup class 
+
+Using a port number, sets up a server and begins listening 
+.PP
+Definition at line 24 of file ServerSetup\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BasicHelloServer::ServerSetup::ServerSetup (std::string portToUse)\fC [explicit]\fP"
+
+.PP
+Constructor\&. Default Constructor\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIportToUse\fP The number of the port to use for communication 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file ServerSetup\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int BasicHelloServer::ServerSetup::getSockFD ()"
+
+.PP
+Returns the socket FD\&. Returns the Socket FD\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The Socekt FD 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file ServerSetup\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Protocol Developer from the source code\&.

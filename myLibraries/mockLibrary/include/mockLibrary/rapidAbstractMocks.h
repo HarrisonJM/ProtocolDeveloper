@@ -3,7 +3,8 @@
  *
  * @author hmarcks
  *
- * @addtogroup mocksLibrary
+ * @addtogroup mockLibrary
+ * @{
  *
  * @date 22/02/19
  */
@@ -46,5 +47,5 @@ class rapidAbstractMocks
                        , rapidxml::node_type());
 };
 } /* namespace testAnalyser2 */
-
+/*! @} */
 #endif /* PROTOCOLDEVELOPER_RAPIDABSTRACTMOCKS_H */

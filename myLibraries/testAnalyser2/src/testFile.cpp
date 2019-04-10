@@ -4,7 +4,7 @@
  * @author hmarcks
  *
  * @addtogroup testAnalyser2
- *
+ * @{
  * @date 02/01/19
  */
 
@@ -62,3 +62,4 @@ void TestFile::AddConfiguration(testConfiguration& newConf)
     _configuration = std::move(newConf);
 }
 } /* namespace testAnalyser2 */
+/*! @} */

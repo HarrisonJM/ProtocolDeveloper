@@ -1,0 +1,221 @@
+\hypertarget{classtestAnalyser2_1_1I__RapidAbstract}{}\section{test\+Analyser2\+::I\+\_\+\+Rapid\+Abstract Class Reference}
+\label{classtestAnalyser2_1_1I__RapidAbstract}\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+
+
+Inheritance diagram for test\+Analyser2\+::I\+\_\+\+Rapid\+Abstract\+:
+% FIG 0
+
+
+Collaboration diagram for test\+Analyser2\+::I\+\_\+\+Rapid\+Abstract\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const char $\ast$ \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_af94009549a9590806e5d8164ebca3c15}{Get\+Current\+Node\+Name}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the current node name. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_a95d6bb9f515adb49e62396e48d23d88f}{Move\+To\+Next\+Node}} ()=0
+\begin{DoxyCompactList}\small\item\em Moves to the next node (straight downly) \end{DoxyCompactList}\item 
+virtual const char $\ast$ \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_a0d4dd17120e75549ee68181cc4a4e503}{Get\+Node\+Value}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the Node\textquotesingle{}s data (for a node\+\_\+data type) \end{DoxyCompactList}\item 
+virtual std\+::size\+\_\+t \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_ad30a0a18d8a387ab48c95270b70042b4}{Get\+Node\+Value\+Size}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the size of the nodes value. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_a9d646b222f88e3baf52ca808288bc7c2}{Move\+To\+Child}} ()=0
+\begin{DoxyCompactList}\small\item\em Moves to the child node (diagonally) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_af11701100809bb381f75ad683e95cf11}\label{classtestAnalyser2_1_1I__RapidAbstract_af11701100809bb381f75ad683e95cf11}} 
+virtual void \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_af11701100809bb381f75ad683e95cf11}{Exit\+Child}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns to the previous highest node. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_a916b023a5b55e1334f6595ed9d4cb7d8}{Select\+Attribute}} ()=0
+\begin{DoxyCompactList}\small\item\em Selects an attribute to start reading that. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_ab26e1f2ca674a3bc10b0a5b71c9a5941}{Move\+To\+Next\+Attribute}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the next attribute in a node. \end{DoxyCompactList}\item 
+virtual const char $\ast$ \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_a70d3e89ca2966dfb205084a1cf1f9f1f}{Get\+Attribute\+Name}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the attribute\textquotesingle{}s name. \end{DoxyCompactList}\item 
+virtual const char $\ast$ \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_a530a07423a4a8d9afc6222ad41d4879e}{Get\+Attribute\+Value}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the attribute\textquotesingle{}s value. \end{DoxyCompactList}\item 
+virtual rapidxml\+::node\+\_\+type \mbox{\hyperlink{classtestAnalyser2_1_1I__RapidAbstract_a8da0bb607ddd98b943fc07fd5ac1abe8}{Get\+Current\+Node\+Type}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns the current node\textquotesingle{}s type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 24 of file I\+\_\+\+Rapid\+Abstract.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_a70d3e89ca2966dfb205084a1cf1f9f1f}\label{classtestAnalyser2_1_1I__RapidAbstract_a70d3e89ca2966dfb205084a1cf1f9f1f}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!GetAttributeName@{GetAttributeName}}
+\index{GetAttributeName@{GetAttributeName}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{GetAttributeName()}{GetAttributeName()}}
+{\footnotesize\ttfamily virtual const char$\ast$ test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Get\+Attribute\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the attribute\textquotesingle{}s name. 
+
+\begin{DoxyReturn}{Returns}
+A char$\ast$ contianing the node name 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_aa7dd98c70db7f68528247a08717178ab}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_a530a07423a4a8d9afc6222ad41d4879e}\label{classtestAnalyser2_1_1I__RapidAbstract_a530a07423a4a8d9afc6222ad41d4879e}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!GetAttributeValue@{GetAttributeValue}}
+\index{GetAttributeValue@{GetAttributeValue}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{GetAttributeValue()}{GetAttributeValue()}}
+{\footnotesize\ttfamily virtual const char$\ast$ test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Get\+Attribute\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the attribute\textquotesingle{}s value. 
+
+\begin{DoxyReturn}{Returns}
+A char$\ast$ contianing the node name 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_abdb39cb9f3d094518d8d3fcfb1ae0d64}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_af94009549a9590806e5d8164ebca3c15}\label{classtestAnalyser2_1_1I__RapidAbstract_af94009549a9590806e5d8164ebca3c15}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!GetCurrentNodeName@{GetCurrentNodeName}}
+\index{GetCurrentNodeName@{GetCurrentNodeName}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{GetCurrentNodeName()}{GetCurrentNodeName()}}
+{\footnotesize\ttfamily virtual const char$\ast$ test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Get\+Current\+Node\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the current node name. 
+
+\begin{DoxyReturn}{Returns}
+A char$\ast$ contianing the node name 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_a42fff5c266c24f6149f84f3b024457c7}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_a8da0bb607ddd98b943fc07fd5ac1abe8}\label{classtestAnalyser2_1_1I__RapidAbstract_a8da0bb607ddd98b943fc07fd5ac1abe8}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!GetCurrentNodeType@{GetCurrentNodeType}}
+\index{GetCurrentNodeType@{GetCurrentNodeType}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{GetCurrentNodeType()}{GetCurrentNodeType()}}
+{\footnotesize\ttfamily virtual rapidxml\+::node\+\_\+type test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Get\+Current\+Node\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the current node\textquotesingle{}s type. 
+
+\begin{DoxyReturn}{Returns}
+The node type that we have encountered as a rapidxml\+::node\+\_\+type\+:\+:\mbox{[}type\mbox{]} 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_a9897ce59179b6bf0a0e76845931f39fb}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_a0d4dd17120e75549ee68181cc4a4e503}\label{classtestAnalyser2_1_1I__RapidAbstract_a0d4dd17120e75549ee68181cc4a4e503}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!GetNodeValue@{GetNodeValue}}
+\index{GetNodeValue@{GetNodeValue}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{GetNodeValue()}{GetNodeValue()}}
+{\footnotesize\ttfamily virtual const char$\ast$ test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Get\+Node\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the Node\textquotesingle{}s data (for a node\+\_\+data type) 
+
+\begin{DoxyReturn}{Returns}
+const char$\ast$ containg the data 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_a80bd2529fc3b0d6678a166d3192d4a60}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_ad30a0a18d8a387ab48c95270b70042b4}\label{classtestAnalyser2_1_1I__RapidAbstract_ad30a0a18d8a387ab48c95270b70042b4}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!GetNodeValueSize@{GetNodeValueSize}}
+\index{GetNodeValueSize@{GetNodeValueSize}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{GetNodeValueSize()}{GetNodeValueSize()}}
+{\footnotesize\ttfamily virtual std\+::size\+\_\+t test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Get\+Node\+Value\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the size of the nodes value. 
+
+\begin{DoxyReturn}{Returns}
+the size of the value in the node 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_a04603ede543eac5c9c76050cbfe768db}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_a9d646b222f88e3baf52ca808288bc7c2}\label{classtestAnalyser2_1_1I__RapidAbstract_a9d646b222f88e3baf52ca808288bc7c2}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!MoveToChild@{MoveToChild}}
+\index{MoveToChild@{MoveToChild}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{MoveToChild()}{MoveToChild()}}
+{\footnotesize\ttfamily virtual bool test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Move\+To\+Child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Moves to the child node (diagonally) 
+
+\begin{DoxyReturn}{Returns}
+true on success, otherwise false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_af54437d66d9120ab274569efa1a51873}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_ab26e1f2ca674a3bc10b0a5b71c9a5941}\label{classtestAnalyser2_1_1I__RapidAbstract_ab26e1f2ca674a3bc10b0a5b71c9a5941}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!MoveToNextAttribute@{MoveToNextAttribute}}
+\index{MoveToNextAttribute@{MoveToNextAttribute}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{MoveToNextAttribute()}{MoveToNextAttribute()}}
+{\footnotesize\ttfamily virtual bool test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Move\+To\+Next\+Attribute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the next attribute in a node. 
+
+\begin{DoxyReturn}{Returns}
+true on success, otherwise false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_a406f500d326f20c768abffb9e6318616}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_a95d6bb9f515adb49e62396e48d23d88f}\label{classtestAnalyser2_1_1I__RapidAbstract_a95d6bb9f515adb49e62396e48d23d88f}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!MoveToNextNode@{MoveToNextNode}}
+\index{MoveToNextNode@{MoveToNextNode}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{MoveToNextNode()}{MoveToNextNode()}}
+{\footnotesize\ttfamily virtual bool test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Move\+To\+Next\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Moves to the next node (straight downly) 
+
+\begin{DoxyReturn}{Returns}
+true on success, otherwise false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_a49c72b683d3c31e7aca432de5d97711c}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+\mbox{\Hypertarget{classtestAnalyser2_1_1I__RapidAbstract_a916b023a5b55e1334f6595ed9d4cb7d8}\label{classtestAnalyser2_1_1I__RapidAbstract_a916b023a5b55e1334f6595ed9d4cb7d8}} 
+\index{testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}!SelectAttribute@{SelectAttribute}}
+\index{SelectAttribute@{SelectAttribute}!testAnalyser2::I\_RapidAbstract@{testAnalyser2::I\_RapidAbstract}}
+\subsubsection{\texorpdfstring{SelectAttribute()}{SelectAttribute()}}
+{\footnotesize\ttfamily virtual bool test\+Analyser2\+::\+I\+\_\+\+Rapid\+Abstract\+::\+Select\+Attribute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Selects an attribute to start reading that. 
+
+\begin{DoxyReturn}{Returns}
+true on success, otherwise false 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classtestAnalyser2_1_1RapidAbstract_a5ca627c1c860c9f5ff58cb6bf612fe81}{test\+Analyser2\+::\+Rapid\+Abstract}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+my\+Libraries/test\+Analyser2/include/I\+\_\+\+Rapid\+Abstract.\+h\end{DoxyCompactItemize}

@@ -5,7 +5,7 @@
  *
  * @date 13/08/18
  *
- * @addtogroup Logger
+ * @addtogroup logger
  */
 
 #ifndef PROTOCOLDEVELOPER_LOGGER_H
@@ -22,7 +22,7 @@
 #include "safeQueues/SafeQueue.h"
 #include "utility/enumHandler.h"
 
-namespace LoggerClasses
+namespace logger
 {
 class LogFile
     : public I_LogFile
@@ -33,14 +33,26 @@ public:
             , std::unique_ptr<std::ostream> outFile
             , std::condition_variable& CV);
     ~LogFile() override;
-    //! Add a log message
+    /*!
+     * @brief Adds a message to a log using the log ID
+     * @param message The message we wish to print
+     * @param lvl The severity of the message
+     */
     void AddLogMessage(const std::string& message
                        , logLevel lvl) override;
-    //! Returns the oldest message to be written
+    /*!
+     * @brief Grabs the oldest message from the queue
+     * @return A std::string of the message
+     */
     std::string ReturnOldestMessage() override;
-    //! Writes The oldest message from the queue to the provided stream
+    /*!
+     * @brief Writes The oldest message from the queue to the provided stream
+     */
     void WriteAllMessagesToStream() override;
-    //! Returns the latest message to be written
+    /*!
+     * @brief Returns the latest message to be added
+     * @return Returns the most recent message in the queue
+     */
     std::string ReturnLatestMessage() override;
 private:
     //! The log File stream
@@ -52,18 +64,28 @@ private:
     //! Handles the log level enums
     utility::EnumHandler<logLevel, std::string> _logLevels;
     //! Log message buffer
-    SafeContainers::SafeQueue<std::string> _messagesToWrite;
+    safeContainers::SafeQueue<std::string> _messagesToWrite;
     //! Triggers a flush when there are pending messages
     std::condition_variable &_condVar;
-
-    //! Generates a header for the log file
+    /*!
+     * @brief Generates a header for the log file
+     */
     void _GenerateHeader();
-    //! Extracts data from the EIS String
+    /*!
+     * @brief Parses the EIS string (if it was provided)
+     * @param EISref The extra info string we wish to put in the log file
+     * @return The parsed information string for printing
+     */
     std::string extractEIS(std::string &EISref);
-    //! Generates a log message (adds timestamp, level, etc)
+    /*!
+     * @brief Generates a log message (adds timestamp, level, etc)
+     * @param message The message we wsih to print
+     * @param lvl it's severity
+     * @return The message we wish to print
+     */
     std::string _GenerateLogMessage(const std::string& message
                                     , logLevel lvl);
 };
-} /* namespace LoggerClass */
-
+} /* namespace logger */
+/*! @} */
 #endif //PROTOCOLDEVELOPER_LOGGER_H
