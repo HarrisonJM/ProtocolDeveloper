@@ -12,10 +12,18 @@
 #include <testAnalyser2/testAnalyser2.h>
 #include <logger/LogHandler.h>
 #include <iomanip>
+#include "../../myLibraries/serviceLib/include/serviceLib/daemoniser.h"
 
 int main(int argc
          , char **argv)
 {
+    serviceLib::Daemoniser d;
+
+    d.Daemonise(*argv);
+
+    while(true)
+        sleep(1);
+
     threadPool::ThreadPool pool(10);
     pool.InitPool();
     logger::LogHandler::GetInstance(20

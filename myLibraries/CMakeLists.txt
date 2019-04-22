@@ -12,6 +12,7 @@ add_subdirectory(threadPool)
 add_subdirectory(testRunner)
 add_subdirectory(database)
 add_subdirectory(gRPCInterface)
+add_subdirectory(serviceLib)
 
 ## Shared Objects/Plugins ##
 add_subdirectory(networkCommunication)

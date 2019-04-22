@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package commandApi;
+
+/**
+    We want to send:
+    - The time of the request (UNIX EPOCH)
+    - Source
+    - Source info
+    - RequestID
+    - Request command
+    - Request information
+
+*/
+
+message Request {
+    int64 time = 1;
+    enum Sender {
+        USER = 0;
+        OTHERINSTANCE = 1;
+    }
+    Sender source = 2;
+
+    oneof SenderInfo {
+        bool isOtherInstance = 3;
+        string senderID = 4;
+    }
+
+    oneof TypeOfRequest {
+        string requestAction = 5;
+        string requestInformation = 6;
+    }
+
+    repeated string requestData = 7;
+}
